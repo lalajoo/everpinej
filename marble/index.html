@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#0b0b12">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>프사 구슬 레이스 | everpinej</title>
+<meta name="description" content="스레드 아이디를 입력하면 프로필 사진이 구슬이 되어 경주합니다. 결과 영상을 바로 공유하세요.">
+<meta property="og:title" content="프사 구슬 레이스">
+<meta property="og:description" content="누구의 프사가 1등할까? 아이디를 입력하고 바로 경주해보세요.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://everpinej.com/marble/">
+<script src="./matter.min.js"></script>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:100%; height:100%; height:100dvh; background:#0b0b12; overflow:hidden; overscroll-behavior:none; touch-action:manipulation; font-family:-apple-system,'Apple SD Gothic Neo','Pretendard',sans-serif; }
+  body { -webkit-user-select:none; user-select:none; -webkit-tap-highlight-color:transparent; }
+  #stageWrap { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; padding:max(0px, env(safe-area-inset-top)) 0 max(0px, env(safe-area-inset-bottom)); }
+  #stage { position:relative; background:#12121e; overflow:hidden; border-radius:12px; box-shadow:0 0 60px rgba(120,80,255,.25); }
+  input { -webkit-user-select:text; user-select:text; }
+  canvas { display:block; }
+  /* ---------- overlays ---------- */
+  .overlay { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:20; }
+  #setup { background:linear-gradient(160deg,#151527,#0b0b12); gap:12px; padding:24px 20px max(20px,env(safe-area-inset-bottom)); }
+  #setup h1 { color:#fff; font-size:26px; letter-spacing:-1px; }
+  #setup h1 span { background:linear-gradient(90deg,#a78bfa,#f472b6); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  #setup p { color:#8b8ba3; font-size:12.5px; text-align:center; line-height:1.5; }
+  #handleSlots { width:100%; max-width:360px; display:grid; grid-template-columns:1fr; gap:8px; max-height:300px; overflow-y:auto; padding:2px; }
+  .slot { min-height:48px; display:flex; align-items:center; background:#1d1d30; border:1px solid #33334d; border-radius:12px; padding-left:12px; }
+  .slot:focus-within { border-color:#a78bfa; box-shadow:0 0 0 2px rgba(167,139,250,.12); }
+  .slot .at { color:#a78bfa; font-size:15px; font-weight:800; }
+  .handleField { min-width:0; flex:1; background:transparent; border:0; outline:0; color:#fff; font-size:16px; padding:12px 5px; }
+  .handleField::placeholder { color:#62627d; }
+  .removeSlot { width:28px; height:28px; border:0; background:transparent; color:#6f6f89; font-size:17px; cursor:pointer; }
+  .removeSlot:hover { color:#f472b6; }
+  #addSlotBtn { min-height:42px; border:1px dashed #51516e; background:rgba(255,255,255,.025); color:#b7b7ce; border-radius:11px; padding:9px 22px; font-size:13px; cursor:pointer; }
+  #addSlotBtn:hover { border-color:#a78bfa; color:#fff; }
+  .btn { min-height:54px; border:none; border-radius:15px; padding:14px 36px; font-size:17px; font-weight:800; cursor:pointer;
+    background:linear-gradient(90deg,#8b5cf6,#ec4899); color:#fff; letter-spacing:-.5px; }
+  .btn:disabled { opacity:.45; cursor:default; }
+  .btn.secondary { background:#26263b; border:1px solid #464664; }
+  .btn:active { transform:scale(.96); }
+  .btn.small { padding:10px 24px; font-size:14px; }
+  #loadMsg { color:#a78bfa; font-size:13px; height:16px; }
+  /* ---------- countdown ---------- */
+  #countdown { pointer-events:none; z-index:30; display:none; }
+  #countNum { font-size:110px; font-weight:900; color:#fff; text-shadow:0 0 40px #a78bfa; }
+  /* ---------- race HUD ---------- */
+  #hud { position:absolute; top:0; left:0; right:0; z-index:10; pointer-events:none; }
+  #leaderBanner { display:flex; align-items:center; gap:8px; margin:10px auto 0; width:fit-content; max-width:90%;
+    background:rgba(10,10,20,.72); border:1px solid rgba(167,139,250,.4); border-radius:99px; padding:5px 14px 5px 6px; }
+  #leaderBanner img { width:26px; height:26px; border-radius:50%; }
+  #leaderBanner .nm { color:#fff; font-size:13px; font-weight:700; }
+  #leaderBanner .crown { font-size:15px; }
+  #board { position:absolute; top:60px; right:8px; width:118px; z-index:10; pointer-events:none; }
+  .brow { position:absolute; left:0; right:0; height:26px; display:flex; align-items:center; gap:5px;
+    background:rgba(10,10,20,.66); border-radius:99px; padding:2px 8px 2px 3px;
+    transition:transform .45s cubic-bezier(.22,1,.36,1); }
+  .brow img,.brow .fb { width:20px; height:20px; border-radius:50%; flex:none; }
+  .brow .rk { color:#ffd166; font-size:10.5px; font-weight:800; width:13px; text-align:center; flex:none; }
+  .brow .un { color:#d9d9ec; font-size:10px; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .brow.fin { background:rgba(139,92,246,.5); }
+  /* ---------- result ---------- */
+  #result { background:rgba(8,8,14,.92); backdrop-filter:blur(8px); display:none; gap:10px; z-index:40; padding:24px 18px max(20px,env(safe-area-inset-bottom)); }
+  #resultActions { display:flex; flex-direction:column; gap:8px; width:min(330px,88%); margin-top:4px; }
+  #resultActions .btn { width:100%; }
+  #videoStatus { color:#a9a9c0; font-size:12px; min-height:17px; text-align:center; }
+  #shareHint { color:#77778f; font-size:11px; text-align:center; line-height:1.4; max-width:330px; }
+  #result h2 { color:#ffd166; font-size:30px; font-weight:900; text-shadow:0 0 24px rgba(255,209,102,.5); }
+  #podium { display:flex; align-items:flex-end; gap:14px; margin:6px 0 2px; }
+  .pod { display:flex; flex-direction:column; align-items:center; gap:6px; }
+  .pod img,.pod .fb { border-radius:50%; border:3px solid; }
+  .pod .un { color:#fff; font-size:12px; font-weight:700; max-width:90px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .pod .medal { font-size:20px; }
+  #ranklist { max-height:180px; overflow:hidden; display:flex; flex-direction:column; gap:5px; margin-top:4px; }
+  .rrow { display:flex; align-items:center; gap:8px; background:#1b1b2c; border-radius:99px; padding:3px 14px 3px 4px; }
+  .rrow img,.rrow .fb { width:22px; height:22px; border-radius:50%; }
+  .rrow .rk { color:#9f9fbb; width:20px; text-align:center; font-size:12px; font-weight:800; }
+  .rrow .un { color:#e7e7f5; font-size:12px; font-weight:600; }
+  .fb { display:inline-flex; align-items:center; justify-content:center; color:#fff; font-weight:800; }
+  /* 순위 HUD는 영상에도 담기도록 canvas에서 직접 렌더링 */
+  #hud,#board { display:none !important; }
+  @media (max-height:700px) {
+    #setup { gap:8px; padding-top:14px; }
+    #setup h1 { font-size:22px; }
+    #setup p { font-size:11.5px; }
+    #handleSlots { max-height:230px; }
+    .slot { min-height:44px; }
+  }
+  @media (max-width:560px) {
+    #stage { border-radius:0; box-shadow:none; }
+  }
+</style>
+</head>
+<body>
+<div id="stageWrap"><div id="stage">
+  <canvas id="cv"></canvas>
+  <div id="hud" style="display:none">
+    <div id="leaderBanner"><span class="crown">👑</span><img id="lbImg"><span class="nm" id="lbName"></span></div>
+  </div>
+  <div id="board"></div>
+  <div id="setup" class="overlay">
+    <h1>🔮 <span>프사 구슬 레이스</span></h1>
+    <p>경기할 사람의 스레드 아이디만 입력하세요.<br>@는 쓰지 않아도 돼요 (2~12명)</p>
+    <div id="handleSlots"></div>
+    <button id="addSlotBtn" type="button">＋ 참가자 추가</button>
+    <div id="loadMsg"></div>
+    <button class="btn" id="startBtn">경주 시작 🏁</button>
+  </div>
+  <div id="countdown" class="overlay"><div id="countNum">3</div></div>
+  <div id="result" class="overlay">
+    <h2>🏆 WINNER</h2>
+    <div id="podium"></div>
+    <div id="ranklist"></div>
+    <div id="videoStatus">경기 영상을 만드는 중...</div>
+    <div id="resultActions">
+      <button class="btn" id="shareBtn" disabled style="pointer-events:auto">영상 공유하기</button>
+      <button class="btn secondary small" id="saveBtn" disabled style="pointer-events:auto">영상 저장</button>
+      <button class="btn secondary small" id="againBtn" style="pointer-events:auto">한 번 더</button>
+    </div>
+    <div id="shareHint">공유창이 열리면 Threads를 선택하세요.</div>
+  </div>
+</div></div>
+
+<script>
+const { Engine, World, Bodies, Body, Composite, Constraint, Events } = Matter;
+
+/* ---------- stage sizing (9:16) ---------- */
+const W = 540, VH = 960;               // world width / viewport height
+const stage = document.getElementById('stage');
+const cv = document.getElementById('cv');
+const ctx = cv.getContext('2d');
+let DPR = Math.min(window.devicePixelRatio || 1, 2);
+function fit() {
+  const availableH = window.visualViewport?.height || innerHeight;
+  const s = Math.min(innerWidth / W, availableH / VH);
+  DPR = Math.min(window.devicePixelRatio || 1, 2);
+  cv.width = W * DPR; cv.height = VH * DPR;
+  cv.style.width = W * s + 'px'; cv.style.height = VH * s + 'px';
+  stage.style.width = W * s + 'px'; stage.style.height = VH * s + 'px';
+}
+addEventListener('resize', fit); fit();
+
+/* ---------- track constants ---------- */
+const TRACK_H = 5600, FINISH_Y = 5320, R = 17;
+const COLORS = ['#f87171','#fb923c','#facc15','#4ade80','#22d3ee','#818cf8','#e879f9','#f472b6','#a3e635','#2dd4bf','#c084fc','#fda4af'];
+
+let engine, marbles = [], spinners = [], bumpers = [], boostPads = [];
+let camY = 0, racing = false, finished = [], raceStart = 0, firstFinishT = 0;
+let confetti = [], currentOrder = [], countdownText = '', resultCanvasVisible = false;
+let mediaRecorder = null, recordedChunks = [], raceVideoBlob = null, raceVideoUrl = '', raceVideoExt = 'webm';
+let wakeLock = null;
+
+/* ---------- avatar loading ---------- */
+function loadAvatar(handle) {
+  return new Promise(res => {
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    let done = false;
+    const t = setTimeout(() => { if (!done) { done = true; res(null); } }, 8000);
+    img.onload = () => { if (!done) { done = true; clearTimeout(t); res(img); } };
+    img.onerror = () => { if (!done) { done = true; clearTimeout(t); res(null); } };
+    img.src = 'https://unavatar.io/threads/' + encodeURIComponent(handle) + '?size=128';
+  });
+}
+// pre-rendered circular sprite (avatar or initial fallback)
+function makeSprite(img, handle, color) {
+  const d = 128, c = document.createElement('canvas');
+  c.width = c.height = d;
+  const x = c.getContext('2d');
+  x.beginPath(); x.arc(d/2, d/2, d/2, 0, 7); x.clip();
+  if (img) { try { x.drawImage(img, 0, 0, d, d); } catch(e) { img = null; } }
+  if (!img) {
+    x.fillStyle = color; x.fillRect(0, 0, d, d);
+    x.fillStyle = '#fff'; x.font = '900 64px sans-serif';
+    x.textAlign = 'center'; x.textBaseline = 'middle';
+    x.fillText(handle[0].toUpperCase(), d/2, d/2 + 4);
+  }
+  return c;
+}
+
+/* ---------- build track ---------- */
+function buildTrack() {
+  engine = Engine.create();
+  engine.gravity.y = 1.25;
+  engine.positionIterations = 8; engine.velocityIterations = 6;
+  const st = { isStatic: true, render: {} };
+  const walls = [
+    Bodies.rectangle(-14, TRACK_H/2, 28, TRACK_H, st),
+    Bodies.rectangle(W+14, TRACK_H/2, 28, TRACK_H, st),
+    Bodies.rectangle(W/2, TRACK_H+30, W*2, 60, st),
+  ];
+  const parts = [...walls];
+  const deco = [];   // {type,x,y,w,h,angle} for drawing
+
+  const ramp = (x, y, w, ang) => {
+    const b = Bodies.rectangle(x, y, w, 14, { isStatic: true, angle: ang, chamfer: { radius: 7 } });
+    parts.push(b); deco.push({ type:'ramp', body: b, w });
+  };
+  const peg = (x, y, r=9) => {
+    const b = Bodies.circle(x, y, r, { isStatic: true });
+    parts.push(b); deco.push({ type:'peg', body: b, r });
+  };
+
+  // gate (removed at GO)
+  const gate = Bodies.rectangle(W/2, 300, W, 16, { isStatic: true });
+  parts.push(gate);
+
+  // A) plinko peg field 420~1250 (staggered)
+  for (let row = 0; row < 8; row++) {
+    const y = 460 + row * 105, off = row % 2 ? 45 : 0;
+    for (let x = 45 + off; x < W - 20; x += 90) peg(x, y);
+  }
+  // B) funnel into windmill 1350~1900
+  ramp(105, 1420, 300, 0.5); ramp(W-105, 1420, 300, -0.5);
+  const wm1 = spinnerAt(W/2, 1720, 190, 0.055);
+  parts.push(wm1.body, wm1.pin);
+  // C) zigzag ramps 1950~2950 (gap alternates side)
+  ramp(150, 2080, 330, 0.28);
+  ramp(W-150, 2380, 330, -0.28);
+  ramp(150, 2680, 330, 0.28);
+  ramp(W-150, 2980, 330, -0.28);
+  // D) bumper zone 3100~3900
+  const bpos = [[100,3180],[300,3260],[470,3200],[180,3450],[400,3520],[70,3650],[280,3700],[480,3760],[160,3900],[380,3950]];
+  for (const [x, y] of bpos) {
+    const b = Bodies.circle(x, y, 24, { isStatic: true, restitution: 1, label: 'bumper' });
+    parts.push(b); bumpers.push({ body: b, flash: 0 });
+  }
+  // E) second windmill + final funnel 4050~5000
+  const wm2 = spinnerAt(W/2, 4220, 210, -0.07);
+  parts.push(wm2.body, wm2.pin);
+  ramp(95, 4560, 280, 0.55); ramp(W-95, 4560, 280, -0.55);
+  for (let x = 90; x < W-40; x += 120) peg(x, 4850, 10);
+  ramp(120, 5080, 300, 0.35); ramp(W-120, 5180, 300, -0.35);
+
+  World.add(engine.world, parts);
+  return { gate, deco };
+}
+function spinnerAt(x, y, len, speed) {
+  const body = Bodies.rectangle(x, y, len, 16, { density: 0.9, frictionAir: 0, chamfer: { radius: 8 } });
+  const pin = Constraint.create({ pointA: { x, y }, bodyB: body, stiffness: 1, length: 0 });
+  spinners.push({ body, speed, x, y, len });
+  return { body, pin };
+}
+
+/* ---------- race setup ---------- */
+let trackRef = null;
+async function prepare(handles) {
+  marbles = []; spinners = []; bumpers = []; finished = []; confetti = [];
+  trackRef = buildTrack();
+  const sprites = await Promise.all(handles.map((h, i) =>
+    loadAvatar(h).then(img => makeSprite(img, h, COLORS[i % COLORS.length]))));
+  handles.forEach((h, i) => {
+    const cols = 6, cx = W/2 + (i % cols - (Math.min(handles.length, cols)-1)/2) * 44;
+    const cy = 180 - Math.floor(i / cols) * 46;
+    const b = Bodies.circle(cx + (Math.random()*8-4), cy, R, {
+      restitution: 0.55, friction: 0.02, frictionAir: 0.008, density: 0.35, label: 'marble#' + i
+    });
+    marbles.push({ body: b, handle: h, sprite: sprites[i], color: COLORS[i % COLORS.length],
+      done: false, rank: 0, stuckT: 0 });
+    World.add(engine.world, b);
+  });
+  Events.on(engine, 'collisionStart', ev => {
+    for (const p of ev.pairs) {
+      let bump = null, mb = null;
+      if (p.bodyA.label === 'bumper' && p.bodyB.label.startsWith('marble')) { bump = p.bodyA; mb = p.bodyB; }
+      if (p.bodyB.label === 'bumper' && p.bodyA.label.startsWith('marble')) { bump = p.bodyB; mb = p.bodyA; }
+      if (bump) {
+        const dx = mb.position.x - bump.position.x, dy = mb.position.y - bump.position.y;
+        const d = Math.hypot(dx, dy) || 1;
+        Body.setVelocity(mb, { x: mb.velocity.x + dx/d * 7, y: mb.velocity.y + dy/d * 7 });
+        const rec = bumpers.find(bb => bb.body === bump); if (rec) rec.flash = 1;
+      }
+    }
+  });
+  buildBoard();
+}
+
+/* ---------- leaderboard DOM ---------- */
+const board = document.getElementById('board');
+function buildBoard() {
+  board.innerHTML = '';
+  marbles.forEach((m, i) => {
+    const row = document.createElement('div');
+    row.className = 'brow'; row.id = 'brow' + i;
+    const av = m.sprite.toDataURL ? `<img src="${m.sprite.toDataURL()}">` : '';
+    row.innerHTML = `<span class="rk">${i+1}</span>${av}<span class="un">${m.handle}</span>`;
+    board.appendChild(row);
+  });
+  board.style.height = marbles.length * 30 + 'px';
+}
+function updateBoard(order) {
+  order.forEach((mi, rank) => {
+    const row = document.getElementById('brow' + mi);
+    row.style.transform = `translateY(${rank * 29}px)`;
+    row.querySelector('.rk').textContent = rank + 1;
+    row.classList.toggle('fin', marbles[mi].done);
+  });
+  const lead = marbles[order[0]];
+  document.getElementById('lbImg').src = lead.sprite.toDataURL();
+  document.getElementById('lbName').textContent = '@' + lead.handle;
+}
+
+/* ---------- main loop ---------- */
+let lastT = 0, frameCount = 0;
+function loop(t) {
+  requestAnimationFrame(loop);
+  const dt = Math.min(t - lastT, 33); lastT = t;
+  if (racing) {
+    for (const s of spinners) Body.setAngularVelocity(s.body, s.speed);
+    Engine.update(engine, dt);
+    frameCount++;
+    // cap speed + anti-stuck + rubber band
+    const leadY = Math.max(...marbles.filter(m => !m.done).map(m => m.body.position.y), 0);
+    for (const m of marbles) {
+      if (m.done) continue;
+      const b = m.body, sp = Math.hypot(b.velocity.x, b.velocity.y);
+      if (sp > 32) Body.setVelocity(b, { x: b.velocity.x * 32/sp, y: b.velocity.y * 32/sp });
+      if (sp < 0.4) { m.stuckT += dt; } else m.stuckT = 0;
+      if (m.stuckT > 1000) { Body.setVelocity(b, { x: (Math.random()*10-5), y: 6 }); m.stuckT = 0; }
+      if (leadY - b.position.y > 500) Body.applyForce(b, b.position, { x: 0, y: 0.02 });   // rubber band
+      if (b.position.y > FINISH_Y && !m.done) {
+        m.done = true; m.rank = finished.length + 1; finished.push(m);
+        if (finished.length === 1) { firstFinishT = t; burst(); }
+        Body.setVelocity(b, { x: 0, y: 2 });
+      }
+    }
+    // ranking (progress = y)
+    const order = marbles.map((m, i) => i).sort((a, b) => {
+      const A = marbles[a], B = marbles[b];
+      if (A.done && B.done) return A.rank - B.rank;
+      if (A.done) return -1; if (B.done) return 1;
+      return B.body.position.y - A.body.position.y;
+    });
+    currentOrder = order;
+    if (frameCount % 6 === 0) updateBoard(order);
+    // camera: follow front pack
+    const target = Math.min(Math.max(leadY - VH * 0.42, 0), TRACK_H - VH);
+    camY += (target - camY) * 0.06;
+    // end conditions
+    const allDone = marbles.every(m => m.done);
+    if (allDone || (firstFinishT && t - firstFinishT > 8000)) endRace(order);
+  }
+  draw(t);
+}
+requestAnimationFrame(loop);
+
+/* ---------- drawing ---------- */
+function draw(t) {
+  ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  ctx.clearRect(0, 0, W, VH);
+  // bg gradient + subtle grid
+  const g = ctx.createLinearGradient(0, 0, 0, VH);
+  g.addColorStop(0, '#151528'); g.addColorStop(1, '#0d0d18');
+  ctx.fillStyle = g; ctx.fillRect(0, 0, W, VH);
+  ctx.save(); ctx.translate(0, -camY);
+  ctx.strokeStyle = 'rgba(255,255,255,.035)'; ctx.lineWidth = 1;
+  for (let y = Math.floor(camY/120)*120; y < camY + VH + 120; y += 120) {
+    ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
+  }
+  if (!trackRef) { ctx.restore(); return; }
+  // track pieces
+  for (const d of trackRef.deco) {
+    const b = d.body;
+    if (b.position.y < camY - 100 || b.position.y > camY + VH + 100) continue;
+    if (d.type === 'peg') {
+      ctx.fillStyle = '#3d3d5e'; ctx.beginPath(); ctx.arc(b.position.x, b.position.y, d.r, 0, 7); ctx.fill();
+      ctx.fillStyle = '#6c6c96'; ctx.beginPath(); ctx.arc(b.position.x, b.position.y, d.r*0.45, 0, 7); ctx.fill();
+    } else {
+      ctx.save(); ctx.translate(b.position.x, b.position.y); ctx.rotate(b.angle);
+      ctx.fillStyle = '#44446a'; roundRect(-d.w/2, -7, d.w, 14, 7); ctx.fill();
+      ctx.fillStyle = 'rgba(167,139,250,.35)'; roundRect(-d.w/2, -7, d.w, 4, 2); ctx.fill();
+      ctx.restore();
+    }
+  }
+  // gate
+  if (!racing && trackRef.gate && trackRef.gate.position.y < 10000) {
+    const b = trackRef.gate;
+    ctx.fillStyle = '#f472b6'; roundRect(0, b.position.y-8, W, 16, 4); ctx.fill();
+  }
+  // spinners
+  for (const s of spinners) {
+    const b = s.body;
+    if (b.position.y < camY - 150 || b.position.y > camY + VH + 150) continue;
+    ctx.save(); ctx.translate(b.position.x, b.position.y); ctx.rotate(b.angle);
+    ctx.fillStyle = '#8b5cf6'; roundRect(-s.len/2, -8, s.len, 16, 8); ctx.fill();
+    ctx.fillStyle = '#c4b5fd'; ctx.beginPath(); ctx.arc(0, 0, 10, 0, 7); ctx.fill();
+    ctx.restore();
+  }
+  // bumpers
+  for (const bb of bumpers) {
+    const b = bb.body;
+    if (b.position.y < camY - 100 || b.position.y > camY + VH + 100) continue;
+    bb.flash = Math.max(0, bb.flash - 0.06);
+    ctx.fillStyle = bb.flash > 0 ? '#fde047' : '#f43f5e';
+    ctx.beginPath(); ctx.arc(b.position.x, b.position.y, 24 + bb.flash*5, 0, 7); ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(b.position.x, b.position.y, 9, 0, 7); ctx.fill();
+  }
+  // finish line
+  ctx.save();
+  for (let x = 0; x < W; x += 30) {
+    ctx.fillStyle = (x/30) % 2 ? '#fff' : '#111';
+    ctx.fillRect(x, FINISH_Y, 30, 14); ctx.fillRect(x, FINISH_Y+14, 30, 14);
+  }
+  ctx.restore();
+  // marbles
+  for (const m of marbles) {
+    const b = m.body;
+    ctx.save(); ctx.translate(b.position.x, b.position.y);
+    ctx.shadowColor = m.color; ctx.shadowBlur = 12;
+    ctx.beginPath(); ctx.arc(0, 0, R, 0, 7); ctx.fillStyle = m.color; ctx.fill();
+    ctx.shadowBlur = 0;
+    ctx.save(); ctx.rotate(b.angle);
+    ctx.beginPath(); ctx.arc(0, 0, R-2, 0, 7); ctx.clip();
+    ctx.drawImage(m.sprite, -(R-2), -(R-2), (R-2)*2, (R-2)*2);
+    ctx.restore();
+    // name tag
+    ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillStyle = 'rgba(0,0,0,.55)';
+    const tw = ctx.measureText(m.handle).width + 10;
+    roundRect(-tw/2, R + 4, tw, 14, 7); ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.fillText(m.handle, 0, R + 14.5);
+    ctx.restore();
+  }
+  // confetti
+  for (const c of confetti) {
+    c.x += c.vx; c.y += c.vy; c.vy += 0.12; c.a += c.va;
+    ctx.save(); ctx.translate(c.x, c.y); ctx.rotate(c.a);
+    ctx.fillStyle = c.col; ctx.fillRect(-4, -2, 8, 4); ctx.restore();
+  }
+  confetti = confetti.filter(c => c.y < camY + VH + 50);
+  ctx.restore();
+  drawFixedOverlay();
+}
+function drawFixedOverlay() {
+  if (!trackRef) return;
+  ctx.save();
+  // 현재 선두
+  if (currentOrder.length && !resultCanvasVisible) {
+    const leader = marbles[currentOrder[0]];
+    const label = '@' + leader.handle;
+    ctx.font = '800 18px sans-serif';
+    const pillW = Math.max(142, ctx.measureText(label).width + 74);
+    ctx.fillStyle = 'rgba(8,8,18,.82)';
+    roundRect(W/2-pillW/2, 18, pillW, 48, 24); ctx.fill();
+    ctx.strokeStyle = 'rgba(167,139,250,.75)'; ctx.lineWidth = 2; ctx.stroke();
+    ctx.save(); ctx.beginPath(); ctx.arc(W/2-pillW/2+26, 42, 18, 0, 7); ctx.clip();
+    ctx.drawImage(leader.sprite, W/2-pillW/2+8, 24, 36, 36); ctx.restore();
+    ctx.fillStyle = '#ffd166'; ctx.font = '900 15px sans-serif'; ctx.fillText('1', W/2-pillW/2+52, 48);
+    ctx.fillStyle = '#fff'; ctx.font = '800 18px sans-serif'; ctx.fillText(label, W/2-pillW/2+72, 49);
+
+    // 실시간 순위
+    const shown = currentOrder.slice(0, Math.min(10, currentOrder.length));
+    const bw = 148, rh = 31, bx = W-bw-10, by = 82;
+    shown.forEach((mi, rank) => {
+      const m = marbles[mi], y = by + rank * (rh+4);
+      ctx.fillStyle = m.done ? 'rgba(139,92,246,.72)' : 'rgba(8,8,18,.74)';
+      roundRect(bx, y, bw, rh, 16); ctx.fill();
+      ctx.save(); ctx.beginPath(); ctx.arc(bx+17, y+rh/2, 12, 0, 7); ctx.clip();
+      ctx.drawImage(m.sprite, bx+5, y+rh/2-12, 24, 24); ctx.restore();
+      ctx.fillStyle = rank === 0 ? '#ffd166' : '#c4c4d8'; ctx.font = '900 13px sans-serif';
+      ctx.textAlign = 'center'; ctx.fillText(String(rank+1), bx+39, y+20);
+      ctx.textAlign = 'left'; ctx.fillStyle = '#fff'; ctx.font = '700 12px sans-serif';
+      const shortName = m.handle.length > 12 ? m.handle.slice(0,11)+'…' : m.handle;
+      ctx.fillText(shortName, bx+51, y+20);
+    });
+  }
+  if (countdownText) {
+    ctx.fillStyle = 'rgba(6,6,14,.28)'; ctx.fillRect(0,0,W,VH);
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.shadowColor = '#a78bfa'; ctx.shadowBlur = 35;
+    ctx.fillStyle = '#fff'; ctx.font = countdownText === 'GO!' ? '900 116px sans-serif' : '900 150px sans-serif';
+    ctx.fillText(countdownText, W/2, VH/2);
+    ctx.shadowBlur = 0;
+  }
+  if (resultCanvasVisible) drawRecordedResult();
+  ctx.restore();
+}
+function drawRecordedResult() {
+  ctx.fillStyle = 'rgba(7,7,14,.94)'; ctx.fillRect(0,0,W,VH);
+  ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+  ctx.fillStyle = '#ffd166'; ctx.shadowColor = 'rgba(255,209,102,.55)'; ctx.shadowBlur = 25;
+  ctx.font = '900 42px sans-serif'; ctx.fillText('WINNER', W/2, 125); ctx.shadowBlur = 0;
+  const winner = finished[0];
+  if (winner) {
+    ctx.fillStyle = '#ffd166'; ctx.beginPath(); ctx.arc(W/2, 270, 100, 0, 7); ctx.fill();
+    ctx.save(); ctx.beginPath(); ctx.arc(W/2, 270, 92, 0, 7); ctx.clip();
+    ctx.drawImage(winner.sprite, W/2-92, 178, 184, 184); ctx.restore();
+    ctx.fillStyle = '#fff'; ctx.font = '900 30px sans-serif'; ctx.fillText('@'+winner.handle, W/2, 405);
+  }
+  ctx.fillStyle = '#9f9fbb'; ctx.font = '700 15px sans-serif'; ctx.fillText('FINAL RANKING', W/2, 468);
+  finished.slice(0,8).forEach((m, i) => {
+    const y = 500 + i*47, x = 92, w = W-184;
+    ctx.fillStyle = i === 0 ? 'rgba(139,92,246,.72)' : 'rgba(35,35,55,.92)';
+    roundRect(x,y,w,38,19); ctx.fill();
+    ctx.fillStyle = i < 3 ? '#ffd166' : '#a5a5bb'; ctx.font = '900 16px sans-serif';
+    ctx.textAlign = 'center'; ctx.fillText(String(i+1), x+27, y+25);
+    ctx.save(); ctx.beginPath(); ctx.arc(x+59,y+19,15,0,7); ctx.clip();
+    ctx.drawImage(m.sprite,x+44,y+4,30,30); ctx.restore();
+    ctx.textAlign = 'left'; ctx.fillStyle = '#fff'; ctx.font = '800 15px sans-serif'; ctx.fillText('@'+m.handle,x+86,y+25);
+  });
+  ctx.textAlign = 'center'; ctx.fillStyle = '#73738d'; ctx.font = '700 13px sans-serif';
+  ctx.fillText('everpinej.com/marble', W/2, 925);
+}
+function roundRect(x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x+r, y); ctx.arcTo(x+w, y, x+w, y+h, r); ctx.arcTo(x+w, y+h, x, y+h, r);
+  ctx.arcTo(x, y+h, x, y, r); ctx.arcTo(x, y, x+w, y, r); ctx.closePath();
+}
+function burst() {
+  for (let i = 0; i < 120; i++) confetti.push({
+    x: Math.random()*W, y: camY + Math.random()*200 - 100,
+    vx: Math.random()*4-2, vy: Math.random()*2+1, a: Math.random()*6, va: Math.random()*.2-.1,
+    col: COLORS[i % COLORS.length]
+  });
+}
+
+/* ---------- mobile video recording ---------- */
+async function requestWakeLock() {
+  try { if ('wakeLock' in navigator) wakeLock = await navigator.wakeLock.request('screen'); } catch(e) {}
+}
+async function startRecording() {
+  raceVideoBlob = null; recordedChunks = [];
+  if (raceVideoUrl) { URL.revokeObjectURL(raceVideoUrl); raceVideoUrl = ''; }
+  if (!cv.captureStream || typeof MediaRecorder === 'undefined') return false;
+  try {
+    const candidates = [
+      'video/mp4;codecs=avc1.42E01E', 'video/mp4',
+      'video/webm;codecs=vp9', 'video/webm;codecs=vp8', 'video/webm'
+    ];
+    const mimeType = candidates.find(m => MediaRecorder.isTypeSupported(m)) || '';
+    raceVideoExt = mimeType.includes('mp4') ? 'mp4' : 'webm';
+    const stream = cv.captureStream(30);
+    mediaRecorder = new MediaRecorder(stream, mimeType ? { mimeType, videoBitsPerSecond: 4500000 } : { videoBitsPerSecond: 4500000 });
+    mediaRecorder.ondataavailable = e => { if (e.data?.size) recordedChunks.push(e.data); };
+    mediaRecorder.start(1000);
+    return true;
+  } catch(e) {
+    console.warn('recording unavailable', e);
+    mediaRecorder = null;
+    return false;
+  }
+}
+function stopRecording() {
+  return new Promise(resolve => {
+    if (!mediaRecorder || mediaRecorder.state === 'inactive') { resolve(null); return; }
+    mediaRecorder.onstop = () => {
+      const type = mediaRecorder.mimeType || (raceVideoExt === 'mp4' ? 'video/mp4' : 'video/webm');
+      raceVideoBlob = new Blob(recordedChunks, { type });
+      raceVideoUrl = URL.createObjectURL(raceVideoBlob);
+      resolve(raceVideoBlob);
+    };
+    mediaRecorder.stop();
+    mediaRecorder.stream?.getTracks().forEach(track => track.stop());
+  });
+}
+function videoFile() {
+  if (!raceVideoBlob) return null;
+  return new File([raceVideoBlob], `profile-marble-race-${Date.now()}.${raceVideoExt}`, { type: raceVideoBlob.type });
+}
+async function shareRaceVideo() {
+  const file = videoFile();
+  if (!file) return;
+  const data = { files:[file], title:'프사 구슬 레이스', text:`우승은 @${finished[0]?.handle || ''}! 결과를 확인해보세요.` };
+  try {
+    if (navigator.share && (!navigator.canShare || navigator.canShare({ files:[file] }))) {
+      await navigator.share(data);
+    } else {
+      downloadRaceVideo();
+      $('videoStatus').textContent = '영상이 저장됐어요. Threads에서 첨부해 주세요.';
+    }
+  } catch(e) {
+    if (e.name !== 'AbortError') {
+      downloadRaceVideo();
+      $('videoStatus').textContent = '공유를 지원하지 않아 영상으로 저장했어요.';
+    }
+  }
+}
+function downloadRaceVideo() {
+  if (!raceVideoUrl) return;
+  const a = document.createElement('a');
+  a.href = raceVideoUrl; a.download = `profile-marble-race.${raceVideoExt}`;
+  document.body.appendChild(a); a.click(); a.remove();
+}
+
+/* ---------- flow control ---------- */
+const $ = id => document.getElementById(id);
+function cleanHandle(value) {
+  let v = value.trim();
+  // 혹시 링크를 넣어도 아이디만 추출하지만, 기본 UX는 아이디 전용
+  const link = v.match(/(?:threads\.com|threads\.net)\/@([^/?#\s]+)/i);
+  if (link) v = link[1];
+  return v.replace(/^@/, '').split(/[/?#\s]/)[0].toLowerCase();
+}
+function addHandleSlot(value = '') {
+  if (document.querySelectorAll('.handleField').length >= 12) return;
+  const slot = document.createElement('div');
+  slot.className = 'slot';
+  slot.innerHTML = `<span class="at">@</span><input class="handleField" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="아이디 입력" value="${value}"><button class="removeSlot" type="button" aria-label="삭제">×</button>`;
+  slot.querySelector('.removeSlot').onclick = () => {
+    if (document.querySelectorAll('.handleField').length > 2) slot.remove();
+  };
+  $('handleSlots').appendChild(slot);
+}
+['', '', '', ''].forEach(addHandleSlot);
+$('addSlotBtn').onclick = () => {
+  addHandleSlot();
+  const fields = document.querySelectorAll('.handleField');
+  fields[fields.length - 1]?.focus();
+};
+$('startBtn').onclick = async () => {
+  const handles = [...document.querySelectorAll('.handleField')]
+    .map(el => cleanHandle(el.value)).filter(h => /^[a-z0-9._]+$/.test(h));
+  const uniqueHandles = [...new Set(handles)].slice(0, 12);
+  if (uniqueHandles.length < 2) { $('loadMsg').textContent = '아이디를 2개 이상 입력해줘!'; return; }
+  if (uniqueHandles.length !== handles.length) $('loadMsg').textContent = '중복 아이디는 한 명으로 처리했어요.';
+  const handlesForRace = uniqueHandles;
+  $('loadMsg').textContent = '프사 불러오는 중...';
+  $('startBtn').disabled = true;
+  await prepare(handlesForRace);
+  currentOrder = marbles.map((_,i) => i);
+  resultCanvasVisible = false;
+  $('setup').style.display = 'none';
+  await requestWakeLock();
+  await startRecording();
+  countdown();
+};
+function countdown() {
+  let n = 3;
+  countdownText = String(n);
+  const iv = setInterval(() => {
+    n--;
+    if (n > 0) countdownText = String(n);
+    else if (n === 0) countdownText = 'GO!';
+    else {
+      clearInterval(iv); countdownText = '';
+      World.remove(engine.world, trackRef.gate); trackRef.gate = null;
+      racing = true; raceStart = performance.now(); firstFinishT = 0;
+    }
+  }, 800);
+}
+async function endRace(order) {
+  racing = false;
+  // rank leftovers by progress
+  for (const mi of order) { const m = marbles[mi]; if (!m.done) { m.done = true; m.rank = finished.length + 1; finished.push(m); } }
+  currentOrder = finished.map(m => marbles.indexOf(m));
+  resultCanvasVisible = true;
+  burst(); setTimeout(burst, 500);
+  // 결과 화면을 영상에 3초간 담은 뒤 녹화 종료
+  await new Promise(r => setTimeout(r, 3000));
+  const blob = await stopRecording();
+  try { await wakeLock?.release(); } catch(e) {} wakeLock = null;
+
+  const res = $('result'), pod = $('podium'), list = $('ranklist');
+  pod.innerHTML = ''; list.innerHTML = '';
+  const sizes = [86, 64, 56], medals = ['🥇', '🥈', '🥉'], bord = ['#ffd166', '#cbd5e1', '#d97706'];
+  const podOrder = [1, 0, 2];
+  for (const p of podOrder) {
+    const m = finished[p]; if (!m) continue;
+    const el = document.createElement('div'); el.className = 'pod';
+    el.innerHTML = `<span class="medal">${medals[p]}</span>
+      <img src="${m.sprite.toDataURL()}" style="width:${sizes[p]}px;height:${sizes[p]}px;border-color:${bord[p]}">
+      <span class="un">@${m.handle}</span>`;
+    pod.appendChild(el);
+  }
+  finished.slice(3).forEach(m => {
+    const el = document.createElement('div'); el.className = 'rrow';
+    el.innerHTML = `<span class="rk">${m.rank}</span><img src="${m.sprite.toDataURL()}"><span class="un">@${m.handle}</span>`;
+    list.appendChild(el);
+  });
+  $('shareBtn').disabled = !blob;
+  $('saveBtn').disabled = !blob;
+  $('videoStatus').textContent = blob ? `공유용 ${raceVideoExt.toUpperCase()} 영상 완성 · ${(blob.size/1024/1024).toFixed(1)}MB` : '이 브라우저에서는 자동 녹화를 지원하지 않아요.';
+  $('shareHint').textContent = blob ? '공유창이 열리면 Threads를 선택하세요.' : '최신 Safari 또는 Chrome에서 다시 시도해 주세요.';
+  res.style.display = 'flex';
+}
+$('shareBtn').onclick = shareRaceVideo;
+$('saveBtn').onclick = downloadRaceVideo;
+$('againBtn').onclick = () => {
+  $('result').style.display = 'none';
+  $('setup').style.display = 'flex';
+  $('startBtn').disabled = false;
+  $('shareBtn').disabled = true; $('saveBtn').disabled = true;
+  $('videoStatus').textContent = '경기 영상을 만드는 중...';
+  $('loadMsg').textContent = '';
+  camY = 0; racing = false; countdownText = ''; resultCanvasVisible = false; currentOrder = [];
+  if (engine) { World.clear(engine.world); Engine.clear(engine); }
+  trackRef = null; marbles = []; spinners = []; bumpers = []; finished = [];
+  board.innerHTML = '';
+};
+document.addEventListener('visibilitychange', () => { if (!document.hidden && racing && !wakeLock) requestWakeLock(); });
+</script>
+</body>
+</html>
