@@ -1,0 +1,700 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>책킷리스트 나눔터 · 책있나</title>
+<meta name="description" content="다른 사람이 고른 100권으로 내 책킷리스트를 한 번에 채워요. 책있나 앱에서 내보낸 목록을 누구나 올리고 받아갈 수 있는 공간입니다.">
+<meta property="og:title" content="책킷리스트 나눔터 · 책있나">
+<meta property="og:description" content="다른 사람이 고른 100권으로 내 책킷리스트를 한 번에 채워요.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://everpinej.com/chaekitna/bookkit/">
+<meta name="apple-itunes-app" content="app-id=6809697035">
+<meta name="theme-color" content="#f7f3ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131915" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{
+  --bg:#f7f3ea;--card:#fffdf8;--ink:#1f2a24;--sub:#5f6b64;--faint:#8b948f;--line:#e4dfd3;
+  --accent:#1e5a46;--accent-ink:#fff;--accent-soft:#e3efe8;--warn:#a2462e;--chip:#efe9dc;
+  --heart:#d6456b;--heart-soft:#fbe8ec;--cell:#ebe5d8;--shadow:0 1px 2px rgba(31,42,36,.05),0 6px 20px rgba(31,42,36,.06);
+  --r:20px;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#131915;--card:#1b231e;--ink:#edf1ec;--sub:#a9b4ad;--faint:#7c8881;--line:#2b3630;
+  --accent:#7fcca9;--accent-ink:#0f1a14;--accent-soft:#213229;--warn:#f0a18a;--chip:#232d27;
+  --heart:#ff7d9a;--heart-soft:#3a2229;--cell:#28322c;--shadow:none;
+}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;line-height:1.6;word-break:keep-all;overflow-wrap:anywhere}
+a{color:var(--accent)}
+button,input,select,textarea{font:inherit;color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px calc(64px + env(safe-area-inset-bottom))}
+header.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 0 6px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:700;letter-spacing:-.01em}
+.brand .logo{width:32px;height:32px;border-radius:9px;background:var(--accent);display:grid;place-items:center;color:var(--accent-ink);font-size:15px}
+.getapp{font-size:14px;text-decoration:none;padding:8px 14px;border-radius:999px;border:1px solid var(--line);color:var(--ink);white-space:nowrap}
+.hero{display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;padding:28px 0 22px}
+.hero h1{text-wrap:balance;font-size:clamp(26px,6vw,44px);line-height:1.2;margin:0 0 12px;letter-spacing:-.03em}
+.hero p{margin:0;color:var(--sub);font-size:clamp(15px,3.6vw,18px)}
+.hero .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.bigGrid{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;width:210px}
+.bigGrid i{aspect-ratio:1;border-radius:3px;background:var(--cell)}
+@media (max-width:720px){.hero{grid-template-columns:1fr}.hero .bigGrid{display:none}}
+.btn{appearance:none;border:0;border-radius:14px;padding:13px 18px;font-weight:650;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;min-height:48px;transition:transform .08s ease,opacity .2s}
+.btn:active{transform:scale(.98)}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
+.btn.soft{background:var(--accent-soft);color:var(--accent)}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.btn.block{width:100%}
+.tools{position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 0 12px;margin:0 -16px;padding-left:16px;padding-right:16px;border-bottom:1px solid transparent}
+.tools.stuck{border-bottom-color:var(--line)}
+.search{display:flex;gap:8px}
+.search input{flex:1;min-width:0;border:1px solid var(--line);background:var(--card);border-radius:14px;padding:12px 14px;font-size:16px;outline:none}
+.search input:focus{border-color:var(--accent)}
+.sort{display:flex;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);flex:none}
+.sort button{border:0;background:transparent;padding:0 14px;cursor:pointer;color:var(--sub);font-size:14px}
+@media (max-width:560px){.search{flex-wrap:wrap}.search input{flex-basis:100%}.sort{width:100%}.sort button{flex:1;min-height:40px}}
+.sort button[aria-pressed=true]{background:var(--accent);color:var(--accent-ink);font-weight:650}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:10px 0 2px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1px solid var(--line);background:var(--card);color:var(--sub);border-radius:999px;padding:7px 13px;font-size:14px;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.count{color:var(--faint);font-size:14px;margin:14px 2px 10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px;box-shadow:var(--shadow);text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:12px;transition:border-color .15s}
+.card:hover{border-color:var(--accent)}
+.card .row{display:flex;gap:14px;align-items:flex-start}
+.card h3{margin:0;font-size:18px;line-height:1.35;letter-spacing:-.01em}
+.meta{color:var(--faint);font-size:13px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.meta .dot{opacity:.5}
+.tag{display:inline-block;font-size:12px;padding:3px 9px;border-radius:999px;background:var(--chip);color:var(--sub)}
+.mini{display:grid;grid-template-columns:repeat(10,7px);gap:2px;flex:none;margin-top:4px}
+.mini i{width:7px;height:7px;border-radius:1.5px;background:var(--cell)}
+.preview{margin:0;padding:0;list-style:none;font-size:14px;color:var(--sub)}
+.preview li{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.preview li::before{content:"·";margin-right:6px;color:var(--faint)}
+.card .foot{display:flex;justify-content:space-between;align-items:center;margin-top:auto;font-size:13px;color:var(--faint);gap:8px}
+.card{position:relative}
+.card .cover{position:absolute;inset:0;border-radius:inherit;z-index:1}
+.card .cover:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.like{position:relative;z-index:2;appearance:none;border:1px solid var(--line);background:var(--card);color:var(--sub);border-radius:999px;padding:5px 11px 5px 9px;display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:650;cursor:pointer;font-variant-numeric:tabular-nums;min-height:32px;transition:transform .1s,background .15s,color .15s,border-color .15s}
+.like svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2}
+.like[aria-pressed=true]{color:var(--heart);border-color:var(--heart);background:var(--heart-soft)}
+.like[aria-pressed=true] svg{fill:currentColor}
+.like:active{transform:scale(.94)}
+.like.pop svg{animation:pop .35s ease}
+@keyframes pop{40%{transform:scale(1.35)}}
+@media (prefers-reduced-motion:reduce){.like.pop svg{animation:none}}
+.like.big{padding:10px 16px 10px 13px;font-size:15px;min-height:44px}
+.like.big svg{width:20px;height:20px}
+.hot{margin:6px 0 26px;background:var(--heart-soft);border-radius:var(--r);padding:18px}
+.hot .sh{display:flex;justify-content:space-between;align-items:flex-start;gap:4px 10px;margin-bottom:12px;flex-wrap:wrap}
+.hot h2{text-wrap:balance;margin:0;font-size:19px;letter-spacing:-.01em}
+.hot h2 small{display:block;font-size:13px;font-weight:500;color:var(--sub);margin-top:2px}
+.topGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:760px){.topGrid{grid-template-columns:1fr}}
+.tcard{position:relative;display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;min-width:0}
+.tcard:hover{border-color:var(--heart)}
+.tcard .rank{flex:none;width:30px;height:30px;border-radius:50%;background:var(--heart);color:#fff;font-weight:800;display:grid;place-items:center;font-size:14px}
+.tcard .body{min-width:0;flex:1}
+.tcard h3{margin:0;font-size:16px;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tcard .cover{position:absolute;inset:0;border-radius:inherit;z-index:1}
+.big{font-weight:750;color:var(--ink);font-size:15px}
+.empty,.err{text-align:center;padding:48px 16px;color:var(--sub)}
+.more{display:flex;justify-content:center;margin:22px 0}
+.skeleton{height:190px;border-radius:var(--r);background:linear-gradient(90deg,var(--card),var(--chip),var(--card));background-size:200% 100%;animation:sh 1.2s infinite;border:1px solid var(--line)}
+@keyframes sh{to{background-position:-200% 0}}
+/* detail */
+.back{display:inline-flex;align-items:center;gap:6px;color:var(--sub);text-decoration:none;font-size:15px;padding:10px 0;background:none;border:0;cursor:pointer}
+.detail{display:grid;grid-template-columns:minmax(0,1fr) 340px;grid-template-areas:"head side" "books side";gap:16px 24px;align-items:start}
+.detail .head{grid-area:head}.detail .bookp{grid-area:books}.detail .side{grid-area:side}
+@media (max-width:860px){.detail{grid-template-columns:1fr;grid-template-areas:"head" "side" "books"}}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px;box-shadow:var(--shadow)}
+.detail h1{font-size:clamp(24px,5.5vw,34px);line-height:1.25;margin:8px 0 10px;letter-spacing:-.02em}
+.intro{white-space:pre-line;color:var(--sub);margin:14px 0 0;padding:14px 16px;background:var(--bg);border-radius:14px;font-size:15px}
+.side{position:sticky;top:16px;display:flex;flex-direction:column;gap:14px}
+@media (max-width:860px){.side{position:static}}
+.steps{margin:14px 0 0;padding:0;list-style:none;counter-reset:s;font-size:14px;color:var(--sub)}
+.steps li{counter-increment:s;position:relative;padding:6px 0 6px 32px}
+.steps li::before{content:counter(s);position:absolute;left:0;top:8px;width:22px;height:22px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-weight:700;font-size:12px;display:grid;place-items:center}
+.hint{font-size:13px;color:var(--faint);margin:10px 0 0}
+.notice{font-size:14px;background:#fff4d6;color:#6b4d00;border-radius:14px;padding:12px 14px;margin:0}
+@media (prefers-color-scheme:dark){.notice{background:#3a3016;color:#f3dc9b}}
+.cells{display:grid;grid-template-columns:repeat(10,1fr);gap:3px;margin:18px 0 4px;max-width:230px}
+.cells i{aspect-ratio:1;border-radius:4px;background:var(--cell)}
+.books{list-style:none;margin:18px 0 0;padding:0;display:grid;grid-template-columns:1fr;gap:0}
+@media (min-width:640px){.books{grid-template-columns:1fr 1fr;column-gap:24px}}
+.books li{display:flex;gap:12px;align-items:baseline;padding:11px 2px;border-bottom:1px solid var(--line);min-width:0}
+.books .n{flex:none;width:28px;text-align:right;font-variant-numeric:tabular-nums;color:var(--faint);font-size:13px}
+.books .t{font-weight:600;font-size:15px}
+.books .a{color:var(--sub);font-size:13px}
+.books .isbn{font-size:11px;color:var(--accent);margin-left:4px;white-space:nowrap}
+.linkrow{display:flex;gap:8px;flex-wrap:wrap}
+.linkrow .btn{flex:1;min-height:44px;padding:10px 12px;font-size:14px}
+.textbtn{background:none;border:0;color:var(--faint);font-size:13px;cursor:pointer;text-decoration:underline;padding:6px 0}
+/* upload */
+.form{max-width:640px;margin:0 auto}
+.form h1{font-size:clamp(24px,5.5vw,32px);margin:8px 0 6px;letter-spacing:-.02em}
+.drop{display:block;border:2px dashed var(--line);border-radius:var(--r);padding:28px 16px;text-align:center;background:var(--card);cursor:pointer;transition:border-color .15s,background .15s}
+.drop.over{border-color:var(--accent);background:var(--accent-soft)}
+.drop strong{display:block;font-size:17px;margin-bottom:4px}
+.field{display:flex;flex-direction:column;gap:6px;margin-top:16px}
+.field label{font-weight:650;font-size:15px}
+.field input,.field select,.field textarea{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:12px 14px;font-size:16px;outline:none;width:100%}
+.field textarea{min-height:96px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent)}
+.field small{color:var(--faint)}
+.check{display:flex;gap:10px;align-items:flex-start;margin-top:18px;font-size:14px;color:var(--sub)}
+.check input{width:20px;height:20px;margin-top:2px;accent-color:var(--accent);flex:none}
+.pv{margin-top:16px}
+.pv h3{margin:0 0 4px}
+.ok{color:var(--accent);font-weight:650}
+.bad{color:var(--warn)}
+.keybox{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;background:var(--bg);border-radius:10px;padding:10px 12px;word-break:break-all;margin:8px 0}
+.stores{display:flex;gap:10px;flex-wrap:wrap}
+.stores a{flex:1;min-width:140px}
+footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);color:var(--faint);font-size:13px;display:flex;flex-wrap:wrap;gap:6px 14px}
+footer a{color:var(--sub)}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:14px;font-size:14px;opacity:0;pointer-events:none;transition:.25s;max-width:calc(100% - 32px);z-index:20}
+.toast.show{opacity:1;transform:translateX(-50%)}
+[hidden]{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="./" data-nav="list"><span class="logo" aria-hidden="true">책</span><span>책킷리스트 나눔터</span></a>
+    <a class="getapp" id="getApp" href="https://apps.apple.com/kr/app/id6809697035">책있나 앱 받기</a>
+  </header>
+
+  <!-- 목록 -->
+  <main id="viewList">
+    <section class="hero">
+      <div>
+        <h1>100권을 하나씩 고르기 힘들 땐,<br>다른 사람의 책킷리스트로 시작해요</h1>
+        <p>책있나에서 만든 책킷리스트를 누구나 올리고 받아갈 수 있어요. 마음에 드는 목록을 받아 앱에서 불러오면 한 번에 채워지고, 읽은 책은 내 색으로 칠하면 돼요.</p>
+        <div class="cta">
+          <a class="btn primary" href="?new=1" data-nav="new">내 책킷리스트 올리기</a>
+          <a class="btn ghost" href="#how">받는 방법</a>
+        </div>
+      </div>
+      <div class="bigGrid" id="heroGrid" aria-hidden="true"></div>
+    </section>
+
+    <section class="hot" id="topWrap" hidden aria-labelledby="topTitle">
+      <div class="sh">
+        <h2 id="topTitle">좋아요 많이 받은 책킷리스트<small>다른 독서가들이 가장 많이 담아 둔 목록이에요</small></h2>
+        <button class="textbtn" type="button" id="topAll">좋아요순 전체</button>
+      </div>
+      <div class="topGrid" id="top"></div>
+    </section>
+
+    <div class="tools" id="tools">
+      <form class="search" id="searchForm" role="search">
+        <label for="q" class="sr">책 제목·목록 검색</label>
+        <input id="q" type="search" placeholder="책 제목·목록·닉네임 검색" enterkeyhint="search" autocomplete="off">
+        <div class="sort" role="group" aria-label="정렬">
+          <button type="button" data-sort="new" aria-pressed="true">최신</button>
+          <button type="button" data-sort="likes" aria-pressed="false">좋아요</button>
+          <button type="button" data-sort="popular" aria-pressed="false">받은순</button>
+        </div>
+      </form>
+      <div class="chips" id="chips" role="group" aria-label="주제"></div>
+    </div>
+
+    <div class="count" id="count" aria-live="polite"></div>
+    <div class="grid" id="grid"></div>
+    <div class="more"><button class="btn ghost" id="moreBtn" hidden>더 보기</button></div>
+
+    <section id="mineWrap" hidden style="margin-top:36px">
+      <h2 style="font-size:20px;margin:0 0 12px">내가 올린 목록 <span class="meta" style="display:inline">(이 브라우저에만 기억돼요)</span></h2>
+      <div class="grid" id="mine"></div>
+    </section>
+
+    <section id="how" class="panel" style="margin-top:36px">
+      <h2 style="margin:0 0 4px;font-size:20px">책있나로 가져오는 방법</h2>
+      <ol class="steps">
+        <li>마음에 드는 목록을 열고 <b>파일 받기</b>를 눌러요. 아이폰은 공유 창에서 <b>‘파일에 저장’</b>을 고르고, 안드로이드는 ‘다운로드’ 폴더에 저장돼요.</li>
+        <li>책있나 앱 → <b>책킷리스트</b> → <b>책 목록 나누기</b> → <b>받은 목록 가져오기</b>를 눌러요.</li>
+        <li>저장한 <b>책킷리스트_….json</b> 파일을 고르고, 내용을 확인한 뒤 담으면 끝이에요.</li>
+      </ol>
+      <h2 style="margin:24px 0 4px;font-size:20px">내 목록을 올리는 방법</h2>
+      <ol class="steps">
+        <li>책있나 앱 → 책킷리스트 → 책 목록 나누기 → <b>내 목록 보내기</b> → ‘파일에 저장’.</li>
+        <li>이 페이지의 <a href="?new=1" data-nav="new">내 책킷리스트 올리기</a>에서 그 파일을 골라 올려요.</li>
+      </ol>
+      <p class="hint">파일에는 책 제목·저자·ISBN만 담겨요. 색칠·읽음 기록은 공유되지 않아요.</p>
+    </section>
+  </main>
+
+  <!-- 상세 -->
+  <main id="viewDetail" hidden>
+    <button class="back" data-nav="list" type="button">← 목록으로</button>
+    <div id="detailBody"></div>
+  </main>
+
+  <!-- 올리기 -->
+  <main id="viewNew" hidden>
+    <button class="back" data-nav="list" type="button">← 목록으로</button>
+    <div class="form">
+      <h1>내 책킷리스트 올리기</h1>
+      <p style="color:var(--sub);margin:0 0 18px">책있나 앱에서 <b>내 목록 보내기</b>로 저장한 파일을 골라 주세요. 로그인은 필요 없어요.</p>
+      <label class="drop" id="drop" for="file">
+        <strong>파일 선택</strong>
+        <span style="color:var(--sub);font-size:14px">책킷리스트.json · 최대 100권</span>
+        <input id="file" type="file" accept=".json,application/json" hidden>
+      </label>
+      <div id="fileMsg" class="hint" role="status"></div>
+      <div id="pv" class="panel pv" hidden></div>
+      <form id="postForm" hidden>
+        <div class="field">
+          <label for="title2">목록 이름</label>
+          <input id="title2" maxlength="60" required>
+          <small>앱에서 정한 책장 제목이에요. 여기서 바꿔도 돼요.</small>
+        </div>
+        <div class="field">
+          <label for="nick">닉네임 <small>(선택)</small></label>
+          <input id="nick" maxlength="20" placeholder="익명의 독서가" autocomplete="nickname">
+        </div>
+        <div class="field">
+          <label for="theme">주제</label>
+          <select id="theme"></select>
+        </div>
+        <div class="field">
+          <label for="intro">한 줄 소개 <small>(선택)</small></label>
+          <textarea id="intro" maxlength="300" placeholder="어떤 기준으로 골랐는지, 누구에게 추천하는지 적어 주세요."></textarea>
+          <small><span id="introLen">0</span>/300 · 링크는 넣을 수 없어요.</small>
+        </div>
+        <label class="check"><input type="checkbox" id="agree" required><span>올린 목록(목록 이름·닉네임·소개·책 제목·저자·ISBN)은 <b>누구나 볼 수 있고 받아갈 수 있어요.</b> 전화번호 같은 개인정보나 다른 사람을 불쾌하게 하는 내용은 넣지 않을게요.</span></label>
+        <button class="btn primary block" id="submitBtn" style="margin-top:18px" type="submit">올리기</button>
+        <p class="hint">도배 방지를 위해 접속 주소는 원문이 아닌 변환값으로만 잠시 확인하고, 한 시간에 5개까지 올릴 수 있어요. 신고가 여러 번 쌓인 목록은 자동으로 가려져요.</p>
+      </form>
+      <div id="done" class="panel" hidden></div>
+    </div>
+  </main>
+
+  <footer>
+    <span>책있나 · 도서관 대출 확인</span>
+    <a href="https://apps.apple.com/kr/app/id6809697035">App Store</a>
+    <a href="https://play.google.com/store/apps/details?id=kr.chaekitna.app">Google Play</a>
+    <a href="../support.html">지원</a>
+    <a href="../privacy.html">개인정보처리방침</a>
+    <a href="mailto:lalajoo71@gmail.com?subject=%EC%B1%85%ED%82%B7%EB%A6%AC%EC%8A%A4%ED%8A%B8%20%EB%82%98%EB%88%94%ED%84%B0%20%EB%AC%B8%EC%9D%98">문의·삭제 요청</a>
+  </footer>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+"use strict";
+// ---------- 설정 ----------
+const qs = new URLSearchParams(location.search);
+const LOCAL = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+const API = (LOCAL && qs.get("api")) || "https://api.everpinej.com";
+const FORMAT = "kr.chaekitna.bookkitlist";
+const IOS_URL = "https://apps.apple.com/kr/app/id6809697035";
+const AND_URL = "https://play.google.com/store/apps/details?id=kr.chaekitna.app";
+const UA = navigator.userAgent;
+const isIOS = /iPad|iPhone|iPod/.test(UA) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+const isAndroid = /Android/i.test(UA);
+const inApp = /KAKAOTALK|Instagram|FBAN|FBAV|NAVER\(inapp|Line\/|everytimeApp|DaumApps/i.test(UA);
+const THEMES_FALLBACK = ["소설","고전","인문·사회","에세이","자기계발","과학","경제·경영","아이와 함께","청소년","기타"];
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
+
+$("getApp").href = isAndroid ? AND_URL : IOS_URL;
+
+// ---------- 로컬 저장 (이 브라우저 전용 편의 기능) ----------
+let mineMemory = [];
+const store = {
+  get(){ try { const v = localStorage.getItem("bookkit.mine"); if (v) return JSON.parse(v); } catch {} return mineMemory; },
+  set(v){ mineMemory = v; try { localStorage.setItem("bookkit.mine", JSON.stringify(v)); } catch {} },
+};
+
+// ---------- 앱 파일 형식 (lib/bookkit_transfer.dart 와 같은 규칙) ----------
+const CONTROL = /[\x00-\x08\x0b\x0c\x0e-\x1f]/;
+function txt(v, max, empty){
+  if (typeof v !== "string" || v.length > max || (!empty && !v.trim()) || CONTROL.test(v)) throw new Error("bad");
+  return v.trim();
+}
+function validateList(d){
+  if (!d || typeof d !== "object" || Array.isArray(d) || d.format !== FORMAT || d.version !== 1 || !Array.isArray(d.books)) throw new Error("책있나에서 공유한 책킷리스트 파일이 아니에요.");
+  let title;
+  try { title = txt(d.title, 60); } catch { throw new Error("목록 이름이 올바르지 않아요."); }
+  if (!d.books.length) throw new Error("책이 한 권도 없는 목록이에요.");
+  if (d.books.length > 100) throw new Error("100권까지만 올릴 수 있어요.");
+  const books = d.books.map((r, i) => {
+    try {
+      if (!r || typeof r !== "object" || Array.isArray(r)) throw 0;
+      const b = { title: txt(r.title, 120), author: txt(r.author ?? "", 100, true) };
+      if (r.isbn13 != null) { if (typeof r.isbn13 !== "string" || !/^97[89]\d{10}$/.test(r.isbn13)) throw 0; b.isbn13 = r.isbn13; }
+      return b;
+    } catch { throw new Error(`${i + 1}번째 책 정보가 올바르지 않아요.`); }
+  });
+  return { title, books };
+}
+function encodeList(l){
+  return JSON.stringify({ format: FORMAT, version: 1, title: l.title,
+    books: l.books.map((b) => b.isbn13 ? { title: b.title, author: b.author, isbn13: b.isbn13 } : { title: b.title, author: b.author }) });
+}
+const fileName = (t) => `책킷리스트_${(t || "").replace(/[\\/:*?"<>|\s]+/g, "_").slice(0, 40) || "목록"}.json`;
+
+// ---------- 공통 ----------
+async function api(path, opt = {}){
+  let res;
+  try { res = await fetch(API + path, { ...opt, headers: { "x-client-id": CLIENT_ID, ...(opt.headers || {}) } }); }
+  catch { throw new Error("인터넷 연결을 확인해 주세요."); }
+  let data = null;
+  try { data = await res.json(); } catch {}
+  if (!res.ok) throw new Error((data && data.message) || (res.status === 429 ? "잠시 후 다시 시도해 주세요." : "요청을 처리하지 못했어요."));
+  return data;
+}
+let toastTimer;
+function toast(msg){ const t = $("toast"); t.textContent = msg; t.classList.add("show"); clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove("show"), 2600); }
+function ago(ts){
+  const s = (Date.now() - ts) / 1000;
+  if (s < 60) return "방금";
+  if (s < 3600) return `${Math.floor(s / 60)}분 전`;
+  if (s < 86400) return `${Math.floor(s / 3600)}시간 전`;
+  if (s < 86400 * 30) return `${Math.floor(s / 86400)}일 전`;
+  const d = new Date(ts); return `${d.getFullYear()}.${d.getMonth() + 1}.${d.getDate()}`;
+}
+// 목록마다 다른 색. 앱에서 읽은 책을 칠하는 느낌을 살린다.
+const PALETTE = ["#e07a5f","#3d8b6d","#e9b44c","#5b7fbd","#b36fa6","#4fa3a5","#d9824a","#7a9a3b"];
+function hue(id){ let h = 0; for (const c of id) h = (h * 31 + c.charCodeAt(0)) >>> 0; return PALETTE[h % PALETTE.length]; }
+function cellsHTML(n, color, cls){ let s = `<div class="${cls}" aria-hidden="true">`; for (let i = 0; i < 100; i++) s += i < n ? `<i style="background:${color}"></i>` : "<i></i>"; return s + "</div>"; }
+
+// hero decoration: 몇 칸만 칠해진 100칸
+(() => { const g = $("heroGrid"); const lit = new Set([2,3,11,14,15,27,31,32,33,48,56,57,63,70,71,72,84,88,95,99]); let h = ""; for (let i = 0; i < 100; i++) h += lit.has(i) ? `<i style="background:${PALETTE[i % PALETTE.length]}"></i>` : "<i></i>"; g.innerHTML = h; })();
+
+// ---------- 라우팅 ----------
+function route(){
+  const p = new URLSearchParams(location.search);
+  const id = p.get("id");
+  $("viewList").hidden = !!id || p.has("new");
+  $("viewDetail").hidden = !id;
+  $("viewNew").hidden = !p.has("new") || !!id;
+  if (id) showDetail(id);
+  else if (p.has("new")) showNew();
+  else { document.title = "책킷리스트 나눔터 · 책있나"; if (!listState.loaded) loadList(true); else loadTop(); renderMine(); }
+}
+function go(search){
+  const url = location.pathname + search + (LOCAL && qs.get("api") ? (search ? "&" : "?") + "api=" + encodeURIComponent(qs.get("api")) : "");
+  history.pushState(null, "", url);
+  window.scrollTo(0, 0);
+  route();
+}
+document.addEventListener("click", (e) => {
+  const a = e.target.closest("[data-nav]");
+  if (!a || e.metaKey || e.ctrlKey) return;
+  e.preventDefault();
+  const n = a.dataset.nav;
+  if (n === "list") go("");
+  else if (n === "new") go("?new=1");
+  else if (n === "detail") go("?id=" + a.dataset.id);
+});
+addEventListener("popstate", route);
+
+
+// ---------- 좋아요 ----------
+// 브라우저마다 무작위 식별값을 하나 만들어 좋아요 중복을 막는다(개인 정보 아님). 저장이 안 되는 환경에서는 이번 방문 동안만 유지.
+const CLIENT_ID = (() => {
+  const make = () => Array.from(crypto.getRandomValues(new Uint8Array(16)), (b) => b.toString(16).padStart(2, "0")).join("");
+  try { let v = localStorage.getItem("bookkit.client"); if (!/^[0-9a-f]{32}$/.test(v || "")) { v = make(); localStorage.setItem("bookkit.client", v); } return v; }
+  catch { return make(); }
+})();
+const likeCache = new Map(); // id -> { liked, likes } : 화면 사이를 오가도 방금 누른 상태가 유지되게
+const HEART = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.3C1.5 8 3.6 4.5 7.1 4.5c2 0 3.5 1.1 4.9 2.9 1.4-1.8 2.9-2.9 4.9-2.9 3.5 0 5.6 3.5 4.4 6.7-1.8 4.7-9.3 9.3-9.3 9.3z"/></svg>';
+function likeOf(m){ return likeCache.get(m.id) || { liked: !!m.liked, likes: m.likes || 0 }; }
+function likeBtn(m, big){
+  const l = likeOf(m);
+  return `<button type="button" class="like${big ? " big" : ""}" data-like="${esc(m.id)}" aria-pressed="${l.liked}" aria-label="좋아요 ${l.likes}개${l.liked ? ", 누름" : ""}">${HEART}<span>${big ? (l.liked ? "좋아요 " : "좋아요 ") : ""}${l.likes}</span></button>`;
+}
+function paintLikes(id){
+  const l = likeCache.get(id);
+  document.querySelectorAll(`[data-like="${id}"]`).forEach((b) => {
+    b.setAttribute("aria-pressed", l.liked);
+    b.setAttribute("aria-label", `좋아요 ${l.likes}개${l.liked ? ", 누름" : ""}`);
+    b.querySelector("span").textContent = (b.classList.contains("big") ? "좋아요 " : "") + l.likes;
+  });
+}
+const likeBusy = new Set();
+document.addEventListener("click", async (e) => {
+  const b = e.target.closest("[data-like]");
+  if (!b) return;
+  e.preventDefault(); e.stopPropagation();
+  const id = b.dataset.like;
+  if (likeBusy.has(id)) return;
+  const prev = likeCache.get(id) || { liked: b.getAttribute("aria-pressed") === "true", likes: Number(b.querySelector("span").textContent.replace(/\D/g, "")) || 0 };
+  const next = { liked: !prev.liked, likes: Math.max(0, prev.likes + (prev.liked ? -1 : 1)) };
+  likeCache.set(id, next); paintLikes(id);
+  if (next.liked) { b.classList.remove("pop"); void b.offsetWidth; b.classList.add("pop"); }
+  likeBusy.add(id);
+  try {
+    const r = await api(`/v1/bookkit/lists/${id}/like`, { method: next.liked ? "POST" : "DELETE" });
+    likeCache.set(id, { liked: r.liked, likes: r.likes }); paintLikes(id);
+  } catch (err) { likeCache.set(id, prev); paintLikes(id); toast(err.message); }
+  finally { likeBusy.delete(id); }
+}, true);
+async function loadTop(){
+  const wrap = $("topWrap");
+  if (listState.q || listState.theme) { wrap.hidden = true; return; }
+  try {
+    const d = await api("/v1/bookkit/lists?sort=likes&onlyLiked=1&limit=3");
+    wrap.hidden = !d.items.length;
+    $("top").innerHTML = d.items.map((m, i) => `<div class="tcard">
+      <a class="cover" href="?id=${esc(m.id)}" data-nav="detail" data-id="${esc(m.id)}" aria-label="${esc(m.title)} 보기"></a>
+      <span class="rank">${i + 1}</span>
+      <div class="body"><h3>${esc(m.title)}</h3><div class="meta"><span>${esc(m.nickname)}</span><span class="dot">·</span><span>${m.bookCount}권</span></div></div>
+      ${likeBtn(m)}
+    </div>`).join("");
+  } catch { wrap.hidden = true; }
+}
+
+// ---------- 목록 ----------
+const listState = { sort: "new", theme: "", q: "", page: 0, loaded: false, themes: THEMES_FALLBACK, busy: false };
+function renderChips(){
+  const all = ["", ...listState.themes];
+  $("chips").innerHTML = all.map((t) => `<button type="button" class="chip" data-theme="${esc(t)}" aria-pressed="${listState.theme === t}">${t ? esc(t) : "전체"}</button>`).join("");
+}
+$("chips").addEventListener("click", (e) => { const b = e.target.closest(".chip"); if (!b) return; listState.theme = b.dataset.theme; renderChips(); loadList(true); });
+function setSort(sort){
+  listState.sort = sort;
+  document.querySelectorAll("[data-sort]").forEach((x) => x.setAttribute("aria-pressed", x.dataset.sort === sort));
+  loadList(true);
+}
+document.querySelectorAll("[data-sort]").forEach((b) => b.addEventListener("click", () => setSort(b.dataset.sort)));
+$("topAll").addEventListener("click", () => { setSort("likes"); $("tools").scrollIntoView({ behavior: "smooth" }); });
+$("searchForm").addEventListener("submit", (e) => { e.preventDefault(); listState.q = $("q").value.trim(); $("q").blur(); loadList(true); });
+let qTimer; $("q").addEventListener("input", () => { clearTimeout(qTimer); qTimer = setTimeout(() => { const v = $("q").value.trim(); if (v !== listState.q) { listState.q = v; loadList(true); } }, 400); });
+$("moreBtn").addEventListener("click", () => { listState.page++; loadList(false); });
+new IntersectionObserver(([e]) => $("tools").classList.toggle("stuck", e.intersectionRatio < 1), { threshold: [1], rootMargin: "-1px 0px 0px 0px" }).observe($("tools"));
+
+function cardHTML(m){
+  const c = hue(m.id);
+  return `<div class="card">
+    <a class="cover" href="?id=${esc(m.id)}" data-nav="detail" data-id="${esc(m.id)}" aria-label="${esc(m.title)} 보기"></a>
+    <div class="row">
+      ${cellsHTML(m.bookCount, c, "mini")}
+      <div style="min-width:0">
+        <h3>${esc(m.title)}</h3>
+        <div class="meta"><span>${esc(m.nickname)}</span><span class="dot">·</span><span>${ago(m.createdAt)}</span></div>
+      </div>
+    </div>
+    <ul class="preview">${m.preview.slice(0, 3).map((t) => `<li>${esc(t)}</li>`).join("")}</ul>
+    <div class="foot"><span><span class="big">${m.bookCount}권</span> ${m.theme ? `<span class="tag">${esc(m.theme)}</span>` : ""}</span><span style="display:flex;align-items:center;gap:10px"><span>받음 ${m.downloads}</span>${likeBtn(m)}</span></div>
+  </div>`;
+}
+async function loadList(reset){
+  if (listState.busy) return;
+  listState.busy = true;
+  if (reset){ listState.page = 0; $("grid").innerHTML = '<div class="skeleton"></div>'.repeat(4); $("moreBtn").hidden = true; }
+  const p = new URLSearchParams({ sort: listState.sort, page: listState.page });
+  if (listState.theme) p.set("theme", listState.theme);
+  if (listState.q) p.set("q", listState.q);
+  try {
+    const d = await api("/v1/bookkit/lists?" + p);
+    if (Array.isArray(d.themes) && d.themes.join() !== listState.themes.join()) listState.themes = d.themes;
+    renderChips();
+    const html = d.items.map(cardHTML).join("");
+    if (reset) $("grid").innerHTML = html; else $("grid").insertAdjacentHTML("beforeend", html);
+    if (!d.total) $("grid").innerHTML = listState.q || listState.theme
+      ? `<div class="empty" style="grid-column:1/-1">조건에 맞는 목록이 아직 없어요.</div>`
+      : `<div class="empty" style="grid-column:1/-1"><p style="font-size:17px;margin:0 0 14px">아직 올라온 목록이 없어요.<br>첫 번째 책킷리스트를 나눠 주세요.</p><a class="btn primary" href="?new=1" data-nav="new">내 책킷리스트 올리기</a></div>`;
+    $("count").textContent = d.total ? `${d.total}개의 책킷리스트` : "";
+    if (reset) loadTop();
+    $("moreBtn").hidden = !d.hasMore;
+    listState.loaded = true;
+  } catch (e) {
+    if (reset) $("grid").innerHTML = `<div class="err" style="grid-column:1/-1">${esc(e.message)}<br><button class="btn ghost" style="margin-top:14px" onclick="location.reload()">다시 불러오기</button></div>`;
+    else toast(e.message);
+    if (!reset) listState.page--;
+  } finally { listState.busy = false; }
+}
+function renderMine(){
+  const mine = store.get();
+  $("mineWrap").hidden = !mine.length;
+  $("mine").innerHTML = mine.map((m) => `<div class="card"><h3>${esc(m.title)}</h3>
+    <div class="meta">${ago(m.at)} 올림</div>
+    <div class="linkrow"><a class="btn soft" href="?id=${esc(m.id)}" data-nav="detail" data-id="${esc(m.id)}">보기</a><button class="btn ghost" type="button" data-del="${esc(m.id)}">삭제</button></div></div>`).join("");
+}
+$("mine").addEventListener("click", (e) => { const b = e.target.closest("[data-del]"); if (b) removeMine(b.dataset.del); });
+async function removeMine(id){
+  const m = store.get().find((x) => x.id === id);
+  if (!m || !confirm(`‘${m.title}’ 목록을 나눔터에서 지울까요?`)) return;
+  try { await api(`/v1/bookkit/lists/${id}`, { method: "DELETE", headers: { "x-delete-key": m.key } }); }
+  catch (e) { if (!/이미 삭제/.test(e.message)) { toast(e.message); return; } }
+  store.set(store.get().filter((x) => x.id !== id));
+  toast("삭제했어요.");
+  listState.loaded = false;
+  go("");
+}
+
+// ---------- 상세 ----------
+let current = null;
+async function showDetail(id){
+  const body = $("detailBody");
+  if (!current || current.id !== id) body.innerHTML = '<div class="skeleton" style="height:320px;margin-top:8px"></div>';
+  try {
+    const d = current && current.id === id ? current : await api(`/v1/bookkit/lists/${encodeURIComponent(id)}`);
+    current = d;
+    document.title = `${d.title} · 책킷리스트 나눔터`;
+    const c = hue(d.id);
+    const mine = store.get().find((x) => x.id === d.id);
+    const saveLabel = isIOS ? "파일 받기 (파일에 저장)" : "파일 받기";
+    body.innerHTML = `<div class="detail">
+      <section class="panel head">
+        <div class="meta"><span class="tag">${esc(d.theme)}</span><span>${esc(d.nickname)}</span><span class="dot">·</span><span>${ago(d.createdAt)}</span><span class="dot">·</span><span>받은 횟수 ${d.downloads}</span></div>
+        <h1>${esc(d.title)}</h1>
+        <div class="meta" style="justify-content:space-between;gap:12px"><span style="display:flex;gap:6px;flex-wrap:wrap;align-items:center"><span class="big">${d.books.length}권</span><span class="dot">·</span><span>바코드 정보 포함 ${d.isbnCount}권</span></span>${likeBtn(d, true)}</div>
+        ${d.intro ? `<p class="intro">${esc(d.intro)}</p>` : ""}
+        ${cellsHTML(d.books.length, c, "cells")}
+      </section>
+      <section class="panel bookp">
+        <h2 style="margin:0;font-size:18px">담긴 책 ${d.books.length}권</h2>
+        <ol class="books" style="margin-top:6px">${d.books.map((b, i) => `<li><span class="n">${i + 1}</span><span style="min-width:0"><span class="t">${esc(b.title)}</span>${b.isbn13 ? `<span class="isbn" title="ISBN ${esc(b.isbn13)}">ISBN</span>` : ""}${b.author ? `<br><span class="a">${esc(b.author)}</span>` : ""}</span></li>`).join("")}</ol>
+      </section>
+      <aside class="side">
+        <div class="panel">
+          <h2 style="margin:0 0 12px;font-size:18px">책있나로 가져오기</h2>
+          ${inApp ? `<p class="notice" style="margin-bottom:12px">카카오톡·인스타그램 안에서는 파일 저장이 막힐 수 있어요. 오른쪽 위(또는 아래) 메뉴에서 <b>‘다른 브라우저로 열기’</b>를 눌러 주세요.</p>` : ""}
+          <button class="btn primary block" id="dlBtn" type="button">${saveLabel}</button>
+          <ol class="steps">
+            <li>${isIOS ? "공유 창에서 <b>‘파일에 저장’</b>을 눌러 저장해요." : isAndroid ? "‘다운로드’ 폴더에 저장돼요." : "휴대폰으로 옮기려면 이 페이지 주소를 휴대폰에서 열어 주세요."}</li>
+            <li>책있나 → 책킷리스트 → 책 목록 나누기 → <b>받은 목록 가져오기</b></li>
+            <li>저장한 파일을 고르고 확인하면 끝!</li>
+          </ol>
+          <div class="stores" style="margin-top:14px">
+            <a class="btn ghost" href="${IOS_URL}" style="min-height:42px;font-size:14px">App Store</a>
+            <a class="btn ghost" href="${AND_URL}" style="min-height:42px;font-size:14px">Google Play</a>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="linkrow">
+            <button class="btn soft" id="shareBtn" type="button">링크 공유</button>
+            ${mine ? `<button class="btn ghost" id="delBtn" type="button">내 목록 삭제</button>` : ""}
+          </div>
+          <button class="textbtn" id="reportBtn" type="button">부적절한 목록 신고</button>
+        </div>
+      </aside>
+    </div>`;
+    $("dlBtn").addEventListener("click", () => download(d));
+    $("shareBtn").addEventListener("click", () => shareLink(d));
+    $("reportBtn").addEventListener("click", () => report(d));
+    if (mine) $("delBtn").addEventListener("click", () => removeMine(d.id));
+  } catch (e) {
+    body.innerHTML = `<div class="err">${esc(e.message)}<br><a class="btn ghost" style="margin-top:14px" href="./" data-nav="list">다른 목록 보기</a></div>`;
+  }
+}
+// 파일은 화면에 이미 받은 목록으로 바로 만든다. 아이폰 사파리는 버튼을 누른 직후에만 공유 창을 열 수 있어서다.
+async function download(d){
+  const name = fileName(d.title);
+  const blob = new Blob([encodeList(d)], { type: "application/json" });
+  fetch(`${API}/v1/bookkit/lists/${d.id}/file`, { keepalive: true }).then((r) => r.body && r.body.cancel()).catch(() => {});
+  if (isIOS && navigator.canShare) {
+    const file = new File([blob], name, { type: "application/json" });
+    if (navigator.canShare({ files: [file] })) {
+      try { await navigator.share({ files: [file] }); toast("저장했다면 책있나에서 ‘받은 목록 가져오기’를 눌러 주세요."); return; }
+      catch (e) { if (e && e.name === "AbortError") return; }
+    }
+  }
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url; a.download = name; document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 30_000);
+  toast("파일을 저장했어요. 책있나에서 ‘받은 목록 가져오기’를 눌러 주세요.");
+}
+async function shareLink(d){
+  const url = `https://everpinej.com/chaekitna/bookkit/?id=${d.id}`;
+  if (navigator.share) { try { await navigator.share({ title: d.title, text: `책킷리스트 ‘${d.title}’ (${d.books.length}권)`, url }); return; } catch (e) { if (e && e.name === "AbortError") return; } }
+  try { await navigator.clipboard.writeText(url); toast("링크를 복사했어요."); } catch { prompt("링크를 복사해 주세요", url); }
+}
+async function report(d){
+  if (!confirm("이 목록을 신고할까요? 여러 명이 신고하면 자동으로 가려지고 운영자가 확인해요.")) return;
+  try { await api(`/v1/bookkit/lists/${d.id}/report`, { method: "POST" }); toast("신고가 접수됐어요. 감사합니다."); }
+  catch (e) { toast(e.message); }
+}
+
+// ---------- 올리기 ----------
+let parsed = null;
+function showNew(){
+  document.title = "내 책킷리스트 올리기 · 책킷리스트 나눔터";
+  $("theme").innerHTML = listState.themes.map((t) => `<option ${t === "기타" ? "selected" : ""}>${esc(t)}</option>`).join("");
+}
+function resetNew(){ parsed = null; $("pv").hidden = true; $("postForm").hidden = true; $("done").hidden = true; $("drop").hidden = false; $("fileMsg").textContent = ""; $("file").value = ""; }
+async function readFile(f){
+  $("fileMsg").className = "hint"; $("fileMsg").textContent = "";
+  $("pv").hidden = true; $("postForm").hidden = true;
+  if (!f) return;
+  try {
+    if (f.size > 256 * 1024) throw new Error("파일이 너무 커요. 책있나에서 보낸 파일을 골라 주세요.");
+    let data;
+    try { data = JSON.parse(await f.text()); } catch { throw new Error("책있나에서 공유한 책킷리스트 파일이 아니에요."); }
+    parsed = validateList(data);
+    const n = parsed.books.length;
+    $("pv").innerHTML = `<div class="meta ok">✓ 책있나 책킷리스트 파일이에요</div>
+      <h3 style="margin-top:6px">${esc(parsed.title)}</h3>
+      <div class="meta"><span class="big">${n}권</span><span class="dot">·</span><span>바코드 정보 ${parsed.books.filter((b) => b.isbn13).length}권</span></div>
+      ${cellsHTML(n, "#3d8b6d", "cells")}
+      <ul class="preview">${parsed.books.slice(0, 5).map((b) => `<li>${esc(b.title)}${b.author ? ` — ${esc(b.author)}` : ""}</li>`).join("")}${n > 5 ? `<li>외 ${n - 5}권</li>` : ""}</ul>`;
+    $("pv").hidden = false;
+    $("title2").value = parsed.title;
+    $("postForm").hidden = false;
+    $("fileMsg").innerHTML = `<button type="button" class="textbtn" id="reFile">다른 파일 고르기</button>`;
+    $("reFile").onclick = () => $("file").click();
+  } catch (e) {
+    parsed = null;
+    $("fileMsg").className = "hint bad";
+    $("fileMsg").textContent = e.message;
+  }
+}
+$("file").addEventListener("change", (e) => readFile(e.target.files[0]));
+const drop = $("drop");
+["dragenter","dragover"].forEach((t) => drop.addEventListener(t, (e) => { e.preventDefault(); drop.classList.add("over"); }));
+["dragleave","drop"].forEach((t) => drop.addEventListener(t, (e) => { e.preventDefault(); drop.classList.remove("over"); }));
+drop.addEventListener("drop", (e) => readFile(e.dataTransfer.files[0]));
+$("intro").addEventListener("input", () => { $("introLen").textContent = $("intro").value.length; });
+
+$("postForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  if (!parsed) return;
+  const title = $("title2").value.trim();
+  const nickname = $("nick").value.trim();
+  const intro = $("intro").value.trim();
+  if (!title || title.length > 60) return toast("목록 이름을 1~60자로 적어 주세요.");
+  const link = /(https?:\/\/|www\.|\.(com|net|kr|io|me|ly|xyz)(\/|\b))/i;
+  if (link.test(nickname) || link.test(intro)) return toast("닉네임과 소개에는 링크를 넣을 수 없어요.");
+  const btn = $("submitBtn"); btn.disabled = true; btn.textContent = "올리는 중…";
+  try {
+    const list = { format: FORMAT, version: 1, title, books: parsed.books };
+    validateList(list);
+    const r = await api("/v1/bookkit/lists", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ list, nickname, intro, theme: $("theme").value }) });
+    const mine = store.get(); mine.unshift({ id: r.id, key: r.deleteKey, title, at: Date.now() }); store.set(mine.slice(0, 50));
+    listState.loaded = false;
+    const url = `https://everpinej.com/chaekitna/bookkit/?id=${r.id}`;
+    $("postForm").hidden = true; $("pv").hidden = true; $("drop").hidden = true; $("fileMsg").textContent = "";
+    $("done").innerHTML = `<h2 style="margin:0 0 6px">올렸어요! 🎉</h2>
+      <p style="margin:0;color:var(--sub)">이제 누구나 ‘${esc(title)}’을 받아 자기 책킷리스트로 시작할 수 있어요.</p>
+      <div class="linkrow" style="margin-top:16px"><a class="btn primary" href="?id=${esc(r.id)}" data-nav="detail" data-id="${esc(r.id)}">내 목록 보기</a><button class="btn soft" type="button" id="copyNew">링크 복사</button></div>
+      <p class="hint" style="margin-top:18px">나중에 지우려면 아래 <b>삭제 키</b>가 필요해요. 이 브라우저에는 자동으로 기억되지만, 다른 기기에서 지우려면 따로 보관해 주세요.</p>
+      <div class="keybox">${esc(r.deleteKey)}</div>`;
+    $("done").hidden = false;
+    $("copyNew").onclick = async () => { try { await navigator.clipboard.writeText(url); toast("링크를 복사했어요."); } catch { prompt("링크를 복사해 주세요", url); } };
+    window.scrollTo(0, 0);
+  } catch (err) { toast(err.message); }
+  finally { btn.disabled = false; btn.textContent = "올리기"; }
+});
+addEventListener("popstate", () => { if (!new URLSearchParams(location.search).has("new")) resetNew(); });
+document.addEventListener("click", (e) => { const a = e.target.closest('[data-nav="new"]'); if (a) setTimeout(resetNew); });
+
+renderChips();
+route();
+})();
+</script>
+</body>
+</html>
