@@ -32,6 +32,7 @@ function renderEvent() {
   const faceCount = statuses.filter(s => s.faceConfirmed).length, bothCount = statuses.filter(s => s.both).length;
   $('#face-coverage').textContent = `페이스사인 확인 ${faceCount.toLocaleString('ko-KR')}곳 · 온누리도 확인 ${bothCount.toLocaleString('ko-KR')}곳`;
   $('#face-source-date').textContent = manifest.faceSignSourceDate ? `공식 가맹점 안내 ${manifest.faceSignSourceDate.replaceAll('-', '.')} 확인 · 전체 가맹점 목록은 아니에요.` : '페이스사인 공식 가맹점 정보를 확인하고 있어요.';
+  $('#face-footer-date').textContent = manifest.faceSignSourceDate?.replaceAll('-', '.') || '확인일 미정';
   clearTimeout(eventTimer);
   const boundary = [Date.parse(event.startsAt), Date.parse(event.endsAt)].filter(t => t > Date.now()).sort((a,b) => a-b)[0];
   if (boundary) eventTimer = setTimeout(renderEvent, Math.min(86400000, Math.max(1, boundary - Date.now())));

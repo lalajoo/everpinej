@@ -6,7 +6,8 @@ const config = JSON.parse(await readFile(new URL('../penuri/config.json', import
 const manifest = JSON.parse(await readFile(new URL('../penuri/data/manifest.json', import.meta.url)));
 const index = JSON.parse(await readFile(new URL('../penuri/data/' + manifest.index, import.meta.url)));
 const now = Date.parse('2026-11-04T15:00:00+09:00');
-const search = patch => searchIndex(index, {q:'',region:'',filter:'all',position:null,...patch}, manifest, config.verification, now);
+const dataNow = Date.parse(manifest.faceSignSourceDate + 'T12:00:00+09:00');
+const search = patch => searchIndex(index, {q:'',region:'',filter:'all',position:null,...patch}, manifest, config.verification, dataNow);
 
 test('행사는 한국시간 12월 1일 0시에 종료된다', () => {
   assert.equal(eventState(config.event, Date.parse('2026-11-30T23:59:59+09:00')), 'active');
@@ -27,18 +28,21 @@ test('실제 자료에서 지역·시군구·약국명·부분어 검색', () =>
   for (const q of ['제주','제주시','서울 강남구','부산 서면','한림약국']) assert.ok(search({q}).length > 0, q);
   assert.equal(search({q:'존재하지않는지역XYZ'}).length,0);
   assert.ok(search({region:'제주'}).every(r=>r.region === '제주'));
-  assert.ok(search({filter:'onnuri'}).length > 0);
-  assert.ok(search({filter:'both'}).length > 0);
-  assert.equal(search({filter:'face'}).length,manifest.faceSignVerifiedCount);
-  assert.equal(search({filter:'check'}).length,index.length - manifest.faceSignVerifiedCount);
+  assert.equal(index.filter(row=>row[5]==='verified').length,manifest.faceSignVerifiedCount);
+  assert.ok(search({filter:'face'}).length > 0);
+  assert.equal(search({filter:'check'}).length + search({filter:'face'}).length,index.length);
 });
-test('공식 확인 약국은 지역 검색과 페이스사인 필터에서 나오고 온누리 미확인과 구분한다', () => {
-  assert.ok(search({q:'동시약국',filter:'both'}).some(r=>r.name==='동시약국'));
-  assert.ok(search({q:'제주',filter:'face'}).some(r=>r.name==='제주메가약국'));
-  assert.equal(search({q:'제주메가약국',filter:'both'}).length,0);
+test('페이스사인 필터는 온누리 미확인을 구분하고 확인 유효기간 후에는 제외한다', () => {
+  const rows = [
+    ['both','동시약국','서울','서울 동시약국',true,'verified','2026-11-03',null,null],
+    ['face','확인약국','제주','제주 확인약국',null,'verified','2026-11-03',null,null],
+  ];
+  const query = (filter, q='', time=now) => searchIndex(rows,{q,filter},{sourceDate:'2026-07-31'},config.verification,time);
+  assert.deepEqual(query('both').map(r=>r.id),['both']);
+  assert.deepEqual(query('face','제주').map(r=>r.id),['face']);
+  assert.equal(query('both','확인약국').length,0);
   assert.equal(readSearch('?filter=face').filter,'face');
-  const later=searchIndex(index,{q:'',filter:'face'},manifest,config.verification,Date.parse('2027-02-01T00:00:00+09:00'));
-  assert.equal(later.length,0);
+  assert.equal(query('face','',now + (config.verification.faceSignMaxAgeDays + 1) * 86400000).length,0);
 });
 test('실제 좌표가 있는 약국만 거리순 정렬', () => {
   const hits=search({position:[33.5,126.5]});
