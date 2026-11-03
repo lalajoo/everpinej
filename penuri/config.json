@@ -1,0 +1,25 @@
+{
+  "event": {
+    "enabled": true,
+    "startsAt": "2026-10-12T00:00:00+09:00",
+    "endsAt": "2026-12-01T00:00:00+09:00",
+    "rewardPercent": 10,
+    "monthlyLimit": 50000,
+    "sourceCheckedAt": "2026-11-03",
+    "officialUrl": "https://campaign2.naver.com/npay/facesign_10/"
+  },
+  "onnuri": {
+    "description": "충전 시 할인 혜택",
+    "officialUrl": "https://www.onnuri.gift/voucher",
+    "dataUrl": "https://www.data.go.kr/data/3060079/fileData.do"
+  },
+  "verification": {
+    "onnuriMaxAgeDays": 180,
+    "faceSignMaxAgeDays": 60
+  },
+  "report": {
+    "formUrl": "",
+    "email": "contact@everpinej.com"
+  },
+  "pageSize": 12
+}
