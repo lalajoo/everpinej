@@ -1,5 +1,8 @@
 import importlib.util
 import unittest
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path('scripts').resolve()))
 spec = importlib.util.spec_from_file_location('importer', 'scripts/import_data.py')
 imp = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(imp)

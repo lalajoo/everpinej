@@ -29,6 +29,7 @@ export function searchIndex(index, state, manifest, config, now = Date.now()) {
     if (!tokens.every(t => normalize(row[3]).includes(t))) continue;
     const status = verification(row[4], row[5], row[6], manifest.sourceDate, config, now);
     if (state.filter === 'both' && !status.both) continue;
+    if (state.filter === 'face' && !status.faceConfirmed) continue;
     if (state.filter === 'onnuri' && !status.digital) continue;
     if (state.filter === 'check' && status.faceConfirmed) continue;
     let distance = null;
@@ -36,15 +37,15 @@ export function searchIndex(index, state, manifest, config, now = Date.now()) {
       if (!Number.isFinite(row[7]) || !Number.isFinite(row[8])) continue;
       distance = distanceKm(state.position, [row[7], row[8]]);
     }
-    results.push({ id: row[0], region: row[2], distance, both: status.both, name: row[1] });
+    results.push({ id: row[0], region: row[2], distance, both: status.both, faceConfirmed: status.faceConfirmed, name: row[1] });
   }
-  results.sort((a, b) => state.position ? a.distance - b.distance : Number(b.both) - Number(a.both) || a.name.localeCompare(b.name, 'ko') || a.id.localeCompare(b.id));
+  results.sort((a, b) => state.position ? a.distance - b.distance : Number(b.both) - Number(a.both) || Number(b.faceConfirmed) - Number(a.faceConfirmed) || a.name.localeCompare(b.name, 'ko') || a.id.localeCompare(b.id));
   return results;
 }
 export function readSearch(search, regions = []) {
   const p = new URLSearchParams(search);
   const region = p.get('region') || '';
-  return { q: (p.get('q') || '').slice(0, 100), region: regions.includes(region) ? region : '', filter: ['all', 'both', 'onnuri', 'check'].includes(p.get('filter')) ? p.get('filter') : 'all', limit: Math.min(240, Math.max(12, Number.parseInt(p.get('limit'), 10) || 12)), position: null };
+  return { q: (p.get('q') || '').slice(0, 100), region: regions.includes(region) ? region : '', filter: ['all', 'both', 'face', 'onnuri', 'check'].includes(p.get('filter')) ? p.get('filter') : 'all', limit: Math.min(240, Math.max(12, Number.parseInt(p.get('limit'), 10) || 12)), position: null };
 }
 export function searchUrl(state, location) {
   const url = new URL(location);

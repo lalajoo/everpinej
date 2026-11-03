@@ -5,7 +5,7 @@ import { eventState, verification, isFresh, searchIndex, readSearch, searchUrl, 
 const config = JSON.parse(await readFile(new URL('../penuri/config.json', import.meta.url)));
 const manifest = JSON.parse(await readFile(new URL('../penuri/data/manifest.json', import.meta.url)));
 const index = JSON.parse(await readFile(new URL('../penuri/data/' + manifest.index, import.meta.url)));
-const now = Date.parse('2026-11-03T15:00:00+09:00');
+const now = Date.parse('2026-11-04T15:00:00+09:00');
 const search = patch => searchIndex(index, {q:'',region:'',filter:'all',position:null,...patch}, manifest, config.verification, now);
 
 test('행사는 한국시간 12월 1일 0시에 종료된다', () => {
@@ -28,8 +28,17 @@ test('실제 자료에서 지역·시군구·약국명·부분어 검색', () =>
   assert.equal(search({q:'존재하지않는지역XYZ'}).length,0);
   assert.ok(search({region:'제주'}).every(r=>r.region === '제주'));
   assert.ok(search({filter:'onnuri'}).length > 0);
-  assert.equal(search({filter:'both'}).length,0);
-  assert.equal(search({filter:'check'}).length,index.length);
+  assert.ok(search({filter:'both'}).length > 0);
+  assert.equal(search({filter:'face'}).length,manifest.faceSignVerifiedCount);
+  assert.equal(search({filter:'check'}).length,index.length - manifest.faceSignVerifiedCount);
+});
+test('공식 확인 약국은 지역 검색과 페이스사인 필터에서 나오고 온누리 미확인과 구분한다', () => {
+  assert.ok(search({q:'동시약국',filter:'both'}).some(r=>r.name==='동시약국'));
+  assert.ok(search({q:'제주',filter:'face'}).some(r=>r.name==='제주메가약국'));
+  assert.equal(search({q:'제주메가약국',filter:'both'}).length,0);
+  assert.equal(readSearch('?filter=face').filter,'face');
+  const later=searchIndex(index,{q:'',filter:'face'},manifest,config.verification,Date.parse('2027-02-01T00:00:00+09:00'));
+  assert.equal(later.length,0);
 });
 test('실제 좌표가 있는 약국만 거리순 정렬', () => {
   const hits=search({position:[33.5,126.5]});
@@ -62,7 +71,8 @@ test('검색 색인과 지역 파일의 ID·상태·좌표가 모두 일치한�
   for(const row of index){
     const p=all[row[0]];assert.ok(p);assert.equal(p.name,row[1]);assert.equal(p.onnuriSupported,row[4]);
     assert.equal(p.faceSignStatus,row[5]);assert.equal(p.latitude,row[7]);
-    if(p.latitude!==null){assert.ok(p.addressSource);assert.ok(p.coordinateSource);assert.equal(p.addressMatchMethod,'unique-exact-name-and-region-both-datasets');}
+    if(p.latitude!==null){assert.ok(p.addressSource);assert.ok(p.coordinateSource);assert.ok(['unique-exact-name-and-region-both-datasets','unique-exact-name-and-street-address-official-map-hira'].includes(p.addressMatchMethod));}
+    if(p.faceSignStatus==='verified'){assert.ok(p.verificationSource);assert.equal(p.verificationUrl,'https://campaign2.naver.com/npay/facesignmap/');assert.equal(row[6],p.faceSignVerifiedAt);}
     if(p.phone)assert.ok(p.phoneSource);
   }
 });
