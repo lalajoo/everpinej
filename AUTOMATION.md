@@ -41,4 +41,4 @@ python3 scripts/refresh_facesign.py --data penuri/data --hira data/source/hira-2
 
 ## 지역 페이지와 공개 후기 보존
 
-`penuri/data/mounjaro.json`과 `data/admin/mounjaro-review.md`는 별도 수동 검토 자료다. 페이스사인 갱신으로 원문 확인일을 바꾸거나 삭제하지 않는다. `npm run build`는 지역 HTML·PNG·사이트맵도 재생성한다. 데이터 갱신 시 `penuri/regions/`, `penuri/assets/og-*.png`, `penuri/assets/og-specs.json`, `penuri/data/region-pages.json`, `penuri/index.html`, `sitemap.xml`의 변경분을 함께 반영한다. 이미지 생성에는 운영 Mac의 Swift 도구를 이용한다. 다른 사이트 페이지는 수정하지 않는다.
+`penuri/data/mounjaro.json`과 `data/admin/mounjaro-review.md`는 `THREADS_AUTOMATION.md`에 따라 별도로 갱신하는 공개 후기 자료다. 페이스사인 갱신으로 원문 확인일을 바꾸거나 삭제하지 않는다. `npm run build`는 지역 HTML·PNG·사이트맵도 재생성한다. 데이터 갱신 시 `penuri/regions/`, `penuri/assets/og-*.png`, `penuri/assets/og-specs.json`, `penuri/data/region-pages.json`, `penuri/index.html`, `sitemap.xml`의 변경분을 함께 반영한다. 이미지 생성에는 운영 Mac의 Swift 도구를 이용한다. 다른 사이트 페이지는 수정하지 않는다.
