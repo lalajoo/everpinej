@@ -38,3 +38,7 @@ python3 scripts/refresh_facesign.py --data penuri/data --hira data/source/hira-2
 변경된 관련 파일만 커밋하여 main에 push한다. GitHub Pages 배포 성공을 확인한 뒤 실제 `https://everpinej.com/penuri/`에서 새 manifest, 제주/다른 지역 검색, 페이스사인 필터, 최신 확인일과 광고 문구를 확인한다. 배포 전후 실패를 성공으로 보고하지 않는다. 자동 승인 또는 접근 권한으로 막히면 정확한 원인을 설명하고 필요한 조치만 요청한다.
 
 변경 없는 상태나 날짜만 재확인된 정상 실행은 별도 진행 보고 없이 조용히 완료한다. 약국 추가·확인 상태의 의미 있는 변경, 배포 실패, 수집 실패, 사용자 조치 필요 시에만 간단히 알린다. 수집 중단 시 기존 자료를 유지하고 확인일을 조작하지 않는다.
+
+## 지역 페이지와 공개 후기 보존
+
+`penuri/data/mounjaro.json`과 `data/admin/mounjaro-review.md`는 별도 수동 검토 자료다. 페이스사인 갱신으로 원문 확인일을 바꾸거나 삭제하지 않는다. `npm run build`는 지역 HTML·PNG·사이트맵도 재생성한다. 데이터 갱신 시 `penuri/regions/`, `penuri/assets/og-*.png`, `penuri/assets/og-specs.json`, `penuri/data/region-pages.json`, `penuri/index.html`, `sitemap.xml`의 변경분을 함께 반영한다. 이미지 생성에는 운영 Mac의 Swift 도구를 이용한다. 다른 사이트 페이지는 수정하지 않는다.

@@ -1,4 +1,10 @@
+import './region-pages.mjs';
+import { execFileSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+if (process.platform === 'darwin') execFileSync('/usr/bin/swift', [fileURLToPath(new URL('./og-images.swift', import.meta.url)), fileURLToPath(new URL('../penuri/assets', import.meta.url))], {stdio:'inherit',env:{...process.env,CLANG_MODULE_CACHE_PATH:'/tmp/penuri-swift-cache'}});
 import { cp, mkdir, rm, readFile } from 'node:fs/promises';
+const specs = JSON.parse(await readFile(new URL('../penuri/assets/og-specs.json', import.meta.url)));
+for (const spec of specs) await readFile(new URL('../penuri/assets/' + spec.file, import.meta.url));
 const manifest = JSON.parse(await readFile(new URL('../penuri/data/manifest.json', import.meta.url)));
 if (!manifest.count) throw new Error('공식 약국 데이터가 없습니다. 먼저 data:import를 실행하세요.');
 await rm(new URL('../dist', import.meta.url), { recursive: true, force: true });

@@ -56,7 +56,7 @@ test('위치 권한 거부·시간 초과는 지역 검색 안내로 복구한�
   assert.deepEqual(await locate({getCurrentPosition(ok){ok({coords:{latitude:33.5,longitude:126.5}});}}),[33.5,126.5]);
 });
 test('URL 쿼리 왕복, 비정상 조건 제한, 좌표 미공유', () => {
-  const state={q:'서울 강남구',region:'서울',filter:'onnuri',limit:24,position:[33.5,126.5]};
+  const state={tab:'all',q:'서울 강남구',region:'서울',filter:'onnuri',limit:24,position:[33.5,126.5]};
   const url=searchUrl(state,'https://everpinej.com/penuri/');
   assert.equal(url.searchParams.has('position'),false);
   assert.deepEqual(readSearch(url.search,['서울']),{...state,position:null});

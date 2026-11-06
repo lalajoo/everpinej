@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <base href="/penuri/">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f7f9f6">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>경북 김천시 온누리·페이스사인 약국 5곳 | 페누리</title>
+  <meta name="description" content="경북 김천시 검색 가능한 약국 5곳, 페이스사인 확인 0곳. 온누리 가맹 여부와 자료 기준일·출처를 확인하세요. 방문 전 결제 조건 확인이 필요합니다.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="경북 김천시 온누리·페이스사인 약국 5곳 | 페누리">
+  <meta property="og:description" content="경북 김천시 검색 가능한 약국 5곳, 페이스사인 확인 0곳. 온누리 가맹 여부와 자료 기준일·출처를 확인하세요. 방문 전 결제 조건 확인이 필요합니다.">
+  <meta property="og:url" content="https://everpinej.com/penuri/regions/%EA%B2%BD%EB%B6%81/%EA%B9%80%EC%B2%9C%EC%8B%9C/">
+  <link rel="canonical" href="https://everpinej.com/penuri/regions/%EA%B2%BD%EB%B6%81/%EA%B9%80%EC%B2%9C%EC%8B%9C/">
+  <meta property="og:image" content="https://everpinej.com/penuri/assets/og-37e311e2c6eb.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="경북 김천시 약국 찾기">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css?v=20261107-ui1">
+  <script type="module" src="./app.mjs?v=20261107-ui1"></script>
+  <script type="module" src="./analytics.mjs"></script>
+</head>
+<body data-region="경북" data-query="김천시">
+  <a class="skip-link" href="#search">약국 검색으로 바로가기</a>
+  <div class="shell">
+    <header class="header">
+      <a class="brand" href="./" aria-label="페누리 홈"><svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="10" fill="currentColor"/><path d="M13 7h6v6h6v6h-6v6h-6v-6H7v-6h6z" fill="white"/></svg>페누리<span class="brand-dot"></span></a>
+      <a class="header-link" href="#payment-guide">이용 안내 <span aria-hidden="true">↗</span></a>
+    </header>
+    <main>
+      <section class="hero" aria-labelledby="headline">
+        <p class="eyebrow"><span class="tiny-dot"></span> 온누리상품권 + 네이버페이 페이스사인</p>
+        <h1 id="headline">경북 김천시<br><span>혜택 약국 찾기</span></h1>
+        <p class="hero-copy">등록 약국 5곳 · 페이스사인 확인 0곳<br>온누리 2026-07-31 · 페이스사인 2026-11-04 자료</p>
+        <form id="search-form" role="search" class="search-form">
+          <label class="sr-only" for="search">지역 또는 약국명 검색</label>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
+          <input id="search" name="q" type="search" placeholder="지역이나 약국 이름을 검색하세요" autocomplete="off" maxlength="100" enterkeyhint="search">
+          <button type="submit" class="search-submit" aria-label="약국 검색">검색</button>
+        </form>
+        <div class="search-extras"><span>예: 제주, 강남구, 부산 서면</span><button id="nearby" class="text-button" hidden><span aria-hidden="true">⌖</span> 내 주변 찾기</button><button id="region-fallback" class="text-button" hidden>지역 선택 <span aria-hidden="true">↓</span></button></div>
+        <p id="location-status" class="location-status" role="status" hidden></p>
+      </section>
+      <p id="event-teaser" class="event-teaser" hidden></p>
+      <section class="finder" aria-labelledby="results-heading">
+        <div class="finder-tabs" role="group" aria-label="약국 목록 선택"><button type="button" data-tab="all" aria-pressed="true">전체 약국</button><button type="button" data-tab="mounjaro" aria-pressed="false">🔥 마운자로 성지 <span id="mounjaro-count"></span></button></div>
+        <div id="mounjaro-intro" class="mounjaro-intro" hidden><strong>스레드에서 이름을 확인한 약국</strong><p>공개 방문 후기·답글을 직접 읽고 모았어요. ‘성지’는 커뮤니티 표현이며 최저가·재고·구매 사실을 보증하지 않아요. 원문 확인일과 게시일을 구분해 보세요.</p></div>
+        <h2 id="results-heading" class="sr-only">우리 동네 약국 찾기</h2>
+        <label class="sr-only" for="region">시도 선택</label>
+        <select id="region"><option value="">전국 모든 지역</option></select>
+        <div class="filter-chips" role="group" aria-label="결제 확인 상태">
+          <button data-filter="all" aria-pressed="true">전체</button><button data-filter="face" aria-pressed="false">페이스사인 확인</button><button data-filter="both" aria-pressed="false">둘 다 확인</button><button data-filter="onnuri" aria-pressed="false">온누리 가맹</button><button data-filter="check" aria-pressed="false">페이스사인 확인 필요</button>
+        </div>
+        <div class="results-toolbar"><p id="result-count" role="status" aria-live="polite">약국을 불러오는 중…</p><div class="toolbar-actions"><button class="text-button muted" id="reset">초기화</button><button id="share" class="text-button muted" aria-label="현재 검색 조건 공유">공유 <span aria-hidden="true">↗</span></button></div>
+        <p id="share-status" class="small" role="status"></p>
+        <div id="results" aria-busy="false"><article class="pharmacy-card"><p class="card-region">경북 김천시</p><h3>금산약국</h3><p class="address">경상북도 김천시 김천로 130-1, (평화동)</p><div class="badges"><span class="badge confirmed">디지털 온누리 확인</span><span class="badge unknown">페이스사인 확인 필요</span></div><p class="verified-date">온누리 자료 2026-07-31 · 페이스사인 미확인</p></article><article class="pharmacy-card"><p class="card-region">경북 김천시</p><h3>신세기약국</h3><p class="address">경상북도 김천시 김천로 88, (평화동)</p><div class="badges"><span class="badge confirmed">디지털 온누리 확인</span><span class="badge unknown">페이스사인 확인 필요</span></div><p class="verified-date">온누리 자료 2026-07-31 · 페이스사인 미확인</p></article><article class="pharmacy-card"><p class="card-region">경북 김천시</p><h3>율곡약국</h3><p class="address">경상북도 김천시 혁신3로 5, (율곡동, 율곡스퀘어III)</p><div class="badges"><span class="badge confirmed">디지털 온누리 확인</span><span class="badge unknown">페이스사인 확인 필요</span></div><p class="verified-date">온누리 자료 2026-07-31 · 페이스사인 미확인</p></article><article class="pharmacy-card"><p class="card-region">경북 김천시</p><h3>평안약국</h3><p class="address">경상북도 김천시 자산로 33-1, (용두동)</p><div class="badges"><span class="badge confirmed">디지털 온누리 확인</span><span class="badge unknown">페이스사인 확인 필요</span></div><p class="verified-date">온누리 자료 2026-07-31 · 페이스사인 미확인</p></article><article class="pharmacy-card"><p class="card-region">경북 김천시</p><h3>후생당약국</h3><p class="address">경상북도 김천시 김천로 62, (평화동)</p><div class="badges"><span class="badge confirmed">디지털 온누리 확인</span><span class="badge unknown">페이스사인 확인 필요</span></div><p class="verified-date">온누리 자료 2026-07-31 · 페이스사인 미확인</p></article></div>
+        <button id="more" class="wide-button" hidden>약국 더 보기 <span aria-hidden="true">↓</span></button>
+        <p class="inline-unofficial">네이버페이·온누리 운영기관의 공식 서비스가 아니에요.</p>
+        <p class="result-footnote" id="coverage"></p>
+      </section>
+      <details class="data-summary"><summary>결제 확인 기준과 자료 출처</summary>
+        <div class="verification-overview"><strong id="face-coverage">페이스사인 확인 약국을 불러오고 있어요</strong><p id="face-source-date"></p><a href="https://campaign2.naver.com/npay/facesignmap/" target="_blank" rel="noopener noreferrer">Npay 공식 가맹점 지도 ↗</a></div>
+        <div class="data-note"><span aria-hidden="true">ⓘ</span><p>페이스사인은 공식 가맹점 안내를 대조한 정보예요.<br>온누리 여부는 별도이며, 방문 전 결제 가능 여부를 확인해 주세요.</p></div>
+      </details>
+      <section class="benefits" aria-label="결제 혜택 안내">
+        <div class="benefit-pair"><div><span class="benefit-name">디지털 온누리상품권</span><strong id="onnuri-benefit">충전 시 할인 혜택</strong></div><span class="benefit-plus" aria-hidden="true">+</span><div><span class="benefit-name">네이버페이 페이스사인</span><strong id="face-benefit">공식 행사 확인</strong></div></div>
+        <div class="event-line"><span id="event-status">공식 행사 정보를 확인하고 있어요</span><span id="event-date"></span></div>
+        <p class="benefit-note" id="benefit-note">결제수단과 잔액 차감 조건에 따라 적용 여부가 달라요.</p>
+      </section>
+      <aside id="majeunjaro-promo" class="app-promo" aria-labelledby="promo-title">
+        <div class="promo-heading"><span>광고 · 자사 앱</span><span class="promo-category">나를 돌보는 기록</span></div>
+        <div class="promo-body"><img src="./assets/majeunjaro-icon.jpg" width="56" height="56" alt="" decoding="async"><div><h2 id="promo-title">맞은자로</h2><p>회원가입 없이 주사·체중 기록</p></div></div>
+        <div class="promo-links"><a href="https://apps.apple.com/kr/app/id6794129450" target="_blank" rel="noopener noreferrer" data-app-store="apple" aria-label="맞은자로 App Store에서 보기">App Store <span aria-hidden="true">↗</span></a><a href="https://play.google.com/store/apps/details?id=com.songminsuk.majeunjaro" target="_blank" rel="noopener noreferrer" data-app-store="google" aria-label="맞은자로 Google Play에서 보기">Google Play <span aria-hidden="true">↗</span></a></div>
+      </aside>
+      <section class="guide" id="payment-guide" aria-labelledby="guide-heading">
+        <p class="eyebrow">방문 전, 잠깐 확인하세요</p><h2 id="guide-heading">결제 준비는 이렇게</h2>
+        <ol class="steps"><li><span>1</span><div><strong>온누리 앱에서 카드 등록·충전</strong><p>디지털 온누리상품권 앱에서 준비해 주세요.</p></div></li><li><span>2</span><div><strong>페이스사인에 이용할 카드 등록</strong><p>온누리에 등록한 카드와 결제 조건을 확인하세요.</p></div></li><li><span>3</span><div><strong>방문할 약국에 결제 가능 여부 확인</strong><p>대상 Npay 커넥트 단말기에서 얼굴로 결제해요.</p></div></li><li><span>4</span><div><strong>온누리 잔액·포인트 내역 확인</strong><p>잔액 차감과 행사 조건에 따른 적립을 확인하세요.</p></div></li></ol>
+        <div class="official-links"><a id="onnuri-official" href="https://www.onnuri.gift/voucher" target="_blank" rel="noopener noreferrer">온누리 공식 안내 <span>↗</span></a><a id="face-official" href="https://campaign2.naver.com/npay/facesign_10/" target="_blank" rel="noopener noreferrer">페이스사인 혜택·매장 찾기 <span>↗</span></a></div>
+      </section>
+      <nav id="region-links" class="region-links" aria-label="지역별 약국"><h2>지역별 약국 찾기</h2><div id="region-link-list"><a href="/penuri/regions/%EC%84%9C%EC%9A%B8/">서울</a><a href="/penuri/regions/%EB%B6%80%EC%82%B0/">부산</a><a href="/penuri/regions/%EB%8C%80%EA%B5%AC/">대구</a><a href="/penuri/regions/%EC%9D%B8%EC%B2%9C/">인천</a><a href="/penuri/regions/%EA%B4%91%EC%A3%BC/">광주</a><a href="/penuri/regions/%EB%8C%80%EC%A0%84/">대전</a><a href="/penuri/regions/%EC%9A%B8%EC%82%B0/">울산</a><a href="/penuri/regions/%EC%84%B8%EC%A2%85/">세종</a><a href="/penuri/regions/%EA%B2%BD%EA%B8%B0/">경기</a><a href="/penuri/regions/%EA%B0%95%EC%9B%90/">강원</a><a href="/penuri/regions/%EC%B6%A9%EB%B6%81/">충북</a><a href="/penuri/regions/%EC%B6%A9%EB%82%A8/">충남</a><a href="/penuri/regions/%EC%A0%84%EB%B6%81/">전북</a><a href="/penuri/regions/%EC%A0%84%EB%82%A8/">전남</a><a href="/penuri/regions/%EA%B2%BD%EB%B6%81/">경북</a><a href="/penuri/regions/%EA%B2%BD%EB%82%A8/">경남</a><a href="/penuri/regions/%EC%A0%9C%EC%A3%BC/">제주</a></div></nav>
+      <section class="report-banner"><div><h2>우리 동네 정보, 함께 채워요</h2><p>새로운 약국이나 바뀐 결제 정보를 알려 주세요.</p></div><button id="report" class="wide-button">약국 정보 제보하기 <span aria-hidden="true">↗</span></button></section>
+    </main>
+    <footer><a class="footer-brand" href="./">페누리</a><p id="source-date">자료 기준일 확인 중</p><p id="address-source"></p><details><summary>데이터 출처와 유의사항</summary><div class="disclaimer"><p><a href="https://www.data.go.kr/data/3060079/fileData.do" target="_blank" rel="noopener noreferrer">소상공인시장진흥공단 온누리상품권 가맹점 현황 ↗</a></p><p><a href="https://www.data.go.kr/data/15051059/fileData.do" target="_blank" rel="noopener noreferrer">건강보험심사평가원 전국 병의원 및 약국 현황 ↗</a><br>공공누리 제1유형(출처표시). 온누리 자료는 이름·지역을, 페이스사인 자료는 이름·도로명주소를 대조해 일치하는 약국만 연결했습니다.</p><p>공식 자료의 기준일과 실제 운영 상황은 다를 수 있습니다. 결제 혜택은 운영사 정책과 매장 상황에 따라 달라집니다. 두 혜택의 동시 적용을 보장하지 않습니다.</p><p>온누리 원본에 상세 주소가 없는 매장, 동명 매장은 주소 확인이 필요합니다. 위치가 연결된 약국만 주변 검색에 포함됩니다. 일부 지역의 미연결 자료는 원본 분류인 ‘전남·광주’로 표시됩니다.</p><p><a href="https://campaign2.naver.com/npay/facesignmap/" target="_blank" rel="noopener noreferrer">Npay 공식 페이스사인 가맹점 지도 ↗</a><br><span id="face-footer-date">확인일을 불러오는 중</span> 지도 검색 결과의 약국명·도로명주소를 심평원 자료와 대조했습니다. 전국 전수 목록이나 현장 결제 확인을 뜻하지 않습니다. 온누리 여부가 연결되지 않은 약국은 미확인으로 표시합니다.</p><p>오래된 확인 기록은 재확인이 필요한 정보로 표시하며, 사용자 제보는 관리자 확인 전까지 확인 완료로 표시하지 않습니다.</p><p>이 서비스는 결제수단 정보와 공개 글에서 언급된 약국을 안내합니다. 특정 의약품 구매·처방을 권유하지 않으며 현재 가격·재고·처방 가능 여부를 보증하지 않습니다.</p></div></details><details id="privacy-details"><summary>방문 통계와 개인정보 안내</summary><div class="disclaimer"><p>운영자: everpinej · 문의 contact@everpinej.com</p><p>통계 쿠키를 허용하면 Google Analytics가 방문·기기·대략적인 지역·유입 사이트와 맞은자로 배너 조회·스토어 클릭을 처리합니다. 방문 추이와 서비스 개선에 이용하며, Google의 서버로 전송됩니다.</p><p>검색어, 약국명, 전화번호, 제보 내용, 정확한 위치는 통계에 보내지 않습니다. 광고 개인화에는 사용하지 않습니다. 통계 쿠키는 마지막 방문부터 최대 180일 유지됩니다. 거절해도 약국 검색과 앱 링크를 이용할 수 있습니다.</p><p>아래 설정에서 언제든 허용을 철회할 수 있습니다. 이 브라우저의 이후 수집이 중단되고 페누리 통계 쿠키가 삭제됩니다. 이미 집계된 통계는 자동으로 삭제되지 않습니다.</p><p><a href="https://policies.google.com/privacy?hl=ko" target="_blank" rel="noopener noreferrer">Google 개인정보처리방침 ↗</a></p></div></details><button type="button" id="analytics-settings" class="text-button muted">방문 통계 설정</button><p id="analytics-status" role="status"></p><p class="unofficial">본 서비스는 네이버페이 및 온누리상품권<br>운영기관의 공식 서비스가 아닙니다.</p><div class="footer-bottom"><span>© 2026 PENURI</span><a href="https://everpinej.com/">by everpinej ↗</a></div></footer>
+  </div>
+  <dialog id="report-dialog" aria-labelledby="report-title"><form id="report-form"><div class="dialog-top"><h2 id="report-title">약국 정보 제보하기</h2><button type="button" id="close-report" aria-label="제보 창 닫기">×</button></div><p class="small">관리자 확인 후 반영해요. 개인 의료정보, 처방전, 환자 정보, 영수증은 보내지 마세요.</p><label>약국명<input name="name" required maxlength="100" autocomplete="off"></label><label>지역<input name="region" required maxlength="100" placeholder="예: 제주 제주시" autocomplete="off"></label><label>온누리 결제<select name="onnuri"><option>모름</option><option>가능</option><option>불가</option></select></label><label>페이스사인 결제<select name="face"><option>모름</option><option>가능</option><option>불가</option></select></label><label>메모 <span class="small">선택</span><textarea name="memo" maxlength="500" rows="3" placeholder="결제 확인 시점 등 필요한 정보만 적어 주세요."></textarea></label><p class="small">다음 단계에서 메일 앱이 열립니다. 직접 전송해야 제보가 전달됩니다.</p><button class="primary wide-button" type="submit">메일 앱에서 제보 전송</button><p id="report-status" class="small" role="status"></p><button type="button" id="copy-report" class="text-button">메일이 열리지 않으면 내용 복사</button></form></dialog>
+  <section id="copy-panel" class="copy-panel" role="dialog" aria-modal="true" aria-labelledby="copy-title" hidden><div class="dialog-top"><h2 id="copy-title">검색 결과 공유</h2><button type="button" id="close-copy" aria-label="공유 창 닫기">×</button></div><p class="small">복사가 안 되면 아래 내용을 길게 눌러 직접 복사해 주세요.</p><label class="sr-only" for="copy-content">공유할 내용</label><textarea id="copy-content" readonly rows="6"></textarea><button type="button" id="retry-copy" class="primary wide-button">내용 복사</button><p id="copy-status" role="status" class="small"></p></section>
+  <section id="analytics-consent" class="consent-panel" aria-labelledby="consent-title" hidden>
+    <strong id="consent-title">방문 통계 쿠키를 허용할까요?</strong>
+    <p>방문 추이와 앱 배너 이용을 Google Analytics로 분석해요. 검색어와 정확한 위치는 보내지 않아요. <a href="#privacy-details">자세히</a></p>
+    <div class="consent-actions"><button type="button" data-consent="denied">거절</button><button type="button" data-consent="granted">허용</button></div>
+  </section>
+  <noscript><p class="noscript">약국 검색에는 JavaScript가 필요합니다. 브라우저 설정을 확인하거나 <a href="https://www.data.go.kr/data/3060079/fileData.do">공식 가맹점 자료</a>를 이용해 주세요.</p></noscript>
+</body></html>

@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "method": "공개 Threads 원문을 직접 읽고 약국명·지역을 심평원 약국 자료와 대조했습니다. 가격·재고·결제 가능 여부를 현장에서 확인한 것은 아닙니다.",
+  "entries": [
+    {
+      "pharmacyId": "3862b2e65a8080b9",
+      "name": "종로중앙약국",
+      "address": "서울특별시 종로구 대학로 1, 101호 (종로5가)",
+      "checkedAt": "2026-11-07",
+      "summary": "마운자로 성지 문의 글에 약국 실명을 밝힌 방문 경험 답글을 확인했어요.",
+      "sources": [
+        {
+          "url": "https://www.threads.com/@run_hanssol/post/DfRjyP7iQei",
+          "publishedAt": "2026-11-03",
+          "label": "약국 실명이 있는 방문 답글"
+        },
+        {
+          "url": "https://www.threads.com/@zzzzz0089/post/DfPAin0AaxT",
+          "publishedAt": "2026-11-02",
+          "label": "답글이 달린 마운자로 성지 문의 원문"
+        }
+      ]
+    },
+    {
+      "pharmacyId": "threads-365-eonjena-bundang",
+      "pharmacy": {
+        "id": "threads-365-eonjena-bundang",
+        "name": "365언제나약국",
+        "region": "경기",
+        "district": "성남분당구",
+        "address": "경기도 성남시 분당구 불정로 266, 유신제일조합 101-1호 (수내동)",
+        "market": "",
+        "latitude": 37.3670981,
+        "longitude": 127.1276937,
+        "phone": "031-698-2306",
+        "phoneSource": "https://www.data.go.kr/data/15051059/fileData.do",
+        "addressSource": "https://www.data.go.kr/data/15051059/fileData.do",
+        "addressSourceDate": "2026-09-30",
+        "coordinateSource": "https://www.data.go.kr/data/15051059/fileData.do",
+        "onnuriSupported": null,
+        "onnuriSourceDate": null,
+        "faceSignStatus": "unknown",
+        "faceSignVerifiedAt": null
+      },
+      "name": "365언제나약국",
+      "address": "경기도 성남시 분당구 불정로 266, 유신제일조합 101-1호 (수내동)",
+      "checkedAt": "2026-11-07",
+      "summary": "분당에서 K튼튼 정형외과와 365언제나약국을 방문했다는 마운자로 성지 후기를 확인했어요.",
+      "sources": [
+        {
+          "url": "https://www.threads.com/@suju_0203/post/DZZMUYOCV-Y",
+          "publishedAt": "2026-06-10",
+          "label": "분당 약국 방문 후기 원문"
+        }
+      ]
+    }
+  ]
+}

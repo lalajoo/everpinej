@@ -45,11 +45,15 @@ export function searchIndex(index, state, manifest, config, now = Date.now()) {
 export function readSearch(search, regions = []) {
   const p = new URLSearchParams(search);
   const region = p.get('region') || '';
-  return { q: (p.get('q') || '').slice(0, 100), region: regions.includes(region) ? region : '', filter: ['all', 'both', 'face', 'onnuri', 'check'].includes(p.get('filter')) ? p.get('filter') : 'all', limit: Math.min(240, Math.max(12, Number.parseInt(p.get('limit'), 10) || 12)), position: null };
+  return { tab: p.get('tab') === 'mounjaro' ? 'mounjaro' : 'all', q: (p.get('q') || '').slice(0, 100), region: regions.includes(region) ? region : '', filter: ['all', 'both', 'face', 'onnuri', 'check'].includes(p.get('filter')) ? p.get('filter') : 'all', limit: Math.min(240, Math.max(12, Number.parseInt(p.get('limit'), 10) || 12)), position: null };
 }
 export function searchUrl(state, location) {
   const url = new URL(location);
   url.search = '';
+  url.pathname = '/penuri/';
+  url.hash = '';
+  if (url.hostname === 'everpinej.com' || url.hostname === 'www.everpinej.com') { url.protocol = 'https:'; url.hostname = 'everpinej.com'; }
+  if (state.tab === 'mounjaro') url.searchParams.set('tab', 'mounjaro');
   if (state.q) url.searchParams.set('q', state.q);
   if (state.region) url.searchParams.set('region', state.region);
   if (state.filter !== 'all') url.searchParams.set('filter', state.filter);
@@ -67,4 +71,22 @@ export function locate(geolocation) {
       reject(new Error(error.code === 1 ? '위치 권한이 꺼져 있어요. 지역이나 약국명으로 검색해 주세요.' : '현재 위치를 확인하지 못했어요. 지역 검색을 이용해 주세요.'));
     }, { enableHighAccuracy: false, timeout: 10000, maximumAge: 60000 });
   });
+}
+
+export function shareMessage(state, count, event, now = Date.now()) {
+  const place = [state.region, state.q].filter(Boolean).join(' ') || '전국';
+  if (state.tab === 'mounjaro') return `${place} · 마운자로 성지 공개 후기 약국 ${count.toLocaleString('ko-KR')}곳\n원문 링크와 확인일을 페누리에서 확인해요. 현재 가격·재고는 약국에 확인해 주세요.`;
+  const filter = {all:'약국 검색', face:'페이스사인 확인 약국', both:'온누리·페이스사인 모두 확인 약국', onnuri:'디지털 온누리 확인 약국', check:'페이스사인 확인이 필요한 약국'}[state.filter] || '약국 검색';
+  let text = `${place} · ${filter} ${count.toLocaleString('ko-KR')}곳\n우리 동네 결제 혜택을 페누리에서 확인해요.`;
+  if (eventState(event, now) === 'active') {
+    const end = new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',month:'long',day:'numeric'}).format(new Date(Date.parse(event.endsAt)-1));
+    text += `\n${end}까지 대상 매장 페이스사인 결제 시 ${event.rewardPercent}% 적립 · 월 최대 ${event.monthlyLimit.toLocaleString('ko-KR')}포인트. 방문 전 조건 확인!`;
+  }
+  return text;
+}
+export function validThreadSource(source) {
+  try { const url = new URL(source.url); return url.protocol === 'https:' && ['www.threads.com','threads.com','www.threads.net','threads.net'].includes(url.hostname) && /^\/@[^/]+\/post\/[^/]+$/.test(url.pathname) && /^\d{4}-\d{2}-\d{2}$/.test(source.publishedAt) && Number.isFinite(Date.parse(source.publishedAt)); } catch { return false; }
+}
+export function curatedMatches(entry, pharmacy) {
+  return Boolean(entry && pharmacy && entry.pharmacyId === pharmacy.id && entry.name === pharmacy.name && entry.address === pharmacy.address && entry.sources?.length && entry.sources.every(validThreadSource) && /^\d{4}-\d{2}-\d{2}$/.test(entry.checkedAt) && Number.isFinite(Date.parse(entry.checkedAt)));
 }
