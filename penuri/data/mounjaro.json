@@ -53,6 +53,49 @@
           "label": "분당 약국 방문 후기 원문"
         }
       ]
+    },
+    {
+      "pharmacyId": "threads-sarang-suwon-rodeo",
+      "pharmacy": {
+        "id": "threads-sarang-suwon-rodeo",
+        "name": "사랑약국",
+        "region": "경기",
+        "district": "수원팔달구",
+        "address": "경기도 수원시 팔달구 갓매산로 51, 105호 (매산로2가, 에스알프라자23차)",
+        "market": "",
+        "latitude": 37.2689547,
+        "longitude": 127.0045568,
+        "phone": "070-8871-1324",
+        "phoneSource": "https://www.data.go.kr/data/15051059/fileData.do",
+        "addressSource": "https://www.data.go.kr/data/15051059/fileData.do",
+        "addressSourceDate": "2026-09-30",
+        "coordinateSource": "https://www.data.go.kr/data/15051059/fileData.do",
+        "onnuriSupported": null,
+        "onnuriSourceDate": null,
+        "faceSignStatus": "unknown",
+        "faceSignVerifiedAt": null
+      },
+      "name": "사랑약국",
+      "address": "경기도 수원시 팔달구 갓매산로 51, 105호 (매산로2가, 에스알프라자23차)",
+      "checkedAt": "2026-11-07",
+      "summary": "수원 마운자로 약국 문의에 수원역 로데오거리 사랑약국을 추천하고 직접 방문·결제했다고 밝힌 공개 답글을 확인했어요.",
+      "sources": [
+        {
+          "url": "https://www.threads.com/@bangeungyeong318/post/DfMldx1lJJy",
+          "publishedAt": "2026-11-01",
+          "label": "약국 실명과 위치가 있는 추천 답글"
+        },
+        {
+          "url": "https://www.threads.com/@bangeungyeong318/post/DfRSEeXlMnS",
+          "publishedAt": "2026-11-03",
+          "label": "같은 작성자의 방문·결제 경험 답글"
+        },
+        {
+          "url": "https://www.threads.com/@sss222yyyy/post/DfMS0i6FKUn",
+          "publishedAt": "2026-11-01",
+          "label": "답글이 달린 수원 마운자로 약국 문의"
+        }
+      ]
     }
   ]
 }
