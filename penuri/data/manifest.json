@@ -13,17 +13,17 @@
   "faceSignCoverage": "지역별 지도 중심에서 약국 검색 결과를 확인한 부분 목록이며 전국 전수 목록이 아님",
   "onnuriRecordCount": 3541,
   "count": 5989,
-  "faceSignVerifiedCount": 2773,
-  "addressCount": 4537,
-  "coordinateCount": 4537,
-  "index": "index-faf47d1413de.json",
+  "faceSignVerifiedCount": 2774,
+  "addressCount": 4538,
+  "coordinateCount": 4538,
+  "index": "index-3f128ddb6e35.json",
   "regions": {
     "강원": {
       "file": "region-강원-a44044622301.json",
       "count": 148
     },
     "경기": {
-      "file": "region-경기-1cabdd747738.json",
+      "file": "region-경기-62901156254c.json",
       "count": 1181
     },
     "경남": {

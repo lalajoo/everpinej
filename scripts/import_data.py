@@ -14,6 +14,7 @@ from collections import Counter, defaultdict
 from datetime import date, datetime, timezone
 from pathlib import Path
 from facesign import merge_facesign
+from official_verifications import apply_official_verifications
 
 ROOT = Path(__file__).resolve().parents[1]
 ONNURI_URL = 'https://www.data.go.kr/data/3060079/fileData.do'
@@ -152,7 +153,10 @@ def write_data(records, out, metadata):
     index = []
     for r in records:
         text = ' '.join([r['name'], r['region'], REGIONS.get(r['region'], ''), r['district'], r['address'], r['market']])
-        index.append([r['id'], r['name'], r['region'], text, r['onnuriSupported'], r['faceSignStatus'], r['faceSignVerifiedAt'], r['latitude'], r['longitude']])
+        row = [r['id'], r['name'], r['region'], text, r['onnuriSupported'], r['faceSignStatus'], r['faceSignVerifiedAt'], r['latitude'], r['longitude']]
+        if r.get('onnuriSourceDate') and r['onnuriSourceDate'] != metadata['sourceDate']:
+            row.append(r['onnuriSourceDate'])
+        index.append(row)
     manifest = {**metadata, 'count': len(records), 'faceSignVerifiedCount': sum(r['faceSignStatus'] == 'verified' for r in records), 'addressCount': sum(bool(r['address']) for r in records), 'coordinateCount': sum(r['latitude'] is not None for r in records), 'index': write_blob('index', index), 'regions': shards}
     # Publish manifest last. Keep old content-addressed files so cached manifests remain valid.
     (out / 'manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2))
@@ -166,6 +170,7 @@ def main():
     parser.add_argument('--hira-date')
     parser.add_argument('--facesign', default=str(ROOT / 'data/admin/facesign-map-20261104.json'))
     parser.add_argument('--verifications', default=str(ROOT / 'data/admin/verifications.json'))
+    parser.add_argument('--official-verifications', default=str(ROOT / 'data/admin/official-verifications.json'))
     parser.add_argument('--out', default=str(ROOT / 'penuri/data'))
     args = parser.parse_args()
     rows = read_csv(args.onnuri)
@@ -180,6 +185,8 @@ def main():
         (ROOT / 'data/admin/facesign-match-report.json').write_text(json.dumps(report, ensure_ascii=False, indent=2))
         print(json.dumps({k: v for k, v in report.items() if k != 'matches'}, ensure_ascii=False))
     records = apply_verifications(records, json.loads(Path(args.verifications).read_text()))
+    if Path(args.official_verifications).exists():
+        records = apply_official_verifications(records, hira, json.loads(Path(args.official_verifications).read_text()), args.hira_date, valid_date, coordinates)
     meta = {'sourceDate': args.date, 'sourceUrl': ONNURI_URL, 'sourceName': '소상공인시장진흥공단 전국 온누리상품권 가맹점 현황', 'hiraDate': args.hira_date, 'hiraUrl': HIRA_URL, 'hiraName': '건강보험심사평가원 전국 병의원 및 약국 현황 (공공누리 제1유형)', 'sourceSha256': hashlib.sha256(Path(args.onnuri).read_bytes()).hexdigest(), 'importedAt': datetime.now(timezone.utc).isoformat(), 'rawRowCount': len(rows)}
     manifest = write_data(records, Path(args.out), {**meta, **face_meta, 'onnuriRecordCount': onnuri_count})
     print(json.dumps({k: manifest[k] for k in ('count', 'addressCount', 'coordinateCount', 'sourceDate')}, ensure_ascii=False))

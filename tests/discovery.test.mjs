@@ -36,3 +36,16 @@ test('지역별 페이지는 기본 검색 조건·정적 약국 목록·고유 
    assert.ok(html.includes(`rel="canonical" href="https://everpinej.com${r.path}"`));assert.ok(html.includes('class="pharmacy-card"'));assert.ok(html.includes('og:image'));
  }
 });
+test('수원역 사랑약국은 기존 공식 ID로 연결되어 두 혜택 필터에 나타난다',()=>{
+ const e=curated.entries.find(e=>e.pharmacyId==='8014b8e4da410fdc'),p=data[e.pharmacyId];
+ assert.ok(e);assert.equal(e.pharmacy,undefined);assert.ok(curatedMatches(e,p));
+ assert.equal(p.onnuriSupported,true);assert.equal(p.faceSignStatus,'verified');
+ assert.equal(verification(p.onnuriSupported,p.faceSignStatus,p.faceSignVerifiedAt,p.onnuriSourceDate,config.verification,Date.parse('2026-11-07T00:00:00+09:00')).both,true);
+ assert.equal(Object.values(data).filter(r=>r.name==='사랑약국'&&r.address.includes('갓매산로 51')).length,1);
+});
+
+test('개별 공식 온누리 재확인일은 이전 전체 자료 기준일보다 우선한다',()=>{
+ const p=data['8014b8e4da410fdc'];
+ const row=[p.id,p.name,p.region,p.address,p.onnuriSupported,p.faceSignStatus,p.faceSignVerifiedAt,p.latitude,p.longitude,p.onnuriSourceDate];
+ assert.equal(searchIndex([row],{q:'',filter:'both'}, {...manifest,sourceDate:'2025-01-01'},config.verification,Date.parse('2026-11-07T00:00:00+09:00')).length,1);
+});

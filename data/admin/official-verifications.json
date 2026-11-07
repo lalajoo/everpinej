@@ -1,0 +1,23 @@
+[
+  {
+    "id": "8014b8e4da410fdc",
+    "name": "사랑약국",
+    "region": "경기",
+    "market": "수원역로데오거리상점가(매산로테마거리)",
+    "address": "경기도 수원시 팔달구 갓매산로 51, 105호 (매산로2가, 에스알프라자23차)",
+    "hiraDate": "2026-09-30",
+    "checkedAt": "2026-11-07",
+    "reviewedByAdmin": true,
+    "onnuriSource": "https://www.onnuri.gift/place",
+    "onnuriPlaceId": "09091200027",
+    "onnuriAddress": "경기도 수원시 팔달구 갓매산로 51 (매산로2가)",
+    "onnuriPaymentTypes": [
+      "지류상품권",
+      "QR결제",
+      "카드결제"
+    ],
+    "faceSignSource": "https://campaign2.naver.com/npay/facesignmap/",
+    "faceSignAddress": "경기도 수원시 팔달구 갓매산로 51",
+    "naverPlaceId": "37269151"
+  }
+]

@@ -27,7 +27,7 @@ export function searchIndex(index, state, manifest, config, now = Date.now()) {
   for (const row of index) {
     if (state.region && row[2] !== state.region && !(row[2] === '전남광주' && ['전남', '광주'].includes(state.region))) continue;
     if (!tokens.every(t => normalize(row[3]).includes(t))) continue;
-    const status = verification(row[4], row[5], row[6], manifest.sourceDate, config, now);
+    const status = verification(row[4], row[5], row[6], row[9] ?? manifest.sourceDate, config, now);
     if (state.filter === 'both' && !status.both) continue;
     if (state.filter === 'face' && !status.faceConfirmed) continue;
     if (state.filter === 'onnuri' && !status.digital) continue;

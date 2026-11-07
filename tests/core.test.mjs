@@ -75,7 +75,7 @@ test('검색 색인과 지역 파일의 ID·상태·좌표가 모두 일치한�
   for(const row of index){
     const p=all[row[0]];assert.ok(p);assert.equal(p.name,row[1]);assert.equal(p.onnuriSupported,row[4]);
     assert.equal(p.faceSignStatus,row[5]);assert.equal(p.latitude,row[7]);
-    if(p.latitude!==null){assert.ok(p.addressSource);assert.ok(p.coordinateSource);assert.ok(['unique-exact-name-and-region-both-datasets','unique-exact-name-and-street-address-official-map-hira'].includes(p.addressMatchMethod));}
+    if(p.latitude!==null){assert.ok(p.addressSource);assert.ok(p.coordinateSource);assert.ok(['unique-exact-name-and-region-both-datasets','unique-exact-name-and-street-address-official-map-hira','reviewed-official-onnuri-name-market-address-and-hira'].includes(p.addressMatchMethod));}
     if(p.faceSignStatus==='verified'){assert.ok(p.verificationSource);assert.equal(p.verificationUrl,'https://campaign2.naver.com/npay/facesignmap/');assert.equal(row[6],p.faceSignVerifiedAt);}
     if(p.phone)assert.ok(p.phoneSource);
   }

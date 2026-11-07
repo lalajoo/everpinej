@@ -55,26 +55,7 @@
       ]
     },
     {
-      "pharmacyId": "threads-sarang-suwon-rodeo",
-      "pharmacy": {
-        "id": "threads-sarang-suwon-rodeo",
-        "name": "사랑약국",
-        "region": "경기",
-        "district": "수원팔달구",
-        "address": "경기도 수원시 팔달구 갓매산로 51, 105호 (매산로2가, 에스알프라자23차)",
-        "market": "",
-        "latitude": 37.2689547,
-        "longitude": 127.0045568,
-        "phone": "070-8871-1324",
-        "phoneSource": "https://www.data.go.kr/data/15051059/fileData.do",
-        "addressSource": "https://www.data.go.kr/data/15051059/fileData.do",
-        "addressSourceDate": "2026-09-30",
-        "coordinateSource": "https://www.data.go.kr/data/15051059/fileData.do",
-        "onnuriSupported": null,
-        "onnuriSourceDate": null,
-        "faceSignStatus": "unknown",
-        "faceSignVerifiedAt": null
-      },
+      "pharmacyId": "8014b8e4da410fdc",
       "name": "사랑약국",
       "address": "경기도 수원시 팔달구 갓매산로 51, 105호 (매산로2가, 에스알프라자23차)",
       "checkedAt": "2026-11-07",

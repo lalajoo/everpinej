@@ -1,4 +1,4 @@
-import { eventState, verification, searchIndex, readSearch, searchUrl, mapUrl, locate, shareMessage, curatedMatches, isFresh } from './core.mjs?v=20261107-ui1';
+import { eventState, verification, searchIndex, readSearch, searchUrl, mapUrl, locate, shareMessage, curatedMatches, isFresh } from './core.mjs?v=20261107-sarang1';
 const $ = selector => document.querySelector(selector);
 const regions = ['서울', '부산', '대구', '인천', '광주', '대전', '울산', '세종', '경기', '강원', '충북', '충남', '전북', '전남', '경북', '경남', '제주', '전남광주'];
 const initialSearch = () => location.search || new URLSearchParams({region:document.body.dataset.region || '',q:document.body.dataset.query || ''}).toString();
@@ -80,6 +80,10 @@ function card(p, distance) {
       item.append(link(source.label + ' ↗', source.url), element('span', '', '게시 ' + source.publishedAt.replaceAll('-', '.'))); box.append(item);
     }
     article.append(box);
+  }
+  if (p.onnuriVerificationSource && p.onnuriSource === 'https://www.onnuri.gift/place') {
+    const details = element('details', 'card-details'); details.append(element('summary', '', '온누리 확인 출처 보기'), element('p', '', p.onnuriVerificationSource), link('온누리플레이스 공식 가맹점 ↗', p.onnuriSource));
+    article.append(details);
   }
   if (p.verificationSource) {
     const details = element('details', 'card-details'); details.append(element('summary', '', '확인 출처 보기'), element('p', '', p.verificationSource));
