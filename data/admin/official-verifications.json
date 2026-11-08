@@ -19,5 +19,26 @@
     "faceSignSource": "https://campaign2.naver.com/npay/facesignmap/",
     "faceSignAddress": "경기도 수원시 팔달구 갓매산로 51",
     "naverPlaceId": "37269151"
+  },
+  {
+    "id": "55fdc5a9dc2375b7",
+    "name": "부광약국",
+    "region": "서울",
+    "market": "종로5가대로골목형상점가",
+    "address": "서울특별시 종로구 종로 223-1, (종로5가)",
+    "hiraDate": "2026-09-30",
+    "checkedAt": "2026-11-08",
+    "reviewedByAdmin": true,
+    "onnuriSource": "https://www.onnuri.gift/place",
+    "onnuriPlaceId": "01577200005",
+    "onnuriAddress": "서울특별시 종로구 종로 223-1 (종로5가)",
+    "onnuriPaymentTypes": [
+      "지류상품권",
+      "QR결제",
+      "카드결제"
+    ],
+    "faceSignSource": "https://campaign2.naver.com/npay/facesignmap/",
+    "faceSignAddress": "서울 종로구 종로 223-1 부광약국",
+    "naverPlaceId": "19531113"
   }
 ]

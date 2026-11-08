@@ -77,6 +77,82 @@
           "label": "답글이 달린 수원 마운자로 약국 문의"
         }
       ]
+    },
+    {
+      "pharmacyId": "55fdc5a9dc2375b7",
+      "name": "부광약국",
+      "address": "서울특별시 종로구 종로 223-1, (종로5가)",
+      "checkedAt": "2026-11-08",
+      "summary": "마운자로 성지 문의의 공개 답글에서 종로5가 부광약국을 실명으로 추천한 내용을 확인했어요.",
+      "sources": [
+        {
+          "url": "https://www.threads.com/@ro.jaeeun/post/DfUgCRoFBHW",
+          "publishedAt": "2026-11-04",
+          "label": "종로5가 약국 실명이 있는 추천 답글"
+        },
+        {
+          "url": "https://www.threads.com/@ppark8888/post/DfUKs8MEsrz",
+          "publishedAt": "2026-11-04",
+          "label": "답글이 달린 마운자로 성지 문의 원문"
+        }
+      ]
+    },
+    {
+      "pharmacyId": "01e30e51c2303910",
+      "name": "구포큰약국",
+      "address": "부산광역시 북구 금곡대로 14, 3호선덕천역 N18, N19, N20호 (덕천동)",
+      "checkedAt": "2026-11-08",
+      "summary": "마운자로 관련 공개 방문 후기에서 부산 북구 덕천역 지하상가 구포큰약국을 실명으로 추천한 내용을 확인했어요.",
+      "sources": [
+        {
+          "url": "https://www.threads.com/@error_code_051/post/DfTmVPRn_vR",
+          "publishedAt": "2026-11-04",
+          "label": "구포큰약국 실명·위치가 있는 방문 후기"
+        }
+      ]
+    },
+    {
+      "pharmacyId": "threads-mega-onnuri-dongtan",
+      "pharmacy": {
+        "id": "threads-mega-onnuri-dongtan",
+        "name": "동탄메가온누리약국",
+        "region": "경기",
+        "district": "화성동탄구",
+        "address": "경기도 화성시 동탄구 동탄대로5길 9, 더샵 동탄센텀폴리스 2단지 1012호 외 7개호 (송동)",
+        "market": "동탄그랑파사쥬 상점가",
+        "latitude": 37.1676291,
+        "longitude": 127.1058272,
+        "coordinateSource": "https://www.data.go.kr/data/15051059/fileData.do",
+        "addressSource": "https://www.data.go.kr/data/15051059/fileData.do",
+        "addressSourceDate": "2026-09-30",
+        "phone": "031-373-6539",
+        "phoneSource": "https://www.data.go.kr/data/15051059/fileData.do",
+        "onnuriSupported": true,
+        "onnuriSourceDate": "2026-11-08",
+        "onnuriSource": "https://www.onnuri.gift/place",
+        "onnuriVerificationSource": "온누리플레이스 공식 가맹점 09691200028: 동탄메가온누리약국 · 경기도 화성시 동탄구 동탄대로5길 9 (송동) · 동탄그랑파사쥬 상점가. 지류상품권·QR결제·카드결제 표시를 확인했습니다.",
+        "faceSignStatus": "verified",
+        "faceSignVerifiedAt": "2026-11-08",
+        "verificationUrl": "https://campaign2.naver.com/npay/facesignmap/",
+        "verificationSource": "Npay 공식 페이스사인 지도: 동탄메가온누리약국 · 경기 화성시 동탄구 동탄대로5길 9 1층 1012호~1016호, 1018호~1020호 (네이버 장소 2062732231). 심평원의 메가온누리약국과 도로명주소·1012호 및 온누리 공식 전화번호를 대조했습니다. 현장 결제 확인은 아닙니다.",
+        "lastUpdatedAt": "2026-11-08"
+      },
+      "name": "동탄메가온누리약국",
+      "address": "경기도 화성시 동탄구 동탄대로5길 9, 더샵 동탄센텀폴리스 2단지 1012호 외 7개호 (송동)",
+      "checkedAt": "2026-11-08",
+      "summary": "마운자로 성지 문의의 공개 답글에서 동탄메가온누리를 구체적으로 추천한 내용을 확인했어요. 공식 가맹점의 이름·주소를 심평원 자료와 대조했어요.",
+      "sources": [
+        {
+          "url": "https://www.threads.com/@chestnut82824/post/DfWTqyuiQ4f",
+          "publishedAt": "2026-11-05",
+          "label": "동탄 약국 실명이 있는 추천 답글"
+        },
+        {
+          "url": "https://www.threads.com/@ppark8888/post/DfUKs8MEsrz",
+          "publishedAt": "2026-11-04",
+          "label": "답글이 달린 마운자로 성지 문의 원문"
+        }
+      ]
     }
   ]
 }
