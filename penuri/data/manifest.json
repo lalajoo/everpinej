@@ -6,81 +6,82 @@
   "hiraUrl": "https://www.data.go.kr/data/15051059/fileData.do",
   "hiraName": "건강보험심사평가원 전국 병의원 및 약국 현황 (공공누리 제1유형)",
   "sourceSha256": "66173bf934ad24d3195e9e0c1be0e62adcca0e4767e19a80c435f8e1aead4df6",
-  "importedAt": "2026-11-03T15:26:17.127165+00:00",
+  "importedAt": "2026-11-09T00:22:32.452474+00:00",
   "rawRowCount": 225803,
   "faceSignSource": "https://campaign2.naver.com/npay/facesignmap/",
-  "faceSignSourceDate": "2026-11-04",
-  "faceSignCoverage": "지역별 지도 중심에서 약국 검색 결과를 확인한 부분 목록이며 전국 전수 목록이 아님",
+  "faceSignSourceDate": "2026-11-09",
+  "faceSignCoverage": "기존 28개 지역 중심 검색 범위를 공개 화면에서 재확인하고 누락 약국을 이름으로 추가 조회. 검색당 최대 200개이며 전국 전수 자료 아님.",
   "onnuriRecordCount": 3541,
-  "count": 5989,
-  "faceSignVerifiedCount": 2775,
-  "addressCount": 4539,
-  "coordinateCount": 4539,
-  "index": "index-2c1da0c821a7.json",
+  "faceSignRefreshedCount": 2823,
+  "count": 6046,
+  "faceSignVerifiedCount": 2842,
+  "addressCount": 4596,
+  "coordinateCount": 4596,
+  "index": "index-63e4fce72367.json",
   "regions": {
     "강원": {
-      "file": "region-강원-a44044622301.json",
-      "count": 148
+      "file": "region-강원-b091b151444b.json",
+      "count": 152
     },
     "경기": {
-      "file": "region-경기-62901156254c.json",
-      "count": 1181
-    },
-    "경남": {
-      "file": "region-경남-500559579736.json",
-      "count": 266
-    },
-    "경북": {
-      "file": "region-경북-c977fb61b7d5.json",
-      "count": 221
-    },
-    "대구": {
-      "file": "region-대구-b586521332db.json",
-      "count": 328
-    },
-    "대전": {
-      "file": "region-대전-fe64a710cadf.json",
-      "count": 313
-    },
-    "부산": {
-      "file": "region-부산-d95a890bcaac.json",
-      "count": 309
-    },
-    "서울": {
-      "file": "region-서울-2db7248430df.json",
+      "file": "region-경기-611fb24a7c8b.json",
       "count": 1193
     },
+    "경남": {
+      "file": "region-경남-9f8933005abc.json",
+      "count": 267
+    },
+    "경북": {
+      "file": "region-경북-5e028752fd1f.json",
+      "count": 225
+    },
+    "대구": {
+      "file": "region-대구-68ddcbb7998f.json",
+      "count": 330
+    },
+    "대전": {
+      "file": "region-대전-fbf413509475.json",
+      "count": 314
+    },
+    "부산": {
+      "file": "region-부산-73d1df3274ee.json",
+      "count": 310
+    },
+    "서울": {
+      "file": "region-서울-878dc90b6a69.json",
+      "count": 1208
+    },
     "세종": {
-      "file": "region-세종-daab582806bd.json",
+      "file": "region-세종-6e7f04329027.json",
       "count": 125
     },
     "울산": {
-      "file": "region-울산-d240065721f1.json",
+      "file": "region-울산-706bee334616.json",
       "count": 156
     },
     "인천": {
-      "file": "region-인천-a56da67c8d18.json",
-      "count": 174
+      "file": "region-인천-770327d3501d.json",
+      "count": 181
     },
     "전남광주": {
-      "file": "region-전남광주-2429e3999931.json",
-      "count": 855
+      "file": "region-전남광주-37cd3dd36322.json",
+      "count": 858
     },
     "전북": {
-      "file": "region-전북-1e99447ccbe7.json",
-      "count": 261
+      "file": "region-전북-323d27388c2b.json",
+      "count": 264
     },
     "제주": {
-      "file": "region-제주-c8b5a123d484.json",
-      "count": 43
+      "file": "region-제주-b0d8938f7515.json",
+      "count": 44
     },
     "충남": {
-      "file": "region-충남-a97b0400635a.json",
-      "count": 248
+      "file": "region-충남-83aa327b2ea8.json",
+      "count": 249
     },
     "충북": {
-      "file": "region-충북-44f7f521ff5f.json",
-      "count": 168
+      "file": "region-충북-449bac919a83.json",
+      "count": 170
     }
   }
 }
