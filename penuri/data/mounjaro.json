@@ -153,6 +153,58 @@
           "label": "답글이 달린 마운자로 성지 문의 원문"
         }
       ]
+    },
+    {
+      "pharmacyId": "4446aea039c66222",
+      "name": "한라약국",
+      "address": "제주특별자치도 제주시 월랑로 33, 1층 (노형동, 한라빌딩)",
+      "checkedAt": "2026-11-09",
+      "summary": "제주시 한라약국을 실명으로 밝힌 마운자로 관련 공개 후기를 확인했어요.",
+      "sources": [
+        {
+          "url": "https://www.threads.com/@harusari_story/post/DfY_MVvGTpc",
+          "publishedAt": "2026-11-06",
+          "label": "제주시 한라약국 실명이 있는 후기 원문"
+        }
+      ]
+    },
+    {
+      "pharmacyId": "6c05ef6db7d9a789",
+      "name": "다나약국",
+      "address": "대구광역시 수성구 달구벌대로 2333, (수성동4가)",
+      "checkedAt": "2026-11-09",
+      "summary": "대구 마운자로 성지 문의의 공개 답글에서 수성구 다나약국을 직접 이용했다고 밝힌 추천을 확인했어요.",
+      "sources": [
+        {
+          "url": "https://www.threads.com/@uzzzzzzzo_o/post/DfOjxwnk1M7",
+          "publishedAt": "2026-11-02",
+          "label": "수성구 다나약국 이용 경험 답글"
+        },
+        {
+          "url": "https://www.threads.com/@kawaerio/post/DfOZK9OAf4j",
+          "publishedAt": "2026-11-02",
+          "label": "답글이 달린 대구 마운자로 성지 문의 원문"
+        }
+      ]
+    },
+    {
+      "pharmacyId": "5e25b60c77238fd3",
+      "name": "만촌대형약국",
+      "address": "대구광역시 수성구 달구벌대로 2599, 애비뉴상가 301동 L101호 (만촌동)",
+      "checkedAt": "2026-11-09",
+      "summary": "대구 마운자로 성지 문의의 공개 답글에서 만촌대형약국을 실명으로 추천한 내용을 확인했어요.",
+      "sources": [
+        {
+          "url": "https://www.threads.com/@puppy.q11/post/DfOuQ_bHZgJ",
+          "publishedAt": "2026-11-02",
+          "label": "만촌대형약국 실명이 있는 추천 답글"
+        },
+        {
+          "url": "https://www.threads.com/@kawaerio/post/DfOZK9OAf4j",
+          "publishedAt": "2026-11-02",
+          "label": "답글이 달린 대구 마운자로 성지 문의 원문"
+        }
+      ]
     }
   ]
 }
