@@ -26,8 +26,12 @@ Vite `base`는 `/phonecity/`입니다. 개발 주소는 `http://localhost:5183/p
 
 ## 통계 확인
 
-기존 GA4 측정 ID **G-D363V9189T**, 속성 **562159481**을 사용합니다.
-[Google Analytics 보고서](https://analytics.google.com/analytics/web/#/a403981389p562159481/reports/reportinghub)에서 페이지 경로 `/phonecity/`로 폰도시를 구분하세요. 공통 속성 전체 합계에는 페누리도 포함됩니다.
+폰도시 전용 GA4 속성 **달콤한 나의 폰도시**(`563479387`), 측정 ID **G-NV579L5P1K**, 웹 스트림 **폰도시 Web**(`16307992629`)을 사용합니다. 보고 시간대는 대한민국(GMT+09:00), 통화는 KRW입니다.
+[Google Analytics 보고서](https://analytics.google.com/analytics/web/#/a403981389p563479387/reports/reportinghub)에서 폰도시만 확인합니다. [실시간 보고서](https://analytics.google.com/analytics/web/#/a403981389p563479387/realtime/overview)에서 배포 후 수신을 확인할 수 있습니다.
+
+2026-11-10에 페누리와 속성을 분리했습니다. 전환 이후 새로 불러온 페이지부터 전용 속성으로만 전송합니다. 분리 전에 수집된 데이터는 기존 페누리 속성(`562159481`)에 남습니다. 페누리 태그를 다시 연결하거나 공통 태그의 대상으로 합치지 마세요.
+
+웹 스트림의 **향상된 측정은 사용 안함**으로 유지합니다. 앱에서 고정 주소의 `page_view`와 아래 이벤트를 직접 전송하므로 자동 수집을 추가하면 중복 집계 또는 입력 정보 노출 위험이 생깁니다.
 
 폰도시 이벤트: `phonecity_walk_start`, `phonecity_building_enter`, `phonecity_rooftop_reached`, `phonecity_city_saved`, `phonecity_photo_saved`, `phonecity_share`, `phonecity_flag_planted`.
 
@@ -35,4 +39,4 @@ Vite `base`는 `/phonecity/`입니다. 개발 주소는 `http://localhost:5183/p
 
 ## 확인 범위
 
-71개 단위 테스트, 타입 검사, 정적 빌드와 브라우저의 모바일/데스크톱 화면을 검증합니다. 실제 iPhone·Android의 프레임 속도 및 모든 인앱 브라우저의 OS 공유창은 별도 실기기 확인 대상입니다.
+72개 단위 테스트, 타입 검사, 정적 빌드와 브라우저의 모바일/데스크톱 화면을 검증합니다. 실제 iPhone·Android의 프레임 속도 및 모든 인앱 브라우저의 OS 공유창은 별도 실기기 확인 대상입니다.

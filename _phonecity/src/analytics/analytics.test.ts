@@ -21,6 +21,17 @@ describe('consent-based analytics', () => {
     expect(e.win[`ga-disable-${MEASUREMENT_ID}`]).toBe(true);
     expect(e.cookies.every(v => v.startsWith('phonecity_ga') && v.includes('Path=/phonecity/'))).toBe(true);
   });
+  it('routes the script, configuration and every event only to the dedicated Phone City property', () => {
+    const e = setup(); e.analytics.consent(true); e.analytics.track('phonecity_walk_start');
+    expect(MEASUREMENT_ID).toBe('G-NV579L5P1K');
+    expect(e.scripts).toEqual([expect.objectContaining({src: `https://www.googletagmanager.com/gtag/js?id=${MEASUREMENT_ID}`})]);
+    const commands = e.win.dataLayer.map(value => Array.from(value as IArguments));
+    expect(commands.filter(command => command[0] === 'config').map(command => command[1])).toEqual([MEASUREMENT_ID]);
+    expect(commands.filter(command => command[0] === 'event')).toEqual([
+      ['event', 'page_view', expect.objectContaining({send_to: MEASUREMENT_ID})],
+      ['event', 'phonecity_walk_start', expect.objectContaining({send_to: MEASUREMENT_ID})],
+    ]);
+  });
   it('never records local previews, other services, insecure URLs or deceptive hostnames', () => {
     for (const args of [['localhost','http:','/phonecity/'],['everpinej.com.evil.test','https:','/phonecity/'],['everpinej.com','http:','/phonecity/'],['everpinej.com','https:','/penuri/']]) {
       const e=setup(...args); e.analytics.consent(true); expect(e.scripts).toHaveLength(0); expect(e.analytics.track('page_view')).toBe(false);

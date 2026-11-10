@@ -12,7 +12,7 @@ React 19.3 · TypeScript 6.0 · Vite 8 · three 0.187 · @react-three/fiber 9.8 
 ```bash
 npm install          # 처음 한 번 (node_modules는 저장소에 없음)
 npm run dev          # http://localhost:5183/phonecity/ (predev가 OCR 파일을 public/ocr로 복사)
-npm test             # 71개 단위 테스트 — 변경 후 반드시 통과
+npm test             # 72개 단위 테스트 — 변경 후 반드시 통과
 npm run build        # 타입 검사 + 정적 빌드(dist/). prebuild가 OCR 파일 복사
 ```
 개발 전용: `http://localhost:5183/phonecity/?step` 으로 열면 자동 렌더를 멈추고 `window.__step(n)`으로 프레임을 직접 진행(브라우저 창이 가려져 rAF가 멈출 때 자동 검증용). 배포 빌드에서는 제거됨.
@@ -68,6 +68,6 @@ scripts/        copy-ocr-assets.mjs (OCR 엔진·언어 데이터를 public/ocr�
 
 ## Deployment update (2026-11-10)
 - Production: https://everpinej.com/phonecity/ on GitHub Pages, lalajoo/everpinej main. See DEPLOY.md. Source: _phonecity/, output: phonecity/.
-- User-authorized exception to the no-external-API rule: consent-based GA4 G-D363V9189T. No city data, screenshots, names, usage times or entered text may be sent.
+- User-authorized exception to the no-external-API rule: consent-based GA4 G-NV579L5P1K, dedicated property 563479387 (달콤한 나의 폰도시). Keep analytics separate from Penuri. No city data, screenshots, names, usage times or entered text may be sent.
 - First visit renders an SVG city immediately. Profile setup and 3D loading begin on explicit exploration.
 - OG image, code splitting and public deployment are complete; prior remaining-work list is historical.

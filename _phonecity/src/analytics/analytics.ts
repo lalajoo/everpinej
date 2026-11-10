@@ -1,4 +1,5 @@
-export const MEASUREMENT_ID = 'G-D363V9189T';
+// Dedicated Phone City property; never route events to another service.
+export const MEASUREMENT_ID = 'G-NV579L5P1K';
 export const CANONICAL_URL = 'https://everpinej.com/phonecity/';
 export const CONSENT_KEY = 'phone-city/v1/analytics-consent';
 export const EVENTS = ['page_view', 'phonecity_walk_start', 'phonecity_building_enter', 'phonecity_rooftop_reached', 'phonecity_city_saved', 'phonecity_photo_saved', 'phonecity_share', 'phonecity_flag_planted'] as const;
