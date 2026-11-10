@@ -1,0 +1,10 @@
+import { defineConfig } from 'vitest/config';
+import react from '@vitejs/plugin-react';
+
+export default defineConfig({
+  base: '/phonecity/',
+  plugins: [react()],
+  build: { manifest: true },
+  server: { port: 5183, host: true },
+  test: { environment: 'node', include: ['src/**/*.test.ts', 'src/**/*.test.tsx'] },
+});
