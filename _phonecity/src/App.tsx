@@ -46,7 +46,13 @@ function hasWebGL(): boolean {
 
 function useMedia(q: string) {
   const [m, setM] = useState(() => matchMedia(q).matches);
-  useEffect(() => { const mq = matchMedia(q); const f = () => setM(mq.matches); mq.addEventListener('change', f); return () => mq.removeEventListener('change', f); }, [q]);
+  useEffect(() => {
+    const mq = matchMedia(q);
+    const sync = () => setM(mq.matches);
+    mq.addEventListener('change', sync);
+    sync(); // A resize can happen between initial render and subscription.
+    return () => mq.removeEventListener('change', sync);
+  }, [q]);
   return m;
 }
 
