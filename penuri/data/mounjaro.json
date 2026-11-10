@@ -205,6 +205,25 @@
           "label": "답글이 달린 대구 마운자로 성지 문의 원문"
         }
       ]
+    },
+    {
+      "pharmacyId": "0f7d8f11505eb39c",
+      "name": "꿈꾸는약국",
+      "address": "전남광주통합특별시 북구 하서로 421, (용두동)",
+      "checkedAt": "2026-11-10",
+      "summary": "광주 마운자로 관련 공개 후기에서 작성자가 북구 꿈꾸는약국을 직접 이용했다고 밝힌 답글을 확인했어요.",
+      "sources": [
+        {
+          "url": "https://www.threads.com/@ssu_bom.gyeol.yul/post/DfPWx2bE98u",
+          "publishedAt": "2026-11-02",
+          "label": "북구 꿈꾸는약국 이용 경험 답글"
+        },
+        {
+          "url": "https://www.threads.com/@ssu_bom.gyeol.yul/post/DfO4ae1E7xd",
+          "publishedAt": "2026-11-02",
+          "label": "답글이 달린 광주 마운자로 후기 원문"
+        }
+      ]
     }
   ]
 }
