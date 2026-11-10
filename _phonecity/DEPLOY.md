@@ -33,10 +33,12 @@ Vite `base`는 `/phonecity/`입니다. 개발 주소는 `http://localhost:5183/p
 
 웹 스트림의 **향상된 측정은 사용 안함**으로 유지합니다. 앱에서 고정 주소의 `page_view`와 아래 이벤트를 직접 전송하므로 자동 수집을 추가하면 중복 집계 또는 입력 정보 노출 위험이 생깁니다.
 
+자동 생성된 태그 관리자 컨테이너 **GTM-KN2QL2DC**의 Google Analytics 태그에도 `send_page_view=false`를 설정하고, 동일 페이지 구성 무시를 해제했습니다. 코드에서는 태그 초기화 전에 `set`으로 개인정보 보호·쿠키 경로·수동 조회 기본값을 적용합니다. 자동 조회를 다시 활성화하지 마세요.
+
 폰도시 이벤트: `phonecity_walk_start`, `phonecity_building_enter`, `phonecity_rooftop_reached`, `phonecity_city_saved`, `phonecity_photo_saved`, `phonecity_share`, `phonecity_flag_planted`.
 
 방문자가 통계를 허용한 뒤에만 Google tag를 불러옵니다. 거절하거나 차단 도구를 쓰는 방문은 집계되지 않습니다. 운영 도메인 외의 미리보기·로컬 개발은 수집하지 않습니다. 앱 이름·시간·캡처·닉네임·깃발·도시 데이터를 이벤트에 넣지 않으며 페이지 주소도 고정합니다. 광고 개인화는 비활성화합니다. 하단 설정에서 동의를 철회할 수 있습니다.
 
 ## 확인 범위
 
-72개 단위 테스트, 타입 검사, 정적 빌드와 브라우저의 모바일/데스크톱 화면을 검증합니다. 실제 iPhone·Android의 프레임 속도 및 모든 인앱 브라우저의 OS 공유창은 별도 실기기 확인 대상입니다.
+73개 단위 테스트, 타입 검사, 정적 빌드와 브라우저의 모바일/데스크톱 화면을 검증합니다. 실제 iPhone·Android의 프레임 속도 및 모든 인앱 브라우저의 OS 공유창은 별도 실기기 확인 대상입니다.

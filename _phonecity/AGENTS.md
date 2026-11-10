@@ -12,7 +12,7 @@ React 19.3 · TypeScript 6.0 · Vite 8 · three 0.187 · @react-three/fiber 9.8 
 ```bash
 npm install          # 처음 한 번 (node_modules는 저장소에 없음)
 npm run dev          # http://localhost:5183/phonecity/ (predev가 OCR 파일을 public/ocr로 복사)
-npm test             # 72개 단위 테스트 — 변경 후 반드시 통과
+npm test             # 73개 단위 테스트 — 변경 후 반드시 통과
 npm run build        # 타입 검사 + 정적 빌드(dist/). prebuild가 OCR 파일 복사
 ```
 개발 전용: `http://localhost:5183/phonecity/?step` 으로 열면 자동 렌더를 멈추고 `window.__step(n)`으로 프레임을 직접 진행(브라우저 창이 가려져 rAF가 멈출 때 자동 검증용). 배포 빌드에서는 제거됨.

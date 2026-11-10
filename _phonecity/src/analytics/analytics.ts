@@ -49,14 +49,18 @@ export function createAnalytics(win: AnalyticsHost, doc: Pick<Document, 'referre
       started = true;
       win.dataLayer = win.dataLayer || [];
       command('consent', 'default', { analytics_storage: 'granted', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
-      command('js', new Date());
-      command('config', MEASUREMENT_ID, {
+      const settings = {
         ...eventPayload('page_view', doc.referrer), send_page_view: false,
         allow_google_signals: false, allow_ad_personalization_signals: false,
         cookie_prefix: 'phonecity', cookie_path: '/phonecity/', cookie_domain: 'none',
         cookie_flags: 'SameSite=Lax;Secure', cookie_expires: 60 * 60 * 24 * 180,
         campaign_source: '', campaign_medium: '', campaign_name: '', campaign_id: '', campaign_term: '', campaign_content: '',
-      });
+      };
+      // Upgraded Google tags can initialize before a destination config command.
+      // Apply privacy and page-view defaults before any tag initialization.
+      command('set', settings);
+      command('js', new Date());
+      command('config', MEASUREMENT_ID, settings);
       const script = doc.createElement('script');
       script.async = true; script.src = `https://www.googletagmanager.com/gtag/js?id=${MEASUREMENT_ID}`;
       script.referrerPolicy = 'origin'; doc.head.append(script);

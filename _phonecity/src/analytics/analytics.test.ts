@@ -32,6 +32,17 @@ describe('consent-based analytics', () => {
       ['event', 'phonecity_walk_start', expect.objectContaining({send_to: MEASUREMENT_ID})],
     ]);
   });
+  it('applies privacy and manual page-view defaults before the Google tag initializes', () => {
+    const e = setup(); e.analytics.consent(true);
+    const commands = e.win.dataLayer.map(value => Array.from(value as IArguments));
+    const setIndex = commands.findIndex(command => command[0] === 'set');
+    const initIndex = commands.findIndex(command => command[0] === 'js');
+    const config = commands.find(command => command[0] === 'config')!;
+    expect(setIndex).toBeGreaterThan(-1);
+    expect(setIndex).toBeLessThan(initIndex);
+    expect(commands[setIndex][1]).toEqual(config[2]);
+    expect(config[2]).toMatchObject({send_page_view: false, page_location: CANONICAL_URL, page_referrer: 'https://search.example/', cookie_prefix: 'phonecity', cookie_path: '/phonecity/', cookie_domain: 'none', allow_google_signals: false, allow_ad_personalization_signals: false});
+  });
   it('never records local previews, other services, insecure URLs or deceptive hostnames', () => {
     for (const args of [['localhost','http:','/phonecity/'],['everpinej.com.evil.test','https:','/phonecity/'],['everpinej.com','http:','/phonecity/'],['everpinej.com','https:','/penuri/']]) {
       const e=setup(...args); e.analytics.consent(true); expect(e.scripts).toHaveLength(0); expect(e.analytics.track('page_view')).toBe(false);
