@@ -122,3 +122,8 @@ details{margin-top:8px;font-size:14px}summary{cursor:pointer;color:var(--accent)
 .mini-steps{padding-left:20px}.mini-steps li{margin-bottom:8px}.mini-steps li > b:first-child{display:block}
 .legal h2{font-size:17px}.legal.warn{border-color:#f5c2c2;background:#fff7f7}.legal.warn h2{color:#7a1f1f}
 #submit-form label.consent{display:flex;align-items:flex-start;gap:6px;font-size:13px;margin:6px 0 4px}
+.consent-panel{position:fixed;z-index:10;bottom:max(12px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);width:calc(100% - 24px);max-width:520px;padding:16px 18px;border:1px solid var(--line);background:#fff;border-radius:15px;box-shadow:0 8px 40px #1f2a2425}
+.consent-panel strong{font-size:15px}.consent-panel p{font-size:13px;color:var(--sub);margin:6px 0 12px;line-height:1.6}
+.consent-actions{display:flex;gap:8px}.consent-actions button{flex:1;min-height:44px;border:1px solid var(--line);background:#fff;border-radius:10px;font-size:14px;cursor:pointer}
+.consent-actions button:last-child{background:var(--accent);color:#fff;border-color:var(--accent)}
+.text-button.muted{color:var(--sub);font-weight:600;font-size:13px}

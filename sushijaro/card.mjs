@@ -79,6 +79,7 @@ export function setupCard() {
     $('#card-output').innerHTML = `<div class="ja-card" lang="ja"><p class="ja-card-head">医師・受付の方へ</p>${lines.map(l => `<p>${esc(l.ja)}</p>`).join('')}</div>
       <details><summary>한국어 뜻 보기</summary><ul class="small">${lines.map(l => `<li>${esc(l.ko)}</li>`).join('')}</ul></details>`;
     $('#card-output').hidden = false;
+    window.sushijaroTrack?.('card_created');
     $('#card-output').scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 }

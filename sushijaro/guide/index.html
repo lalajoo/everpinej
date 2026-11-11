@@ -13,7 +13,8 @@
   <meta property="og:url" content="https://everpinej.com/sushijaro/guide/">
   <link rel="canonical" href="https://everpinej.com/sushijaro/guide/">
   <link rel="icon" href="../favicon.svg?v=2" type="image/svg+xml">
-  <link rel="stylesheet" href="../styles.css?v=20261111g">
+  <link rel="stylesheet" href="../styles.css?v=20261111h">
+  <script type="module" src="../analytics.mjs?v=2"></script>
 </head>
 <body class="guide-page">
   <div class="shell">
@@ -176,7 +177,7 @@
           <aside id="majeunjaro-promo" class="app-promo" aria-labelledby="promo-title">
             <div class="promo-heading"><span>광고 · 자사 앱</span><span class="promo-category">나를 돌보는 기록</span></div>
             <div class="promo-body"><img src="../assets/majeunjaro-icon.jpg" width="56" height="56" alt="" decoding="async"><div><h2 id="promo-title">맞은자로</h2><p>회원가입 없이 주사·체중 기록. 일본에서 받아 온 마운자로, 맞은 날과 부위를 잊지 않게.</p></div></div>
-            <div class="promo-links"><a href="https://apps.apple.com/kr/app/id6794129450" target="_blank" rel="noopener noreferrer" aria-label="맞은자로 App Store에서 보기">App Store <span aria-hidden="true">↗</span></a><a href="https://play.google.com/store/apps/details?id=com.songminsuk.majeunjaro" target="_blank" rel="noopener noreferrer" aria-label="맞은자로 Google Play에서 보기">Google Play <span aria-hidden="true">↗</span></a></div>
+            <div class="promo-links"><a href="https://apps.apple.com/kr/app/id6794129450" target="_blank" rel="noopener noreferrer" data-app-store="apple" aria-label="맞은자로 App Store에서 보기">App Store <span aria-hidden="true">↗</span></a><a href="https://play.google.com/store/apps/details?id=com.songminsuk.majeunjaro" target="_blank" rel="noopener noreferrer" data-app-store="google" aria-label="맞은자로 Google Play에서 보기">Google Play <span aria-hidden="true">↗</span></a></div>
           </aside>
         </li>
 
@@ -273,7 +274,12 @@
       <p class="small center"><a href="../notice/">이용 안내와 주의사항</a>을 꼭 읽어 주세요. 이 안내는 의료 조언이 아니에요. 처방 여부와 용량은 진료 의사가 정해요. 일본어 발음은 한글로 가깝게 적은 것이고, 장음은 ‘-’로 표시했어요.</p>
     </main>
 
-    <footer class="footer"><p>스시자로 · <a href="/">everpinej</a> · <a href="../notice/">이용 안내·주의사항</a> · <a href="mailto:contact@everpinej.com">문의</a></p></footer>
+    <footer class="footer"><p>스시자로 · <a href="/">everpinej</a> · <a href="../notice/">이용 안내·주의사항</a> · <a href="mailto:contact@everpinej.com">문의</a></p><p><button type="button" id="analytics-settings" class="text-button muted" hidden>방문 통계 설정</button></p></footer>
   </div>
+  <section id="analytics-consent" class="consent-panel" aria-labelledby="consent-title" hidden>
+    <strong id="consent-title">방문 통계 쿠키를 허용할까요?</strong>
+    <p>방문 수와 앱 배너 이용을 Google Analytics로 세어요. 검색어, 위치, 진료 카드·인증 양식 내용은 보내지 않아요. <a href="../notice/#privacy">자세히</a></p>
+    <div class="consent-actions"><button type="button" data-consent="denied">거절</button><button type="button" data-consent="granted">허용</button></div>
+  </section>
 </body>
 </html>

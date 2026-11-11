@@ -103,10 +103,10 @@ function bind() {
   $('#dose').addEventListener('change', e => { state.dose = e.target.value; writeUrl(); render(); });
   $('#sort').addEventListener('change', e => { state.sort = e.target.value; if (state.sort === 'distance' && !state.origin) locate(); else render(); });
   document.querySelectorAll('[data-verified]').forEach(b => b.addEventListener('click', () => { state.verified = b.dataset.verified; writeUrl(); render(); }));
-  document.querySelectorAll('[data-channel]').forEach(b => b.addEventListener('click', () => { state.channel = b.dataset.channel; writeUrl(); render(); }));
+  document.querySelectorAll('[data-channel]').forEach(b => b.addEventListener('click', () => { state.channel = b.dataset.channel; writeUrl(); render(); if (state.channel === 'online') window.sushijaroTrack?.('filter_online'); }));
   $('#nearby').addEventListener('click', locate);
 
-  $('#open-submit').addEventListener('click', () => { $('#submit-status').textContent = ''; $('#submit-dialog').showModal(); });
+  $('#open-submit').addEventListener('click', () => { $('#submit-status').textContent = ''; $('#submit-dialog').showModal(); window.sushijaroTrack?.('receipt_form_open'); });
   $('#close-submit').addEventListener('click', () => $('#submit-dialog').close());
   $('#submit-form').addEventListener('submit', e => {
     e.preventDefault();
