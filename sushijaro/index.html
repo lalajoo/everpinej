@@ -15,7 +15,7 @@
   <link rel="canonical" href="https://everpinej.com/sushijaro/">
   <link rel="icon" href="./favicon.svg?v=2" type="image/svg+xml">
   <link rel="stylesheet" href="./styles.css?v=20261111i">
-  <script type="module" src="./app.mjs?v=20261111h"></script>
+  <script type="module" src="./app.mjs?v=20261112a"></script>
   <script type="module" src="./analytics.mjs?v=2"></script>
 </head>
 <body>
@@ -137,7 +137,9 @@
           <li><strong>이름·생년월일·환자번호는 가리고</strong> 보내 주세요.</li>
           <li>운영자가 영수증과 클리닉 정보를 대조한 뒤에만 ‘영수증 인증’으로 올라가요.</li>
         </ol>
-        <button id="open-submit" class="wide-button" type="button">인증 정보 보내기</button>
+        <a id="open-form" class="wide-button link-button" href="https://docs.google.com/forms/d/e/1FAIpQLScASeOkbQ90RXXFte6yp3WGQMbTojJJ_7WUrD-_oeDgwtzYuQ/viewform" target="_blank" rel="noopener noreferrer">영수증 사진 올리기 (Google 설문지)</a>
+        <p class="small">사진을 올리려면 Google 로그인이 필요하고, 제출하면 Google 계정의 이름·이메일이 운영자에게 함께 전달돼요. 원하지 않으면 메일로 보내 주세요.</p>
+        <button id="open-submit" class="text-button" type="button">Google 없이 메일로 보내기</button>
       </section>
 
       <section class="card" id="rules" aria-labelledby="rules-heading">

@@ -106,6 +106,7 @@ function bind() {
   document.querySelectorAll('[data-channel]').forEach(b => b.addEventListener('click', () => { state.channel = b.dataset.channel; writeUrl(); render(); if (state.channel === 'online') window.sushijaroTrack?.('filter_online'); }));
   $('#nearby').addEventListener('click', locate);
 
+  $('#open-form')?.addEventListener('click', () => window.sushijaroTrack?.('receipt_form_open'));
   $('#open-submit').addEventListener('click', () => { $('#submit-status').textContent = ''; $('#submit-dialog').showModal(); window.sushijaroTrack?.('receipt_form_open'); });
   $('#close-submit').addEventListener('click', () => $('#submit-dialog').close());
   $('#submit-form').addEventListener('submit', e => {

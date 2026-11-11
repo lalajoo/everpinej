@@ -1,6 +1,6 @@
 {
   "maxAgeDays": 90,
-  "report": { "email": "contact@everpinej.com" },
+  "report": { "email": "contact@everpinej.com", "formUrl": "https://docs.google.com/forms/d/e/1FAIpQLScASeOkbQ90RXXFte6yp3WGQMbTojJJ_7WUrD-_oeDgwtzYuQ/viewform" },
   "rules": {
     "effectiveFrom": "2026-11-12",
     "sourceCheckedAt": "2026-11-11",
