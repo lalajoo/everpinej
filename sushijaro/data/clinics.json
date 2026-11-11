@@ -3632,6 +3632,345 @@
      "includes": "세금"
     }
    ]
+  },
+  {
+   "id": "okibi-naha",
+   "name": "오키나와 미용 클리닉",
+   "nameJa": "おきなわ美容クリニック",
+   "city": "오키나와",
+   "area": "나하 마쓰오(국제거리 부근)",
+   "address": "沖縄県那覇市松尾2-8-19",
+   "lat": 26.216045,
+   "lng": 127.687714,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "가격은 모두 세금 포함. 채혈은 별도.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 1,
+     "totalJpy": 4400,
+     "source": "official",
+     "sourceUrl": "https://okibi-clinic.com/menu/oralmedicine",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 17000,
+     "source": "official",
+     "sourceUrl": "https://okibi-clinic.com/menu/oralmedicine",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금"
+    },
+    {
+     "dose": "5mg",
+     "pens": 1,
+     "totalJpy": 8800,
+     "source": "official",
+     "sourceUrl": "https://okibi-clinic.com/menu/oralmedicine",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 34000,
+     "source": "official",
+     "sourceUrl": "https://okibi-clinic.com/menu/oralmedicine",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금"
+    }
+   ]
+  },
+  {
+   "id": "atoll-kagoshima",
+   "name": "아톨 클리닉 가고시마",
+   "nameJa": "アトールクリニック 鹿児島",
+   "city": "가고시마",
+   "area": "가고시마중앙역",
+   "address": "鹿児島県鹿児島市中央町3-1",
+   "lat": 31.585905,
+   "lng": 130.543762,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "2.5mg 1펜 ¥5,000(세금 포함 ¥5,500).",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 1,
+     "totalJpy": 5500,
+     "source": "official",
+     "sourceUrl": "https://atoll.co.jp/kagoshima/medical/diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금"
+    }
+   ]
+  },
+  {
+   "id": "mitsui-kagoshima",
+   "name": "가고시마 미쓰이 중앙 클리닉",
+   "nameJa": "鹿児島三井中央クリニック",
+   "city": "가고시마",
+   "area": "야마시타초·덴몬칸",
+   "address": "鹿児島県鹿児島市山下町9-1 チャイムズビル6F",
+   "lat": 31.594988,
+   "lng": 130.557068,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "세금 포함. 첫 1펜 ¥5,300, 2회차부터 ¥5,400. 6개월 이내 혈액검사 결과가 없으면 첫 진료 때 혈액검사 ¥11,000 별도.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 1,
+     "totalJpy": 5300,
+     "source": "official",
+     "sourceUrl": "https://chuoh-clinic-kagoshima.com/treatment/manjyaro/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 21500,
+     "source": "official",
+     "sourceUrl": "https://chuoh-clinic-kagoshima.com/treatment/manjyaro/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 26350,
+     "source": "official",
+     "sourceUrl": "https://chuoh-clinic-kagoshima.com/treatment/manjyaro/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금"
+    }
+   ]
+  },
+  {
+   "id": "lamu-kagoshima",
+   "name": "라뮤 미용형성외과 클리닉",
+   "nameJa": "鹿児島ラミュー美容形成外科クリニック",
+   "city": "가고시마",
+   "area": "덴몬칸",
+   "address": "鹿児島県鹿児島市東千石町14-1",
+   "lat": 31.590853,
+   "lng": 130.555099,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "가격은 모두 세금 포함.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 1,
+     "totalJpy": 5500,
+     "source": "official",
+     "sourceUrl": "https://lamu-kagoshima.com/menu/mounjaro/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금"
+    }
+   ]
+  },
+  {
+   "id": "oishi-shizuoka",
+   "name": "오이시 내과순환기과 의원",
+   "nameJa": "大石内科循環器科医院",
+   "city": "시즈오카",
+   "area": "다카조",
+   "address": "静岡県静岡市葵区鷹匠2-6-1",
+   "lat": 34.977371,
+   "lng": 138.38739,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "1펜 ¥5,000, 4펜 ¥20,000. 세금·진찰료 포함 여부는 공식 페이지에서 확인.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 1,
+     "totalJpy": 5000,
+     "source": "official",
+     "sourceUrl": "https://oishi-shunkei.com/jihi/7106/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 20000,
+     "source": "official",
+     "sourceUrl": "https://oishi-shunkei.com/jihi/7106/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit"
+    },
+    {
+     "dose": "5mg",
+     "pens": 1,
+     "totalJpy": 9000,
+     "source": "official",
+     "sourceUrl": "https://oishi-shunkei.com/jihi/7106/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit"
+    }
+   ]
+  },
+  {
+   "id": "hashimoto-shizuoka",
+   "name": "시즈오카 미용외과 하시모토 클리닉",
+   "nameJa": "静岡美容外科橋本クリニック 静岡院",
+   "city": "시즈오카",
+   "area": "고야마치",
+   "address": "静岡県静岡市葵区紺屋町7-15",
+   "lat": 34.973248,
+   "lng": 138.386322,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "1펜(1주분) 가격, 세금 포함.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 1,
+     "totalJpy": 13750,
+     "source": "official",
+     "sourceUrl": "https://hashimotoclinic.co.jp/service/appetite-control/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금"
+    }
+   ]
+  },
+  {
+   "id": "nakayama-kumamoto",
+   "name": "시미즈신치 나카야마 클리닉",
+   "nameJa": "清水新地中山クリニック",
+   "city": "구마모토",
+   "area": "기타구 시미즈신치",
+   "address": "熊本県熊本市北区清水新地7-9-22",
+   "lat": 32.856853,
+   "lng": 130.749191,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "초진료 ¥3,300(아래 총액에 포함). 첫 진료 때 혈액검사 ¥5,500(건강검진 결과 지참 시 면제). 세금 포함.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 25300,
+     "source": "official",
+     "sourceUrl": "https://obayashi-clinic.net/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·초진료 ¥3,300"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 36300,
+     "source": "official",
+     "sourceUrl": "https://obayashi-clinic.net/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·초진료 ¥3,300"
+    }
+   ]
+  },
+  {
+   "id": "yori-kumamoto",
+   "name": "요리 클리닉",
+   "nameJa": "よりクリニック",
+   "city": "구마모토",
+   "area": "미나미구 미유키니시",
+   "address": "熊本県熊本市南区御幸西2-3-75",
+   "lat": 32.75835,
+   "lng": 130.706009,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "초진료 ¥3,300(아래 총액에 포함), 채혈 ¥3,300 별도.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 1,
+     "totalJpy": 9900,
+     "source": "official",
+     "sourceUrl": "https://yori-clinic.com/%e8%82%a5%e6%ba%80%e7%97%87%e3%83%80%e3%82%a4%e3%82%a8%e3%83%83%e3%83%88%e5%a4%96%e6%9d%a5",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "초진료 ¥3,300"
+    },
+    {
+     "dose": "5mg",
+     "pens": 1,
+     "totalJpy": 16500,
+     "source": "official",
+     "sourceUrl": "https://yori-clinic.com/%e8%82%a5%e6%ba%80%e7%97%87%e3%83%80%e3%82%a4%e3%82%a8%e3%83%83%e3%83%88%e5%a4%96%e6%9d%a5",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "초진료 ¥3,300"
+    }
+   ]
+  },
+  {
+   "id": "miyahara-kumamoto",
+   "name": "미야하라 레이디스 클리닉",
+   "nameJa": "みやはらレディースクリニック",
+   "city": "구마모토",
+   "area": "니시구 가스가",
+   "address": "熊本県熊本市西区春日7-21-15",
+   "lat": 32.78458,
+   "lng": 130.679047,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "초진료 ¥3,300(아래 총액에 포함). 세금 포함. 채혈·영양 분석 비용 별도.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 1,
+     "totalJpy": 9900,
+     "source": "official",
+     "sourceUrl": "https://miyahara-lc.jp/beauty/diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·초진료 ¥3,300"
+    }
+   ]
   }
  ]
 }
