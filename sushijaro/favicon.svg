@@ -1,1 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="10" fill="#e8613c"/><rect x="7" y="13" width="18" height="10" rx="5" fill="#fff"/><path d="M8 14c3-5 13-5 16 0" fill="#ff9b73"/><rect x="14" y="13" width="4" height="10" fill="#1f2a24"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="salmon" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffb38f"/>
+      <stop offset="1" stop-color="#ff8a65"/>
+    </linearGradient>
+    <clipPath id="pen"><rect x="7" y="22" width="44" height="17" rx="8.5"/></clipPath>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="#fff6ee"/>
+  <circle cx="32" cy="25" r="17" fill="#ff5a4e" opacity=".9"/>
+  <!-- 밥 -->
+  <rect x="9" y="33" width="46" height="19" rx="9.5" fill="#fff" stroke="#f1dccd" stroke-width="1.5"/>
+  <g fill="#f3e6dc"><ellipse cx="17" cy="45" rx="2" ry="1.2"/><ellipse cx="25" cy="48" rx="2" ry="1.2"/><ellipse cx="44" cy="46" rx="2" ry="1.2"/><ellipse cx="50" cy="42" rx="1.6" ry="1"/></g>
+  <!-- 연어 무늬 주사펜(바늘 없음) -->
+  <rect x="7" y="22" width="44" height="17" rx="8.5" fill="url(#salmon)"/>
+  <g clip-path="url(#pen)" stroke="#fff" stroke-opacity=".75" stroke-width="2.2" stroke-linecap="round">
+    <path d="M34 20l-5 22M42 20l-5 22M50 20l-5 22"/>
+  </g>
+  <rect x="49" y="25.5" width="9" height="10" rx="4" fill="#9b8cff"/>
+  <rect x="55" y="27.5" width="3.5" height="6" rx="1.75" fill="#7d6cf0"/>
+  <!-- 얼굴 -->
+  <circle cx="15.5" cy="29.5" r="1.9" fill="#3a2b25"/>
+  <circle cx="23.5" cy="29.5" r="1.9" fill="#3a2b25"/>
+  <path d="M17 33.2q2.5 2.4 5 0" stroke="#3a2b25" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+  <ellipse cx="12.5" cy="33" rx="2.3" ry="1.5" fill="#ff6f7d" opacity=".55"/>
+  <ellipse cx="26.5" cy="33" rx="2.3" ry="1.5" fill="#ff6f7d" opacity=".55"/>
+  <circle cx="16.1" cy="28.9" r=".6" fill="#fff"/><circle cx="24.1" cy="28.9" r=".6" fill="#fff"/>
+  <!-- 김 띠 -->
+  <rect x="30" y="20.5" width="6.5" height="32" rx="2" fill="#2f4a3a"/>
+  <path d="M31.5 24v26" stroke="#3f6150" stroke-width="1"/>
+</svg>

@@ -42,7 +42,7 @@ function onlineBox(o) {
   if (!o || o.available === null || o.available === undefined) return '<p class="online-box muted">비대면 진료: 미확인</p>';
   if (o.available === false) return '<p class="online-box muted">비대면 진료: 안 함</p>';
   const first = { no: '마운자로를 써 본 사람만', visit: '첫 진료는 대면 권장', ok: '첫 처방도 가능' }[o.firstTime] ?? '첫 처방 가능 여부 미확인';
-  const rows = [['첫 처방', first], ['방법', o.how], ['최소 수량', o.minPens ? o.minPens + '펜부터' : null], ['배송', o.shipping], ['결제', o.payment], ['호텔 수령', o.hotel ?? '미확인 · 호텔에 먼저 문의']]
+  const rows = [['첫 처방', first], ['방법', o.how], ['최소 수량', o.minPens ? o.minPens + '펜부터' : null], ['배송', o.shipping], ['결제', o.payment], ['진료 언어', o.language ?? '미확인'], ['날짜 지정', o.dateSelect === true ? '가능' : o.dateSelect === false ? '안 됨' : '미확인'], ['필요 서류', o.docs ?? '미확인 · 여권 사진·한국 처방전을 요구하는 곳도 있음'], ['호텔 수령', o.hotel ?? '미확인 · 호텔에 먼저 문의']]
     .filter(([, v]) => v).map(([k, v]) => `<li><b>${k}</b> ${esc(v)}</li>`).join('');
   return `<div class="online-box"><p><b>비대면 진료 가능</b></p><ul>${rows}</ul>${o.note ? `<p class="small">${esc(o.note)}</p>` : ''}</div>`;
 }
@@ -86,7 +86,8 @@ function submitText(form) {
   const d = new FormData(form);
   return [
     `클리닉: ${d.get('clinic')}`, `지역·역: ${d.get('area')}`, `용량: ${d.get('dose')}`, `펜 수: ${d.get('pens')}`,
-    `결제 총액: ¥${d.get('total')}`, `처방일: ${d.get('date')}`, `관광객 처방: ${d.get('tourist')}`, `메모: ${d.get('memo') || '-'}`,
+    `결제 총액: ¥${d.get('total')}`, `처방일: ${d.get('date')}`, `관광객 처방: ${d.get('tourist')}`, `진료 방식: ${d.get('channel') || '-'}`, `진료 언어: ${d.get('lang') || '-'}`,
+    `요구 서류: ${d.getAll('docs').join(', ') || '-'}`, `호텔 배송: ${d.get('hotel') || '-'}`, `배송 날짜 지정: ${d.get('dateSelect') || '-'}`, `메모: ${d.get('memo') || '-'}`,
     '', '※ 개인정보를 가린 영수증 사진을 첨부해 주세요. 운영자 확인 전까지는 미인증 정보입니다.',
   ].join('\n');
 }
