@@ -128,3 +128,7 @@ details{margin-top:8px;font-size:14px}summary{cursor:pointer;color:var(--accent)
 .consent-actions button:last-child{background:var(--accent);color:#fff;border-color:var(--accent)}
 .text-button.muted{color:var(--sub);font-weight:600;font-size:13px}
 .meta li.bad{color:#b42318;font-weight:700}.tourist-note.refused{background:#fde8e8;color:#7a1f1f}
+.penuri-promo{margin:18px 0;padding:16px 18px;background:#eef7f1;border:1px solid #cfe5d7;border-radius:17px;color:#1f3a2c}
+.penuri-promo h2{margin:0 0 4px;font-size:19px;color:#1d5a3c}.penuri-promo p{margin:4px 0;font-size:14px;line-height:1.55}
+.penuri-promo .promo-heading{color:#4f7a62}.penuri-promo .promo-links a{border-color:#cfe5d7;color:#1d5a3c}
+.penuri-promo .small{color:#4f7a62;margin-top:10px}
