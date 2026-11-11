@@ -60,6 +60,7 @@ function card({ clinic, price, unit, km }) {
     <p class="where">${esc([clinic.city, clinic.area].filter(Boolean).join(' · '))}${clinic.station ? ' · ' + esc(clinic.station) : ''}</p>
     ${price ? `<p class="price"><b>${yen(unit)}</b> / 1펜 <span>${price.channel === 'online' ? '비대면 · ' : '내원 · '}${esc(price.dose)} · ${price.pens}펜 총 ${yen(price.totalJpy)}${price.includes ? ' (' + esc(price.includes) + ' 포함)' : ''}</span></p>` : ''}
     <p>${badge(price)}${src}</p>
+    ${clinic.chain ? `<p class="chain-note">${esc(clinic.chain)} 체인 공통 가격 · 지점별 재고·처방 조건은 다를 수 있어요</p>` : ''}
     <ul class="meta">${tourist}${langs}${clinic.consult ? `<li>${esc(clinic.consult)}</li>` : ''}${clinic.reservation ? `<li>${esc(clinic.reservation)}</li>` : ''}</ul>
     ${onlineBox(clinic.online)}
     ${clinic.touristNote ? `<p class="tourist-note${clinic.touristOk === false ? ' refused' : ''}">${esc(clinic.touristNote)}</p>` : ''}

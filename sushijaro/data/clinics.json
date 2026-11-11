@@ -1521,7 +1521,8 @@
      "channel": "visit",
      "includes": "세금·진찰료"
     }
-   ]
+   ],
+   "chain": "イースト駅前クリニック"
   },
   {
    "id": "reira",
@@ -2116,6 +2117,966 @@
      "checkedAt": "2026-11-11",
      "channel": "visit",
      "includes": "세금·초진료 ¥3,000(젭바운드)"
+    }
+   ]
+  },
+  {
+   "id": "east-sapporo",
+   "name": "이스트 역앞 클리닉 삿포로역점",
+   "nameJa": "イースト駅前クリニック札幌院",
+   "chain": "イースト駅前クリニック",
+   "city": "삿포로",
+   "area": "삿포로역",
+   "station": "JR札幌駅 지하 직결",
+   "address": "北海道札幌市中央区北4条西5丁目 アスティ45 6F",
+   "lat": 43.065849,
+   "lng": 141.348312,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "초진료·재진료 0원(진찰만 받고 처방받지 않으면 ¥3,300). BMI 20 이하, 65세 이상, 당뇨 치료 중, 췌장염 병력 등은 처방이 안 될 수 있다고 안내. 취급 약은 지점마다 다를 수 있음.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 19200,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/sapporo/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 37800,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/sapporo/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    }
+   ]
+  },
+  {
+   "id": "east-sendai",
+   "name": "이스트 역앞 클리닉 센다이역점",
+   "nameJa": "イースト駅前クリニック仙台院",
+   "chain": "イースト駅前クリニック",
+   "city": "센다이",
+   "area": "센다이역",
+   "station": "JR仙台駅 도보 2분",
+   "address": "宮城県仙台市青葉区中央1-7-18 日吉第一ビル4F",
+   "lat": 38.262047,
+   "lng": 140.87886,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "초진료·재진료 0원(진찰만 받고 처방받지 않으면 ¥3,300). BMI 20 이하, 65세 이상, 당뇨 치료 중, 췌장염 병력 등은 처방이 안 될 수 있다고 안내. 취급 약은 지점마다 다를 수 있음.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 19200,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/sendai/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 37800,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/sendai/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    }
+   ]
+  },
+  {
+   "id": "east-ikebukuro",
+   "name": "이스트 역앞 클리닉 이케부쿠로점",
+   "nameJa": "イースト駅前クリニック池袋院",
+   "chain": "イースト駅前クリニック",
+   "city": "도쿄",
+   "area": "이케부쿠로",
+   "station": "JR池袋駅 도보 1분",
+   "address": "東京都豊島区西池袋1-15-8",
+   "lat": 35.73064,
+   "lng": 139.709625,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "초진료·재진료 0원(진찰만 받고 처방받지 않으면 ¥3,300). BMI 20 이하, 65세 이상, 당뇨 치료 중, 췌장염 병력 등은 처방이 안 될 수 있다고 안내. 취급 약은 지점마다 다를 수 있음.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 19200,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/ikebukuro/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 37800,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/ikebukuro/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    }
+   ]
+  },
+  {
+   "id": "east-shibuya",
+   "name": "이스트 역앞 클리닉 시부야점",
+   "nameJa": "イースト駅前クリニック渋谷院",
+   "chain": "イースト駅前クリニック",
+   "city": "도쿄",
+   "area": "시부야",
+   "station": "JR渋谷駅 하치코 출구 도보 1분",
+   "address": "東京都渋谷区神南1-23-7",
+   "lat": 35.659569,
+   "lng": 139.700989,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "초진료·재진료 0원(진찰만 받고 처방받지 않으면 ¥3,300). BMI 20 이하, 65세 이상, 당뇨 치료 중, 췌장염 병력 등은 처방이 안 될 수 있다고 안내. 취급 약은 지점마다 다를 수 있음.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 19200,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/shibuya/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 37800,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/shibuya/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    }
+   ]
+  },
+  {
+   "id": "east-ueno",
+   "name": "이스트 역앞 클리닉 우에노점",
+   "nameJa": "イースト駅前クリニック上野院",
+   "chain": "イースト駅前クリニック",
+   "city": "도쿄",
+   "area": "우에노",
+   "station": "JR上野駅 히로코지 출구 도보 1분",
+   "address": "東京都台東区上野6-14-6",
+   "lat": 35.711407,
+   "lng": 139.77536,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "초진료·재진료 0원(진찰만 받고 처방받지 않으면 ¥3,300). BMI 20 이하, 65세 이상, 당뇨 치료 중, 췌장염 병력 등은 처방이 안 될 수 있다고 안내. 취급 약은 지점마다 다를 수 있음.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 19200,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/ueno/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 37800,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/ueno/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    }
+   ]
+  },
+  {
+   "id": "east-akihabara",
+   "name": "이스트 역앞 클리닉 아키하바라점",
+   "nameJa": "イースト駅前クリニック秋葉原院",
+   "chain": "イースト駅前クリニック",
+   "city": "도쿄",
+   "area": "아키하바라",
+   "station": "JR秋葉原駅 덴키가이 남쪽 출구 도보 1분",
+   "address": "東京都千代田区外神田1-14-7",
+   "lat": 35.698284,
+   "lng": 139.771698,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "초진료·재진료 0원(진찰만 받고 처방받지 않으면 ¥3,300). BMI 20 이하, 65세 이상, 당뇨 치료 중, 췌장염 병력 등은 처방이 안 될 수 있다고 안내. 취급 약은 지점마다 다를 수 있음.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 19200,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/akihabara/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 37800,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/akihabara/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    }
+   ]
+  },
+  {
+   "id": "east-shinbashi",
+   "name": "이스트 역앞 클리닉 신바시점",
+   "nameJa": "イースト駅前クリニック新橋院",
+   "chain": "イースト駅前クリニック",
+   "city": "도쿄",
+   "area": "신바시",
+   "station": "JR新橋駅 히비야 출구 도보 1분",
+   "address": "東京都港区新橋1-15-7 新橋NFビル B1F",
+   "lat": 35.668022,
+   "lng": 139.757233,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "초진료·재진료 0원(진찰만 받고 처방받지 않으면 ¥3,300). BMI 20 이하, 65세 이상, 당뇨 치료 중, 췌장염 병력 등은 처방이 안 될 수 있다고 안내. 취급 약은 지점마다 다를 수 있음.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 19200,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/shinbashi/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 37800,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/shinbashi/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    }
+   ]
+  },
+  {
+   "id": "east-yokohama",
+   "name": "이스트 역앞 클리닉 요코하마역점",
+   "nameJa": "イースト駅前クリニック横浜院",
+   "chain": "イースト駅前クリニック",
+   "city": "요코하마",
+   "area": "요코하마역",
+   "station": "横浜駅 도보 2분",
+   "address": "神奈川県横浜市西区南幸1-13-10 相鉄南幸第15ビル3F",
+   "lat": 35.46524,
+   "lng": 139.619125,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "초진료·재진료 0원(진찰만 받고 처방받지 않으면 ¥3,300). BMI 20 이하, 65세 이상, 당뇨 치료 중, 췌장염 병력 등은 처방이 안 될 수 있다고 안내. 취급 약은 지점마다 다를 수 있음.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 19200,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/yokohama/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 37800,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/yokohama/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    }
+   ]
+  },
+  {
+   "id": "east-nagoya",
+   "name": "이스트 역앞 클리닉 나고야역점",
+   "nameJa": "イースト駅前クリニック名古屋院",
+   "chain": "イースト駅前クリニック",
+   "city": "나고야",
+   "area": "나고야역",
+   "station": "名古屋駅 지하 직결",
+   "address": "愛知県名古屋市中村区椿町6-2",
+   "lat": 35.170887,
+   "lng": 136.879517,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "초진료·재진료 0원(진찰만 받고 처방받지 않으면 ¥3,300). BMI 20 이하, 65세 이상, 당뇨 치료 중, 췌장염 병력 등은 처방이 안 될 수 있다고 안내. 취급 약은 지점마다 다를 수 있음.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 19200,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/nagoya/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 37800,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/nagoya/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    }
+   ]
+  },
+  {
+   "id": "east-sakae",
+   "name": "이스트 역앞 클리닉 사카에점",
+   "nameJa": "イースト駅前クリニック名古屋栄院",
+   "chain": "イースト駅前クリニック",
+   "city": "나고야",
+   "area": "사카에",
+   "station": "栄駅 8번 출구 도보 1분",
+   "address": "愛知県名古屋市中区錦3-24-12 玉水ビル4F",
+   "lat": 35.169411,
+   "lng": 136.906647,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "초진료·재진료 0원(진찰만 받고 처방받지 않으면 ¥3,300). BMI 20 이하, 65세 이상, 당뇨 치료 중, 췌장염 병력 등은 처방이 안 될 수 있다고 안내. 취급 약은 지점마다 다를 수 있음.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 19200,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/sakae/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 37800,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/sakae/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    }
+   ]
+  },
+  {
+   "id": "east-meieki",
+   "name": "이스트 역앞 클리닉 메이에키점",
+   "nameJa": "イースト駅前クリニック名駅院",
+   "chain": "イースト駅前クリニック",
+   "city": "나고야",
+   "area": "메이에키",
+   "station": "名古屋駅",
+   "address": "愛知県名古屋市中村区名駅4-8-26 エニシオ名駅2階",
+   "lat": 35.169342,
+   "lng": 136.885651,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "초진료·재진료 0원(진찰만 받고 처방받지 않으면 ¥3,300). BMI 20 이하, 65세 이상, 당뇨 치료 중, 췌장염 병력 등은 처방이 안 될 수 있다고 안내. 취급 약은 지점마다 다를 수 있음.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 19200,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/meieki/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 37800,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/meieki/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    }
+   ]
+  },
+  {
+   "id": "east-kanazawa",
+   "name": "이스트 역앞 클리닉 가나자와역점",
+   "nameJa": "イースト駅前クリニック金沢院",
+   "chain": "イースト駅前クリニック",
+   "city": "가나자와",
+   "area": "가나자와역",
+   "station": "JR金沢駅 도보 2분",
+   "address": "石川県金沢市此花町5-6 ライフ金沢第一ビル4階",
+   "lat": 36.577251,
+   "lng": 136.650726,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "초진료·재진료 0원(진찰만 받고 처방받지 않으면 ¥3,300). BMI 20 이하, 65세 이상, 당뇨 치료 중, 췌장염 병력 등은 처방이 안 될 수 있다고 안내. 취급 약은 지점마다 다를 수 있음.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 19200,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/kanazawa/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 37800,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/kanazawa/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    }
+   ]
+  },
+  {
+   "id": "east-kyoto",
+   "name": "이스트 역앞 클리닉 교토역점",
+   "nameJa": "イースト駅前クリニック京都院",
+   "chain": "イースト駅前クリニック",
+   "city": "교토",
+   "area": "교토역",
+   "station": "京都駅 중앙 출구 도보 2분",
+   "address": "京都府京都市下京区東塩小路町721-1 京都タワー2F",
+   "lat": 34.987518,
+   "lng": 135.759384,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "초진료·재진료 0원(진찰만 받고 처방받지 않으면 ¥3,300). BMI 20 이하, 65세 이상, 당뇨 치료 중, 췌장염 병력 등은 처방이 안 될 수 있다고 안내. 취급 약은 지점마다 다를 수 있음.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 19200,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/kyoto/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 37800,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/kyoto/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    }
+   ]
+  },
+  {
+   "id": "east-sannomiya",
+   "name": "이스트 역앞 클리닉 산노미야점",
+   "nameJa": "イースト駅前クリニック神戸三宮院",
+   "chain": "イースト駅前クリニック",
+   "city": "고베",
+   "area": "산노미야",
+   "station": "三宮",
+   "address": "兵庫県神戸市中央区加納町4-3-2 近藤ビル5階",
+   "lat": 34.694584,
+   "lng": 135.193497,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "초진료·재진료 0원(진찰만 받고 처방받지 않으면 ¥3,300). BMI 20 이하, 65세 이상, 당뇨 치료 중, 췌장염 병력 등은 처방이 안 될 수 있다고 안내. 취급 약은 지점마다 다를 수 있음.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 19200,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/sannomiya/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 37800,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/sannomiya/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    }
+   ]
+  },
+  {
+   "id": "east-okayama",
+   "name": "이스트 역앞 클리닉 오카야마역점",
+   "nameJa": "イースト駅前クリニック岡山院",
+   "chain": "イースト駅前クリニック",
+   "city": "오카야마",
+   "area": "오카야마역",
+   "station": "岡山駅 도보 3분",
+   "address": "岡山県岡山市北区錦町1-30 MMビル1F",
+   "lat": 34.663605,
+   "lng": 133.91925,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "초진료·재진료 0원(진찰만 받고 처방받지 않으면 ¥3,300). BMI 20 이하, 65세 이상, 당뇨 치료 중, 췌장염 병력 등은 처방이 안 될 수 있다고 안내. 취급 약은 지점마다 다를 수 있음.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 19200,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/okayama/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 37800,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/okayama/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    }
+   ]
+  },
+  {
+   "id": "east-hiroshima",
+   "name": "이스트 역앞 클리닉 히로시마역점",
+   "nameJa": "イースト駅前クリニック広島院",
+   "chain": "イースト駅前クリニック",
+   "city": "히로시마",
+   "area": "히로시마역",
+   "station": "広島駅 도보 2분",
+   "address": "広島県広島市南区猿猴橋町2-11 広島駅前クリニックビル6F",
+   "lat": 34.395363,
+   "lng": 132.475998,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "초진료·재진료 0원(진찰만 받고 처방받지 않으면 ¥3,300). BMI 20 이하, 65세 이상, 당뇨 치료 중, 췌장염 병력 등은 처방이 안 될 수 있다고 안내. 취급 약은 지점마다 다를 수 있음.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 19200,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/hiroshima/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 37800,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/hiroshima/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    }
+   ]
+  },
+  {
+   "id": "east-takamatsu",
+   "name": "이스트 역앞 클리닉 가와라마치점",
+   "nameJa": "イースト駅前クリニック高松院",
+   "chain": "イースト駅前クリニック",
+   "city": "다카마쓰",
+   "area": "가와라마치",
+   "station": "瓦町駅",
+   "address": "香川県高松市常磐町1-3-1 瓦町FLAG5F",
+   "lat": 34.338688,
+   "lng": 134.052551,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "초진료·재진료 0원(진찰만 받고 처방받지 않으면 ¥3,300). BMI 20 이하, 65세 이상, 당뇨 치료 중, 췌장염 병력 등은 처방이 안 될 수 있다고 안내. 취급 약은 지점마다 다를 수 있음.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 19200,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/takamatsu/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 37800,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/takamatsu/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    }
+   ]
+  },
+  {
+   "id": "east-matsuyama",
+   "name": "이스트 역앞 클리닉 마쓰야마점",
+   "nameJa": "イースト駅前クリニック松山院",
+   "chain": "イースト駅前クリニック",
+   "city": "마쓰야마",
+   "area": "마쓰야마",
+   "station": "松山市駅 부근",
+   "address": "愛媛県松山市湊町5-4-26 かりんビル2F",
+   "lat": 33.836395,
+   "lng": 132.762512,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "초진료·재진료 0원(진찰만 받고 처방받지 않으면 ¥3,300). BMI 20 이하, 65세 이상, 당뇨 치료 중, 췌장염 병력 등은 처방이 안 될 수 있다고 안내. 취급 약은 지점마다 다를 수 있음.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 19200,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/matsuyama/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 37800,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/matsuyama/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    }
+   ]
+  },
+  {
+   "id": "east-hakata",
+   "name": "이스트 역앞 클리닉 하카타역점",
+   "nameJa": "イースト駅前クリニック博多院",
+   "chain": "イースト駅前クリニック",
+   "city": "후쿠오카",
+   "area": "하카타역",
+   "station": "JR博多駅 도보 1분",
+   "address": "福岡県福岡市博多区博多駅東2-2-2 博多東ハニービル208",
+   "lat": 33.589874,
+   "lng": 130.423386,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "초진료·재진료 0원(진찰만 받고 처방받지 않으면 ¥3,300). BMI 20 이하, 65세 이상, 당뇨 치료 중, 췌장염 병력 등은 처방이 안 될 수 있다고 안내. 취급 약은 지점마다 다를 수 있음.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 19200,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/hakata/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 37800,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/hakata/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    }
+   ]
+  },
+  {
+   "id": "east-kokura",
+   "name": "이스트 역앞 클리닉 고쿠라점",
+   "nameJa": "イースト駅前クリニック小倉院",
+   "chain": "イースト駅前クリニック",
+   "city": "기타큐슈",
+   "area": "고쿠라",
+   "station": "JR小倉駅 도보 4분",
+   "address": "福岡県北九州市小倉北区京町2-7-7 ONOビル5F",
+   "lat": 33.88586,
+   "lng": 130.881363,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "초진료·재진료 0원(진찰만 받고 처방받지 않으면 ¥3,300). BMI 20 이하, 65세 이상, 당뇨 치료 중, 췌장염 병력 등은 처방이 안 될 수 있다고 안내. 취급 약은 지점마다 다를 수 있음.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 19200,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/kokura/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 37800,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/kokura/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    }
+   ]
+  },
+  {
+   "id": "east-kumamoto",
+   "name": "이스트 역앞 클리닉 구마모토 시내점",
+   "nameJa": "イースト駅前クリニック熊本院",
+   "chain": "イースト駅前クリニック",
+   "city": "구마모토",
+   "area": "구마모토 시내",
+   "station": "通町筋 도보 2분",
+   "address": "熊本県熊本市中央区手取本町4-6",
+   "lat": 32.803024,
+   "lng": 130.709793,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "초진료·재진료 0원(진찰만 받고 처방받지 않으면 ¥3,300). BMI 20 이하, 65세 이상, 당뇨 치료 중, 췌장염 병력 등은 처방이 안 될 수 있다고 안내. 취급 약은 지점마다 다를 수 있음.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 19200,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/kumamoto/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 37800,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/kumamoto/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    }
+   ]
+  },
+  {
+   "id": "east-nigata",
+   "name": "이스트 역앞 클리닉 니가타역점",
+   "nameJa": "イースト駅前クリニック新潟院",
+   "chain": "イースト駅前クリニック",
+   "city": "니가타",
+   "area": "니가타역",
+   "station": "JR新潟駅 도보 1분",
+   "address": "新潟県新潟市中央区弁天1-2-4 ホテルグローバルビュー新潟2F",
+   "lat": 37.913086,
+   "lng": 139.059784,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "초진료·재진료 0원(진찰만 받고 처방받지 않으면 ¥3,300). BMI 20 이하, 65세 이상, 당뇨 치료 중, 췌장염 병력 등은 처방이 안 될 수 있다고 안내. 취급 약은 지점마다 다를 수 있음.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 19200,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/nigata/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 37800,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/nigata/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    }
+   ]
+  },
+  {
+   "id": "east-shizuoka",
+   "name": "이스트 역앞 클리닉 시즈오카역점",
+   "nameJa": "イースト駅前クリニック静岡院",
+   "chain": "イースト駅前クリニック",
+   "city": "시즈오카",
+   "area": "시즈오카역",
+   "station": "JR静岡駅 도보 5분",
+   "address": "静岡県静岡市葵区御幸町7-12 ヤマムラビル御幸町4F",
+   "lat": 34.973717,
+   "lng": 138.386505,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "초진료·재진료 0원(진찰만 받고 처방받지 않으면 ¥3,300). BMI 20 이하, 65세 이상, 당뇨 치료 중, 췌장염 병력 등은 처방이 안 될 수 있다고 안내. 취급 약은 지점마다 다를 수 있음.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 19200,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/shizuoka/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 37800,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/shizuoka/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    }
+   ]
+  },
+  {
+   "id": "east-shinjuku-west",
+   "name": "이스트 역앞 클리닉 신주쿠 서쪽 출구점",
+   "nameJa": "イースト駅前クリニック新宿西口院",
+   "chain": "イースト駅前クリニック",
+   "city": "도쿄",
+   "area": "신주쿠",
+   "station": "JR新宿駅 서쪽 출구 도보 2분",
+   "address": "東京都新宿区西新宿1-12-1 高倉第一ビル4F",
+   "lat": 35.689949,
+   "lng": 139.697449,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "초진료·재진료 0원(진찰만 받고 처방받지 않으면 ¥3,300). BMI 20 이하, 65세 이상, 당뇨 치료 중, 췌장염 병력 등은 처방이 안 될 수 있다고 안내. 취급 약은 지점마다 다를 수 있음.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 19200,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/shinjuku/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 37800,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/shinjuku/medical-diet/",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
     }
    ]
   }

@@ -132,3 +132,4 @@ details{margin-top:8px;font-size:14px}summary{cursor:pointer;color:var(--accent)
 .penuri-promo h2{margin:0 0 4px;font-size:19px;color:#1d5a3c}.penuri-promo p{margin:4px 0;font-size:14px;line-height:1.55}
 .penuri-promo .promo-heading{color:#4f7a62}.penuri-promo .promo-links a{border-color:#cfe5d7;color:#1d5a3c}
 .penuri-promo .small{color:#4f7a62;margin-top:10px}
+.chain-note{font-size:12px;color:#5b4500;background:#fff3cd;border-radius:8px;padding:4px 8px;display:inline-block;margin:0 0 4px}
