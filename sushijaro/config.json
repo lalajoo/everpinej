@@ -1,13 +1,41 @@
 {
   "maxAgeDays": 90,
-  "report": { "email": "contact@everpinej.com", "formUrl": "https://docs.google.com/forms/d/e/1FAIpQLScASeOkbQ90RXXFte6yp3WGQMbTojJJ_7WUrD-_oeDgwtzYuQ/viewform" },
+  "report": {
+    "email": "contact@everpinej.com",
+    "formUrl": "https://docs.google.com/forms/d/e/1FAIpQLScASeOkbQ90RXXFte6yp3WGQMbTojJJ_7WUrD-_oeDgwtzYuQ/viewform"
+  },
   "rules": {
     "effectiveFrom": "2026-11-12",
     "sourceCheckedAt": "2026-11-11",
     "sources": [
-      { "title": "한국경제 · 해외서 산 마운자로·위고비, 12일부터 국내 반입 가능", "url": "https://www.hankyung.com/article/2026111112111" },
-      { "title": "MTN · 일본서 산 마운자로, 국내 반입 허용된다", "url": "https://news.mtn.co.kr/article/2026111116412519794" },
-      { "title": "재경일보 · 3개월치까지 반입 허용…우편직구는 불가", "url": "https://news.jkn.co.kr/post/1086715" }
+      {
+        "title": "한국경제 · 해외서 산 마운자로·위고비, 12일부터 국내 반입 가능",
+        "url": "https://www.hankyung.com/article/2026111112111"
+      },
+      {
+        "title": "MTN · 일본서 산 마운자로, 국내 반입 허용된다",
+        "url": "https://news.mtn.co.kr/article/2026111116412519794"
+      },
+      {
+        "title": "재경일보 · 3개월치까지 반입 허용…우편직구는 불가",
+        "url": "https://news.jkn.co.kr/post/1086715"
+      }
     ]
+  },
+  "fx": {
+    "jpyKrw": 8.46,
+    "asOf": "2026-11-10",
+    "sourceTitle": "Investing.com 엔/원 환율",
+    "sourceUrl": "https://kr.investing.com/currencies/jpy-krw-converter"
+  },
+  "korea": {
+    "dose": "2.5mg",
+    "pens": 4,
+    "minKrw": 269000,
+    "avgKrw": 303670,
+    "clinicFeeKrw": "2~3만 원",
+    "asOf": "2026-11-11",
+    "sourceTitle": "나만의닥터 약국 가격비교 집계(지니어트 정리)",
+    "sourceUrl": "https://geniet.co.kr/community/obesity-drug-review/128520452"
   }
 }

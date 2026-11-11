@@ -1,4 +1,4 @@
-import { DOSES, search, yen, daysSince, perPen } from './core.mjs';
+import { DOSES, search, yen, daysSince, perPen, krw, man, koreaGap } from './core.mjs';
 import { setupCard } from './card.mjs';
 
 const $ = s => document.querySelector(s);
@@ -47,6 +47,35 @@ function onlineBox(o) {
   return `<div class="online-box"><p><b>비대면 진료 가능</b></p><ul>${rows}</ul>${o.note ? `<p class="small">${esc(o.note)}</p>` : ''}</div>`;
 }
 
+function renderCompare() {
+  const k = config.korea, rate = config.fx?.jpyKrw, el = $('#compare-banner');
+  if (!k || !rate || !el) return;
+  const units = clinics.filter(c => c.touristOk !== false)
+    .map(c => (c.prices ?? []).filter(p => p.dose === k.dose && p.channel !== 'online' && p.pens <= k.pens).map(perPen).filter(Boolean))
+    .filter(u => u.length).map(u => Math.min(...u)).sort((x, y) => x - y);
+  if (!units.length) return;
+  const med = units[Math.floor(units.length / 2)];
+  const jpMed = krw(med * k.pens, rate), jpMin = krw(units[0] * k.pens, rate);
+  el.innerHTML = `<b>${esc(k.dose)} ${k.pens}펜(1개월) 기준, 한국과 비교</b>
+    <div class="rows"><span>한국 약국 평균</span><b>약 ${man(k.avgKrw)} + 진료비 ${esc(k.clinicFeeKrw)}</b>
+    <span>한국 약국 최저</span><b>약 ${man(k.minKrw)}</b>
+    <span class="jp">스시자로 ${units.length}곳 중간값</span><b class="jp">약 ${man(jpMed)} (${yen(med * k.pens)})</b>
+    <span class="jp">스시자로 최저</span><b class="jp">약 ${man(jpMin)}</b></div>
+    <p class="small">환율 100엔 ≈ ${Math.round(rate * 100)}원(${esc(config.fx.asOf)}, <a href="${esc(config.fx.sourceUrl)}" target="_blank" rel="noopener noreferrer">${esc(config.fx.sourceTitle)}</a>) · 한국 가격 ${esc(k.asOf)} <a href="${esc(k.sourceUrl)}" target="_blank" rel="noopener noreferrer">${esc(k.sourceTitle)}</a>. 항공·숙박비는 빠져 있어요. 1개월분만 사면 차이가 작고, 3개월분까지 받아 오거나 원래 가는 여행 길에 받아야 아낄 수 있어요. 첫 진찰료가 큰 클리닉은 한국보다 비쌀 수도 있어요.</p>`;
+  el.hidden = false;
+}
+
+function compareLine(price, unit) {
+  const k = config.korea;
+  if (!price || !k || price.dose !== k.dose) return '';
+  const gap = koreaGap(unit, config.fx?.jpyKrw, k);
+  if (gap == null) return '';
+  const jp = man(krw(unit * k.pens, config.fx.jpyKrw));
+  const msg = gap > 0 ? `한국 약국 평균보다 약 ${man(gap)} 저렴` : `한국 약국 평균보다 약 ${man(-gap)} 비쌈`;
+  const set = price.pens > k.pens ? ` (${price.pens}펜 세트 단가 기준)` : '';
+  return `<p class="compare ${gap > 0 ? 'cheaper' : 'pricier'}">${k.pens}펜 환산 약 ${jp}${set} · ${msg}</p>`;
+}
+
 function card({ clinic, price, unit, km }) {
   const tourist = clinic.touristOk === true ? '<li class="good">외국인 처방 명시</li>' : clinic.touristOk === false ? '<li class="bad">관광객 처방 안 함</li>' : '<li>외국인 처방 여부 미확인</li>';
   const langs = clinic.languages?.length ? `<li>${esc(clinic.languages.join('·'))} 상담</li>` : '';
@@ -58,7 +87,8 @@ function card({ clinic, price, unit, km }) {
     <header><h3>${esc(clinic.name)}</h3>${km != null ? `<span class="km">${km < 1 ? Math.round(km * 1000) + 'm' : km.toFixed(1) + 'km'}</span>` : ''}</header>
     <p class="ja" lang="ja">${esc(clinic.nameJa ?? '')}</p>
     <p class="where">${esc([clinic.city, clinic.area].filter(Boolean).join(' · '))}${clinic.station ? ' · ' + esc(clinic.station) : ''}</p>
-    ${price ? `<p class="price"><b>${yen(unit)}</b> / 1펜 <span>${price.channel === 'online' ? '비대면 · ' : '내원 · '}${esc(price.dose)} · ${price.pens}펜 총 ${yen(price.totalJpy)}${price.includes ? ' (' + esc(price.includes) + ' 포함)' : ''}</span></p>` : ''}
+    ${price ? `<p class="price"><b>${yen(unit)}</b> / 1펜 <em class="krw">약 ${man(krw(unit, config.fx?.jpyKrw))}</em> <span>${price.channel === 'online' ? '비대면 · ' : '내원 · '}${esc(price.dose)} · ${price.pens}펜 총 ${yen(price.totalJpy)}${price.includes ? ' (' + esc(price.includes) + ' 포함)' : ''}</span></p>` : ''}
+    ${compareLine(price, unit)}
     <p>${badge(price)}${src}</p>
     ${clinic.chain ? `<p class="chain-note">${esc(clinic.chain)} 체인 공통 가격 · 지점별 재고·처방 조건은 다를 수 있어요</p>` : ''}
     <ul class="meta">${tourist}${langs}${clinic.consult ? `<li>${esc(clinic.consult)}</li>` : ''}${clinic.reservation ? `<li>${esc(clinic.reservation)}</li>` : ''}</ul>
@@ -141,7 +171,7 @@ function renderRules() {
 try {
   readUrl();
   [config, { clinics }] = await Promise.all([json('./config.json'), json('./data/clinics.json')]);
-  bind(); renderRules(); render(); setupCard();
+  bind(); renderRules(); renderCompare(); render(); setupCard();
 } catch {
   $('#result-count').textContent = '정보를 불러오지 못했어요. 잠시 후 다시 시도해 주세요.';
 }

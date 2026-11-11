@@ -144,3 +144,22 @@ export function search(clinics, { query = '', dose = '', verified = 'all', chann
 export function yen(value) {
   return value == null ? '-' : '¥' + new Intl.NumberFormat('ja-JP').format(value);
 }
+
+// 엔화 → 원화(천 원 단위 반올림). 환율이 없으면 null.
+export function krw(yenValue, rate) {
+  if (!(yenValue > 0) || !(rate > 0)) return null;
+  return Math.round(yenValue * rate / 1000) * 1000;
+}
+
+export function man(won) {
+  if (won == null) return '-';
+  const v = won / 10000;
+  return (Math.abs(v) >= 100 ? Math.round(v) : Math.round(v * 10) / 10) + '만 원';
+}
+
+// 같은 펜 수로 맞춘 한국 약국 평균과의 차이(원). 양수면 일본이 저렴.
+export function koreaGap(unitYen, rate, korea) {
+  if (!korea || !(unitYen > 0)) return null;
+  const jp = krw(unitYen * korea.pens, rate);
+  return jp == null ? null : korea.avgKrw - jp;
+}

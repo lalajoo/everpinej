@@ -120,3 +120,15 @@ test('관광객 처방 안 함으로 표시된 곳은 가격이 싸도 맨 뒤�
   ], { now: new Date('2026-11-12') });
   assert.deepEqual(rows.map(r => r.clinic.id), ['yes', 'no']);
 });
+
+import { krw, man, koreaGap } from '../sushijaro/core.mjs';
+
+test('원화 환산과 한국 평균 비교', () => {
+  assert.equal(krw(19200, 8.46), 162000);
+  assert.equal(krw(0, 8.46), null);
+  assert.equal(man(162000), '16.2만 원');
+  assert.equal(man(1020000), '102만 원');
+  const korea = { pens: 4, avgKrw: 303670 };
+  assert.equal(koreaGap(4800, 8.46, korea), 303670 - 162000);
+  assert.ok(koreaGap(22150, 8.46, korea) < 0);
+});
