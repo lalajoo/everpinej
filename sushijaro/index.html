@@ -14,25 +14,25 @@
   <meta property="og:url" content="https://everpinej.com/sushijaro/">
   <link rel="canonical" href="https://everpinej.com/sushijaro/">
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css?v=20261111a">
-  <script type="module" src="./app.mjs?v=20261111a"></script>
+  <link rel="stylesheet" href="./styles.css?v=20261111b">
+  <script type="module" src="./app.mjs?v=20261111b"></script>
 </head>
 <body>
   <a class="skip-link" href="#search">클리닉 검색으로 바로가기</a>
   <div class="shell">
     <header class="header">
       <a class="brand" href="./" aria-label="스시자로 홈"><img src="./favicon.svg" width="30" height="30" alt="">스시자로</a>
-      <a class="header-link" href="#rules">반입 규정 <span aria-hidden="true">↓</span></a>
+      <nav class="header-links"><a class="header-link" href="#guide">진료 가이드</a><a class="header-link" href="#rules">반입 규정</a></nav>
     </header>
 
     <main>
       <section class="hero" aria-labelledby="headline">
         <p class="eyebrow">일본 마운자로 · 광고·제휴 없음</p>
         <h1 id="headline">일본 마운자로,<br><span>실결제가로 비교.</span></h1>
-        <p class="hero-copy">영수증으로 인증한 클리닉 처방 비용을 여행 지역·역 이름으로 찾아보세요.</p>
+        <p class="hero-copy">클리닉 공식 게시가와 영수증 인증 가격을 여행 지역·역 이름으로 찾아보세요.</p>
         <form id="search-form" role="search" class="search-form">
           <label class="sr-only" for="search">지역, 역 또는 클리닉 이름</label>
-          <input id="search" name="q" type="search" placeholder="예: 신주쿠, 난바, 하카타" autocomplete="off" maxlength="60" enterkeyhint="search">
+          <input id="search" name="q" type="search" placeholder="예: 신주쿠, 우메다, 텐진" autocomplete="off" maxlength="60" enterkeyhint="search">
           <button type="submit">검색</button>
         </form>
         <div class="search-extras">
@@ -64,6 +64,53 @@
         <div id="results"></div>
       </section>
 
+      <section class="card" id="guide" aria-labelledby="guide-heading">
+        <h2 id="guide-heading">일본 클리닉 진료 가이드</h2>
+        <ol class="steps">
+          <li><b>클리닉 고르기</b> 외국인 처방 조건과 예약 필요 여부를 먼저 보세요. 일본어로 소통할 수 있어야 하거나 통역과 함께 와야 처방하는 곳도 있어요.</li>
+          <li><b>준비물</b> 여권, 결제 수단(현금·카드), 복용 중인 약 이름(영문 성분명), 아래 <b>일본어 진료 카드</b>.</li>
+          <li><b>접수</b> 문진표(問診票)에 키·몸무게·지병·복용약·임신 여부를 적어요. 진료 카드를 보여 주면 빨라요.</li>
+          <li><b>진료</b> 의사가 BMI와 병력을 확인하고 처방 여부를 정해요. 클리닉마다 BMI 기준이 있고(예: 18.5 미만 처방 불가), 처방을 거절할 수도 있어요.</li>
+          <li><b>결제·수령</b> <b>영수증(領収書)과 명세서(明細書)</b>를 꼭 받으세요. 한국에 들어올 때 본인 치료용이라는 증빙이 되고, 스시자로 인증에도 쓰여요. 주사 놓는 법도 이때 배우세요.</li>
+          <li><b>귀국</b> 직접 들고 오세요. 3개월분 이내, 냉장 보관 설명을 따르세요.</li>
+        </ol>
+
+        <h3>일본어 진료 카드 만들기</h3>
+        <p class="small">답을 고르면 접수처·의사에게 보여 줄 일본어 카드가 만들어져요. 입력한 내용은 이 기기 밖으로 보내지 않아요.</p>
+        <form id="card-form" class="card-form">
+          <div class="row">
+            <label>나이<input name="age" type="number" min="18" max="100" inputmode="numeric"></label>
+            <label>체류 일수<input name="days" type="number" min="1" max="90" inputmode="numeric"></label>
+          </div>
+          <div class="row">
+            <label>키(cm)<input name="height" type="number" min="100" max="230" inputmode="decimal"></label>
+            <label>몸무게(kg)<input name="weight" type="number" min="30" max="250" inputmode="decimal"></label>
+          </div>
+          <fieldset><legend>마운자로 사용 경험</legend>
+            <label class="inline"><input type="radio" name="experience" value="first" checked> 처음</label>
+            <label class="inline"><input type="radio" name="experience" value="mounjaro"> 써 봤음</label>
+            <label class="inline"><input type="radio" name="experience" value="other"> 다른 GLP-1(위고비 등)</label>
+          </fieldset>
+          <label>최근 용량(써 본 경우)<input name="prevDose" maxlength="20" placeholder="예: 5mg"></label>
+          <fieldset><legend>해당하는 지병</legend><div id="card-conditions"></div></fieldset>
+          <fieldset><legend>임신·수유</legend>
+            <label class="inline"><input type="radio" name="pregnancy" value="no"> 해당 없음</label>
+            <label class="inline"><input type="radio" name="pregnancy" value="yes"> 임신·수유 중이거나 계획 있음</label>
+          </fieldset>
+          <label>복용 중인 약(영문 성분명 권장)<input name="meds" maxlength="120" placeholder="없으면 비워 두세요. 예: Metformin"></label>
+          <label>약 알레르기<input name="allergy" maxlength="120" placeholder="없으면 비워 두세요"></label>
+          <div class="row">
+            <label>원하는 용량<select name="dose"><option value="">의사에게 맡김</option><option>2.5mg</option><option>5mg</option><option>7.5mg</option><option>10mg</option></select></label>
+            <label>원하는 펜 수<input name="pens" type="number" min="1" max="13" inputmode="numeric"></label>
+          </div>
+          <button type="submit" class="wide-button">일본어 카드 만들기</button>
+        </form>
+        <div id="card-output" hidden></div>
+
+        <h3>바로 쓰는 일본어</h3>
+        <ul class="phrases" id="phrases"></ul>
+      </section>
+
       <section class="card submit" aria-labelledby="submit-heading">
         <h2 id="submit-heading">영수증 인증하기</h2>
         <p>일본에서 마운자로를 처방받으셨나요? 영수증(領収書) 한 장이 다음 사람의 비교 기준이 돼요.</p>
@@ -93,6 +140,7 @@
           <li>마운자로는 <b>의사 처방이 필요한 주사제</b>예요. 용량과 부작용은 진료 의사와 상담하세요.</li>
           <li>냉장 보관하는 약이에요. 이동 중 보관 방법은 처방받을 때 받은 설명서를 따르세요.</li>
           <li>스시자로는 클리닉에서 광고비·수수료를 받지 않아요. 최저가, 재고, 처방 가능 여부를 보증하지 않아요.</li>
+          <li>가격은 클리닉 <b>공식 홈페이지 게시가</b>(확인일 표시)와 이용자 <b>영수증 인증</b> 두 종류예요. 영수증 인증을 먼저 보여 줘요.</li>
           <li><b>1펜당 실질가</b>는 진찰료·배송비 등을 포함한 결제 총액을 펜 수로 나눈 값이에요. 90일이 지난 정보는 목록에서 빠져요.</li>
         </ul>
       </section>

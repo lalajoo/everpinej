@@ -23,6 +23,14 @@ export const PLACE_ALIASES = {
   '오키나와': ['沖縄', 'okinawa'],
   '나하': ['那覇', 'naha'],
   '요코하마': ['横浜', 'yokohama'],
+  '고베': ['神戸', 'kobe'],
+  '산노미야': ['三宮', '三ノ宮', 'sannomiya'],
+  '텐노지': ['天王寺', 'tennoji'],
+  '아베노': ['阿倍野', 'あべの', 'abeno'],
+  '기타신치': ['北新地', 'kitashinchi'],
+  '가라스마': ['烏丸', 'karasuma'],
+  '오모테산도': ['表参道', 'omotesando'],
+  '니시신주쿠': ['西新宿', 'nishishinjuku'],
 };
 
 export function normalize(text) {

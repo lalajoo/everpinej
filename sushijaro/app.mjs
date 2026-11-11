@@ -1,4 +1,5 @@
-import { DOSES, search, yen, daysSince } from './core.mjs';
+import { DOSES, search, yen, daysSince, perPen } from './core.mjs';
+import { setupCard } from './card.mjs';
 
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
@@ -36,15 +37,22 @@ function badge(price) {
 }
 
 function card({ clinic, price, unit, km }) {
-  const tourist = clinic.touristOk === true ? '<li>관광객 처방 확인</li>' : clinic.touristOk === false ? '<li>관광객 처방 불가 보고</li>' : '';
+  const tourist = clinic.touristOk === true ? '<li class="good">외국인 처방 명시</li>' : clinic.touristOk === false ? '<li>관광객 처방 불가 보고</li>' : '<li>외국인 처방 여부 미확인</li>';
   const langs = clinic.languages?.length ? `<li>${esc(clinic.languages.join('·'))} 상담</li>` : '';
   const src = price?.sourceUrl ? ` · <a href="${esc(price.sourceUrl)}" target="_blank" rel="noopener noreferrer nofollow">출처</a>` : '';
+  const map = clinic.address ? `<a class="map" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(clinic.address)}" target="_blank" rel="noopener noreferrer">지도</a>` : '';
+  const others = (clinic.prices ?? []).filter(p => p !== price && (!state.dose || p.dose === state.dose))
+    .map(p => `<li>${esc(p.dose)} ${p.pens}펜 ${yen(p.totalJpy)} <span>(1펜 ${yen(perPen(p))})</span></li>`).join('');
   return `<article class="clinic">
     <header><h3>${esc(clinic.name)}</h3>${km != null ? `<span class="km">${km < 1 ? Math.round(km * 1000) + 'm' : km.toFixed(1) + 'km'}</span>` : ''}</header>
-    <p class="where">${esc([clinic.city, clinic.area, clinic.station].filter(Boolean).join(' · '))}</p>
+    <p class="ja" lang="ja">${esc(clinic.nameJa ?? '')}</p>
+    <p class="where">${esc([clinic.city, clinic.area].filter(Boolean).join(' · '))}${clinic.station ? ' · ' + esc(clinic.station) : ''}</p>
     ${price ? `<p class="price"><b>${yen(unit)}</b> / 1펜 <span>${esc(price.dose)} · ${price.pens}펜 총 ${yen(price.totalJpy)}${price.includes ? ' (' + esc(price.includes) + ' 포함)' : ''}</span></p>` : ''}
     <p>${badge(price)}${src}</p>
-    <ul class="meta">${tourist}${langs}${clinic.consult ? `<li>${esc(clinic.consult)}</li>` : ''}</ul>
+    <ul class="meta">${tourist}${langs}${clinic.consult ? `<li>${esc(clinic.consult)}</li>` : ''}${clinic.reservation ? `<li>${esc(clinic.reservation)}</li>` : ''}</ul>
+    ${clinic.touristNote ? `<p class="tourist-note">${esc(clinic.touristNote)}</p>` : ''}
+    ${clinic.note ? `<p class="small">${esc(clinic.note)}</p>` : ''}
+    <details><summary>가격표·주소 보기</summary>${others ? `<ul class="others">${others}</ul>` : ''}<p class="small" lang="ja">${esc(clinic.address ?? '')} ${map}</p></details>
   </article>`;
 }
 
@@ -115,7 +123,7 @@ function renderRules() {
 try {
   readUrl();
   [config, { clinics }] = await Promise.all([json('./config.json'), json('./data/clinics.json')]);
-  bind(); renderRules(); render();
+  bind(); renderRules(); render(); setupCard();
 } catch {
   $('#result-count').textContent = '정보를 불러오지 못했어요. 잠시 후 다시 시도해 주세요.';
 }

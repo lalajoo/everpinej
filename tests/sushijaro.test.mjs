@@ -53,3 +53,30 @@ test('배포 데이터에는 출처·확인일 없는 가격이 없다', async (
     if (p.source === 'official') assert.match(p.sourceUrl ?? '', /^https:\/\//, c.name);
   }
 });
+
+import { buildCard, bmi } from '../sushijaro/card.mjs';
+
+test('일본어 진료 카드: 입력에 맞는 문장만 만든다', () => {
+  assert.equal(bmi(160, 64), 25);
+  const lines = buildCard({ age: '35', height: '160', weight: '64', experience: 'first', conditions: ['pancreatitis'], pregnancy: 'no', dose: '2.5mg', pens: '4' }).map(l => l.ja).join('\n');
+  assert.match(lines, /BMI 25/);
+  assert.match(lines, /膵炎/);
+  assert.match(lines, /2\.5mgを4本希望します/);
+  assert.match(lines, /服用中の薬はありません/);
+  assert.doesNotMatch(lines, /undefined|NaN|null/);
+  const minimal = buildCard({}).map(l => l.ja).join('\n');
+  assert.doesNotMatch(minimal, /undefined|NaN|null|身長/);
+});
+
+test('배포 클리닉 데이터: 좌표·주소·공식 출처가 모두 있다', async () => {
+  const { clinics } = JSON.parse(await readFile(new URL('../sushijaro/data/clinics.json', import.meta.url)));
+  assert.ok(clinics.length > 0);
+  const ids = new Set();
+  for (const c of clinics) {
+    assert.ok(!ids.has(c.id), c.id); ids.add(c.id);
+    assert.ok(Number.isFinite(c.lat) && c.lat > 24 && c.lat < 46, c.id);
+    assert.ok(Number.isFinite(c.lng) && c.lng > 122 && c.lng < 146, c.id);
+    assert.ok(c.address && c.nameJa, c.id);
+    assert.ok(c.prices.length > 0, c.id);
+  }
+});

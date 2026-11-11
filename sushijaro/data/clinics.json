@@ -1,5 +1,460 @@
 {
-  "updatedAt": "2026-11-11",
-  "note": "실제 확인된 정보만 넣습니다. source: receipt(영수증 인증) | official(공식 홈페이지 게시가, sourceUrl 필수). 테스트용 데이터는 tests/에만 둡니다.",
-  "clinics": []
+ "updatedAt": "2026-11-11",
+ "note": "실제 확인된 정보만 넣습니다. source: receipt(영수증 인증) | official(공식 홈페이지 게시가, sourceUrl 필수). 테스트용 데이터는 tests/에만 둡니다.",
+ "clinics": [
+  {
+   "id": "shinjuku-ekimae",
+   "name": "신주쿠역앞 클리닉",
+   "nameJa": "新宿駅前クリニック 皮膚科 内科 泌尿器科",
+   "city": "도쿄",
+   "area": "신주쿠",
+   "station": "新宿駅 서쪽 출구 도보 1분",
+   "address": "東京都新宿区西新宿1-12-11 山銀ビル5F",
+   "lat": 35.690025,
+   "lng": 139.697174,
+   "reservation": "예약 불필요",
+   "consult": "대면·온라인",
+   "touristOk": true,
+   "touristNote": "해외 거주 외국인도 처방. 단, 일본어로 말하고 쓸 수 있거나 통역과 함께 와야 함.",
+   "note": "진찰료·수수료 없음. 2펜(1박스) 단위.",
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 2,
+     "totalJpy": 7000,
+     "source": "official",
+     "sourceUrl": "https://www.shinjyuku-ekimae-clinic.info/naika/mounjaro.html",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 2,
+     "totalJpy": 12000,
+     "source": "official",
+     "sourceUrl": "https://www.shinjyuku-ekimae-clinic.info/naika/mounjaro.html",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "7.5mg",
+     "pens": 2,
+     "totalJpy": 15000,
+     "source": "official",
+     "sourceUrl": "https://www.shinjyuku-ekimae-clinic.info/naika/mounjaro.html",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "10mg",
+     "pens": 2,
+     "totalJpy": 18000,
+     "source": "official",
+     "sourceUrl": "https://www.shinjyuku-ekimae-clinic.info/naika/mounjaro.html",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료"
+    }
+   ]
+  },
+  {
+   "id": "bianca-ginza",
+   "name": "비앙카 클리닉",
+   "nameJa": "BIANCA CLINIC 銀座",
+   "city": "도쿄",
+   "area": "긴자",
+   "station": "銀座·京橋",
+   "address": "東京都中央区銀座1-8-19 ONE GINZA 12F",
+   "lat": 35.67437,
+   "lng": 139.768539,
+   "reservation": "웹 예약",
+   "consult": "대면",
+   "touristOk": null,
+   "note": "첫 처방 때 진찰료 ¥12,100·채혈비 ¥3,300 별도(아래 총액에 포함). 세금 포함 여부 표기 없음. 오모테산도점도 있어 처방 지점은 예약 때 확인.",
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 2,
+     "totalJpy": 44300,
+     "source": "official",
+     "sourceUrl": "https://biancaclinic.jp/en/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "첫 진찰료·채혈비"
+    },
+    {
+     "dose": "5mg",
+     "pens": 2,
+     "totalJpy": 55900,
+     "source": "official",
+     "sourceUrl": "https://biancaclinic.jp/en/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "첫 진찰료·채혈비"
+    }
+   ]
+  },
+  {
+   "id": "daibikai-shinsaibashi",
+   "name": "다이비카이 클리닉 신사이바시 본원",
+   "nameJa": "大美会クリニック 心斎橋本院",
+   "city": "오사카",
+   "area": "신사이바시·난바",
+   "station": "心斎橋駅 도보 6분 / 南海難波駅 도보 12분",
+   "address": "大阪府大阪市中央区東心斎橋2-8-28 周防町GEOビル3F",
+   "lat": 34.671879,
+   "lng": 135.502731,
+   "consult": "대면·온라인",
+   "touristOk": null,
+   "note": "내원 가격 기준(온라인은 더 비쌈). 초진료·재진료 없음. 공식 페이지 가격은 전 지점 공통 표기.",
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 1,
+     "totalJpy": 4500,
+     "source": "official",
+     "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 17800,
+     "source": "official",
+     "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 1,
+     "totalJpy": 8200,
+     "source": "official",
+     "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 32000,
+     "source": "official",
+     "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료"
+    }
+   ]
+  },
+  {
+   "id": "daibikai-umeda",
+   "name": "다이비카이 클리닉 우메다원",
+   "nameJa": "大美会クリニック 梅田院",
+   "city": "오사카",
+   "area": "우메다·기타신치",
+   "station": "北新地駅 도보 5분 / 大阪駅 도보 7분",
+   "address": "大阪府大阪市北区曽根崎新地1-3-16 京富ビル6F",
+   "lat": 34.697609,
+   "lng": 135.495667,
+   "consult": "대면·온라인",
+   "touristOk": null,
+   "note": "내원 가격 기준(온라인은 더 비쌈). 초진료·재진료 없음. 공식 페이지 가격은 전 지점 공통 표기.",
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 1,
+     "totalJpy": 4500,
+     "source": "official",
+     "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 17800,
+     "source": "official",
+     "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 1,
+     "totalJpy": 8200,
+     "source": "official",
+     "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 32000,
+     "source": "official",
+     "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료"
+    }
+   ]
+  },
+  {
+   "id": "daibikai-tennoji",
+   "name": "다이비카이 클리닉 텐노지원",
+   "nameJa": "大美会クリニック 天王寺院",
+   "city": "오사카",
+   "area": "텐노지·아베노",
+   "station": "天王寺駅 도보 5분",
+   "address": "大阪府大阪市阿倍野区阿倍野筋1-5-1 あべのルシアス東棟3F",
+   "lat": 34.646484,
+   "lng": 135.512863,
+   "consult": "대면·온라인",
+   "touristOk": null,
+   "note": "내원 가격 기준(온라인은 더 비쌈). 초진료·재진료 없음. 공식 페이지 가격은 전 지점 공통 표기.",
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 1,
+     "totalJpy": 4500,
+     "source": "official",
+     "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 17800,
+     "source": "official",
+     "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 1,
+     "totalJpy": 8200,
+     "source": "official",
+     "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 32000,
+     "source": "official",
+     "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료"
+    }
+   ]
+  },
+  {
+   "id": "daibikai-kyoto",
+   "name": "다이비카이 클리닉 교토 가라스마원",
+   "nameJa": "大美会クリニック 京都烏丸院",
+   "city": "교토",
+   "area": "가라스마·시조",
+   "station": "阪急 烏丸駅 15번 출구 도보 30초",
+   "address": "京都府京都市下京区四条通柳馬場西入 立売中之町92 AOKIビル6F",
+   "lat": 35.003525,
+   "lng": 135.76329,
+   "consult": "대면·온라인",
+   "touristOk": null,
+   "note": "내원 가격 기준(온라인은 더 비쌈). 초진료·재진료 없음. 공식 페이지 가격은 전 지점 공통 표기.",
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 1,
+     "totalJpy": 4500,
+     "source": "official",
+     "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 17800,
+     "source": "official",
+     "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 1,
+     "totalJpy": 8200,
+     "source": "official",
+     "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 32000,
+     "source": "official",
+     "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료"
+    }
+   ]
+  },
+  {
+   "id": "daibikai-kobe",
+   "name": "다이비카이 클리닉 고베원",
+   "nameJa": "大美会クリニック 神戸院",
+   "city": "고베",
+   "area": "산노미야",
+   "station": "阪神 神戸三宮駅 도보 3분",
+   "address": "兵庫県神戸市中央区小野柄通6-1-3 ジイテックスビル201",
+   "lat": 34.693619,
+   "lng": 135.197586,
+   "consult": "대면·온라인",
+   "touristOk": null,
+   "note": "내원 가격 기준(온라인은 더 비쌈). 초진료·재진료 없음. 공식 페이지 가격은 전 지점 공통 표기.",
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 1,
+     "totalJpy": 4500,
+     "source": "official",
+     "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 17800,
+     "source": "official",
+     "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 1,
+     "totalJpy": 8200,
+     "source": "official",
+     "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 32000,
+     "source": "official",
+     "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료"
+    }
+   ]
+  },
+  {
+   "id": "ace-umeda",
+   "name": "에이스 클리닉 오사카 우메다 HEP나비오원",
+   "nameJa": "エースクリニック大阪梅田HEPナビオ院",
+   "city": "오사카",
+   "area": "우메다",
+   "station": "阪急 大阪梅田駅 도보 3분",
+   "address": "大阪府大阪市北区角田町7-10 HEP NAVIO 6階",
+   "lat": 34.702797,
+   "lng": 135.499786,
+   "reservation": "완전 예약제(웹·LINE)",
+   "consult": "대면",
+   "touristOk": null,
+   "note": "초진료·재진료 무료. 4주(4펜) 단위 처방. BMI 18.5 미만은 처방 불가.",
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 19800,
+     "source": "official",
+     "sourceUrl": "https://osaka.ace-clinic.com/shinryo/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 39600,
+     "source": "official",
+     "sourceUrl": "https://osaka.ace-clinic.com/shinryo/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "10mg",
+     "pens": 4,
+     "totalJpy": 74800,
+     "source": "official",
+     "sourceUrl": "https://osaka.ace-clinic.com/shinryo/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료"
+    }
+   ]
+  },
+  {
+   "id": "clara-tenjin",
+   "name": "클라라 미용피부과 후쿠오카 텐진원",
+   "nameJa": "クララ美容皮膚科 福岡天神院",
+   "city": "후쿠오카",
+   "area": "텐진",
+   "station": "天神",
+   "address": "福岡県福岡市中央区天神3-4-10 天神西茂ビル3階",
+   "lat": 33.591557,
+   "lng": 130.395767,
+   "consult": "대면·온라인",
+   "touristOk": null,
+   "note": "첫 진찰·상담 무료. 진료 11:00~20:00, 휴무 부정기.",
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 1,
+     "totalJpy": 4400,
+     "source": "official",
+     "sourceUrl": "https://clarabeautyclinic.jp/fukuoka/treatment_example/treatment_example-1424/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 17600,
+     "source": "official",
+     "sourceUrl": "https://clarabeautyclinic.jp/fukuoka/treatment_example/treatment_example-1424/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 35200,
+     "source": "official",
+     "sourceUrl": "https://clarabeautyclinic.jp/fukuoka/treatment_example/treatment_example-1424/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "7.5mg",
+     "pens": 4,
+     "totalJpy": 52800,
+     "source": "official",
+     "sourceUrl": "https://clarabeautyclinic.jp/fukuoka/treatment_example/treatment_example-1424/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "10mg",
+     "pens": 4,
+     "totalJpy": 70400,
+     "source": "official",
+     "sourceUrl": "https://clarabeautyclinic.jp/fukuoka/treatment_example/treatment_example-1424/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료"
+    }
+   ]
+  }
+ ]
 }
