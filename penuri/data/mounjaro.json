@@ -224,6 +224,25 @@
           "label": "답글이 달린 광주 마운자로 후기 원문"
         }
       ]
+    },
+    {
+      "pharmacyId": "18c04e29aba3d3e6",
+      "name": "주차편한365약국",
+      "address": "경기도 군포시 번영로 505, 대우디오플러스 303-1,303-2호 (산본동)",
+      "checkedAt": "2026-11-11",
+      "summary": "군포 산본 주차편한365약국 소개 글에 이용자가 마운자로 성지라고 언급하며 자주 이용한다고 밝힌 공개 답글을 확인했어요.",
+      "sources": [
+        {
+          "url": "https://www.threads.com/@kimhee86jin/post/DfGQCreElaX",
+          "publishedAt": "2026-10-30",
+          "label": "약국 이용자가 마운자로 성지라고 언급한 답글"
+        },
+        {
+          "url": "https://www.threads.com/@pharm_juchaking/post/DfEOOmvGHDK",
+          "publishedAt": "2026-10-29",
+          "label": "군포 산본 약국 실명이 명시된 부모 글"
+        }
+      ]
     }
   ]
 }
