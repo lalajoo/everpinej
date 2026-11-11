@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#fff8f3">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>스시자로 - 일본 마운자로 처방 클리닉 실결제가 비교</title>
+  <meta name="description" content="일본 클리닉의 마운자로 처방 비용을 영수증 인증과 공식 게시가로 비교하고, 여행 지역·내 위치로 찾아보세요. 광고·제휴 없음.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="스시자로 - 일본 마운자로, 실결제가로 비교">
+  <meta property="og:description" content="영수증으로 인증한 일본 클리닉 마운자로 처방 비용. 지역·역 이름으로 찾고, 한국 반입 규정도 확인하세요.">
+  <meta property="og:url" content="https://everpinej.com/sushijaro/">
+  <link rel="canonical" href="https://everpinej.com/sushijaro/">
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css?v=20261111a">
+  <script type="module" src="./app.mjs?v=20261111a"></script>
+</head>
+<body>
+  <a class="skip-link" href="#search">클리닉 검색으로 바로가기</a>
+  <div class="shell">
+    <header class="header">
+      <a class="brand" href="./" aria-label="스시자로 홈"><img src="./favicon.svg" width="30" height="30" alt="">스시자로</a>
+      <a class="header-link" href="#rules">반입 규정 <span aria-hidden="true">↓</span></a>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="headline">
+        <p class="eyebrow">일본 마운자로 · 광고·제휴 없음</p>
+        <h1 id="headline">일본 마운자로,<br><span>실결제가로 비교.</span></h1>
+        <p class="hero-copy">영수증으로 인증한 클리닉 처방 비용을 여행 지역·역 이름으로 찾아보세요.</p>
+        <form id="search-form" role="search" class="search-form">
+          <label class="sr-only" for="search">지역, 역 또는 클리닉 이름</label>
+          <input id="search" name="q" type="search" placeholder="예: 신주쿠, 난바, 하카타" autocomplete="off" maxlength="60" enterkeyhint="search">
+          <button type="submit">검색</button>
+        </form>
+        <div class="search-extras">
+          <button id="nearby" class="text-button" type="button"><span aria-hidden="true">⌖</span> 내 주변 찾기</button>
+          <span id="location-status" role="status"></span>
+        </div>
+      </section>
+
+      <aside class="notice" id="rules-teaser">
+        <strong>2026년 11월 12일부터</strong> 해외에서 처방받은 마운자로를 직접 들고 오면 3개월분까지 반입할 수 있어요. 우편·특송 직구는 안 돼요. <a href="#rules">자세히</a>
+      </aside>
+
+      <section class="finder" aria-labelledby="results-heading">
+        <h2 id="results-heading" class="sr-only">클리닉 목록</h2>
+        <div class="controls">
+          <label>용량
+            <select id="dose"><option value="">전체 용량</option></select>
+          </label>
+          <label>정렬
+            <select id="sort"><option value="price">실질가 낮은 순</option><option value="distance">가까운 순</option></select>
+          </label>
+        </div>
+        <div class="filter-chips" role="group" aria-label="인증 조건">
+          <button type="button" data-verified="all" aria-pressed="true">전체</button>
+          <button type="button" data-verified="receipt" aria-pressed="false">영수증 인증만</button>
+          <button type="button" data-verified="tourist" aria-pressed="false">관광객 처방 확인</button>
+        </div>
+        <p id="result-count" role="status" aria-live="polite">불러오는 중…</p>
+        <div id="results"></div>
+      </section>
+
+      <section class="card submit" aria-labelledby="submit-heading">
+        <h2 id="submit-heading">영수증 인증하기</h2>
+        <p>일본에서 마운자로를 처방받으셨나요? 영수증(領収書) 한 장이 다음 사람의 비교 기준이 돼요.</p>
+        <ol>
+          <li>클리닉명, 날짜, 금액이 보이게 영수증을 찍어 주세요.</li>
+          <li><strong>이름·생년월일·환자번호는 가리고</strong> 보내 주세요.</li>
+          <li>운영자가 영수증과 클리닉 정보를 대조한 뒤에만 ‘영수증 인증’으로 올라가요.</li>
+        </ol>
+        <button id="open-submit" class="wide-button" type="button">인증 정보 보내기</button>
+      </section>
+
+      <section class="card" id="rules" aria-labelledby="rules-heading">
+        <h2 id="rules-heading">한국 반입 규정 요약</h2>
+        <ul class="facts">
+          <li><b>시행</b> 2026년 11월 12일부터</li>
+          <li><b>방법</b> 본인이 입국할 때 <b>직접 휴대</b>한 경우만 돼요. 해외 온라인 주문 후 우편·특송으로 받는 직구는 안 돼요.</li>
+          <li><b>수량</b> 기본 6개, 용법상 3개월분까지. 주 1회 맞는 마운자로는 약 12~13펜이에요. 출국할 때 가져간 약도 수량에 포함돼요.</li>
+          <li><b>조건</b> 정상적으로 처방받은 <b>본인 치료용</b>이어야 해요. 처방전·영수증을 함께 챙기세요.</li>
+        </ul>
+        <p class="small">기사마다 수량 설명이 조금씩 달라요. 출국 전에 관세청·식약처 공지를 꼭 확인하세요. 출처 확인일 <span id="rules-checked"></span></p>
+        <ul class="sources small" id="rules-sources"></ul>
+      </section>
+
+      <section class="card" aria-labelledby="safety-heading">
+        <h2 id="safety-heading">꼭 알아 두세요</h2>
+        <ul class="facts">
+          <li>마운자로는 <b>의사 처방이 필요한 주사제</b>예요. 용량과 부작용은 진료 의사와 상담하세요.</li>
+          <li>냉장 보관하는 약이에요. 이동 중 보관 방법은 처방받을 때 받은 설명서를 따르세요.</li>
+          <li>스시자로는 클리닉에서 광고비·수수료를 받지 않아요. 최저가, 재고, 처방 가능 여부를 보증하지 않아요.</li>
+          <li><b>1펜당 실질가</b>는 진찰료·배송비 등을 포함한 결제 총액을 펜 수로 나눈 값이에요. 90일이 지난 정보는 목록에서 빠져요.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>스시자로 · <a href="/">everpinej</a> · <a href="mailto:contact@everpinej.com">문의</a></p>
+      <p class="small">이 사이트는 의료 정보를 제공하지 않으며 특정 의료기관을 추천하거나 광고하지 않습니다.</p>
+    </footer>
+  </div>
+
+  <dialog id="submit-dialog" aria-labelledby="submit-dialog-title">
+    <form id="submit-form" method="dialog">
+      <h2 id="submit-dialog-title">인증 정보 보내기</h2>
+      <label>클리닉 이름<input name="clinic" required maxlength="80" placeholder="영수증에 적힌 이름"></label>
+      <label>지역·가까운 역<input name="area" required maxlength="60" placeholder="예: 도쿄 신주쿠역"></label>
+      <div class="row">
+        <label>용량<select name="dose" id="submit-dose" required></select></label>
+        <label>펜 수<input name="pens" type="number" min="1" max="12" required inputmode="numeric"></label>
+      </div>
+      <label>결제 총액(엔)<input name="total" type="number" min="1" required inputmode="numeric" placeholder="진찰료 포함 영수증 총액"></label>
+      <label>처방일<input name="date" type="date" required></label>
+      <fieldset><legend>관광객(단기체류)도 처방받았나요?</legend>
+        <label class="inline"><input type="radio" name="tourist" value="예" required> 예</label>
+        <label class="inline"><input type="radio" name="tourist" value="아니오"> 아니오</label>
+        <label class="inline"><input type="radio" name="tourist" value="모름"> 모름</label>
+      </fieldset>
+      <label>메모(선택)<textarea name="memo" maxlength="300" rows="2" placeholder="한국어 가능, 당일 수령 등"></textarea></label>
+      <p class="small">메일 앱이 열리면 <b>개인정보를 가린 영수증 사진을 첨부</b>해서 보내 주세요. 영수증이 없으면 인증되지 않아요.</p>
+      <p id="submit-status" class="small" role="status"></p>
+      <div class="dialog-actions">
+        <button type="button" id="close-submit" class="text-button">닫기</button>
+        <button type="submit" class="wide-button">메일로 보내기</button>
+      </div>
+    </form>
+  </dialog>
+</body>
+</html>

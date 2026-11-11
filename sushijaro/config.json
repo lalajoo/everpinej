@@ -1,0 +1,13 @@
+{
+  "maxAgeDays": 90,
+  "report": { "email": "contact@everpinej.com" },
+  "rules": {
+    "effectiveFrom": "2026-11-12",
+    "sourceCheckedAt": "2026-11-11",
+    "sources": [
+      { "title": "한국경제 · 해외서 산 마운자로·위고비, 12일부터 국내 반입 가능", "url": "https://www.hankyung.com/article/2026111112111" },
+      { "title": "MTN · 일본서 산 마운자로, 국내 반입 허용된다", "url": "https://news.mtn.co.kr/article/2026111116412519794" },
+      { "title": "재경일보 · 3개월치까지 반입 허용…우편직구는 불가", "url": "https://news.jkn.co.kr/post/1086715" }
+    ]
+  }
+}

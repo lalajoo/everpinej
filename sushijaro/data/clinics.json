@@ -1,0 +1,5 @@
+{
+  "updatedAt": "2026-11-11",
+  "note": "실제 확인된 정보만 넣습니다. source: receipt(영수증 인증) | official(공식 홈페이지 게시가, sourceUrl 필수). 테스트용 데이터는 tests/에만 둡니다.",
+  "clinics": []
+}

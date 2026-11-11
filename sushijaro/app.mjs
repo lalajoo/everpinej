@@ -1,0 +1,121 @@
+import { DOSES, search, yen, daysSince } from './core.mjs';
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+const state = { query: '', dose: '', verified: 'all', sort: 'price', origin: null };
+let config, clinics = [];
+
+async function json(path) {
+  const res = await fetch(path, { cache: 'no-cache' });
+  if (!res.ok) throw new Error(path);
+  return res.json();
+}
+
+function readUrl() {
+  const p = new URLSearchParams(location.search);
+  state.query = p.get('q') ?? '';
+  state.dose = DOSES.includes(p.get('dose')) ? p.get('dose') : '';
+  state.verified = ['receipt', 'tourist'].includes(p.get('v')) ? p.get('v') : 'all';
+}
+
+function writeUrl() {
+  const p = new URLSearchParams();
+  if (state.query) p.set('q', state.query);
+  if (state.dose) p.set('dose', state.dose);
+  if (state.verified !== 'all') p.set('v', state.verified);
+  history.replaceState(null, '', p.size ? '?' + p : location.pathname);
+}
+
+function badge(price) {
+  if (!price) return '<span class="badge muted">가격 정보 없음</span>';
+  const age = daysSince(price.checkedAt);
+  const when = age <= 0 ? '오늘' : `${age}일 전`;
+  return price.source === 'receipt'
+    ? `<span class="badge ok">영수증 인증 · ${when}</span>`
+    : `<span class="badge">공식 게시가 · ${when} 확인</span>`;
+}
+
+function card({ clinic, price, unit, km }) {
+  const tourist = clinic.touristOk === true ? '<li>관광객 처방 확인</li>' : clinic.touristOk === false ? '<li>관광객 처방 불가 보고</li>' : '';
+  const langs = clinic.languages?.length ? `<li>${esc(clinic.languages.join('·'))} 상담</li>` : '';
+  const src = price?.sourceUrl ? ` · <a href="${esc(price.sourceUrl)}" target="_blank" rel="noopener noreferrer nofollow">출처</a>` : '';
+  return `<article class="clinic">
+    <header><h3>${esc(clinic.name)}</h3>${km != null ? `<span class="km">${km < 1 ? Math.round(km * 1000) + 'm' : km.toFixed(1) + 'km'}</span>` : ''}</header>
+    <p class="where">${esc([clinic.city, clinic.area, clinic.station].filter(Boolean).join(' · '))}</p>
+    ${price ? `<p class="price"><b>${yen(unit)}</b> / 1펜 <span>${esc(price.dose)} · ${price.pens}펜 총 ${yen(price.totalJpy)}${price.includes ? ' (' + esc(price.includes) + ' 포함)' : ''}</span></p>` : ''}
+    <p>${badge(price)}${src}</p>
+    <ul class="meta">${tourist}${langs}${clinic.consult ? `<li>${esc(clinic.consult)}</li>` : ''}</ul>
+  </article>`;
+}
+
+function render() {
+  const rows = search(clinics, { ...state, maxAgeDays: config.maxAgeDays });
+  document.querySelectorAll('[data-verified]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.verified === state.verified)));
+  if (!clinics.length) {
+    $('#result-count').textContent = '아직 인증된 클리닉이 없어요.';
+    $('#results').innerHTML = `<div class="empty"><b>첫 번째 영수증을 기다리고 있어요.</b><p>스시자로는 확인된 정보만 보여 줘요. 일본에서 처방받으셨다면 아래에서 영수증을 인증해 주세요.</p></div>`;
+    return;
+  }
+  $('#result-count').textContent = rows.length ? `${rows.length}곳` + (state.query ? ` · ‘${state.query}’` : '') : '조건에 맞는 클리닉이 없어요.';
+  $('#results').innerHTML = rows.map(card).join('') || '<div class="empty"><p>다른 지역이나 용량으로 검색해 보세요.</p></div>';
+}
+
+function submitText(form) {
+  const d = new FormData(form);
+  return [
+    `클리닉: ${d.get('clinic')}`, `지역·역: ${d.get('area')}`, `용량: ${d.get('dose')}`, `펜 수: ${d.get('pens')}`,
+    `결제 총액: ¥${d.get('total')}`, `처방일: ${d.get('date')}`, `관광객 처방: ${d.get('tourist')}`, `메모: ${d.get('memo') || '-'}`,
+    '', '※ 개인정보를 가린 영수증 사진을 첨부해 주세요. 운영자 확인 전까지는 미인증 정보입니다.',
+  ].join('\n');
+}
+
+function bind() {
+  const doseOptions = DOSES.map(d => `<option value="${d}">${d}</option>`).join('');
+  $('#dose').insertAdjacentHTML('beforeend', doseOptions);
+  $('#submit-dose').innerHTML = doseOptions;
+  $('#search').value = state.query;
+  $('#dose').value = state.dose;
+
+  $('#search-form').addEventListener('submit', e => { e.preventDefault(); state.query = $('#search').value.trim(); writeUrl(); render(); $('#search').blur(); });
+  $('#dose').addEventListener('change', e => { state.dose = e.target.value; writeUrl(); render(); });
+  $('#sort').addEventListener('change', e => { state.sort = e.target.value; if (state.sort === 'distance' && !state.origin) locate(); else render(); });
+  document.querySelectorAll('[data-verified]').forEach(b => b.addEventListener('click', () => { state.verified = b.dataset.verified; writeUrl(); render(); }));
+  $('#nearby').addEventListener('click', locate);
+
+  $('#open-submit').addEventListener('click', () => { $('#submit-status').textContent = ''; $('#submit-dialog').showModal(); });
+  $('#close-submit').addEventListener('click', () => $('#submit-dialog').close());
+  $('#submit-form').addEventListener('submit', e => {
+    e.preventDefault();
+    location.href = `mailto:${encodeURIComponent(config.report.email)}?subject=${encodeURIComponent('[스시자로] 영수증 인증')}&body=${encodeURIComponent(submitText(e.target))}`;
+    $('#submit-status').textContent = '메일 앱에서 영수증 사진을 첨부하고 보내기를 눌러 주세요. 아직 접수된 것은 아니에요.';
+  });
+}
+
+function locate() {
+  const status = $('#location-status');
+  if (!('geolocation' in navigator)) { status.textContent = '이 브라우저는 위치를 지원하지 않아요. 지역 이름으로 검색해 주세요.'; return; }
+  status.textContent = '위치를 확인하는 중…';
+  navigator.geolocation.getCurrentPosition(pos => {
+    state.origin = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+    state.sort = 'distance'; $('#sort').value = 'distance';
+    status.textContent = '가까운 순으로 정렬했어요. 위치는 기기 안에서만 써요.';
+    render();
+  }, () => {
+    state.sort = 'price'; $('#sort').value = 'price';
+    status.textContent = '위치 권한이 없어요. 지역이나 역 이름으로 검색해 주세요.';
+    render();
+  }, { timeout: 8000, maximumAge: 300000 });
+}
+
+function renderRules() {
+  $('#rules-checked').textContent = config.rules.sourceCheckedAt;
+  $('#rules-sources').innerHTML = config.rules.sources.map(s => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.title)}</a></li>`).join('');
+}
+
+try {
+  readUrl();
+  [config, { clinics }] = await Promise.all([json('./config.json'), json('./data/clinics.json')]);
+  bind(); renderRules(); render();
+} catch {
+  $('#result-count').textContent = '정보를 불러오지 못했어요. 잠시 후 다시 시도해 주세요.';
+}
