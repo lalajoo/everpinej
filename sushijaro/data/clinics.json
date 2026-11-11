@@ -455,6 +455,155 @@
      "includes": "세금·진찰료"
     }
    ]
+  },
+  {
+   "id": "ikebukuro-shokaki",
+   "name": "이케부쿠로 소화기내과·비뇨기과 클리닉",
+   "nameJa": "池袋消化器内科・泌尿器科クリニック",
+   "city": "도쿄",
+   "area": "이케부쿠로",
+   "station": "池袋駅 동쪽 출구 도보 1분",
+   "address": "東京都豊島区南池袋1-22-2 F・L・C・ビル6F",
+   "lat": 35.729027,
+   "lng": 139.712234,
+   "reservation": "예약 불필요",
+   "consult": "대면·온라인",
+   "touristOk": null,
+   "touristNote": "클리닉 그룹이 외국인 환자 진료를 안내함: 번역기(포켓토크) 사용, 보험증 없이 자비 진료·카드 결제 가능. 마운자로를 관광객에게 처방하는지는 따로 적혀 있지 않음.",
+   "note": "알코올 솜·진찰료 등 모두 포함 가격. 1개월(4펜) 단위.",
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 20000,
+     "source": "official",
+     "sourceUrl": "https://hinyouki-shokaki.jp/%e3%83%9e%e3%83%b3%e3%82%b8%e3%83%a3%e3%83%ad%e3%83%80%e3%82%a4%e3%82%a8%e3%83%83%e3%83%88%ef%bc%88%e6%9d%a5%e9%99%a2%e3%81%a7%e3%82%82%e3%82%aa%e3%83%b3%e3%83%a9%e3%82%a4%e3%83%b3%e3%81%a7%e3%82%82",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 34000,
+     "source": "official",
+     "sourceUrl": "https://hinyouki-shokaki.jp/%e3%83%9e%e3%83%b3%e3%82%b8%e3%83%a3%e3%83%ad%e3%83%80%e3%82%a4%e3%82%a8%e3%83%83%e3%83%88%ef%bc%88%e6%9d%a5%e9%99%a2%e3%81%a7%e3%82%82%e3%82%aa%e3%83%b3%e3%83%a9%e3%82%a4%e3%83%b3%e3%81%a7%e3%82%82",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "7.5mg",
+     "pens": 4,
+     "totalJpy": 46000,
+     "source": "official",
+     "sourceUrl": "https://hinyouki-shokaki.jp/%e3%83%9e%e3%83%b3%e3%82%b8%e3%83%a3%e3%83%ad%e3%83%80%e3%82%a4%e3%82%a8%e3%83%83%e3%83%88%ef%bc%88%e6%9d%a5%e9%99%a2%e3%81%a7%e3%82%82%e3%82%aa%e3%83%b3%e3%83%a9%e3%82%a4%e3%83%b3%e3%81%a7%e3%82%82",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "10mg",
+     "pens": 4,
+     "totalJpy": 49000,
+     "source": "official",
+     "sourceUrl": "https://hinyouki-shokaki.jp/%e3%83%9e%e3%83%b3%e3%82%b8%e3%83%a3%e3%83%ad%e3%83%80%e3%82%a4%e3%82%a8%e3%83%83%e3%83%88%ef%bc%88%e6%9d%a5%e9%99%a2%e3%81%a7%e3%82%82%e3%82%aa%e3%83%b3%e3%83%a9%e3%82%a4%e3%83%b3%e3%81%a7%e3%82%82",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료"
+    }
+   ]
+  },
+  {
+   "id": "nishishinjuku-sugie",
+   "name": "니시신주쿠 스기에 중앙 클리닉",
+   "nameJa": "西新宿杉江中央クリニック",
+   "city": "도쿄",
+   "area": "니시신주쿠",
+   "address": "東京都新宿区西新宿7-10-18 小滝橋パシフィカビル4階",
+   "lat": 35.694523,
+   "lng": 139.698669,
+   "reservation": "완전 예약제",
+   "consult": "대면",
+   "touristOk": null,
+   "note": "처음 처방받는 사람은 별도 ¥3,300(아래 총액에 포함). 세금 포함 여부 표기 없음. 상담 무료.",
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 1,
+     "totalJpy": 9300,
+     "source": "official",
+     "sourceUrl": "https://shinjuku-biyou-chuoh.com/menu/diet/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "첫 처방 비용 ¥3,300"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 23300,
+     "source": "official",
+     "sourceUrl": "https://shinjuku-biyou-chuoh.com/menu/diet/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "첫 처방 비용 ¥3,300"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 38300,
+     "source": "official",
+     "sourceUrl": "https://shinjuku-biyou-chuoh.com/menu/diet/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "첫 처방 비용 ¥3,300"
+    }
+   ]
+  },
+  {
+   "id": "shinagawa-east",
+   "name": "시나가와 이스트 클리닉",
+   "nameJa": "品川イーストクリニック",
+   "city": "도쿄",
+   "area": "시나가와",
+   "station": "品川駅 고난(港南) 출구 도보 5분",
+   "address": "東京都港区港南 品川インターシティB棟 2階",
+   "lat": 35.626335,
+   "lng": 139.742004,
+   "consult": "대면·온라인",
+   "touristOk": null,
+   "note": "별도 진찰료 ¥3,300(세금 포함, 아래 총액에 포함). 트래블 클리닉도 운영. 첫 진료는 대면 권장.",
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 21100,
+     "source": "official",
+     "sourceUrl": "https://e-clinic.gr.jp/medical_diet/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 36300,
+     "source": "official",
+     "sourceUrl": "https://e-clinic.gr.jp/medical_diet/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "7.5mg",
+     "pens": 4,
+     "totalJpy": 47300,
+     "source": "official",
+     "sourceUrl": "https://e-clinic.gr.jp/medical_diet/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "10mg",
+     "pens": 4,
+     "totalJpy": 58300,
+     "source": "official",
+     "sourceUrl": "https://e-clinic.gr.jp/medical_diet/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료"
+    }
+   ]
   }
  ]
 }

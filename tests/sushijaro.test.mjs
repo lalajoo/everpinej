@@ -80,3 +80,12 @@ test('배포 클리닉 데이터: 좌표·주소·공식 출처가 모두 있다
     assert.ok(c.prices.length > 0, c.id);
   }
 });
+
+test('그림 안내: 8단계, 모든 일본어 문장에 한글 발음과 뜻이 붙어 있다', async () => {
+  const html = await readFile(new URL('../sushijaro/guide/index.html', import.meta.url), 'utf8');
+  assert.equal((html.match(/<li class="step">/g) ?? []).length, 8);
+  assert.equal((html.match(/<svg class="art"/g) ?? []).length, 8);
+  const blocks = [...html.matchAll(/<p class="say-ja" lang="ja">[^<]+<\/p>(<p class="say-read">[^<]+<\/p>)?(<p class="say-ko">[^<]+<\/p>)?/g)];
+  assert.ok(blocks.length >= 15);
+  for (const b of blocks) assert.ok(b[1] && b[2], b[0]);
+});

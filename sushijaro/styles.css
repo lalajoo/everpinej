@@ -74,3 +74,27 @@ details{margin-top:8px;font-size:14px}summary{cursor:pointer;color:var(--accent)
 .phrases{list-style:none;padding:0;margin:0}
 .phrases li{border-top:1px solid var(--line);padding:10px 0;display:flex;flex-direction:column}
 .phrases b{font-size:16px;font-family:"Hiragino Sans","Noto Sans JP",sans-serif}.phrases .read{color:var(--accent);font-size:13px}.phrases span{font-size:14px;color:var(--sub)}
+.legend{display:flex;gap:8px;flex-wrap:wrap;font-size:13px}.legend span{padding:3px 10px;border-radius:99px;background:#fff;border:1px solid var(--line)}
+.guide-steps{list-style:none;padding:0;margin:18px 0 0}
+.step{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;margin-bottom:16px}
+.step .art{display:block;width:100%;height:auto}
+.step-body{padding:14px 16px 16px}
+.step-no{margin:0;font-size:13px;font-weight:800;color:var(--accent)}.step-no span{color:var(--sub);font-weight:600}
+.step h2{margin:2px 0 8px;font-size:20px}
+.say{background:var(--bg);border-radius:14px;padding:10px 12px;margin-top:10px}
+.say-label{margin:0 0 4px;font-size:12px;font-weight:800;color:var(--sub)}
+.say .say-ja{margin:8px 0 0;font-size:18px;font-weight:700;font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;line-height:1.45}
+.say .say-ja:first-of-type{margin-top:0}
+.say-read{color:var(--accent);font-weight:700}
+.say .say-read{margin:2px 0 0;font-size:15px}
+.say .say-ko{margin:0;font-size:14px;color:var(--sub)}
+.legend .say-ja{font-weight:700}.legend .say-ko{color:var(--sub)}
+.check{padding-left:20px;margin:6px 0}.check li{margin-bottom:6px}
+.words{width:100%;border-collapse:collapse;font-size:14px;margin:8px 0}
+.words th,.words td{text-align:left;padding:7px 6px;border-top:1px solid var(--line)}
+.words th{font-family:"Hiragino Sans","Noto Sans JP",sans-serif;font-size:15px;white-space:nowrap}
+.link-button{display:block;text-align:center;text-decoration:none;box-sizing:border-box}
+.link-button.ghost{background:#fff;color:var(--accent);border:1.5px solid var(--accent);margin-top:8px}
+.center{text-align:center}
+.guide-banner{display:flex;gap:12px;align-items:center;background:var(--ink);color:#fff;border-radius:16px;padding:14px 16px;text-decoration:none;margin:4px 0 14px}
+.guide-banner b{display:block;font-size:16px}.guide-banner span{font-size:13px;opacity:.8}.guide-banner i{margin-left:auto;font-style:normal;font-size:20px}

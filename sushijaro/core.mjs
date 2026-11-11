@@ -31,6 +31,7 @@ export const PLACE_ALIASES = {
   '가라스마': ['烏丸', 'karasuma'],
   '오모테산도': ['表参道', 'omotesando'],
   '니시신주쿠': ['西新宿', 'nishishinjuku'],
+  '시나가와': ['品川', 'shinagawa'],
 };
 
 export function normalize(text) {
