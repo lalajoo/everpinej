@@ -120,3 +120,5 @@ details{margin-top:8px;font-size:14px}summary{cursor:pointer;color:var(--accent)
 .online-route .art{display:block;width:100%;height:auto}
 .warning-inline{background:#fde8e8;color:#7a1f1f;border-radius:10px;padding:10px 12px;font-size:14px}
 .mini-steps{padding-left:20px}.mini-steps li{margin-bottom:8px}.mini-steps li > b:first-child{display:block}
+.legal h2{font-size:17px}.legal.warn{border-color:#f5c2c2;background:#fff7f7}.legal.warn h2{color:#7a1f1f}
+#submit-form label.consent{display:flex;align-items:flex-start;gap:6px;font-size:13px;margin:6px 0 4px}

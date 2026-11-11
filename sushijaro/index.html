@@ -14,7 +14,7 @@
   <meta property="og:url" content="https://everpinej.com/sushijaro/">
   <link rel="canonical" href="https://everpinej.com/sushijaro/">
   <link rel="icon" href="./favicon.svg?v=2" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css?v=20261111f">
+  <link rel="stylesheet" href="./styles.css?v=20261111g">
   <script type="module" src="./app.mjs?v=20261111g"></script>
 </head>
 <body>
@@ -156,16 +156,18 @@
         <ul class="facts">
           <li>마운자로는 <b>의사 처방이 필요한 주사제</b>예요. 용량과 부작용은 진료 의사와 상담하세요.</li>
           <li>냉장 보관하는 약이에요. 이동 중 보관 방법은 처방받을 때 받은 설명서를 따르세요.</li>
-          <li>스시자로는 클리닉에서 광고비·수수료를 받지 않아요. 최저가, 재고, 처방 가능 여부를 보증하지 않아요.</li>
+          <li>스시자로는 클리닉에서 광고비·수수료를 받지 않고, 진료를 소개·알선하거나 약을 팔지 않아요. 최저가, 재고, 처방 가능 여부를 보증하지 않아요.</li>
+          <li><b>본인 치료용만</b> 들여올 수 있어요. 다른 사람 몫을 대신 사 오거나 나눠 주기·되팔기는 불법이 될 수 있어요.</li>
           <li>가격은 클리닉 <b>공식 홈페이지 게시가</b>(확인일 표시)와 이용자 <b>영수증 인증</b> 두 종류예요. 영수증 인증을 먼저 보여 줘요.</li>
           <li><b>1펜당 실질가</b>는 진찰료·배송비 등을 포함한 결제 총액을 펜 수로 나눈 값이에요. 90일이 지난 정보는 목록에서 빠져요.</li>
         </ul>
+        <a class="wide-button link-button ghost" href="./notice/">이용 안내와 주의사항 전체 보기</a>
       </section>
     </main>
 
     <footer class="footer">
-      <p>스시자로 · <a href="/">everpinej</a> · <a href="mailto:contact@everpinej.com">문의</a></p>
-      <p class="small">이 사이트는 의료 정보를 제공하지 않으며 특정 의료기관을 추천하거나 광고하지 않습니다.</p>
+      <p>스시자로 · <a href="/">everpinej</a> · <a href="./notice/">이용 안내·주의사항</a> · <a href="mailto:contact@everpinej.com">문의</a></p>
+      <p class="small">스시자로는 의료 조언이 아니며, 특정 의료기관·의약품을 추천·광고·알선하지 않습니다. 가격과 조건은 각 의료기관의 공개 정보와 이용자 제보이며 바뀔 수 있습니다. 마운자로는 Eli Lilly and Company의 상표이며 스시자로는 제조사와 관계가 없습니다.</p>
     </footer>
   </div>
 
@@ -200,6 +202,7 @@
         <label>배송 날짜 지정<select name="dateSelect"><option value="">해당 없음</option><option>가능했음</option><option>안 됐음</option></select></label>
       </div>
       <label>메모(선택)<textarea name="memo" maxlength="300" rows="2" placeholder="한국어 가능, 당일 수령 등"></textarea></label>
+      <label class="inline consent"><input type="checkbox" required> 영수증의 이름·생년월일·환자번호를 가렸고, 본인이 받은 처방이에요.</label>
       <p class="small">메일 앱이 열리면 <b>개인정보를 가린 영수증 사진을 첨부</b>해서 보내 주세요. 영수증이 없으면 인증되지 않아요.</p>
       <p id="submit-status" class="small" role="status"></p>
       <div class="dialog-actions">

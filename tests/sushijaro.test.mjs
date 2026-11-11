@@ -103,3 +103,12 @@ test('비대면 필터: online.available이 true인 곳만, 비대면 가격만 
   const visit = search(clinics, { channel: 'visit', now });
   for (const r of visit) if (r.price) assert.notEqual(r.price.channel, 'online');
 });
+
+test('주의사항 페이지가 있고 모든 페이지에서 링크된다', async () => {
+  const notice = await readFile(new URL('../sushijaro/notice/index.html', import.meta.url), 'utf8');
+  for (const must of ['의료 조언이 아니에요', '알선하지 않아요', '본인 치료용', '한국 주소로 우편·택배', 'Eli Lilly']) assert.ok(notice.includes(must), must);
+  for (const page of ['../sushijaro/index.html', '../sushijaro/guide/index.html']) {
+    const html = await readFile(new URL(page, import.meta.url), 'utf8');
+    assert.match(html, /notice\//, page);
+  }
+});
