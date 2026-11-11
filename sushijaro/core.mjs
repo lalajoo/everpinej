@@ -85,9 +85,12 @@ export function distanceKm(a, b) {
 }
 
 // 조건에 맞는 가격 중 대표 가격 하나: 영수증 인증을 공식 게시가보다 우선하고, 같은 종류면 최근·저렴한 순.
-export function bestPrice(clinic, { dose = '', maxAgeDays = 90, now = new Date() } = {}) {
+export function priceChannel(p) { return p.channel === 'online' ? 'online' : 'visit'; }
+
+export function bestPrice(clinic, { dose = '', channel = 'all', maxAgeDays = 90, now = new Date() } = {}) {
   const prices = (clinic.prices ?? [])
     .filter(p => !dose || p.dose === dose)
+    .filter(p => channel === 'all' || priceChannel(p) === channel)
     .filter(p => perPen(p) !== null)
     .filter(p => !isStale(p, maxAgeDays, now));
   const rank = p => (p.source === 'receipt' ? 0 : 1);
@@ -95,11 +98,12 @@ export function bestPrice(clinic, { dose = '', maxAgeDays = 90, now = new Date()
   return prices[0] ?? null;
 }
 
-export function search(clinics, { query = '', dose = '', verified = 'all', sort = 'price', origin = null, maxAgeDays = 90, now = new Date() } = {}) {
+export function search(clinics, { query = '', dose = '', verified = 'all', channel = 'all', sort = 'price', origin = null, maxAgeDays = 90, now = new Date() } = {}) {
   const rows = [];
   for (const clinic of clinics) {
     if (!matchesQuery(clinic, query)) continue;
-    const price = bestPrice(clinic, { dose, maxAgeDays, now });
+    if (channel === 'online' && clinic.online?.available !== true) continue;
+    const price = bestPrice(clinic, { dose, channel, maxAgeDays, now });
     if (dose && !price) continue;
     if (verified === 'receipt' && price?.source !== 'receipt') continue;
     if (verified === 'tourist' && clinic.touristOk !== true) continue;

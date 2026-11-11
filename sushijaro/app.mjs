@@ -3,7 +3,7 @@ import { setupCard } from './card.mjs';
 
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
-const state = { query: '', dose: '', verified: 'all', sort: 'price', origin: null };
+const state = { query: '', dose: '', verified: 'all', channel: 'all', sort: 'price', origin: null };
 let config, clinics = [];
 
 async function json(path) {
@@ -17,6 +17,7 @@ function readUrl() {
   state.query = p.get('q') ?? '';
   state.dose = DOSES.includes(p.get('dose')) ? p.get('dose') : '';
   state.verified = ['receipt', 'tourist'].includes(p.get('v')) ? p.get('v') : 'all';
+  state.channel = ['visit', 'online'].includes(p.get('ch')) ? p.get('ch') : 'all';
 }
 
 function writeUrl() {
@@ -24,6 +25,7 @@ function writeUrl() {
   if (state.query) p.set('q', state.query);
   if (state.dose) p.set('dose', state.dose);
   if (state.verified !== 'all') p.set('v', state.verified);
+  if (state.channel !== 'all') p.set('ch', state.channel);
   history.replaceState(null, '', p.size ? '?' + p : location.pathname);
 }
 
@@ -36,20 +38,30 @@ function badge(price) {
     : `<span class="badge">공식 게시가 · ${when} 확인</span>`;
 }
 
+function onlineBox(o) {
+  if (!o || o.available === null || o.available === undefined) return '<p class="online-box muted">비대면 진료: 미확인</p>';
+  if (o.available === false) return '<p class="online-box muted">비대면 진료: 안 함</p>';
+  const first = { no: '마운자로를 써 본 사람만', visit: '첫 진료는 대면 권장', ok: '첫 처방도 가능' }[o.firstTime] ?? '첫 처방 가능 여부 미확인';
+  const rows = [['첫 처방', first], ['방법', o.how], ['최소 수량', o.minPens ? o.minPens + '펜부터' : null], ['배송', o.shipping], ['결제', o.payment], ['호텔 수령', o.hotel ?? '미확인 · 호텔에 먼저 문의']]
+    .filter(([, v]) => v).map(([k, v]) => `<li><b>${k}</b> ${esc(v)}</li>`).join('');
+  return `<div class="online-box"><p><b>비대면 진료 가능</b></p><ul>${rows}</ul>${o.note ? `<p class="small">${esc(o.note)}</p>` : ''}</div>`;
+}
+
 function card({ clinic, price, unit, km }) {
   const tourist = clinic.touristOk === true ? '<li class="good">외국인 처방 명시</li>' : clinic.touristOk === false ? '<li>관광객 처방 불가 보고</li>' : '<li>외국인 처방 여부 미확인</li>';
   const langs = clinic.languages?.length ? `<li>${esc(clinic.languages.join('·'))} 상담</li>` : '';
   const src = price?.sourceUrl ? ` · <a href="${esc(price.sourceUrl)}" target="_blank" rel="noopener noreferrer nofollow">출처</a>` : '';
   const map = clinic.address ? `<a class="map" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(clinic.address)}" target="_blank" rel="noopener noreferrer">지도</a>` : '';
   const others = (clinic.prices ?? []).filter(p => p !== price && (!state.dose || p.dose === state.dose))
-    .map(p => `<li>${esc(p.dose)} ${p.pens}펜 ${yen(p.totalJpy)} <span>(1펜 ${yen(perPen(p))})</span></li>`).join('');
+    .map(p => `<li>${p.channel === 'online' ? '비대면 ' : '내원 '}${esc(p.dose)} ${p.pens}펜 ${yen(p.totalJpy)} <span>(1펜 ${yen(perPen(p))})</span></li>`).join('');
   return `<article class="clinic">
     <header><h3>${esc(clinic.name)}</h3>${km != null ? `<span class="km">${km < 1 ? Math.round(km * 1000) + 'm' : km.toFixed(1) + 'km'}</span>` : ''}</header>
     <p class="ja" lang="ja">${esc(clinic.nameJa ?? '')}</p>
     <p class="where">${esc([clinic.city, clinic.area].filter(Boolean).join(' · '))}${clinic.station ? ' · ' + esc(clinic.station) : ''}</p>
-    ${price ? `<p class="price"><b>${yen(unit)}</b> / 1펜 <span>${esc(price.dose)} · ${price.pens}펜 총 ${yen(price.totalJpy)}${price.includes ? ' (' + esc(price.includes) + ' 포함)' : ''}</span></p>` : ''}
+    ${price ? `<p class="price"><b>${yen(unit)}</b> / 1펜 <span>${price.channel === 'online' ? '비대면 · ' : '내원 · '}${esc(price.dose)} · ${price.pens}펜 총 ${yen(price.totalJpy)}${price.includes ? ' (' + esc(price.includes) + ' 포함)' : ''}</span></p>` : ''}
     <p>${badge(price)}${src}</p>
     <ul class="meta">${tourist}${langs}${clinic.consult ? `<li>${esc(clinic.consult)}</li>` : ''}${clinic.reservation ? `<li>${esc(clinic.reservation)}</li>` : ''}</ul>
+    ${onlineBox(clinic.online)}
     ${clinic.touristNote ? `<p class="tourist-note">${esc(clinic.touristNote)}</p>` : ''}
     ${clinic.note ? `<p class="small">${esc(clinic.note)}</p>` : ''}
     <details><summary>가격표·주소 보기</summary>${others ? `<ul class="others">${others}</ul>` : ''}<p class="small" lang="ja">${esc(clinic.address ?? '')} ${map}</p></details>
@@ -59,6 +71,8 @@ function card({ clinic, price, unit, km }) {
 function render() {
   const rows = search(clinics, { ...state, maxAgeDays: config.maxAgeDays });
   document.querySelectorAll('[data-verified]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.verified === state.verified)));
+  document.querySelectorAll('[data-channel]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.channel === state.channel)));
+  $('#online-note').hidden = state.channel !== 'online';
   if (!clinics.length) {
     $('#result-count').textContent = '아직 인증된 클리닉이 없어요.';
     $('#results').innerHTML = `<div class="empty"><b>첫 번째 영수증을 기다리고 있어요.</b><p>스시자로는 확인된 정보만 보여 줘요. 일본에서 처방받으셨다면 아래에서 영수증을 인증해 주세요.</p></div>`;
@@ -88,6 +102,7 @@ function bind() {
   $('#dose').addEventListener('change', e => { state.dose = e.target.value; writeUrl(); render(); });
   $('#sort').addEventListener('change', e => { state.sort = e.target.value; if (state.sort === 'distance' && !state.origin) locate(); else render(); });
   document.querySelectorAll('[data-verified]').forEach(b => b.addEventListener('click', () => { state.verified = b.dataset.verified; writeUrl(); render(); }));
+  document.querySelectorAll('[data-channel]').forEach(b => b.addEventListener('click', () => { state.channel = b.dataset.channel; writeUrl(); render(); }));
   $('#nearby').addEventListener('click', locate);
 
   $('#open-submit').addEventListener('click', () => { $('#submit-status').textContent = ''; $('#submit-dialog').showModal(); });

@@ -25,7 +25,8 @@
      "source": "official",
      "sourceUrl": "https://www.shinjyuku-ekimae-clinic.info/naika/mounjaro.html",
      "checkedAt": "2026-11-11",
-     "includes": "세금·진찰료"
+     "includes": "세금·진찰료",
+     "channel": "visit"
     },
     {
      "dose": "5mg",
@@ -34,7 +35,8 @@
      "source": "official",
      "sourceUrl": "https://www.shinjyuku-ekimae-clinic.info/naika/mounjaro.html",
      "checkedAt": "2026-11-11",
-     "includes": "세금·진찰료"
+     "includes": "세금·진찰료",
+     "channel": "visit"
     },
     {
      "dose": "7.5mg",
@@ -43,7 +45,8 @@
      "source": "official",
      "sourceUrl": "https://www.shinjyuku-ekimae-clinic.info/naika/mounjaro.html",
      "checkedAt": "2026-11-11",
-     "includes": "세금·진찰료"
+     "includes": "세금·진찰료",
+     "channel": "visit"
     },
     {
      "dose": "10mg",
@@ -52,9 +55,41 @@
      "source": "official",
      "sourceUrl": "https://www.shinjyuku-ekimae-clinic.info/naika/mounjaro.html",
      "checkedAt": "2026-11-11",
-     "includes": "세금·진찰료"
+     "includes": "세금·진찰료",
+     "channel": "visit"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 12,
+     "totalJpy": 48000,
+     "source": "official",
+     "sourceUrl": "https://www.shinjyuku-ekimae-clinic.info/naika/mounjaro_online.html",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료·배송비",
+     "channel": "online"
+    },
+    {
+     "dose": "5mg",
+     "pens": 12,
+     "totalJpy": 84000,
+     "source": "official",
+     "sourceUrl": "https://www.shinjyuku-ekimae-clinic.info/naika/mounjaro_online.html",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료·배송비",
+     "channel": "online"
     }
-   ]
+   ],
+   "online": {
+    "available": true,
+    "firstTime": "no",
+    "minPens": 12,
+    "shipping": "일본 국내만(해외 배송 안 함)",
+    "payment": "받을 때 현금(착불)만",
+    "how": "LINE 영상통화, 예약 불필요",
+    "hotel": null,
+    "sourceUrl": "https://www.shinjyuku-ekimae-clinic.info/naika/mounjaro_online.html",
+    "note": "마운자로를 써 본 사람만 비대면 처방. 6박스(12펜)부터. 다음 진료일에 냉장 우편(チルドゆうパック)으로 발송, 날짜 지정 불가."
+   }
   },
   {
    "id": "bianca-ginza",
@@ -78,7 +113,8 @@
      "source": "official",
      "sourceUrl": "https://biancaclinic.jp/en/mounjaro/",
      "checkedAt": "2026-11-11",
-     "includes": "첫 진찰료·채혈비"
+     "includes": "첫 진찰료·채혈비",
+     "channel": "visit"
     },
     {
      "dose": "5mg",
@@ -87,9 +123,13 @@
      "source": "official",
      "sourceUrl": "https://biancaclinic.jp/en/mounjaro/",
      "checkedAt": "2026-11-11",
-     "includes": "첫 진찰료·채혈비"
+     "includes": "첫 진찰료·채혈비",
+     "channel": "visit"
     }
-   ]
+   ],
+   "online": {
+    "available": null
+   }
   },
   {
    "id": "daibikai-shinsaibashi",
@@ -112,7 +152,8 @@
      "source": "official",
      "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
      "checkedAt": "2026-11-11",
-     "includes": "세금·진찰료"
+     "includes": "세금·진찰료",
+     "channel": "visit"
     },
     {
      "dose": "2.5mg",
@@ -121,7 +162,8 @@
      "source": "official",
      "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
      "checkedAt": "2026-11-11",
-     "includes": "세금·진찰료"
+     "includes": "세금·진찰료",
+     "channel": "visit"
     },
     {
      "dose": "5mg",
@@ -130,7 +172,8 @@
      "source": "official",
      "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
      "checkedAt": "2026-11-11",
-     "includes": "세금·진찰료"
+     "includes": "세금·진찰료",
+     "channel": "visit"
     },
     {
      "dose": "5mg",
@@ -139,9 +182,59 @@
      "source": "official",
      "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
      "checkedAt": "2026-11-11",
-     "includes": "세금·진찰료"
+     "includes": "세금·진찰료",
+     "channel": "visit"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 1,
+     "totalJpy": 4950,
+     "source": "official",
+     "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료·배송비",
+     "channel": "online"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 19800,
+     "source": "official",
+     "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료·배송비",
+     "channel": "online"
+    },
+    {
+     "dose": "5mg",
+     "pens": 1,
+     "totalJpy": 8800,
+     "source": "official",
+     "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료·배송비",
+     "channel": "online"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 34000,
+     "source": "official",
+     "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료·배송비",
+     "channel": "online"
     }
-   ]
+   ],
+   "online": {
+    "available": true,
+    "firstTime": null,
+    "shipping": "배송(조건은 상담 때 확인)",
+    "payment": null,
+    "hotel": null,
+    "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+    "note": "온라인 가격은 내원보다 조금 비쌈. 초진료·재진료·배송비 없음."
+   }
   },
   {
    "id": "daibikai-umeda",
@@ -164,7 +257,8 @@
      "source": "official",
      "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
      "checkedAt": "2026-11-11",
-     "includes": "세금·진찰료"
+     "includes": "세금·진찰료",
+     "channel": "visit"
     },
     {
      "dose": "2.5mg",
@@ -173,7 +267,8 @@
      "source": "official",
      "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
      "checkedAt": "2026-11-11",
-     "includes": "세금·진찰료"
+     "includes": "세금·진찰료",
+     "channel": "visit"
     },
     {
      "dose": "5mg",
@@ -182,7 +277,8 @@
      "source": "official",
      "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
      "checkedAt": "2026-11-11",
-     "includes": "세금·진찰료"
+     "includes": "세금·진찰료",
+     "channel": "visit"
     },
     {
      "dose": "5mg",
@@ -191,9 +287,59 @@
      "source": "official",
      "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
      "checkedAt": "2026-11-11",
-     "includes": "세금·진찰료"
+     "includes": "세금·진찰료",
+     "channel": "visit"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 1,
+     "totalJpy": 4950,
+     "source": "official",
+     "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료·배송비",
+     "channel": "online"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 19800,
+     "source": "official",
+     "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료·배송비",
+     "channel": "online"
+    },
+    {
+     "dose": "5mg",
+     "pens": 1,
+     "totalJpy": 8800,
+     "source": "official",
+     "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료·배송비",
+     "channel": "online"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 34000,
+     "source": "official",
+     "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료·배송비",
+     "channel": "online"
     }
-   ]
+   ],
+   "online": {
+    "available": true,
+    "firstTime": null,
+    "shipping": "배송(조건은 상담 때 확인)",
+    "payment": null,
+    "hotel": null,
+    "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+    "note": "온라인 가격은 내원보다 조금 비쌈. 초진료·재진료·배송비 없음."
+   }
   },
   {
    "id": "daibikai-tennoji",
@@ -216,7 +362,8 @@
      "source": "official",
      "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
      "checkedAt": "2026-11-11",
-     "includes": "세금·진찰료"
+     "includes": "세금·진찰료",
+     "channel": "visit"
     },
     {
      "dose": "2.5mg",
@@ -225,7 +372,8 @@
      "source": "official",
      "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
      "checkedAt": "2026-11-11",
-     "includes": "세금·진찰료"
+     "includes": "세금·진찰료",
+     "channel": "visit"
     },
     {
      "dose": "5mg",
@@ -234,7 +382,8 @@
      "source": "official",
      "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
      "checkedAt": "2026-11-11",
-     "includes": "세금·진찰료"
+     "includes": "세금·진찰료",
+     "channel": "visit"
     },
     {
      "dose": "5mg",
@@ -243,9 +392,59 @@
      "source": "official",
      "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
      "checkedAt": "2026-11-11",
-     "includes": "세금·진찰료"
+     "includes": "세금·진찰료",
+     "channel": "visit"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 1,
+     "totalJpy": 4950,
+     "source": "official",
+     "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료·배송비",
+     "channel": "online"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 19800,
+     "source": "official",
+     "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료·배송비",
+     "channel": "online"
+    },
+    {
+     "dose": "5mg",
+     "pens": 1,
+     "totalJpy": 8800,
+     "source": "official",
+     "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료·배송비",
+     "channel": "online"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 34000,
+     "source": "official",
+     "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료·배송비",
+     "channel": "online"
     }
-   ]
+   ],
+   "online": {
+    "available": true,
+    "firstTime": null,
+    "shipping": "배송(조건은 상담 때 확인)",
+    "payment": null,
+    "hotel": null,
+    "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+    "note": "온라인 가격은 내원보다 조금 비쌈. 초진료·재진료·배송비 없음."
+   }
   },
   {
    "id": "daibikai-kyoto",
@@ -268,7 +467,8 @@
      "source": "official",
      "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
      "checkedAt": "2026-11-11",
-     "includes": "세금·진찰료"
+     "includes": "세금·진찰료",
+     "channel": "visit"
     },
     {
      "dose": "2.5mg",
@@ -277,7 +477,8 @@
      "source": "official",
      "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
      "checkedAt": "2026-11-11",
-     "includes": "세금·진찰료"
+     "includes": "세금·진찰료",
+     "channel": "visit"
     },
     {
      "dose": "5mg",
@@ -286,7 +487,8 @@
      "source": "official",
      "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
      "checkedAt": "2026-11-11",
-     "includes": "세금·진찰료"
+     "includes": "세금·진찰료",
+     "channel": "visit"
     },
     {
      "dose": "5mg",
@@ -295,9 +497,59 @@
      "source": "official",
      "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
      "checkedAt": "2026-11-11",
-     "includes": "세금·진찰료"
+     "includes": "세금·진찰료",
+     "channel": "visit"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 1,
+     "totalJpy": 4950,
+     "source": "official",
+     "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료·배송비",
+     "channel": "online"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 19800,
+     "source": "official",
+     "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료·배송비",
+     "channel": "online"
+    },
+    {
+     "dose": "5mg",
+     "pens": 1,
+     "totalJpy": 8800,
+     "source": "official",
+     "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료·배송비",
+     "channel": "online"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 34000,
+     "source": "official",
+     "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료·배송비",
+     "channel": "online"
     }
-   ]
+   ],
+   "online": {
+    "available": true,
+    "firstTime": null,
+    "shipping": "배송(조건은 상담 때 확인)",
+    "payment": null,
+    "hotel": null,
+    "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+    "note": "온라인 가격은 내원보다 조금 비쌈. 초진료·재진료·배송비 없음."
+   }
   },
   {
    "id": "daibikai-kobe",
@@ -320,7 +572,8 @@
      "source": "official",
      "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
      "checkedAt": "2026-11-11",
-     "includes": "세금·진찰료"
+     "includes": "세금·진찰료",
+     "channel": "visit"
     },
     {
      "dose": "2.5mg",
@@ -329,7 +582,8 @@
      "source": "official",
      "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
      "checkedAt": "2026-11-11",
-     "includes": "세금·진찰료"
+     "includes": "세금·진찰료",
+     "channel": "visit"
     },
     {
      "dose": "5mg",
@@ -338,7 +592,8 @@
      "source": "official",
      "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
      "checkedAt": "2026-11-11",
-     "includes": "세금·진찰료"
+     "includes": "세금·진찰료",
+     "channel": "visit"
     },
     {
      "dose": "5mg",
@@ -347,9 +602,59 @@
      "source": "official",
      "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
      "checkedAt": "2026-11-11",
-     "includes": "세금·진찰료"
+     "includes": "세금·진찰료",
+     "channel": "visit"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 1,
+     "totalJpy": 4950,
+     "source": "official",
+     "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료·배송비",
+     "channel": "online"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 19800,
+     "source": "official",
+     "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료·배송비",
+     "channel": "online"
+    },
+    {
+     "dose": "5mg",
+     "pens": 1,
+     "totalJpy": 8800,
+     "source": "official",
+     "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료·배송비",
+     "channel": "online"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 34000,
+     "source": "official",
+     "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료·배송비",
+     "channel": "online"
     }
-   ]
+   ],
+   "online": {
+    "available": true,
+    "firstTime": null,
+    "shipping": "배송(조건은 상담 때 확인)",
+    "payment": null,
+    "hotel": null,
+    "sourceUrl": "https://osaka-bc.com/menu/mounjaro/",
+    "note": "온라인 가격은 내원보다 조금 비쌈. 초진료·재진료·배송비 없음."
+   }
   },
   {
    "id": "ace-umeda",
@@ -373,7 +678,8 @@
      "source": "official",
      "sourceUrl": "https://osaka.ace-clinic.com/shinryo/mounjaro/",
      "checkedAt": "2026-11-11",
-     "includes": "세금·진찰료"
+     "includes": "세금·진찰료",
+     "channel": "visit"
     },
     {
      "dose": "5mg",
@@ -382,7 +688,8 @@
      "source": "official",
      "sourceUrl": "https://osaka.ace-clinic.com/shinryo/mounjaro/",
      "checkedAt": "2026-11-11",
-     "includes": "세금·진찰료"
+     "includes": "세금·진찰료",
+     "channel": "visit"
     },
     {
      "dose": "10mg",
@@ -391,9 +698,13 @@
      "source": "official",
      "sourceUrl": "https://osaka.ace-clinic.com/shinryo/mounjaro/",
      "checkedAt": "2026-11-11",
-     "includes": "세금·진찰료"
+     "includes": "세금·진찰료",
+     "channel": "visit"
     }
-   ]
+   ],
+   "online": {
+    "available": null
+   }
   },
   {
    "id": "clara-tenjin",
@@ -416,7 +727,8 @@
      "source": "official",
      "sourceUrl": "https://clarabeautyclinic.jp/fukuoka/treatment_example/treatment_example-1424/",
      "checkedAt": "2026-11-11",
-     "includes": "세금·진찰료"
+     "includes": "세금·진찰료",
+     "channel": "visit"
     },
     {
      "dose": "2.5mg",
@@ -425,7 +737,8 @@
      "source": "official",
      "sourceUrl": "https://clarabeautyclinic.jp/fukuoka/treatment_example/treatment_example-1424/",
      "checkedAt": "2026-11-11",
-     "includes": "세금·진찰료"
+     "includes": "세금·진찰료",
+     "channel": "visit"
     },
     {
      "dose": "5mg",
@@ -434,7 +747,8 @@
      "source": "official",
      "sourceUrl": "https://clarabeautyclinic.jp/fukuoka/treatment_example/treatment_example-1424/",
      "checkedAt": "2026-11-11",
-     "includes": "세금·진찰료"
+     "includes": "세금·진찰료",
+     "channel": "visit"
     },
     {
      "dose": "7.5mg",
@@ -443,7 +757,8 @@
      "source": "official",
      "sourceUrl": "https://clarabeautyclinic.jp/fukuoka/treatment_example/treatment_example-1424/",
      "checkedAt": "2026-11-11",
-     "includes": "세금·진찰료"
+     "includes": "세금·진찰료",
+     "channel": "visit"
     },
     {
      "dose": "10mg",
@@ -452,9 +767,40 @@
      "source": "official",
      "sourceUrl": "https://clarabeautyclinic.jp/fukuoka/treatment_example/treatment_example-1424/",
      "checkedAt": "2026-11-11",
-     "includes": "세금·진찰료"
+     "includes": "세금·진찰료",
+     "channel": "visit"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 20600,
+     "source": "official",
+     "sourceUrl": "https://clarabeautyclinic.jp/fukuoka/treatment_example/treatment_example-1424/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료·배송비 ¥3,000",
+     "channel": "online"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 12,
+     "totalJpy": 52800,
+     "source": "official",
+     "sourceUrl": "https://clarabeautyclinic.jp/fukuoka/treatment_example/treatment_example-1424/",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료·배송비 무료",
+     "channel": "online"
     }
-   ]
+   ],
+   "online": {
+    "available": true,
+    "firstTime": null,
+    "shipping": "냉장 택배(クール便) ¥3,000, 3개월분 이상 무료",
+    "payment": null,
+    "hotel": null,
+    "how": "공식 LINE으로 문의",
+    "sourceUrl": "https://clarabeautyclinic.jp/fukuoka/treatment_example/treatment_example-1424/",
+    "note": "의사 진료 후 온라인 처방·발송 가능하다고 안내."
+   }
   },
   {
    "id": "ikebukuro-shokaki",
@@ -479,7 +825,8 @@
      "source": "official",
      "sourceUrl": "https://hinyouki-shokaki.jp/%e3%83%9e%e3%83%b3%e3%82%b8%e3%83%a3%e3%83%ad%e3%83%80%e3%82%a4%e3%82%a8%e3%83%83%e3%83%88%ef%bc%88%e6%9d%a5%e9%99%a2%e3%81%a7%e3%82%82%e3%82%aa%e3%83%b3%e3%83%a9%e3%82%a4%e3%83%b3%e3%81%a7%e3%82%82",
      "checkedAt": "2026-11-11",
-     "includes": "세금·진찰료"
+     "includes": "세금·진찰료",
+     "channel": "visit"
     },
     {
      "dose": "5mg",
@@ -488,7 +835,8 @@
      "source": "official",
      "sourceUrl": "https://hinyouki-shokaki.jp/%e3%83%9e%e3%83%b3%e3%82%b8%e3%83%a3%e3%83%ad%e3%83%80%e3%82%a4%e3%82%a8%e3%83%83%e3%83%88%ef%bc%88%e6%9d%a5%e9%99%a2%e3%81%a7%e3%82%82%e3%82%aa%e3%83%b3%e3%83%a9%e3%82%a4%e3%83%b3%e3%81%a7%e3%82%82",
      "checkedAt": "2026-11-11",
-     "includes": "세금·진찰료"
+     "includes": "세금·진찰료",
+     "channel": "visit"
     },
     {
      "dose": "7.5mg",
@@ -497,7 +845,8 @@
      "source": "official",
      "sourceUrl": "https://hinyouki-shokaki.jp/%e3%83%9e%e3%83%b3%e3%82%b8%e3%83%a3%e3%83%ad%e3%83%80%e3%82%a4%e3%82%a8%e3%83%83%e3%83%88%ef%bc%88%e6%9d%a5%e9%99%a2%e3%81%a7%e3%82%82%e3%82%aa%e3%83%b3%e3%83%a9%e3%82%a4%e3%83%b3%e3%81%a7%e3%82%82",
      "checkedAt": "2026-11-11",
-     "includes": "세금·진찰료"
+     "includes": "세금·진찰료",
+     "channel": "visit"
     },
     {
      "dose": "10mg",
@@ -506,9 +855,40 @@
      "source": "official",
      "sourceUrl": "https://hinyouki-shokaki.jp/%e3%83%9e%e3%83%b3%e3%82%b8%e3%83%a3%e3%83%ad%e3%83%80%e3%82%a4%e3%82%a8%e3%83%83%e3%83%88%ef%bc%88%e6%9d%a5%e9%99%a2%e3%81%a7%e3%82%82%e3%82%aa%e3%83%b3%e3%83%a9%e3%82%a4%e3%83%b3%e3%81%a7%e3%82%82",
      "checkedAt": "2026-11-11",
-     "includes": "세금·진찰료"
+     "includes": "세금·진찰료",
+     "channel": "visit"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 20000,
+     "source": "official",
+     "sourceUrl": "https://hinyouki-shokaki.jp/%e3%83%9e%e3%83%b3%e3%82%b8%e3%83%a3%e3%83%ad%e3%83%80%e3%82%a4%e3%82%a8%e3%83%83%e3%83%88%ef%bc%88%e6%9d%a5%e9%99%a2%e3%81%a7%e3%82%82%e3%82%aa%e3%83%b3%e3%83%a9%e3%82%a4%e3%83%b3%e3%81%a7%e3%82%82",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료·배송비",
+     "channel": "online"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 34000,
+     "source": "official",
+     "sourceUrl": "https://hinyouki-shokaki.jp/%e3%83%9e%e3%83%b3%e3%82%b8%e3%83%a3%e3%83%ad%e3%83%80%e3%82%a4%e3%82%a8%e3%83%83%e3%83%88%ef%bc%88%e6%9d%a5%e9%99%a2%e3%81%a7%e3%82%82%e3%82%aa%e3%83%b3%e3%83%a9%e3%82%a4%e3%83%b3%e3%81%a7%e3%82%82",
+     "checkedAt": "2026-11-11",
+     "includes": "세금·진찰료·배송비",
+     "channel": "online"
     }
-   ]
+   ],
+   "online": {
+    "available": true,
+    "firstTime": null,
+    "shipping": "집으로 우편 배송",
+    "payment": null,
+    "hotel": null,
+    "sourceUrl": "https://hinyouki-shokaki.jp/%e3%83%9e%e3%83%b3%e3%82%b8%e3%83%a3%e3%83%ad%e3%83%80%e3%82%a4%e3%82%a8%e3%83%83%e3%83%88%ef%bc%88%e6%9d%a5%e9%99%a2%e3%81%a7%e3%82%82%e3%82%aa%e3%83%b3%e3%83%a9%e3%82%a4%e3%83%b3%e3%81%a7%e3%82%82",
+    "how": "계열 클리닉(大宮エヴァグリーンクリニック) 온라인 진료",
+    "note": "내원과 같은 가격, 배송비 포함."
+   }
   },
   {
    "id": "nishishinjuku-sugie",
@@ -531,7 +911,8 @@
      "source": "official",
      "sourceUrl": "https://shinjuku-biyou-chuoh.com/menu/diet/mounjaro/",
      "checkedAt": "2026-11-11",
-     "includes": "첫 처방 비용 ¥3,300"
+     "includes": "첫 처방 비용 ¥3,300",
+     "channel": "visit"
     },
     {
      "dose": "2.5mg",
@@ -540,7 +921,8 @@
      "source": "official",
      "sourceUrl": "https://shinjuku-biyou-chuoh.com/menu/diet/mounjaro/",
      "checkedAt": "2026-11-11",
-     "includes": "첫 처방 비용 ¥3,300"
+     "includes": "첫 처방 비용 ¥3,300",
+     "channel": "visit"
     },
     {
      "dose": "5mg",
@@ -549,9 +931,13 @@
      "source": "official",
      "sourceUrl": "https://shinjuku-biyou-chuoh.com/menu/diet/mounjaro/",
      "checkedAt": "2026-11-11",
-     "includes": "첫 처방 비용 ¥3,300"
+     "includes": "첫 처방 비용 ¥3,300",
+     "channel": "visit"
     }
-   ]
+   ],
+   "online": {
+    "available": null
+   }
   },
   {
    "id": "shinagawa-east",
@@ -574,7 +960,8 @@
      "source": "official",
      "sourceUrl": "https://e-clinic.gr.jp/medical_diet/",
      "checkedAt": "2026-11-11",
-     "includes": "세금·진찰료"
+     "includes": "세금·진찰료",
+     "channel": "visit"
     },
     {
      "dose": "5mg",
@@ -583,7 +970,8 @@
      "source": "official",
      "sourceUrl": "https://e-clinic.gr.jp/medical_diet/",
      "checkedAt": "2026-11-11",
-     "includes": "세금·진찰료"
+     "includes": "세금·진찰료",
+     "channel": "visit"
     },
     {
      "dose": "7.5mg",
@@ -592,7 +980,8 @@
      "source": "official",
      "sourceUrl": "https://e-clinic.gr.jp/medical_diet/",
      "checkedAt": "2026-11-11",
-     "includes": "세금·진찰료"
+     "includes": "세금·진찰료",
+     "channel": "visit"
     },
     {
      "dose": "10mg",
@@ -601,9 +990,19 @@
      "source": "official",
      "sourceUrl": "https://e-clinic.gr.jp/medical_diet/",
      "checkedAt": "2026-11-11",
-     "includes": "세금·진찰료"
+     "includes": "세금·진찰료",
+     "channel": "visit"
     }
-   ]
+   ],
+   "online": {
+    "available": true,
+    "firstTime": "visit",
+    "shipping": null,
+    "payment": null,
+    "hotel": null,
+    "sourceUrl": "https://e-clinic.gr.jp/medical_diet/",
+    "note": "첫 진료는 대면을 권장. 온라인 가격은 따로 적혀 있지 않음. 첫 진료 때 1년 이내 건강검진 결과를 가져오라고 안내."
+   }
   }
  ]
 }

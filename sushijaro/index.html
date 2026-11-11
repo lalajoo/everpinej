@@ -14,8 +14,8 @@
   <meta property="og:url" content="https://everpinej.com/sushijaro/">
   <link rel="canonical" href="https://everpinej.com/sushijaro/">
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css?v=20261111d">
-  <script type="module" src="./app.mjs?v=20261111c"></script>
+  <link rel="stylesheet" href="./styles.css?v=20261111f">
+  <script type="module" src="./app.mjs?v=20261111e"></script>
 </head>
 <body>
   <a class="skip-link" href="#search">클리닉 검색으로 바로가기</a>
@@ -41,6 +41,11 @@
         </div>
       </section>
 
+      <aside class="warning" role="note">
+        <b>한국 주소로 배송받기는 반입이 안 돼요</b>
+        <p>일본 클리닉에서 비대면으로 처방받아도 <b>한국 집으로 우편·택배로 받는 건 직구</b>라 허용되지 않아요. 일본 클리닉 대부분도 해외로 보내지 않아요. 비대면이라면 <b>여행 중 일본 숙소로 받아 직접 들고 오는 방법</b>만 가능해요. <a href="./guide/#online">비대면으로 받는 법</a></p>
+      </aside>
+
       <aside class="notice" id="rules-teaser">
         <strong>2026년 11월 12일부터</strong> 해외에서 처방받은 마운자로를 직접 들고 오면 3개월분까지 반입할 수 있어요. 우편·특송 직구는 안 돼요. <a href="#rules">자세히</a>
       </aside>
@@ -55,6 +60,12 @@
             <select id="sort"><option value="price">실질가 낮은 순</option><option value="distance">가까운 순</option></select>
           </label>
         </div>
+        <div class="filter-chips channel" role="group" aria-label="진료 방식">
+          <button type="button" data-channel="all" aria-pressed="true">전체</button>
+          <button type="button" data-channel="visit" aria-pressed="false">내원 가격</button>
+          <button type="button" data-channel="online" aria-pressed="false">비대면(일본 숙소 배송)</button>
+        </div>
+        <p id="online-note" class="online-note" hidden>비대면 가격은 일본 국내 배송 기준이에요. 숙소가 냉장 택배를 대신 받아 주는지, 착불 현금 결제가 되는지 미리 확인하세요. 받을 때까지 숙소에 머무는 일정이어야 해요.</p>
         <div class="filter-chips" role="group" aria-label="인증 조건">
           <button type="button" data-verified="all" aria-pressed="true">전체</button>
           <button type="button" data-verified="receipt" aria-pressed="false">영수증 인증만</button>
