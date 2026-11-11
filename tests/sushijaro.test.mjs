@@ -112,3 +112,11 @@ test('주의사항 페이지가 있고 모든 페이지에서 링크된다', asy
     assert.match(html, /notice\//, page);
   }
 });
+
+test('관광객 처방 안 함으로 표시된 곳은 가격이 싸도 맨 뒤에 온다', () => {
+  const rows = search([
+    { id: 'no', name: 'A', touristOk: false, prices: [{ dose: '2.5mg', pens: 1, totalJpy: 100, source: 'official', checkedAt: '2026-11-10' }] },
+    { id: 'yes', name: 'B', touristOk: null, prices: [{ dose: '2.5mg', pens: 1, totalJpy: 9000, source: 'official', checkedAt: '2026-11-10' }] },
+  ], { now: new Date('2026-11-12') });
+  assert.deepEqual(rows.map(r => r.clinic.id), ['yes', 'no']);
+});

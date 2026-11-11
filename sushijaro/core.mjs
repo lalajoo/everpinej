@@ -32,6 +32,16 @@ export const PLACE_ALIASES = {
   '오모테산도': ['表参道', 'omotesando'],
   '니시신주쿠': ['西新宿', 'nishishinjuku'],
   '시나가와': ['品川', 'shinagawa'],
+  '신오쿠보': ['新大久保', '百人町', 'shinokubo', '햐쿠닌초'],
+  '아키하바라': ['秋葉原', 'akihabara'],
+  '아사쿠사': ['浅草', 'asakusa'],
+  '에비스': ['恵比寿', 'ebisu'],
+  '진보초': ['神保町', 'jimbocho'],
+  '오카치마치': ['御徒町', 'okachimachi'],
+  '다이묘': ['大名', 'daimyo'],
+  '오호리': ['大濠', 'ohori'],
+  '요요기': ['代々木', 'yoyogi'],
+  '도톤보리': ['道頓堀', 'dotonbori'],
 };
 
 export function normalize(text) {
@@ -111,7 +121,9 @@ export function search(clinics, { query = '', dose = '', verified = 'all', chann
   }
   const byPrice = (a, b) => (a.unit ?? Infinity) - (b.unit ?? Infinity);
   const byDistance = (a, b) => (a.km ?? Infinity) - (b.km ?? Infinity);
-  rows.sort(sort === 'distance' && origin ? (a, b) => byDistance(a, b) || byPrice(a, b) : (a, b) => byPrice(a, b) || byDistance(a, b));
+  // 관광객 처방을 하지 않는다고 밝힌 곳은 항상 맨 뒤로 보냅니다.
+  const refused = r => (r.clinic.touristOk === false ? 1 : 0);
+  rows.sort(sort === 'distance' && origin ? (a, b) => refused(a) - refused(b) || byDistance(a, b) || byPrice(a, b) : (a, b) => refused(a) - refused(b) || byPrice(a, b) || byDistance(a, b));
   return rows;
 }
 

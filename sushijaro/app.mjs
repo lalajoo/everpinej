@@ -48,7 +48,7 @@ function onlineBox(o) {
 }
 
 function card({ clinic, price, unit, km }) {
-  const tourist = clinic.touristOk === true ? '<li class="good">외국인 처방 명시</li>' : clinic.touristOk === false ? '<li>관광객 처방 불가 보고</li>' : '<li>외국인 처방 여부 미확인</li>';
+  const tourist = clinic.touristOk === true ? '<li class="good">외국인 처방 명시</li>' : clinic.touristOk === false ? '<li class="bad">관광객 처방 안 함</li>' : '<li>외국인 처방 여부 미확인</li>';
   const langs = clinic.languages?.length ? `<li>${esc(clinic.languages.join('·'))} 상담</li>` : '';
   const src = price?.sourceUrl ? ` · <a href="${esc(price.sourceUrl)}" target="_blank" rel="noopener noreferrer nofollow">출처</a>` : '';
   const map = clinic.address ? `<a class="map" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(clinic.address)}" target="_blank" rel="noopener noreferrer">지도</a>` : '';
@@ -62,7 +62,7 @@ function card({ clinic, price, unit, km }) {
     <p>${badge(price)}${src}</p>
     <ul class="meta">${tourist}${langs}${clinic.consult ? `<li>${esc(clinic.consult)}</li>` : ''}${clinic.reservation ? `<li>${esc(clinic.reservation)}</li>` : ''}</ul>
     ${onlineBox(clinic.online)}
-    ${clinic.touristNote ? `<p class="tourist-note">${esc(clinic.touristNote)}</p>` : ''}
+    ${clinic.touristNote ? `<p class="tourist-note${clinic.touristOk === false ? ' refused' : ''}">${esc(clinic.touristNote)}</p>` : ''}
     ${clinic.note ? `<p class="small">${esc(clinic.note)}</p>` : ''}
     <details><summary>가격표·주소 보기</summary>${others ? `<ul class="others">${others}</ul>` : ''}<p class="small" lang="ja">${esc(clinic.address ?? '')} ${map}</p></details>
   </article>`;

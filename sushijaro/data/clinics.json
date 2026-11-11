@@ -1030,6 +1030,1094 @@
     "dateSelect": null,
     "docs": null
    }
+  },
+  {
+   "id": "shinjuku-shimada",
+   "name": "신주쿠 시마다 내과 클리닉",
+   "nameJa": "新宿しまだ内科クリニック",
+   "city": "도쿄",
+   "area": "신주쿠",
+   "station": "JR新宿駅 동쪽 출구 도보 2분",
+   "address": "東京都新宿区新宿3-26-13 新宿中村屋ビル3階",
+   "lat": 35.691917,
+   "lng": 139.702271,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "진찰료 없음(약값만). 8펜·12펜 세트 할인(12펜이면 1펜 ¥2,500).",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 1,
+     "totalJpy": 3400,
+     "source": "official",
+     "sourceUrl": "https://naika.clinic/medical/mounjaro.html",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 13600,
+     "source": "official",
+     "sourceUrl": "https://naika.clinic/medical/mounjaro.html",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 12,
+     "totalJpy": 30000,
+     "source": "official",
+     "sourceUrl": "https://naika.clinic/medical/mounjaro.html",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 1,
+     "totalJpy": 5800,
+     "source": "official",
+     "sourceUrl": "https://naika.clinic/medical/mounjaro.html",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 23200,
+     "source": "official",
+     "sourceUrl": "https://naika.clinic/medical/mounjaro.html",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    }
+   ]
+  },
+  {
+   "id": "terao-clinica",
+   "name": "데라오 클리니카",
+   "nameJa": "寺尾クリニカ",
+   "city": "도쿄",
+   "area": "신오쿠보·햐쿠닌초",
+   "address": "東京都新宿区百人町3-28-5",
+   "lat": 35.704708,
+   "lng": 139.695801,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "초진료 ¥3,000(채혈·상담 포함, 아래 총액에 포함), 재진료 ¥1,000. 1펜(1주분)씩 결제 가능.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 1,
+     "totalJpy": 7400,
+     "source": "official",
+     "sourceUrl": "https://www.terao-clinica.com/diet/",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금·초진료 ¥3,000"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 20600,
+     "source": "official",
+     "sourceUrl": "https://www.terao-clinica.com/diet/",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금·초진료 ¥3,000"
+    }
+   ]
+  },
+  {
+   "id": "wakamatsukawada",
+   "name": "와카마쓰카와다 클리닉",
+   "nameJa": "若松河田クリニック",
+   "city": "도쿄",
+   "area": "와카마쓰카와다",
+   "address": "東京都新宿区河田町10-7",
+   "lat": 35.698765,
+   "lng": 139.716965,
+   "consult": "대면",
+   "touristOk": null,
+   "touristNote": "일본 보험증이 없는 해외 여행객의 진찰료를 ¥3,800으로 따로 안내함(아래 총액에 포함). 마운자로를 여행객에게 처방하는지는 따로 적혀 있지 않음.",
+   "note": "4주분 가격. 2026년 8월 가격 인하. 세금 포함 여부 표기 없음.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 14800,
+     "source": "official",
+     "sourceUrl": "https://wakamatsukawada-clinic.jp/%e8%87%aa%e7%94%b1%e8%a8%ba%e7%99%82/",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "여행객 진찰료 ¥3,800"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 22800,
+     "source": "official",
+     "sourceUrl": "https://wakamatsukawada-clinic.jp/%e8%87%aa%e7%94%b1%e8%a8%ba%e7%99%82/",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "여행객 진찰료 ¥3,800"
+    }
+   ]
+  },
+  {
+   "id": "kyowa-iin",
+   "name": "교와 의원",
+   "nameJa": "協和医院",
+   "city": "도쿄",
+   "area": "우에노·오카치마치",
+   "address": "東京都台東区台東4-8-5",
+   "lat": 35.706112,
+   "lng": 139.776367,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "자비 비만외래 진찰료 ¥2,000·주사 지도료 ¥1,000. 2펜 가격은 이를 포함한다고 표기(4펜 가격은 포함 여부 표기 없음). 전부 세금 포함.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 2,
+     "totalJpy": 10000,
+     "source": "official",
+     "sourceUrl": "https://kyo-wa.tokyo.jp/%e8%87%aa%e8%b2%bb%e8%82%a5%e6%ba%80%e5%a4%96%e6%9d%a5%e3%81%ae%e8%b2%bb%e7%94%a8%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6/",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금·진찰료·주사 지도료"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 18000,
+     "source": "official",
+     "sourceUrl": "https://kyo-wa.tokyo.jp/%e8%87%aa%e8%b2%bb%e8%82%a5%e6%ba%80%e5%a4%96%e6%9d%a5%e3%81%ae%e8%b2%bb%e7%94%a8%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6/",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 30000,
+     "source": "official",
+     "sourceUrl": "https://kyo-wa.tokyo.jp/%e8%87%aa%e8%b2%bb%e8%82%a5%e6%ba%80%e5%a4%96%e6%9d%a5%e3%81%ae%e8%b2%bb%e7%94%a8%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6/",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금"
+    }
+   ]
+  },
+  {
+   "id": "minimum-ginza",
+   "name": "미니멈 스킨 클리닉 긴자점",
+   "nameJa": "MINIMUM SKIN CLINIC 銀座院",
+   "city": "도쿄",
+   "area": "긴자",
+   "address": "東京都中央区銀座7-8-13",
+   "lat": 35.668915,
+   "lng": 139.761917,
+   "consult": "대면",
+   "touristOk": null,
+   "touristNote": "외국어를 하는 직원이 없어 통역을 데려와야 한다고 안내(통역 없으면 진료 불가).",
+   "note": "자유진료, 가격은 모두 세금 포함. 이케부쿠로점도 같은 가격.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 18000,
+     "source": "official",
+     "sourceUrl": "https://minimumskin.clinic/",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금"
+    }
+   ]
+  },
+  {
+   "id": "minimum-ikebukuro",
+   "name": "미니멈 스킨 클리닉 이케부쿠로점",
+   "nameJa": "MINIMUM SKIN CLINIC 池袋院",
+   "city": "도쿄",
+   "area": "이케부쿠로",
+   "address": "東京都豊島区南池袋1-19-3",
+   "lat": 35.727386,
+   "lng": 139.712067,
+   "consult": "대면",
+   "touristOk": null,
+   "touristNote": "외국어를 하는 직원이 없어 통역을 데려와야 한다고 안내(통역 없으면 진료 불가).",
+   "note": "자유진료, 가격은 모두 세금 포함. 긴자점도 같은 가격.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 18000,
+     "source": "official",
+     "sourceUrl": "https://minimumskin.clinic/",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금"
+    }
+   ]
+  },
+  {
+   "id": "ginza-foryou",
+   "name": "긴자 포유 클리닉",
+   "nameJa": "銀座for youクリニック",
+   "city": "도쿄",
+   "area": "긴자",
+   "address": "東京都中央区銀座1-5-15",
+   "lat": 35.675003,
+   "lng": 139.76712,
+   "reservation": "완전 예약제(전화·메일)",
+   "consult": "대면",
+   "touristOk": null,
+   "note": "공식 표기는 세금 별도(2.5mg 4펜 ¥19,000). 아래는 세금 10%를 더한 금액.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 20900,
+     "source": "official",
+     "sourceUrl": "https://ginza-foryou.com/service/rybelsus/",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금 10% 계산"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 35200,
+     "source": "official",
+     "sourceUrl": "https://ginza-foryou.com/service/rybelsus/",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금 10% 계산"
+    }
+   ]
+  },
+  {
+   "id": "luce-ginza",
+   "name": "루체 클리닉",
+   "nameJa": "ルーチェクリニック",
+   "city": "도쿄",
+   "area": "긴자",
+   "address": "東京都中央区銀座3-3-13",
+   "lat": 35.67292,
+   "lng": 139.764908,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "초진료·재진료·상담료 없음. 공식 표기 ‘1개월분’(4펜으로 계산).",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 27500,
+     "source": "official",
+     "sourceUrl": "https://www.luce-tokyobiyo.com/pricelist/?pcat=other",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    }
+   ]
+  },
+  {
+   "id": "akihabara-sincere",
+   "name": "아키하바라 내과 신시아 클리닉",
+   "nameJa": "秋葉原内科シンシアクリニック",
+   "city": "도쿄",
+   "area": "아키하바라",
+   "station": "JR秋葉原駅 도보 1분",
+   "address": "東京都千代田区神田佐久間町1-6-5",
+   "lat": 35.697826,
+   "lng": 139.773346,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "1펜 단위 가격(세금 포함). 진찰료는 공식 페이지에서 확인.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 1,
+     "totalJpy": 5000,
+     "source": "official",
+     "sourceUrl": "https://akihabara-sincere.com/im/antiobesity/",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금"
+    },
+    {
+     "dose": "5mg",
+     "pens": 1,
+     "totalJpy": 9000,
+     "source": "official",
+     "sourceUrl": "https://akihabara-sincere.com/im/antiobesity/",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금"
+    },
+    {
+     "dose": "7.5mg",
+     "pens": 1,
+     "totalJpy": 13000,
+     "source": "official",
+     "sourceUrl": "https://akihabara-sincere.com/im/antiobesity/",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금"
+    }
+   ]
+  },
+  {
+   "id": "jimbocho-ekimae",
+   "name": "진보초역앞 내과 클리닉",
+   "nameJa": "神保町駅前内科クリニック",
+   "city": "도쿄",
+   "area": "진보초",
+   "address": "東京都千代田区神田神保町2-2-34",
+   "lat": 35.696217,
+   "lng": 139.757339,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "1개월분(4펜) 가격, 세금 포함. 필요하면 채혈 검사.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 20000,
+     "source": "official",
+     "sourceUrl": "https://wellness.or.jp/treatment/%e3%83%a1%e3%83%87%e3%82%a3%e3%82%ab%e3%83%ab%e3%83%80%e3%82%a4%e3%82%a8%e3%83%83%e3%83%88%e5%a4%96%e6%9d%a5/",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 30000,
+     "source": "official",
+     "sourceUrl": "https://wellness.or.jp/treatment/%e3%83%a1%e3%83%87%e3%82%a3%e3%82%ab%e3%83%ab%e3%83%80%e3%82%a4%e3%82%a8%e3%83%83%e3%83%88%e5%a4%96%e6%9d%a5/",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금"
+    },
+    {
+     "dose": "7.5mg",
+     "pens": 4,
+     "totalJpy": 40000,
+     "source": "official",
+     "sourceUrl": "https://wellness.or.jp/treatment/%e3%83%a1%e3%83%87%e3%82%a3%e3%82%ab%e3%83%ab%e3%83%80%e3%82%a4%e3%82%a8%e3%83%83%e3%83%88%e5%a4%96%e6%9d%a5/",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금"
+    }
+   ]
+  },
+  {
+   "id": "asakusa-yasashii",
+   "name": "야사시이 미용피부과·피부과 도쿄 아사쿠사점",
+   "nameJa": "やさしい美容皮膚科・皮フ科 東京浅草院",
+   "city": "도쿄",
+   "area": "아사쿠사",
+   "address": "東京都台東区浅草1-24-1",
+   "lat": 35.712261,
+   "lng": 139.792999,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "1개월(4펜) 가격, 세금 포함.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 24900,
+     "source": "official",
+     "sourceUrl": "https://tokyo-asakusa-hifuka.clinic/beauty.html",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 37820,
+     "source": "official",
+     "sourceUrl": "https://tokyo-asakusa-hifuka.clinic/beauty.html",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금"
+    }
+   ]
+  },
+  {
+   "id": "east-shinjuku",
+   "name": "이스트 역앞 클리닉 신주쿠 동쪽 출구점",
+   "nameJa": "イースト駅前クリニック新宿東口院",
+   "city": "도쿄",
+   "area": "신주쿠",
+   "address": "東京都新宿区新宿3-25-1",
+   "lat": 35.692337,
+   "lng": 139.701843,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "진찰료 무료, 약값만. 세금 포함.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 19200,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/shinjuku-east/medical-diet/",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 37800,
+     "source": "official",
+     "sourceUrl": "https://www.eastcl.com/shinjuku-east/medical-diet/",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    }
+   ]
+  },
+  {
+   "id": "reira",
+   "name": "레이라 클리닉",
+   "nameJa": "レイラクリニック",
+   "city": "도쿄",
+   "area": "요요기우에하라",
+   "station": "代々木上原駅 도보 1분",
+   "address": "東京都渋谷区上原1-24-3 コリドール大川201",
+   "lat": 35.668785,
+   "lng": 139.681686,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "1펜 ¥4,400, 2펜부터 구입 가능. 세금 포함 여부 표기 없음.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 2,
+     "totalJpy": 8800,
+     "source": "official",
+     "sourceUrl": "https://reira-clinic.com/price/",
+     "checkedAt": "2026-11-11",
+     "channel": "visit"
+    },
+    {
+     "dose": "5mg",
+     "pens": 2,
+     "totalJpy": 15400,
+     "source": "official",
+     "sourceUrl": "https://reira-clinic.com/price/",
+     "checkedAt": "2026-11-11",
+     "channel": "visit"
+    }
+   ]
+  },
+  {
+   "id": "tokyo-players",
+   "name": "도쿄 플레이어스 클리닉",
+   "nameJa": "東京プレイヤーズクリニック",
+   "city": "도쿄",
+   "area": "에비스",
+   "address": "東京都渋谷区恵比寿1-9-5",
+   "lat": 35.647064,
+   "lng": 139.711212,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "자유진료·세금 포함 가격.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 2,
+     "totalJpy": 7000,
+     "source": "official",
+     "sourceUrl": "https://www.tokyo-players.com/glp1.php",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 12000,
+     "source": "official",
+     "sourceUrl": "https://www.tokyo-players.com/glp1.php",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금"
+    },
+    {
+     "dose": "5mg",
+     "pens": 2,
+     "totalJpy": 12000,
+     "source": "official",
+     "sourceUrl": "https://www.tokyo-players.com/glp1.php",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 22000,
+     "source": "official",
+     "sourceUrl": "https://www.tokyo-players.com/glp1.php",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금"
+    }
+   ]
+  },
+  {
+   "id": "miyabi-skin",
+   "name": "미야비 스킨 클리닉",
+   "nameJa": "みやびスキンクリニック",
+   "city": "도쿄",
+   "area": "에비스",
+   "address": "東京都渋谷区恵比寿南3-2-11",
+   "lat": 35.645775,
+   "lng": 139.704803,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "자비 초진료 ¥3,300(아래 총액에 포함). 세금 포함.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 1,
+     "totalJpy": 8800,
+     "source": "official",
+     "sourceUrl": "https://miyabiskin.com/price/",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금·초진료 ¥3,300"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 25300,
+     "source": "official",
+     "sourceUrl": "https://miyabiskin.com/price/",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금·초진료 ¥3,300"
+    }
+   ]
+  },
+  {
+   "id": "omotesando-amc",
+   "name": "오모테산도 종합의료 클리닉",
+   "nameJa": "表参道総合医療クリニック",
+   "city": "도쿄",
+   "area": "오모테산도",
+   "address": "東京都渋谷区神宮前5-46-16",
+   "lat": 35.66404,
+   "lng": 139.707855,
+   "reservation": "완전 예약제",
+   "consult": "대면",
+   "touristOk": true,
+   "touristNote": "방일·재일 외국인 대상 국제 클리닉(호텔 왕진도 운영). 해외에서 온 환자는 언어 대응 때문에 별도 특별 대응 비용이 든다고 안내.",
+   "note": "초진료 ¥11,000(아래 총액에 포함). 세금 포함.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 2,
+     "totalJpy": 33000,
+     "source": "official",
+     "sourceUrl": "https://www.omotesando-amc.jp/price/",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금·초진료 ¥11,000(외국인 특별 대응비 별도)"
+    },
+    {
+     "dose": "5mg",
+     "pens": 2,
+     "totalJpy": 44000,
+     "source": "official",
+     "sourceUrl": "https://www.omotesando-amc.jp/price/",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금·초진료 ¥11,000(외국인 특별 대응비 별도)"
+    }
+   ]
+  },
+  {
+   "id": "clinique-shinsaibashi",
+   "name": "클리니크 오사카 신사이바시",
+   "nameJa": "クリニーク大阪心斎橋",
+   "city": "오사카",
+   "area": "신사이바시",
+   "address": "大阪府大阪市中央区南船場3-12-3",
+   "lat": 34.675659,
+   "lng": 135.501358,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "세금 포함 가격. 4펜 동시 구입 할인. 온라인 진료도 함.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 1,
+     "totalJpy": 7700,
+     "source": "official",
+     "sourceUrl": "https://clinique-osaka-shinsaibashi.com/diet/mounjaro.html",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 28600,
+     "source": "official",
+     "sourceUrl": "https://clinique-osaka-shinsaibashi.com/diet/mounjaro.html",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금"
+    },
+    {
+     "dose": "5mg",
+     "pens": 1,
+     "totalJpy": 13200,
+     "source": "official",
+     "sourceUrl": "https://clinique-osaka-shinsaibashi.com/diet/mounjaro.html",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 50600,
+     "source": "official",
+     "sourceUrl": "https://clinique-osaka-shinsaibashi.com/diet/mounjaro.html",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금"
+    }
+   ]
+  },
+  {
+   "id": "one-clinic-umeda",
+   "name": "원 클리닉 우메다",
+   "nameJa": "ONE CLINIC 梅田",
+   "city": "오사카",
+   "area": "우메다·히가시우메다",
+   "address": "大阪府大阪市北区堂山町18-2 若杉東梅田ビル",
+   "lat": 34.704723,
+   "lng": 135.50235,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "세금 포함 가격.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 2,
+     "totalJpy": 8000,
+     "source": "official",
+     "sourceUrl": "https://one-clinic-umeda.com/manjaro/",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 16000,
+     "source": "official",
+     "sourceUrl": "https://one-clinic-umeda.com/manjaro/",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금"
+    },
+    {
+     "dose": "5mg",
+     "pens": 2,
+     "totalJpy": 14000,
+     "source": "official",
+     "sourceUrl": "https://one-clinic-umeda.com/manjaro/",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 28000,
+     "source": "official",
+     "sourceUrl": "https://one-clinic-umeda.com/manjaro/",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금"
+    }
+   ]
+  },
+  {
+   "id": "west-umeda",
+   "name": "니시우메다 정맥류·통증 클리닉",
+   "nameJa": "西梅田 静脈瘤・痛みのクリニック",
+   "city": "오사카",
+   "area": "니시우메다",
+   "address": "大阪府大阪市北区梅田3-4-5",
+   "lat": 34.697933,
+   "lng": 135.490692,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "1개월(4펜) 가격, 세금 포함.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 19800,
+     "source": "official",
+     "sourceUrl": "https://www.west-umeda-clinic.com/diet-outpatient/",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금"
+    }
+   ]
+  },
+  {
+   "id": "micelle-fukuoka",
+   "name": "미셀 클리닉 후쿠오카점",
+   "nameJa": "ミセルクリニック福岡院",
+   "city": "후쿠오카",
+   "area": "다이묘·텐진",
+   "address": "福岡県福岡市中央区大名2-7-3 ウェッジビル3F",
+   "lat": 33.590378,
+   "lng": 130.395432,
+   "reservation": "완전 예약제",
+   "consult": "대면",
+   "touristOk": null,
+   "note": "초진료·재진료 없음. 1펜 단위 구입 가능. BMI 18.5 이하는 처방 불가.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 1,
+     "totalJpy": 3000,
+     "source": "official",
+     "sourceUrl": "https://fukuoka-fujino.com/medicine/diet",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "5mg",
+     "pens": 1,
+     "totalJpy": 5500,
+     "source": "official",
+     "sourceUrl": "https://fukuoka-fujino.com/medicine/diet",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "7.5mg",
+     "pens": 1,
+     "totalJpy": 7500,
+     "source": "official",
+     "sourceUrl": "https://fukuoka-fujino.com/medicine/diet",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    }
+   ]
+  },
+  {
+   "id": "clinique-tenjin",
+   "name": "클리니크 후쿠오카 텐진",
+   "nameJa": "クリニーク福岡天神",
+   "city": "후쿠오카",
+   "area": "텐진",
+   "address": "福岡県福岡市中央区天神2-6-24",
+   "lat": 33.589439,
+   "lng": 130.39621,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "세금 포함 가격. 온라인 진료 가능.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 1,
+     "totalJpy": 7700,
+     "source": "official",
+     "sourceUrl": "https://clinique-fukuoka-tenjin.com/guide/diet/saxenda.html",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 28600,
+     "source": "official",
+     "sourceUrl": "https://clinique-fukuoka-tenjin.com/guide/diet/saxenda.html",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금"
+    },
+    {
+     "dose": "5mg",
+     "pens": 1,
+     "totalJpy": 13200,
+     "source": "official",
+     "sourceUrl": "https://clinique-fukuoka-tenjin.com/guide/diet/saxenda.html",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 50600,
+     "source": "official",
+     "sourceUrl": "https://clinique-fukuoka-tenjin.com/guide/diet/saxenda.html",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금"
+    }
+   ]
+  },
+  {
+   "id": "villa-hakata",
+   "name": "빌라 뷰티 클리닉 하카타",
+   "nameJa": "ビラビューティークリニック 博多",
+   "city": "후쿠오카",
+   "area": "하카타역앞",
+   "address": "福岡県福岡市博多区博多駅前2-5-9",
+   "lat": 33.589886,
+   "lng": 130.416168,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "1펜 가격. 세금·진찰료 포함 여부는 공식 페이지에서 확인.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 1,
+     "totalJpy": 5000,
+     "source": "official",
+     "sourceUrl": "https://villa-clinic.com/menu_post/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "channel": "visit"
+    },
+    {
+     "dose": "5mg",
+     "pens": 1,
+     "totalJpy": 7500,
+     "source": "official",
+     "sourceUrl": "https://villa-clinic.com/menu_post/mounjaro/",
+     "checkedAt": "2026-11-11",
+     "channel": "visit"
+    }
+   ]
+  },
+  {
+   "id": "arimura-naika",
+   "name": "아리무라 내과 클리닉",
+   "nameJa": "有村内科クリニック",
+   "city": "후쿠오카",
+   "area": "아라토",
+   "address": "福岡県福岡市中央区荒戸1-5-28",
+   "lat": 33.591991,
+   "lng": 130.379028,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "1개월(4펜) 가격, 세금 포함.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 16000,
+     "source": "official",
+     "sourceUrl": "https://www.arimura-clinic.com/service027.html",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 25000,
+     "source": "official",
+     "sourceUrl": "https://www.arimura-clinic.com/service027.html",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금"
+    }
+   ]
+  },
+  {
+   "id": "ohori-park",
+   "name": "오호리 파크 클리닉",
+   "nameJa": "大濠パーククリニック",
+   "city": "후쿠오카",
+   "area": "오호리공원",
+   "station": "地下鉄 大濠公園駅",
+   "address": "福岡県福岡市中央区大濠公園2-35",
+   "lat": 33.590088,
+   "lng": 130.376312,
+   "reservation": "예약 불필요",
+   "consult": "대면",
+   "touristOk": false,
+   "touristNote": "해외 거주자(여행자 등)에게는 처방하지 않는다고 공식 안내. 찾아가지 마세요.",
+   "note": "초진료 ¥3,300·혈액검사 ¥2,000(아래 총액에 포함). 4주분, 세금 포함.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 20300,
+     "source": "official",
+     "sourceUrl": "https://www.ohori-pc.jp/medical-diet/",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금·초진료·혈액검사"
+    }
+   ]
+  },
+  {
+   "id": "nanairo",
+   "name": "나나이로 클리닉",
+   "nameJa": "なないろクリニック",
+   "city": "후쿠오카",
+   "area": "텐진",
+   "address": "福岡県福岡市中央区天神3-6-16",
+   "lat": 33.592873,
+   "lng": 130.395065,
+   "consult": "대면",
+   "touristOk": false,
+   "touristNote": "여행자에게는 마운자로를 처방하지 않으며 문의도 하지 말라고 공식 안내.",
+   "note": "세금 포함 가격.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 1,
+     "totalJpy": 4800,
+     "source": "official",
+     "sourceUrl": "https://nana.clinic/info/medical-diet/",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 19200,
+     "source": "official",
+     "sourceUrl": "https://nana.clinic/info/medical-diet/",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금"
+    }
+   ]
+  },
+  {
+   "id": "yamakawa-naika",
+   "name": "야마카와 내과",
+   "nameJa": "山川内科",
+   "city": "나고야",
+   "area": "신사카에",
+   "address": "愛知県名古屋市中区新栄町1-3",
+   "lat": 35.169373,
+   "lng": 136.909744,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "마운자로와 같은 성분(티르제파타이드)의 ‘젭바운드’ 가격. 초진료 ¥3,000(아래 총액에 포함). 세금 포함.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 25000,
+     "source": "official",
+     "sourceUrl": "https://s-naika-cl.com/self-financed.html",
+     "checkedAt": "2026-11-11",
+     "channel": "visit",
+     "includes": "세금·초진료 ¥3,000(젭바운드)"
+    }
+   ]
   }
  ]
 }
