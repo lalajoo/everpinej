@@ -18,9 +18,9 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://everpinej.com/sushijaro/">
   <link rel="icon" href="./favicon.svg?v=2" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css?v=20261112h">
-  <script type="module" src="./app.mjs?v=20261112g"></script>
-  <script type="module" src="./analytics.mjs?v=4"></script>
+  <link rel="stylesheet" href="./styles.css?v=20261112i">
+  <script type="module" src="./app.mjs?v=20261112h"></script>
+  <script type="module" src="./analytics.mjs?v=5"></script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "name": "스시자로", "url": "https://everpinej.com/sushijaro/", "inLanguage": "ko", "description": "일본 마운자로 처방 클리닉의 공식 가격과 영수증 인증 가격을 비교하는 정보 사이트"}, {"@type": "Dataset", "name": "스시자로 일본 마운자로 처방 클리닉 가격 데이터", "url": "https://everpinej.com/sushijaro/clinics/", "description": "일본 클리닉의 마운자로 자유진료 가격을 공식 페이지와 영수증으로 확인한 데이터. 가격마다 출처 URL과 확인일 포함.", "creator": {"@type": "Organization", "name": "everpinej", "url": "https://everpinej.com/"}, "distribution": [{"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://everpinej.com/sushijaro/data/clinics.json"}]}]}</script>
   <link rel="alternate" type="application/json" href="./data/clinics.json">
 </head>
@@ -47,12 +47,23 @@
           <span id="location-status" role="status"></span>
         </div>
         <p class="hero-note"><b>11/12부터</b> 일본에서 처방받은 마운자로, 직접 들고 오면 3개월분까지 반입 가능 · 한국 주소 배송은 안 돼요 <a href="#rules">자세히</a></p>
-        <p class="quick-links"><a href="#notes">다녀온 사람 메모 보기</a> · <a href="./clinics/">지역별 전체 목록</a> · <a href="#rules">반입 규정</a></p>
+        <p class="quick-links"><a href="?tab=notes#results-heading" data-open-notes>다녀온 사람 메모 보기</a> · <a href="./clinics/">지역별 전체 목록</a> · <a href="#rules">반입 규정</a></p>
         <p class="not-official">일라이 릴리·각 클리닉의 공식 서비스가 아닌, 공개 가격을 모은 비교 정보 사이트예요.</p>
       </section>
 
       <section class="finder" aria-labelledby="results-heading">
         <h2 id="results-heading" class="sr-only">클리닉 목록</h2>
+        <div class="finder-tabs" role="tablist" aria-label="보기 선택">
+          <button type="button" role="tab" data-tab="clinics" aria-selected="true">클리닉 가격 <span id="tab-clinic-count"></span></button>
+          <button type="button" role="tab" data-tab="notes" aria-selected="false">다녀온 사람 메모 <span id="tab-note-count"></span></button>
+        </div>
+        <div id="notes-tab" hidden>
+          <p class="small">공개 방문 후기에서 예약·언어·서류·배송 같은 절차 정보만 스시자로가 직접 요약했어요. 원문은 링크로 확인하세요. 효과·체중 변화는 싣지 않아요.</p>
+          <p id="notes-tab-count" class="small" role="status"></p>
+          <div id="notes-tab-list"></div>
+          <p class="small"><a href="./notes/">메모 전체 페이지</a> · <a href="#submit-heading">내 경험 공유하기</a></p>
+        </div>
+        <div id="clinic-tab">
         <div class="controls">
           <label>용량
             <select id="dose"><option value="">전체 용량</option></select>
@@ -77,14 +88,9 @@
         <div id="share-panel" class="share-panel" hidden><label class="small" for="share-text">아래 내용을 길게 눌러 복사해 주세요</label><textarea id="share-text" readonly rows="5"></textarea><button type="button" id="share-close" class="text-button muted">닫기</button></div>
         <div id="results"><noscript><p>검색에는 JavaScript가 필요해요. <a href="./clinics/">전체 클리닉 가격 목록</a>에서 지역별로 볼 수 있어요.</p></noscript></div>
         <p class="small center"><a href="./clinics/">전체 클리닉 가격 목록(지역별) 보기</a></p>
+        </div>
       </section>
 
-      <section class="card notes" id="notes" aria-labelledby="notes-heading" hidden>
-        <h2 id="notes-heading">다녀온 사람 메모</h2>
-        <p class="small">스레드 등에 공개된 방문 후기에서 절차 정보만 스시자로가 직접 요약했어요. 원문은 링크로 확인하세요. 효과·체중 변화는 싣지 않아요.</p>
-        <div id="notes-list"></div>
-        <p class="small"><a href="./notes/">메모 전체 보기</a> · <a id="share-experience" href="#submit-heading">내 경험 공유하기</a></p>
-      </section>
 
       <aside id="compare-banner" class="compare-banner" aria-label="한국 가격과 비교" hidden></aside>
 

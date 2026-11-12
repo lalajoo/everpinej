@@ -1,9 +1,9 @@
-import { DOSES, search, yen, daysSince, perPen, krw, man, koreaGap } from './core.mjs';
+import { DOSES, search, yen, daysSince, perPen, krw, man, koreaGap, expandQuery, normalize } from './core.mjs';
 import { setupCard } from './card.mjs';
 
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
-const state = { query: '', dose: '', verified: 'all', channel: 'all', sort: 'price', origin: null };
+const state = { query: '', dose: '', verified: 'all', channel: 'all', sort: 'price', origin: null, tab: 'clinics' };
 let config, clinics = [], notes = [];
 
 async function json(path) {
@@ -18,6 +18,7 @@ function readUrl() {
   state.dose = DOSES.includes(p.get('dose')) ? p.get('dose') : '';
   state.verified = ['receipt', 'tourist'].includes(p.get('v')) ? p.get('v') : 'all';
   state.channel = ['visit', 'online'].includes(p.get('ch')) ? p.get('ch') : 'all';
+  state.tab = p.get('tab') === 'notes' ? 'notes' : 'clinics';
 }
 
 function writeUrl() {
@@ -26,6 +27,7 @@ function writeUrl() {
   if (state.dose) p.set('dose', state.dose);
   if (state.verified !== 'all') p.set('v', state.verified);
   if (state.channel !== 'all') p.set('ch', state.channel);
+  if (state.tab === 'notes') p.set('tab', 'notes');
   history.replaceState(null, '', p.size ? '?' + p : location.pathname);
 }
 
@@ -88,7 +90,7 @@ function noteHtml(n) {
 }
 
 function renderNotes() {
-  if (!notes.length) return;
+  if (!notes.length || !$('#notes')) return;
   const list = [...notes].sort((a, b) => (b.caution - a.caution) || b.postedAt.localeCompare(a.postedAt)).slice(0, 3);
   $('#notes-list').innerHTML = list.map(noteHtml).join('');
   $('#notes').hidden = false;
@@ -118,7 +120,26 @@ function card({ clinic, price, unit, km }) {
   </article>`;
 }
 
+function noteMatches(n, q) {
+  if (!q) return true;
+  const hay = [n.city, n.clinicLabel, n.summary, ...(n.facts ?? [])].join(' ');
+  return expandQuery(q).some(t => normalize(hay).includes(t));
+}
+
+function renderTabs() {
+  const onNotes = state.tab === 'notes';
+  document.querySelectorAll('[data-tab]').forEach(b => b.setAttribute('aria-selected', String(b.dataset.tab === state.tab)));
+  $('#clinic-tab').hidden = onNotes; $('#notes-tab').hidden = !onNotes;
+  $('#tab-clinic-count').textContent = clinics.length ? `${clinics.length}` : '';
+  $('#tab-note-count').textContent = notes.length ? `${notes.length}` : '';
+  if (!onNotes) return;
+  const list = [...notes].filter(n => noteMatches(n, state.query)).sort((a, b) => (b.caution - a.caution) || b.postedAt.localeCompare(a.postedAt));
+  $('#notes-tab-count').textContent = list.length ? `메모 ${list.length}개${state.query ? ` · ‘${state.query}’` : ''}` : (state.query ? `‘${state.query}’ 메모가 아직 없어요. 전체 메모를 보려면 검색어를 지우세요.` : '아직 메모가 없어요.');
+  $('#notes-tab-list').innerHTML = list.map(noteHtml).join('');
+}
+
 function render() {
+  renderTabs();
   const rows = search(clinics, { ...state, maxAgeDays: config.maxAgeDays });
   document.querySelectorAll('[data-verified]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.verified === state.verified)));
   document.querySelectorAll('[data-channel]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.channel === state.channel)));
@@ -175,6 +196,8 @@ function bind() {
   $('#sort').addEventListener('change', e => { state.sort = e.target.value; if (state.sort === 'distance' && !state.origin) locate(); else render(); });
   document.querySelectorAll('[data-verified]').forEach(b => b.addEventListener('click', () => { state.verified = b.dataset.verified; writeUrl(); render(); }));
   document.querySelectorAll('[data-channel]').forEach(b => b.addEventListener('click', () => { state.channel = b.dataset.channel; writeUrl(); render(); if (state.channel === 'online') window.sushijaroTrack?.('filter_online'); }));
+  document.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => { state.tab = b.dataset.tab; writeUrl(); render(); if (state.tab === 'notes') window.sushijaroTrack?.('notes_tab'); }));
+  document.querySelectorAll('[data-open-notes]').forEach(l => l.addEventListener('click', e => { e.preventDefault(); state.tab = 'notes'; writeUrl(); render(); $('#results-heading').scrollIntoView({ behavior: 'smooth' }); }));
   $('#nearby').addEventListener('click', locate);
   $('#share')?.addEventListener('click', share);
   $('#share-close')?.addEventListener('click', () => { $('#share-panel').hidden = true; });
