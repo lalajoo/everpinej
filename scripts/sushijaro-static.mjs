@@ -96,7 +96,7 @@ const html = `<!doctype html>
   <div class="shell">
     <header class="header">
       <a class="brand" href="../" aria-label="스시자로 홈"><img src="../favicon.svg?v=2" width="34" height="34" alt="">스시자로</a>
-      <nav class="header-links"><a class="header-link" href="../">검색·지도</a><a class="header-link" href="../guide/">처방받는 법</a></nav>
+      <nav class="header-links"><a class="header-link" href="../">검색·지도</a><a class="header-link" href="../notes/">후기 메모</a><a class="header-link" href="../guide/">처방받는 법</a></nav>
     </header>
     <main>
       <section class="hero">
@@ -171,7 +171,7 @@ for (const city of cities) {
   <div class="shell">
     <header class="header">
       <a class="brand" href="../../" aria-label="스시자로 홈"><img src="../../favicon.svg?v=2" width="34" height="34" alt="">스시자로</a>
-      <nav class="header-links"><a class="header-link" href="../">전체 목록</a><a class="header-link" href="../../guide/">처방받는 법</a></nav>
+      <nav class="header-links"><a class="header-link" href="../">전체 목록</a><a class="header-link" href="../../notes/">후기 메모</a><a class="header-link" href="../../guide/">처방받는 법</a></nav>
     </header>
     <main>
       <section class="hero">
