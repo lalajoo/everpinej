@@ -169,3 +169,12 @@ export function koreaGap(unitYen, rate, korea) {
   const jp = krw(unitYen * korea.pens, rate);
   return jp == null ? null : korea.avgKrw - jp;
 }
+
+// 광고를 넣을 위치(이 인덱스의 항목 바로 뒤). first번째 뒤, 이후 every개마다. 항목이 first보다 적으면 맨 뒤 1번.
+export function promoPositions(count, first = 3, every = 10) {
+  if (count <= 0) return [];
+  if (count < first) return [count - 1];
+  const out = [first - 1];
+  for (let n = first + every; n < count; n += every) out.push(n - 1);
+  return out;
+}

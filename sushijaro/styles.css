@@ -165,3 +165,4 @@ details{margin-top:8px;font-size:14px}summary{cursor:pointer;color:var(--accent)
 .pill-button{border:1.5px solid var(--line);background:#fff;color:var(--ink);border-radius:12px;padding:11px 10px;font-size:15px;font-weight:800;cursor:pointer}
 .pill-button.map{background:var(--ink);border-color:var(--ink);color:#fff}
 .search-extras:empty,.search-extras:has(#nearby[hidden]):not(:has(#location-status:not(:empty))){margin:0}
+.inline-promo{margin:4px 0 12px}.inline-promo .promo-title{margin:0;font-size:16px;color:#49366c;line-height:1.35}

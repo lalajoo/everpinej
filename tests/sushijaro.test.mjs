@@ -198,3 +198,13 @@ test('지도: 가격대별 색과 무결성 해시가 있는 Leaflet 로드', as
   assert.match(src, /leaflet@1\.9\.4/);
   assert.equal((src.match(/integrity: 'sha256-/g) ?? []).length, 2);
 });
+
+test('맞은자로 광고 위치: 3번째 뒤, 이후 10개마다, 짧은 목록은 맨 뒤', async () => {
+  const { promoPositions } = await import('../sushijaro/core.mjs');
+  assert.deepEqual(promoPositions(0), []);
+  assert.deepEqual(promoPositions(2), [1]);
+  assert.deepEqual(promoPositions(3), [2]);
+  assert.deepEqual(promoPositions(29), [2, 12, 22]);
+  assert.deepEqual(promoPositions(13), [2]);
+  assert.deepEqual(promoPositions(5, 2, 6), [1]);
+});

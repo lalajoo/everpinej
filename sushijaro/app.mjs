@@ -1,4 +1,4 @@
-import { DOSES, search, yen, daysSince, perPen, krw, man, koreaGap, expandQuery, normalize } from './core.mjs';
+import { DOSES, search, yen, daysSince, perPen, krw, man, koreaGap, expandQuery, normalize, promoPositions } from './core.mjs';
 import { setupCard } from './card.mjs';
 import { showMap } from './map.mjs';
 
@@ -138,7 +138,34 @@ function renderTabs() {
   if (!onNotes) return;
   const list = [...notes].filter(n => noteMatches(n, state.query)).sort((a, b) => (b.caution - a.caution) || b.postedAt.localeCompare(a.postedAt));
   $('#notes-tab-count').textContent = list.length ? `메모 ${list.length}개${state.query ? ` · ‘${state.query}’` : ''}` : (state.query ? `‘${state.query}’ 메모가 아직 없어요. 전체 메모를 보려면 검색어를 지우세요.` : '아직 메모가 없어요.');
-  $('#notes-tab-list').innerHTML = list.map(noteHtml).join('');
+  $('#notes-tab-list').innerHTML = withPromos(list.map(noteHtml), 2, 6);
+  watchPromos();
+}
+
+const PROMO_COPY = [
+  ['일본에서 받아 온 마운자로, 맞은 날을 잊지 않게', '주사한 날·부위·용량과 체중을 회원가입 없이 기록해요. 기록은 내 휴대폰에만 저장돼요.'],
+  ['3개월분, 남은 펜이 몇 개인지 한눈에', '맞은자로로 주사 기록과 다음 주사일을 챙기세요. 회원가입 없이 바로 시작해요.'],
+];
+function inlinePromo(i) {
+  const [title, body] = PROMO_COPY[i % PROMO_COPY.length];
+  return `<aside class="app-promo inline-promo" data-promo-slot="${i}" aria-label="맞은자로 앱 광고">
+    <div class="promo-heading"><span>광고 · 자사 앱</span><span class="promo-category">나를 돌보는 기록</span></div>
+    <div class="promo-body"><img src="./assets/majeunjaro-icon.jpg" width="56" height="56" alt="" loading="lazy" decoding="async"><div><h3 class="promo-title">맞은자로 · ${esc(title)}</h3><p>${esc(body)}</p></div></div>
+    <div class="promo-links"><a href="https://apps.apple.com/kr/app/id6794129450" target="_blank" rel="noopener noreferrer" data-app-store="apple" aria-label="맞은자로 App Store에서 보기">App Store <span aria-hidden="true">↗</span></a><a href="https://play.google.com/store/apps/details?id=com.songminsuk.majeunjaro" target="_blank" rel="noopener noreferrer" data-app-store="google" aria-label="맞은자로 Google Play에서 보기">Google Play <span aria-hidden="true">↗</span></a></div>
+  </aside>`;
+}
+// 목록 중간에 광고를 끼운다(위치 계산은 core.mjs의 promoPositions).
+function withPromos(items, first = 3, every = 10) {
+  const at = new Set(promoPositions(items.length, first, every));
+  const out = []; let slot = 0;
+  items.forEach((html, i) => { out.push(html); if (at.has(i)) out.push(inlinePromo(slot++)); });
+  return out.join('');
+}
+let promoSeen = false;
+function watchPromos() {
+  if (promoSeen || !('IntersectionObserver' in window)) return;
+  const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting && e.intersectionRatio >= 0.5)) { promoSeen = true; window.sushijaroTrack?.('app_promo_inline_view'); io.disconnect(); } }, { threshold: 0.5 });
+  document.querySelectorAll('.inline-promo').forEach(el => io.observe(el));
 }
 
 function render() {
@@ -153,7 +180,8 @@ function render() {
     return;
   }
   $('#result-count').textContent = rows.length ? `${rows.length}곳` + (state.query ? ` · ‘${state.query}’` : '') : '조건에 맞는 클리닉이 없어요.';
-  $('#results').innerHTML = rows.map(card).join('') || '<div class="empty"><p>다른 지역이나 용량으로 검색해 보세요.</p></div>';
+  $('#results').innerHTML = rows.length ? withPromos(rows.map(card)) : '<div class="empty"><p>다른 지역이나 용량으로 검색해 보세요.</p></div>';
+  watchPromos();
   renderView(rows);
 }
 
@@ -231,6 +259,7 @@ function bind() {
   $('#nearby-top')?.addEventListener('click', () => { locate(); $('#results-heading').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
   $('#nearby').addEventListener('click', locate);
   $('#share')?.addEventListener('click', share);
+  document.addEventListener('click', e => { const l = e.target.closest?.('.inline-promo [data-app-store]'); if (l) window.sushijaroTrack?.(`app_promo_${l.dataset.appStore}_click`); });
   document.querySelectorAll('[data-view]').forEach(b => b.addEventListener('click', () => { state.view = b.dataset.view; writeUrl(); render(); if (state.view === 'map') window.sushijaroTrack?.('map_view'); }));
   $('#share-close')?.addEventListener('click', () => { $('#share-panel').hidden = true; });
 

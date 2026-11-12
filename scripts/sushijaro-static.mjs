@@ -22,6 +22,13 @@ function best25(c) {
   return ps.length ? ps.reduce((a, b) => (perPen(a) <= perPen(b) ? a : b)) : null;
 }
 
+
+const staticPromo = prefix => `<aside class="app-promo inline-promo" aria-label="맞은자로 앱 광고">
+  <div class="promo-heading"><span>광고 · 자사 앱</span><span class="promo-category">나를 돌보는 기록</span></div>
+  <div class="promo-body"><img src="${prefix}assets/majeunjaro-icon.jpg" width="56" height="56" alt="" loading="lazy" decoding="async"><div><h3 class="promo-title">맞은자로 · 일본에서 받아 온 마운자로, 맞은 날을 잊지 않게</h3><p>주사한 날·부위·용량과 체중을 회원가입 없이 기록해요. 기록은 내 휴대폰에만 저장돼요.</p></div></div>
+  <div class="promo-links"><a href="https://apps.apple.com/kr/app/id6794129450" target="_blank" rel="noopener noreferrer">App Store <span aria-hidden="true">↗</span></a><a href="https://play.google.com/store/apps/details?id=com.songminsuk.majeunjaro" target="_blank" rel="noopener noreferrer">Google Play <span aria-hidden="true">↗</span></a></div>
+</aside>`;
+const withStaticPromo = (htmls, prefix) => htmls.map((h, i) => (i === Math.min(2, htmls.length - 1) ? h + '\n' + staticPromo(prefix) : h)).join('\n');
 function row(c) {
   const prices = c.prices.map(p => `<li>${p.channel === 'online' ? '비대면' : '내원'} ${esc(p.dose)} ${p.pens}펜 ${yen(p.totalJpy)} (1펜 ${yen(perPen(p))}${rate ? ', ' + won(perPen(p)) : ''})${p.includes ? ' · ' + esc(p.includes) + ' 포함' : ''} · <a href="${esc(p.sourceUrl)}" rel="nofollow noopener" target="_blank">${p.source === 'receipt' ? '영수증 인증' : '공식 출처'}</a> ${esc(p.checkedAt)} 확인</li>`).join('');
   const tourist = c.touristOk === true ? '외국인 처방 명시' : c.touristOk === false ? '관광객 처방 안 함' : '외국인 처방 여부 미확인';
@@ -87,7 +94,7 @@ const html = `<!doctype html>
   <meta name="description" content="일본 ${cities.length}개 지역 마운자로 처방 클리닉 ${clinics.length}곳의 공식 가격(엔·원화), 주소, 외국인 처방 조건. 가격마다 공식 출처와 확인일 표시. 마지막 확인 ${lastChecked}.">
   <link rel="canonical" href="${SITE}clinics/">
   <link rel="icon" href="../favicon.svg?v=2" type="image/svg+xml">
-  <link rel="stylesheet" href="../styles.css?v=20261112g">
+  <link rel="stylesheet" href="../styles.css?v=20261113c">
   <link rel="alternate" type="application/json" href="../data/clinics.json">
   <meta property="og:type" content="website"><meta property="og:locale" content="ko_KR"><meta property="og:title" content="일본 마운자로 처방 클리닉 ${clinics.length}곳 가격 목록"><meta property="og:url" content="${SITE}clinics/"><meta property="og:image" content="${SITE}assets/og-main.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">
   <script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>
@@ -165,7 +172,7 @@ for (const city of cities) {
   <meta property="og:url" content="${SITE}clinics/${slug}/"><meta property="og:image" content="${SITE}assets/og-${slug}.png">
   <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="../../favicon.svg?v=2" type="image/svg+xml">
-  <link rel="stylesheet" href="../../styles.css?v=20261112g">
+  <link rel="stylesheet" href="../../styles.css?v=20261113c">
 </head>
 <body>
   <div class="shell">
@@ -180,7 +187,7 @@ for (const city of cities) {
         <p class="hero-copy">${mp ? `2.5mg 1펜 ${yen(mp)}(${won(mp)})부터. ` : ''}가격은 클리닉 공식 페이지에서 확인했고 출처와 확인일을 붙였어요. <a href="../../?q=${encodeURIComponent(city)}">검색 화면에서 ${esc(city)} 보기</a></p>
         <p class="small">11/12부터 해외 처방 마운자로는 직접 들고 오면 3개월분까지 반입할 수 있어요. 한국 주소로 배송받는 건 안 돼요. <a href="../../notice/">주의사항</a></p>
       </section>
-      <section class="card">${list.map(row).join('\n')}</section>
+      <section class="card">${withStaticPromo(list.map(row), '../../')}</section>
       <p class="small center">다른 지역: ${cities.filter(c => c !== city && SLUG[c]).map(c => `<a href="../${SLUG[c]}/">${esc(c)}</a>`).join(' · ')}</p>
       <p class="small center">스시자로는 일라이 릴리나 각 클리닉의 공식 서비스가 아닌 비교 정보 사이트예요. 의료 조언이 아니며 특정 의료기관을 추천·알선하지 않아요.</p>
     </main>
@@ -226,7 +233,7 @@ console.log(`지역 페이지 ${cityPages.length}개`);
   <link rel="canonical" href="${SITE}notes/">
   <meta property="og:type" content="website"><meta property="og:locale" content="ko_KR"><meta property="og:title" content="일본 마운자로 처방, 다녀온 사람 메모"><meta property="og:url" content="${SITE}notes/"><meta property="og:image" content="${SITE}assets/og-main.png"><meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="../favicon.svg?v=2" type="image/svg+xml">
-  <link rel="stylesheet" href="../styles.css?v=20261112g">
+  <link rel="stylesheet" href="../styles.css?v=20261113c">
 </head>
 <body>
   <div class="shell">
