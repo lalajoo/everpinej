@@ -143,3 +143,15 @@ test('같은 클리닉이 두 번 등록되지 않는다(이름·주소 기준)'
     assert.ok(!addrs.has(a), `${c.id} 주소 중복: ${addrs.get(a)}`); addrs.set(a, c.id);
   }
 });
+
+test('정적 목록·llms.txt가 데이터와 맞고 JSON-LD가 올바르다', async () => {
+  const { clinics } = JSON.parse(await readFile(new URL('../sushijaro/data/clinics.json', import.meta.url)));
+  const html = await readFile(new URL('../sushijaro/clinics/index.html', import.meta.url), 'utf8');
+  for (const c of clinics) assert.ok(html.includes(`id="${c.id}"`), `정적 목록에 ${c.id} 없음 → node scripts/sushijaro-static.mjs 실행`);
+  assert.equal((html.match(/<article class="clinic"/g) ?? []).length, clinics.length);
+  const ld = JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1]);
+  const list = ld['@graph'].find(g => g['@type'] === 'ItemList');
+  assert.equal(list.numberOfItems, clinics.length);
+  const llms = await readFile(new URL('../sushijaro/llms.txt', import.meta.url), 'utf8');
+  assert.match(llms, new RegExp(`클리닉 ${clinics.length}곳`));
+});
