@@ -154,3 +154,10 @@ details{margin-top:8px;font-size:14px}summary{cursor:pointer;color:var(--accent)
 .finder-tabs span{color:var(--accent);margin-left:2px}
 #notes-tab .note{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:8px 0}
 #notes-tab .note.caution{background:#fff7f7;border-color:#f5c2c2}
+.toolbar-actions{display:flex;align-items:center;gap:10px}
+.view-toggle{display:inline-flex;background:#f1ece7;border-radius:10px;padding:3px}
+.view-toggle button{border:0;background:transparent;border-radius:8px;padding:5px 10px;font-size:13px;font-weight:700;color:var(--sub);cursor:pointer}
+.view-toggle button[aria-pressed=true]{background:#fff;color:var(--ink);box-shadow:0 1px 3px #0001}
+.map-box{height:min(62vh,520px);border-radius:16px;border:1px solid var(--line);overflow:hidden;background:#eef2f0;z-index:0}
+.map-legend{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center;margin:8px 0 0}.map-legend .dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:3px;vertical-align:-1px}
+.map-pop{font-size:13px;line-height:1.5}.map-pop .pp{color:var(--accent);font-size:15px}.map-pop .bad{color:#b42318;font-weight:700}

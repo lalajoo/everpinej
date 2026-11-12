@@ -1,9 +1,10 @@
 import { DOSES, search, yen, daysSince, perPen, krw, man, koreaGap, expandQuery, normalize } from './core.mjs';
 import { setupCard } from './card.mjs';
+import { showMap } from './map.mjs';
 
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
-const state = { query: '', dose: '', verified: 'all', channel: 'all', sort: 'price', origin: null, tab: 'clinics' };
+const state = { query: '', dose: '', verified: 'all', channel: 'all', sort: 'price', origin: null, tab: 'clinics', view: 'list' };
 let config, clinics = [], notes = [];
 
 async function json(path) {
@@ -19,6 +20,7 @@ function readUrl() {
   state.verified = ['receipt', 'tourist'].includes(p.get('v')) ? p.get('v') : 'all';
   state.channel = ['visit', 'online'].includes(p.get('ch')) ? p.get('ch') : 'all';
   state.tab = p.get('tab') === 'notes' ? 'notes' : 'clinics';
+  state.view = p.get('view') === 'map' ? 'map' : 'list';
 }
 
 function writeUrl() {
@@ -28,6 +30,7 @@ function writeUrl() {
   if (state.verified !== 'all') p.set('v', state.verified);
   if (state.channel !== 'all') p.set('ch', state.channel);
   if (state.tab === 'notes') p.set('tab', 'notes');
+  if (state.view === 'map') p.set('view', 'map');
   history.replaceState(null, '', p.size ? '?' + p : location.pathname);
 }
 
@@ -103,7 +106,7 @@ function card({ clinic, price, unit, km }) {
   const map = clinic.address ? `<a class="map" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(clinic.address)}" target="_blank" rel="noopener noreferrer">지도</a>` : '';
   const others = (clinic.prices ?? []).filter(p => p !== price && (!state.dose || p.dose === state.dose))
     .map(p => `<li>${p.channel === 'online' ? '비대면 ' : '내원 '}${esc(p.dose)} ${p.pens}펜 ${yen(p.totalJpy)} <span>(1펜 ${yen(perPen(p))})</span></li>`).join('');
-  return `<article class="clinic">
+  return `<article class="clinic" id="clinic-${esc(clinic.id)}">
     <header><h3>${esc(clinic.name)}</h3>${km != null ? `<span class="km">${km < 1 ? Math.round(km * 1000) + 'm' : km.toFixed(1) + 'km'}</span>` : ''}</header>
     <p class="ja" lang="ja">${esc(clinic.nameJa ?? '')}</p>
     <p class="where">${esc([clinic.city, clinic.area].filter(Boolean).join(' · '))}${clinic.station ? ' · ' + esc(clinic.station) : ''}</p>
@@ -151,6 +154,30 @@ function render() {
   }
   $('#result-count').textContent = rows.length ? `${rows.length}곳` + (state.query ? ` · ‘${state.query}’` : '') : '조건에 맞는 클리닉이 없어요.';
   $('#results').innerHTML = rows.map(card).join('') || '<div class="empty"><p>다른 지역이나 용량으로 검색해 보세요.</p></div>';
+  renderView(rows);
+}
+
+function mapPopup(r) {
+  const c = r.clinic, p = r.price;
+  const q = encodeURIComponent(c.address || c.nameJa);
+  return `<div class="map-pop"><b>${esc(c.name)}</b><br><span lang="ja">${esc(c.nameJa)}</span><br>${esc(c.city)} · ${esc(c.area)}<br>`
+    + (p ? `<b class="pp">${yen(r.unit)}</b> / 1펜 (약 ${man(krw(r.unit, config.fx?.jpyKrw))}) · ${esc(p.dose)} ${p.pens}펜 ${yen(p.totalJpy)}<br>` : '가격 정보 없음<br>')
+    + (c.touristOk === false ? '<span class="bad">관광객 처방 안 함</span><br>' : '')
+    + `<a href="#clinic-${esc(c.id)}" data-pick>카드 보기</a> · <a href="https://www.google.com/maps/search/?api=1&query=${q}" target="_blank" rel="noopener noreferrer">구글 지도</a></div>`;
+}
+
+async function renderView(rows) {
+  const onMap = state.view === 'map' && state.tab !== 'notes';
+  document.querySelectorAll('[data-view]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.view === state.view)));
+  $('#results').hidden = onMap; $('#map-wrap').hidden = !onMap;
+  if (!onMap) return;
+  $('#map-status').textContent = '지도를 불러오는 중…';
+  try {
+    const n = await showMap($('#map'), rows, { origin: state.origin, popup: mapPopup, onPick: id => { state.view = 'list'; writeUrl(); render(); document.getElementById('clinic-' + id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); } });
+    $('#map-status').textContent = n ? `지도에 ${rows.length}곳 표시 · 점을 누르면 가격이 보여요.` : '지도에 표시할 클리닉이 없어요.';
+  } catch {
+    $('#map-status').textContent = '지도를 불러오지 못했어요. 목록으로 보거나 잠시 후 다시 시도해 주세요.';
+  }
 }
 
 function submitText(form) {
@@ -200,6 +227,7 @@ function bind() {
   document.querySelectorAll('[data-open-notes]').forEach(l => l.addEventListener('click', e => { e.preventDefault(); state.tab = 'notes'; writeUrl(); render(); $('#results-heading').scrollIntoView({ behavior: 'smooth' }); }));
   $('#nearby').addEventListener('click', locate);
   $('#share')?.addEventListener('click', share);
+  document.querySelectorAll('[data-view]').forEach(b => b.addEventListener('click', () => { state.view = b.dataset.view; writeUrl(); render(); if (state.view === 'map') window.sushijaroTrack?.('map_view'); }));
   $('#share-close')?.addEventListener('click', () => { $('#share-panel').hidden = true; });
 
   $('#open-form')?.addEventListener('click', () => window.sushijaroTrack?.('receipt_form_open'));

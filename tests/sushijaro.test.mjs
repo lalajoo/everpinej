@@ -187,3 +187,14 @@ test('다녀온 사람 메모: 원문 링크·날짜가 있고 아이디나 효�
     assert.ok(page.includes(`id="${n.id}"`), `${n.id}: 정적 페이지에 없음 → node scripts/sushijaro-static.mjs`);
   }
 });
+
+test('지도: 가격대별 색과 무결성 해시가 있는 Leaflet 로드', async () => {
+  const { tone } = await import('../sushijaro/map.mjs');
+  assert.equal(tone(3000), '#1d7a4f');
+  assert.equal(tone(4800), '#e8613c');
+  assert.equal(tone(9000), '#8a5a44');
+  assert.equal(tone(null), '#9aa59d');
+  const src = await readFile(new URL('../sushijaro/map.mjs', import.meta.url), 'utf8');
+  assert.match(src, /leaflet@1\.9\.4/);
+  assert.equal((src.match(/integrity: 'sha256-/g) ?? []).length, 2);
+});

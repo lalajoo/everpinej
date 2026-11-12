@@ -18,9 +18,9 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://everpinej.com/sushijaro/">
   <link rel="icon" href="./favicon.svg?v=2" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css?v=20261112i">
-  <script type="module" src="./app.mjs?v=20261112h"></script>
-  <script type="module" src="./analytics.mjs?v=5"></script>
+  <link rel="stylesheet" href="./styles.css?v=20261113a">
+  <script type="module" src="./app.mjs?v=20261113a"></script>
+  <script type="module" src="./analytics.mjs?v=6"></script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "name": "스시자로", "url": "https://everpinej.com/sushijaro/", "inLanguage": "ko", "description": "일본 마운자로 처방 클리닉의 공식 가격과 영수증 인증 가격을 비교하는 정보 사이트"}, {"@type": "Dataset", "name": "스시자로 일본 마운자로 처방 클리닉 가격 데이터", "url": "https://everpinej.com/sushijaro/clinics/", "description": "일본 클리닉의 마운자로 자유진료 가격을 공식 페이지와 영수증으로 확인한 데이터. 가격마다 출처 URL과 확인일 포함.", "creator": {"@type": "Organization", "name": "everpinej", "url": "https://everpinej.com/"}, "distribution": [{"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://everpinej.com/sushijaro/data/clinics.json"}]}]}</script>
   <link rel="alternate" type="application/json" href="./data/clinics.json">
 </head>
@@ -83,9 +83,14 @@
           <button type="button" data-verified="receipt" aria-pressed="false">영수증 인증만</button>
           <button type="button" data-verified="tourist" aria-pressed="false">관광객 처방 확인</button>
         </div>
-        <div class="results-toolbar"><p id="result-count" role="status" aria-live="polite">불러오는 중…</p><button type="button" id="share" class="text-button">공유 <span aria-hidden="true">↗</span></button></div>
+        <div class="results-toolbar"><p id="result-count" role="status" aria-live="polite">불러오는 중…</p><div class="toolbar-actions"><div class="view-toggle" role="group" aria-label="보기 방식"><button type="button" data-view="list" aria-pressed="true">목록</button><button type="button" data-view="map" aria-pressed="false">지도</button></div><button type="button" id="share" class="text-button">공유 <span aria-hidden="true">↗</span></button></div></div>
         <p id="share-status" class="small" role="status"></p>
         <div id="share-panel" class="share-panel" hidden><label class="small" for="share-text">아래 내용을 길게 눌러 복사해 주세요</label><textarea id="share-text" readonly rows="5"></textarea><button type="button" id="share-close" class="text-button muted">닫기</button></div>
+        <div id="map-wrap" hidden>
+          <div id="map" class="map-box" role="region" aria-label="클리닉 지도"></div>
+          <p class="map-legend small"><span class="dot" style="background:#1d7a4f"></span>1펜 ¥3,500 이하 <span class="dot" style="background:#e8613c"></span>¥5,000 이하 <span class="dot" style="background:#8a5a44"></span>그 이상 <span class="dot" style="background:#9aa59d"></span>가격 없음 <span class="dot" style="background:#b42318;opacity:.6"></span>관광객 처방 안 함 <span class="dot" style="background:#2f6fed"></span>내 위치</p>
+          <p id="map-status" class="small" role="status"></p>
+        </div>
         <div id="results"><noscript><p>검색에는 JavaScript가 필요해요. <a href="./clinics/">전체 클리닉 가격 목록</a>에서 지역별로 볼 수 있어요.</p></noscript></div>
         <p class="small center"><a href="./clinics/">전체 클리닉 가격 목록(지역별) 보기</a></p>
         </div>
