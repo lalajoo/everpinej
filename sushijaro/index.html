@@ -18,8 +18,8 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://everpinej.com/sushijaro/">
   <link rel="icon" href="./favicon.svg?v=2" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css?v=20261112f">
-  <script type="module" src="./app.mjs?v=20261112f"></script>
+  <link rel="stylesheet" href="./styles.css?v=20261112g">
+  <script type="module" src="./app.mjs?v=20261112g"></script>
   <script type="module" src="./analytics.mjs?v=4"></script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "name": "스시자로", "url": "https://everpinej.com/sushijaro/", "inLanguage": "ko", "description": "일본 마운자로 처방 클리닉의 공식 가격과 영수증 인증 가격을 비교하는 정보 사이트"}, {"@type": "Dataset", "name": "스시자로 일본 마운자로 처방 클리닉 가격 데이터", "url": "https://everpinej.com/sushijaro/clinics/", "description": "일본 클리닉의 마운자로 자유진료 가격을 공식 페이지와 영수증으로 확인한 데이터. 가격마다 출처 URL과 확인일 포함.", "creator": {"@type": "Organization", "name": "everpinej", "url": "https://everpinej.com/"}, "distribution": [{"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://everpinej.com/sushijaro/data/clinics.json"}]}]}</script>
   <link rel="alternate" type="application/json" href="./data/clinics.json">
@@ -76,6 +76,13 @@
         <div id="share-panel" class="share-panel" hidden><label class="small" for="share-text">아래 내용을 길게 눌러 복사해 주세요</label><textarea id="share-text" readonly rows="5"></textarea><button type="button" id="share-close" class="text-button muted">닫기</button></div>
         <div id="results"><noscript><p>검색에는 JavaScript가 필요해요. <a href="./clinics/">전체 클리닉 가격 목록</a>에서 지역별로 볼 수 있어요.</p></noscript></div>
         <p class="small center"><a href="./clinics/">전체 클리닉 가격 목록(지역별) 보기</a></p>
+      </section>
+
+      <section class="card notes" id="notes" aria-labelledby="notes-heading" hidden>
+        <h2 id="notes-heading">다녀온 사람 메모</h2>
+        <p class="small">스레드 등에 공개된 방문 후기에서 절차 정보만 스시자로가 직접 요약했어요. 원문은 링크로 확인하세요. 효과·체중 변화는 싣지 않아요.</p>
+        <div id="notes-list"></div>
+        <p class="small"><a href="./notes/">메모 전체 보기</a> · <a id="share-experience" href="#submit-heading">내 경험 공유하기</a></p>
       </section>
 
       <aside id="compare-banner" class="compare-banner" aria-label="한국 가격과 비교" hidden></aside>
@@ -148,6 +155,7 @@
       <section class="card submit" aria-labelledby="submit-heading">
         <h2 id="submit-heading">영수증 인증하기</h2>
         <p>일본에서 마운자로를 처방받으셨나요? 영수증(領収書) 한 장이 다음 사람의 비교 기준이 돼요.</p>
+        <p class="small">영수증이 없어도 예약·언어·서류·호텔 배송 경험만 보내 주셔도 돼요. 동의해 주신 내용은 개인정보를 빼고 요약해 ‘다녀온 사람 메모’에 실어요.</p>
         <ol>
           <li>클리닉명, 날짜, 금액이 보이게 영수증을 찍어 주세요.</li>
           <li><strong>이름·생년월일·환자번호는 가리고</strong> 보내 주세요.</li>

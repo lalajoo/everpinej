@@ -171,3 +171,19 @@ test('지역별 페이지와 미리보기 그림이 모든 지역에 있다', as
   assert.match(main, /og-main\.png/);
   assert.match(main, /공식 서비스가 아닌/);
 });
+
+test('다녀온 사람 메모: 원문 링크·날짜가 있고 아이디나 효과 수치를 싣지 않는다', async () => {
+  const { clinics } = JSON.parse(await readFile(new URL('../sushijaro/data/clinics.json', import.meta.url)));
+  const { notes } = JSON.parse(await readFile(new URL('../sushijaro/data/notes.json', import.meta.url)));
+  const ids = new Set(clinics.map(c => c.id));
+  const page = await readFile(new URL('../sushijaro/notes/index.html', import.meta.url), 'utf8');
+  for (const n of notes) {
+    assert.match(n.url, /^https:\/\//, n.id);
+    assert.ok(!Number.isNaN(Date.parse(n.postedAt)) && !Number.isNaN(Date.parse(n.checkedAt)), n.id);
+    if (n.clinicId) assert.ok(ids.has(n.clinicId), `${n.id}: 없는 클리닉 ${n.clinicId}`);
+    const mine = [n.summary, ...(n.facts ?? []), n.tip ?? '', n.paid ?? ''].join(' ');
+    assert.doesNotMatch(mine, /@\w/, `${n.id}: 아이디 노출`);
+    assert.doesNotMatch(mine, /\d+\s*(kg|키로|킬로)|빠졌|감량/, `${n.id}: 효과·체중 수치`);
+    assert.ok(page.includes(`id="${n.id}"`), `${n.id}: 정적 페이지에 없음 → node scripts/sushijaro-static.mjs`);
+  }
+});

@@ -1,0 +1,50 @@
+{
+  "note": "다녀온 사람 메모. 원문은 링크로만 걸고, 요약은 스시자로가 절차 정보만 직접 정리한다. 작성자 아이디·사진·체중 변화·효과·부작용 체험은 싣지 않는다. paid는 작성자가 밝힌 금액으로 공식 가격과 섞지 않는다.",
+  "notes": [
+    {
+      "id": "threads-20261112-fukuoka-airport",
+      "clinicId": null,
+      "clinicLabel": "モデナクリニック 공항점",
+      "city": "후쿠오카",
+      "platform": "Threads",
+      "url": "https://www.threads.com/@ezzeolagoyo/post/DfoAI0qkm1k",
+      "postedAt": "2026-11-12",
+      "checkedAt": "2026-11-12",
+      "summary": "여행 마지막 날 후쿠오카 클리닉에서 직접 진료받고 처방받아 귀국함.",
+      "facts": ["처방전을 영어로 달라고 요청해 받음", "보냉백과 보냉제를 넣어 줌", "수하물로 부치지 않고 기내에 직접 들고 탐"],
+      "paid": "2.5mg 4펜 + 5mg 8펜 총 ¥58,100(작성자 기준, 진찰료 포함 여부는 적혀 있지 않음)",
+      "tip": null,
+      "caution": false
+    },
+    {
+      "id": "threads-20261111-line-solo",
+      "clinicId": null,
+      "clinicLabel": "클리닉 이름 미기재",
+      "city": "일본",
+      "platform": "Threads",
+      "url": "https://www.threads.com/@yun_malrang77/post/DfnlwKWkwJe",
+      "postedAt": "2026-11-11",
+      "checkedAt": "2026-11-12",
+      "summary": "일본어를 못해도 대행 없이 혼자 다녀옴. 한국에서 LINE으로 미리 연락해 예약·상담을 마침.",
+      "facts": ["일본에서는 LINE 비대면 진료나 대면 진료 중 선택", "번역은 챗GPT로 해결했고, 의사는 간단한 질문만 함", "호텔 배송이 가능하고 ¥300이 추가된다고 안내받음"],
+      "paid": null,
+      "tip": "호텔 배송을 쓰려면 호텔이 냉장 택배를 대신 받아 주는지 먼저 물어보세요.",
+      "caution": false
+    },
+    {
+      "id": "threads-20261012-hotel-frozen",
+      "clinicId": null,
+      "clinicLabel": "중개 서비스를 통해 처방(클리닉 이름 미기재)",
+      "city": "일본",
+      "platform": "Threads",
+      "url": "https://www.threads.com/@env_corea/post/DeYkEf7j-Pc",
+      "postedAt": "2026-10-12",
+      "checkedAt": "2026-11-12",
+      "summary": "호텔로 배송받았는데 호텔이 실수로 냉동 보관해 약을 버려야 했음. 호텔이 배상함.",
+      "facts": ["미리 냉장 보관을 부탁했고 호텔도 수락했지만 약 3시간 냉동 보관됨", "냉동된 약은 쓸 수 없어 폐기"],
+      "paid": "5mg 6펜 ¥44,600(작성자 기준)",
+      "tip": "호텔 배송은 도착 시간에 맞춰 직접 받거나, 프런트에 '냉동 금지·냉장 보관'을 메시지로 남겨 두세요. 마운자로는 얼면 쓸 수 없어요.",
+      "caution": true
+    }
+  ]
+}

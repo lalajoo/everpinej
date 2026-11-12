@@ -142,3 +142,8 @@ details{margin-top:8px;font-size:14px}summary{cursor:pointer;color:var(--accent)
 .not-official{margin:6px 0 0;font-size:12px;color:var(--sub)}
 .results-toolbar{display:flex;justify-content:space-between;align-items:center;gap:8px}.results-toolbar #result-count{margin:14px 0 8px}
 .share-panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px;margin:6px 0 10px}.share-panel textarea{margin-top:6px;font-size:14px}
+.notes .note{border-top:1px solid var(--line);padding:10px 0}.notes .note:first-child{border-top:0}
+.note p{margin:4px 0}.note ul{padding-left:18px;margin:4px 0;font-size:14px}.note-head{font-size:13px;color:var(--sub)}
+.note.caution{background:#fff7f7;border-radius:12px;padding:10px 12px;border-top:0;margin:6px 0}
+.note-tip{font-size:13px;background:#eaf1fb;color:#24406a;border-radius:10px;padding:6px 10px}
+.card-notes .note{border-top:1px solid var(--line);padding:8px 0}

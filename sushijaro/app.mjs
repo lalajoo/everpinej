@@ -4,7 +4,7 @@ import { setupCard } from './card.mjs';
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 const state = { query: '', dose: '', verified: 'all', channel: 'all', sort: 'price', origin: null };
-let config, clinics = [];
+let config, clinics = [], notes = [];
 
 async function json(path) {
   const res = await fetch(path, { cache: 'no-cache' });
@@ -76,6 +76,24 @@ function compareLine(price, unit) {
   return `<p class="compare ${gap > 0 ? 'cheaper' : 'pricier'}">${k.pens}펜 환산 약 ${jp}${set} · ${msg}</p>`;
 }
 
+function noteHtml(n) {
+  return `<article class="note${n.caution ? ' caution' : ''}">
+    <p class="note-head"><b>${esc(n.clinicLabel)}</b> · ${esc(n.city)} · ${esc(n.postedAt)} 게시</p>
+    <p>${esc(n.summary)}</p>
+    <ul>${(n.facts ?? []).map(f => `<li>${esc(f)}</li>`).join('')}</ul>
+    ${n.paid ? `<p class="small">후기 속 결제 금액: ${esc(n.paid)} · 공식 가격 아님</p>` : ''}
+    ${n.tip ? `<p class="note-tip">스시자로 팁 · ${esc(n.tip)}</p>` : ''}
+    <p class="small"><a href="${esc(n.url)}" target="_blank" rel="noopener noreferrer nofollow">원문 보기(${esc(n.platform)})</a> · ${esc(n.checkedAt)} 확인</p>
+  </article>`;
+}
+
+function renderNotes() {
+  if (!notes.length) return;
+  const list = [...notes].sort((a, b) => (b.caution - a.caution) || b.postedAt.localeCompare(a.postedAt)).slice(0, 3);
+  $('#notes-list').innerHTML = list.map(noteHtml).join('');
+  $('#notes').hidden = false;
+}
+
 function card({ clinic, price, unit, km }) {
   const tourist = clinic.touristOk === true ? '<li class="good">외국인 처방 명시</li>' : clinic.touristOk === false ? '<li class="bad">관광객 처방 안 함</li>' : '<li>외국인 처방 여부 미확인</li>';
   const langs = clinic.languages?.length ? `<li>${esc(clinic.languages.join('·'))} 상담</li>` : '';
@@ -95,6 +113,7 @@ function card({ clinic, price, unit, km }) {
     ${onlineBox(clinic.online)}
     ${clinic.touristNote ? `<p class="tourist-note${clinic.touristOk === false ? ' refused' : ''}">${esc(clinic.touristNote)}</p>` : ''}
     ${clinic.note ? `<p class="small">${esc(clinic.note)}</p>` : ''}
+    ${(() => { const ns = notes.filter(n => n.clinicId === clinic.id); return ns.length ? `<details class="card-notes"><summary>다녀온 사람 메모 ${ns.length}개</summary>${ns.map(noteHtml).join('')}</details>` : ''; })()}
     <details><summary>가격표·주소 보기</summary>${others ? `<ul class="others">${others}</ul>` : ''}<p class="small" lang="ja">${esc(clinic.address ?? '')} ${map}</p></details>
   </article>`;
 }
@@ -194,7 +213,8 @@ function renderRules() {
 try {
   readUrl();
   [config, { clinics }] = await Promise.all([json('./config.json'), json('./data/clinics.json')]);
-  bind(); renderRules(); renderCompare(); render(); setupCard();
+  try { ({ notes } = await json('./data/notes.json')); } catch { notes = []; }
+  bind(); renderRules(); renderCompare(); render(); renderNotes(); setupCard();
 } catch {
   $('#result-count').textContent = '정보를 불러오지 못했어요. 잠시 후 다시 시도해 주세요.';
 }

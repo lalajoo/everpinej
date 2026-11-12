@@ -87,7 +87,7 @@ const html = `<!doctype html>
   <meta name="description" content="일본 ${cities.length}개 지역 마운자로 처방 클리닉 ${clinics.length}곳의 공식 가격(엔·원화), 주소, 외국인 처방 조건. 가격마다 공식 출처와 확인일 표시. 마지막 확인 ${lastChecked}.">
   <link rel="canonical" href="${SITE}clinics/">
   <link rel="icon" href="../favicon.svg?v=2" type="image/svg+xml">
-  <link rel="stylesheet" href="../styles.css?v=20261112f">
+  <link rel="stylesheet" href="../styles.css?v=20261112g">
   <link rel="alternate" type="application/json" href="../data/clinics.json">
   <meta property="og:type" content="website"><meta property="og:locale" content="ko_KR"><meta property="og:title" content="일본 마운자로 처방 클리닉 ${clinics.length}곳 가격 목록"><meta property="og:url" content="${SITE}clinics/"><meta property="og:image" content="${SITE}assets/og-main.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">
   <script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>
@@ -124,6 +124,7 @@ const llms = `# 스시자로 (Sushijaro)
 ## 페이지
 - [전체 클리닉 가격 목록](${SITE}clinics/): 지역별 정적 목록(이름, 주소, 용량별 가격, 출처, 확인일, 외국인 처방 조건)
 - [검색·지도](${SITE}): 지역·역 이름·내 위치로 찾기, 원화 환산, 한국 약국가 비교
+- [다녀온 사람 메모](${SITE}notes/): 공개 방문 후기에서 절차 정보만 요약(원문 링크)
 - [처방받는 법](${SITE}guide/): 일본 클리닉 처방 8단계와 일본어 문장, 비대면·호텔 배송
 - [이용 안내와 주의사항](${SITE}notice/)
 
@@ -164,7 +165,7 @@ for (const city of cities) {
   <meta property="og:url" content="${SITE}clinics/${slug}/"><meta property="og:image" content="${SITE}assets/og-${slug}.png">
   <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="../../favicon.svg?v=2" type="image/svg+xml">
-  <link rel="stylesheet" href="../../styles.css?v=20261112f">
+  <link rel="stylesheet" href="../../styles.css?v=20261112g">
 </head>
 <body>
   <div class="shell">
@@ -201,3 +202,59 @@ if (process.platform === 'darwin') {
   execFileSync('/usr/bin/swift', [fileURLToPath(new URL('./sushijaro-og.swift', import.meta.url)), fileURLToPath(new URL('assets/', root))], { stdio: 'inherit', env: { ...process.env, CLANG_MODULE_CACHE_PATH: (process.env.TMPDIR || '/tmp') + '/sushijaro-swift-cache' } });
 }
 console.log(`지역 페이지 ${cityPages.length}개`);
+
+// ---- 다녀온 사람 메모 정적 페이지 ----
+{
+  const { notes = [] } = JSON.parse(await readFile(new URL('data/notes.json', root)));
+  const sorted = [...notes].sort((a, b) => b.postedAt.localeCompare(a.postedAt));
+  const item = n => `<article class="note${n.caution ? ' caution' : ''}" id="${esc(n.id)}">
+  <p class="note-head"><b>${esc(n.clinicLabel)}</b> · ${esc(n.city)} · ${esc(n.postedAt)} 게시</p>
+  <p>${esc(n.summary)}</p>
+  <ul>${(n.facts ?? []).map(f => `<li>${esc(f)}</li>`).join('')}</ul>
+  ${n.paid ? `<p class="small">후기 속 결제 금액: ${esc(n.paid)} · 공식 가격 아님</p>` : ''}
+  ${n.tip ? `<p class="note-tip">스시자로 팁 · ${esc(n.tip)}</p>` : ''}
+  <p class="small"><a href="${esc(n.url)}" target="_blank" rel="noopener noreferrer nofollow">원문 보기(${esc(n.platform)})</a> · ${esc(n.checkedAt)} 확인</p>
+</article>`;
+  const page = `<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#fff8f3">
+  <title>일본 마운자로 처방 다녀온 사람 메모 ${notes.length}개 | 스시자로</title>
+  <meta name="description" content="일본 클리닉에서 마운자로를 처방받은 사람들의 공개 후기에서 예약·언어·서류·호텔 배송 같은 절차 정보만 요약했어요. 원문 링크 포함.">
+  <link rel="canonical" href="${SITE}notes/">
+  <meta property="og:type" content="website"><meta property="og:locale" content="ko_KR"><meta property="og:title" content="일본 마운자로 처방, 다녀온 사람 메모"><meta property="og:url" content="${SITE}notes/"><meta property="og:image" content="${SITE}assets/og-main.png"><meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../favicon.svg?v=2" type="image/svg+xml">
+  <link rel="stylesheet" href="../styles.css?v=20261112g">
+</head>
+<body>
+  <div class="shell">
+    <header class="header">
+      <a class="brand" href="../" aria-label="스시자로 홈"><img src="../favicon.svg?v=2" width="34" height="34" alt="">스시자로</a>
+      <nav class="header-links"><a class="header-link" href="../">클리닉 찾기</a><a class="header-link" href="../guide/">처방받는 법</a></nav>
+    </header>
+    <main>
+      <section class="hero">
+        <p class="eyebrow">다녀온 사람 메모 ${notes.length}개</p>
+        <h1>일본에서 처방받아 본<br><span>사람들의 메모</span></h1>
+        <p class="hero-copy">스레드 등에 공개된 방문 후기에서 예약, 진료 언어, 서류, 결제, 호텔 배송 같은 절차 정보만 스시자로가 직접 요약했어요. 원문은 링크로 확인하세요.</p>
+        <p class="small">작성자 아이디·사진, 체중 변화, 효과·부작용 체험은 싣지 않아요. 후기 속 금액은 작성자 기준이라 공식 가격과 따로 표시해요. 의료 조언이 아니에요.</p>
+      </section>
+      <section class="card notes">${sorted.map(item).join('\n')}</section>
+      <section class="card submit">
+        <h2>내 경험 공유하기</h2>
+        <p>일본에서 처방받아 보셨다면 예약 방법, 진료 언어, 서류, 대기 시간, 호텔 배송 경험을 알려 주세요. 동의해 주신 내용만 개인정보를 빼고 요약해 실어요.</p>
+        <a class="wide-button link-button" href="${esc(config.report?.formUrl ?? '../#submit-heading')}" target="_blank" rel="noopener noreferrer">경험·영수증 보내기</a>
+      </section>
+      <p class="small center">원문 작성자가 메모 삭제를 원하면 <a href="mailto:${esc(config.report?.email ?? 'contact@everpinej.com')}">${esc(config.report?.email ?? 'contact@everpinej.com')}</a>로 알려 주세요. 바로 내립니다. <a href="../notice/">이용 안내와 주의사항</a></p>
+    </main>
+    <footer class="footer"><p>스시자로 · <a href="/">everpinej</a> · <a href="../notice/">이용 안내·주의사항</a></p></footer>
+  </div>
+</body>
+</html>
+`;
+  await mkdir(new URL('notes/', root), { recursive: true });
+  await writeFile(new URL('notes/index.html', root), page);
+  console.log(`메모 페이지: ${notes.length}개`);
+}
