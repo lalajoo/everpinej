@@ -4083,6 +4083,160 @@
      "includes": "세금·진찰료"
     }
    ]
+  },
+  {
+   "id": "goto-iin-tamade",
+   "name": "고토 의원",
+   "nameJa": "後藤医院",
+   "city": "오사카",
+   "area": "다마데(니시나리구)",
+   "station": "地下鉄四つ橋線 玉出駅 1번 출구 도보 1분",
+   "address": "大阪府大阪市西成区玉出中2-15-21 HKビル3F",
+   "lat": 34.624725,
+   "lng": 135.490799,
+   "reservation": "웹 예약",
+   "consult": "대면",
+   "touristOk": null,
+   "note": "세금 포함 가격, 1개월분은 4펜. 혈액검사 옵션 ¥2,750. 진찰료 표기는 공식 요금표에 없음. 난바에서 지하철로 약 10분.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 1,
+     "totalJpy": 2500,
+     "source": "official",
+     "sourceUrl": "https://goto-iin.com/fee/",
+     "checkedAt": "2026-11-13",
+     "channel": "visit",
+     "includes": "세금"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 10000,
+     "source": "official",
+     "sourceUrl": "https://goto-iin.com/fee/",
+     "checkedAt": "2026-11-13",
+     "channel": "visit",
+     "includes": "세금"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 18000,
+     "source": "official",
+     "sourceUrl": "https://goto-iin.com/fee/",
+     "checkedAt": "2026-11-13",
+     "channel": "visit",
+     "includes": "세금"
+    },
+    {
+     "dose": "7.5mg",
+     "pens": 4,
+     "totalJpy": 27000,
+     "source": "official",
+     "sourceUrl": "https://goto-iin.com/fee/",
+     "checkedAt": "2026-11-13",
+     "channel": "visit",
+     "includes": "세금"
+    },
+    {
+     "dose": "10mg",
+     "pens": 4,
+     "totalJpy": 37000,
+     "source": "official",
+     "sourceUrl": "https://goto-iin.com/fee/",
+     "checkedAt": "2026-11-13",
+     "channel": "visit",
+     "includes": "세금"
+    }
+   ]
+  },
+  {
+   "id": "mil-osaka",
+   "name": "밀 클리닉 오사카",
+   "nameJa": "MIL CLINIC OSAKA",
+   "city": "오사카",
+   "area": "신사이바시",
+   "station": "心斎橋駅 부근",
+   "address": "大阪府大阪市中央区西心斎橋1-5-27 7F",
+   "lat": 34.672707,
+   "lng": 135.499924,
+   "reservation": "웹 예약",
+   "consult": "대면·온라인",
+   "touristOk": true,
+   "touristNote": "방문객(비거주자) 전용 가격표가 있고, 여권 확인으로 외국인에게 처방한다고 안내. 세관용 영문(희망 언어 병기) 처방 증명서 발급 가능.",
+   "note": "방문객 가격은 1박스=2펜 기준이며 정기구독은 일본 거주자만. 클리닉 수령은 금액에 따라 예약금(¥1만 엔부터)을 먼저 내고 방문일에 잔금 결제. 세금·진찰료 포함 여부는 방문객 가격표에 따로 적혀 있지 않음.",
+   "online": {
+    "available": true,
+    "firstTime": "ok",
+    "shipping": "사가와 냉장 택배로 전국 호텔 배송(오키나와·홋카이도 제외)",
+    "payment": "온라인 카드 결제(최대 ¥100,000)",
+    "language": null,
+    "dateSelect": null,
+    "docs": "여권",
+    "hotel": "가능(공식 안내)",
+    "how": "출국 전 온라인 진료 후 호텔 배송 또는 오사카 클리닉 수령",
+    "sourceUrl": "https://mil-clinic.com/lp/mounjaro-en/"
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 2,
+     "totalJpy": 7400,
+     "source": "official",
+     "sourceUrl": "https://mil-clinic.com/lp/mounjaro-en/",
+     "checkedAt": "2026-11-13",
+     "channel": "visit"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 12,
+     "totalJpy": 43000,
+     "source": "official",
+     "sourceUrl": "https://mil-clinic.com/lp/mounjaro-en/",
+     "checkedAt": "2026-11-13",
+     "channel": "visit"
+    },
+    {
+     "dose": "5mg",
+     "pens": 2,
+     "totalJpy": 11000,
+     "source": "official",
+     "sourceUrl": "https://mil-clinic.com/lp/mounjaro-en/",
+     "checkedAt": "2026-11-13",
+     "channel": "visit"
+    },
+    {
+     "dose": "5mg",
+     "pens": 12,
+     "totalJpy": 64000,
+     "source": "official",
+     "sourceUrl": "https://mil-clinic.com/lp/mounjaro-en/",
+     "checkedAt": "2026-11-13",
+     "channel": "visit"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 12,
+     "totalJpy": 43000,
+     "source": "official",
+     "sourceUrl": "https://mil-clinic.com/lp/mounjaro-en/",
+     "checkedAt": "2026-11-13",
+     "channel": "online"
+    },
+    {
+     "dose": "5mg",
+     "pens": 12,
+     "totalJpy": 64000,
+     "source": "official",
+     "sourceUrl": "https://mil-clinic.com/lp/mounjaro-en/",
+     "checkedAt": "2026-11-13",
+     "channel": "online"
+    }
+   ]
   }
  ]
 }
