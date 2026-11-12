@@ -4035,6 +4035,54 @@
      "channel": "visit"
     }
    ]
+  },
+  {
+   "id": "pertica-ginza",
+   "name": "페르티카 클리니카 긴자 본원",
+   "nameJa": "Pertica Clinica & Labca（ペルチカクリニカ）銀座本院",
+   "city": "도쿄",
+   "area": "긴자",
+   "station": "銀座駅 도보 2분",
+   "address": "東京都中央区銀座6-2-3 Daiwa銀座ビル アネックス2F",
+   "lat": 35.671917,
+   "lng": 139.761139,
+   "consult": "대면·온라인",
+   "touristOk": null,
+   "note": "2026-11-01부터 적용된 가격(세금 포함). 내원 진찰료 0원. 3개월 팩은 첫 방문도 선택 가능하고, 내원 시 12펜을 당일 한 번에 받음(1펜 ¥3,200). 1개월분(4펜) 단건은 ¥16,800.",
+   "online": {
+    "available": true,
+    "firstTime": null,
+    "shipping": "냉장 택배 ¥2,200(3개월 팩·단건)",
+    "payment": null,
+    "language": null,
+    "dateSelect": null,
+    "docs": null,
+    "hotel": null,
+    "how": "온라인 진료(첫 진찰료 ¥2,200)",
+    "sourceUrl": "https://pertica-c.com/mounjaro.html"
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 16800,
+     "source": "official",
+     "sourceUrl": "https://pertica-c.com/mounjaro.html",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 12,
+     "totalJpy": 38400,
+     "source": "official",
+     "sourceUrl": "https://pertica-c.com/mounjaro.html",
+     "checkedAt": "2026-11-12",
+     "channel": "visit",
+     "includes": "세금·진찰료"
+    }
+   ]
   }
  ]
 }

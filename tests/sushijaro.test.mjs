@@ -132,3 +132,14 @@ test('원화 환산과 한국 평균 비교', () => {
   assert.equal(koreaGap(4800, 8.46, korea), 303670 - 162000);
   assert.ok(koreaGap(22150, 8.46, korea) < 0);
 });
+
+test('같은 클리닉이 두 번 등록되지 않는다(이름·주소 기준)', async () => {
+  const { clinics } = JSON.parse(await readFile(new URL('../sushijaro/data/clinics.json', import.meta.url)));
+  const norm = s => String(s ?? '').normalize('NFKC').replace(/[\s・（）()&＆\-‐ー]/g, '').toLowerCase();
+  const names = new Map(), addrs = new Map();
+  for (const c of clinics) {
+    const n = norm(c.nameJa), a = norm(c.address).replace(/(ビル|階|f).*$/i, '');
+    assert.ok(!names.has(n), `${c.id} 이름 중복: ${names.get(n)}`); names.set(n, c.id);
+    assert.ok(!addrs.has(a), `${c.id} 주소 중복: ${addrs.get(a)}`); addrs.set(a, c.id);
+  }
+});
