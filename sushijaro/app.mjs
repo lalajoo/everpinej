@@ -225,6 +225,10 @@ function bind() {
   document.querySelectorAll('[data-channel]').forEach(b => b.addEventListener('click', () => { state.channel = b.dataset.channel; writeUrl(); render(); if (state.channel === 'online') window.sushijaroTrack?.('filter_online'); }));
   document.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => { state.tab = b.dataset.tab; writeUrl(); render(); if (state.tab === 'notes') window.sushijaroTrack?.('notes_tab'); }));
   document.querySelectorAll('[data-open-notes]').forEach(l => l.addEventListener('click', e => { e.preventDefault(); state.tab = 'notes'; writeUrl(); render(); $('#results-heading').scrollIntoView({ behavior: 'smooth' }); }));
+  const openMap = e => { e?.preventDefault(); state.tab = 'clinics'; state.view = 'map'; writeUrl(); render(); window.sushijaroTrack?.('map_view'); $('#results-heading').scrollIntoView({ behavior: 'smooth', block: 'start' }); };
+  $('#open-map')?.addEventListener('click', openMap);
+  document.querySelectorAll('[data-open-map]').forEach(l => l.addEventListener('click', openMap));
+  $('#nearby-top')?.addEventListener('click', () => { locate(); $('#results-heading').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
   $('#nearby').addEventListener('click', locate);
   $('#share')?.addEventListener('click', share);
   document.querySelectorAll('[data-view]').forEach(b => b.addEventListener('click', () => { state.view = b.dataset.view; writeUrl(); render(); if (state.view === 'map') window.sushijaroTrack?.('map_view'); }));

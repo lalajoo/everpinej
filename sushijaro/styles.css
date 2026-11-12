@@ -161,3 +161,7 @@ details{margin-top:8px;font-size:14px}summary{cursor:pointer;color:var(--accent)
 .map-box{height:min(62vh,520px);border-radius:16px;border:1px solid var(--line);overflow:hidden;background:#eef2f0;z-index:0}
 .map-legend{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center;margin:8px 0 0}.map-legend .dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:3px;vertical-align:-1px}
 .map-pop{font-size:13px;line-height:1.5}.map-pop .pp{color:var(--accent);font-size:15px}.map-pop .bad{color:#b42318;font-weight:700}
+.hero-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.pill-button{border:1.5px solid var(--line);background:#fff;color:var(--ink);border-radius:12px;padding:11px 10px;font-size:15px;font-weight:800;cursor:pointer}
+.pill-button.map{background:var(--ink);border-color:var(--ink);color:#fff}
+.search-extras:empty,.search-extras:has(#nearby[hidden]):not(:has(#location-status:not(:empty))){margin:0}

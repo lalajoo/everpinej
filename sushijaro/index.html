@@ -18,8 +18,8 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://everpinej.com/sushijaro/">
   <link rel="icon" href="./favicon.svg?v=2" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css?v=20261113a">
-  <script type="module" src="./app.mjs?v=20261113a"></script>
+  <link rel="stylesheet" href="./styles.css?v=20261113b">
+  <script type="module" src="./app.mjs?v=20261113b"></script>
   <script type="module" src="./analytics.mjs?v=6"></script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "name": "스시자로", "url": "https://everpinej.com/sushijaro/", "inLanguage": "ko", "description": "일본 마운자로 처방 클리닉의 공식 가격과 영수증 인증 가격을 비교하는 정보 사이트"}, {"@type": "Dataset", "name": "스시자로 일본 마운자로 처방 클리닉 가격 데이터", "url": "https://everpinej.com/sushijaro/clinics/", "description": "일본 클리닉의 마운자로 자유진료 가격을 공식 페이지와 영수증으로 확인한 데이터. 가격마다 출처 URL과 확인일 포함.", "creator": {"@type": "Organization", "name": "everpinej", "url": "https://everpinej.com/"}, "distribution": [{"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://everpinej.com/sushijaro/data/clinics.json"}]}]}</script>
   <link rel="alternate" type="application/json" href="./data/clinics.json">
@@ -42,12 +42,16 @@
           <input id="search" name="q" type="search" placeholder="예: 신주쿠, 우메다, 텐진" autocomplete="off" maxlength="60" enterkeyhint="search">
           <button type="submit">검색</button>
         </form>
+        <div class="hero-actions">
+          <button id="open-map" class="pill-button map" type="button"><span aria-hidden="true">🗺️</span> 지도로 보기</button>
+          <button id="nearby-top" class="pill-button" type="button"><span aria-hidden="true">⌖</span> 내 주변 찾기</button>
+        </div>
         <div class="search-extras">
-          <button id="nearby" class="text-button" type="button"><span aria-hidden="true">⌖</span> 내 주변 찾기</button>
+          <button id="nearby" class="text-button" type="button" hidden><span aria-hidden="true">⌖</span> 내 주변 찾기</button>
           <span id="location-status" role="status"></span>
         </div>
         <p class="hero-note"><b>11/12부터</b> 일본에서 처방받은 마운자로, 직접 들고 오면 3개월분까지 반입 가능 · 한국 주소 배송은 안 돼요 <a href="#rules">자세히</a></p>
-        <p class="quick-links"><a href="?tab=notes#results-heading" data-open-notes>다녀온 사람 메모 보기</a> · <a href="./clinics/">지역별 전체 목록</a> · <a href="#rules">반입 규정</a></p>
+        <p class="quick-links"><a href="?view=map#results-heading" data-open-map>지도로 보기</a> · <a href="?tab=notes#results-heading" data-open-notes>다녀온 사람 메모 보기</a> · <a href="./clinics/">지역별 전체 목록</a> · <a href="#rules">반입 규정</a></p>
         <p class="not-official">일라이 릴리·각 클리닉의 공식 서비스가 아닌, 공개 가격을 모은 비교 정보 사이트예요.</p>
       </section>
 
