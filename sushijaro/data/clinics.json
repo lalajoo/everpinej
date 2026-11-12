@@ -3971,6 +3971,70 @@
      "includes": "세금·초진료 ¥3,300"
     }
    ]
+  },
+  {
+   "id": "lg-shinjuku",
+   "name": "신주쿠 L&G 미용 클리닉",
+   "nameJa": "新宿Ladies＆Gentlemen美容クリニック",
+   "city": "도쿄",
+   "area": "신주쿠",
+   "station": "新宿駅 동쪽 출구 부근",
+   "address": "東京都新宿区新宿3-25-9 新宿モアビル7F",
+   "lat": 35.6926,
+   "lng": 139.702179,
+   "consult": "대면",
+   "touristOk": null,
+   "note": "가격 출처는 클리닉 공식 X 계정의 가격 개정 공지(2026-09-09 게시, 홈페이지에는 가격 미기재). 대면 진료로 BMI를 확인하고, 원하면 채혈. 세금·진찰료 포함 여부는 적혀 있지 않음. 게시 후 바뀌었을 수 있으니 예약 때 확인.",
+   "online": {
+    "available": null
+   },
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 2,
+     "totalJpy": 5500,
+     "source": "official",
+     "sourceUrl": "https://x.com/LG_Shinjuku/status/2097543670530748797",
+     "checkedAt": "2026-11-12",
+     "channel": "visit"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 9800,
+     "source": "official",
+     "sourceUrl": "https://x.com/LG_Shinjuku/status/2097543670530748797",
+     "checkedAt": "2026-11-12",
+     "channel": "visit"
+    },
+    {
+     "dose": "5mg",
+     "pens": 2,
+     "totalJpy": 9800,
+     "source": "official",
+     "sourceUrl": "https://x.com/LG_Shinjuku/status/2097543670530748797",
+     "checkedAt": "2026-11-12",
+     "channel": "visit"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 17800,
+     "source": "official",
+     "sourceUrl": "https://x.com/LG_Shinjuku/status/2097543670530748797",
+     "checkedAt": "2026-11-12",
+     "channel": "visit"
+    },
+    {
+     "dose": "7.5mg",
+     "pens": 4,
+     "totalJpy": 26800,
+     "source": "official",
+     "sourceUrl": "https://x.com/LG_Shinjuku/status/2097543670530748797",
+     "checkedAt": "2026-11-12",
+     "channel": "visit"
+    }
+   ]
   }
  ]
 }
