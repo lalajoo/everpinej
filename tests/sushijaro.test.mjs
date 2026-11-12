@@ -155,3 +155,19 @@ test('정적 목록·llms.txt가 데이터와 맞고 JSON-LD가 올바르다', a
   const llms = await readFile(new URL('../sushijaro/llms.txt', import.meta.url), 'utf8');
   assert.match(llms, new RegExp(`클리닉 ${clinics.length}곳`));
 });
+
+test('지역별 페이지와 미리보기 그림이 모든 지역에 있다', async () => {
+  const { access } = await import('node:fs/promises');
+  const { clinics } = JSON.parse(await readFile(new URL('../sushijaro/data/clinics.json', import.meta.url)));
+  const pages = JSON.parse(await readFile(new URL('../sushijaro/data/city-pages.json', import.meta.url)));
+  for (const city of new Set(clinics.map(c => c.city))) assert.ok(pages.some(p => p.city === city), `${city} 지역 페이지 없음`);
+  for (const p of pages) {
+    const html = await readFile(new URL(`../sushijaro/clinics/${p.slug}/index.html`, import.meta.url), 'utf8');
+    assert.equal((html.match(/<article class="clinic"/g) ?? []).length, clinics.filter(c => c.city === p.city).length, p.slug);
+    assert.match(html, new RegExp(`og-${p.slug}\\.png`));
+    await access(new URL(`../sushijaro/assets/og-${p.slug}.png`, import.meta.url));
+  }
+  const main = await readFile(new URL('../sushijaro/index.html', import.meta.url), 'utf8');
+  assert.match(main, /og-main\.png/);
+  assert.match(main, /공식 서비스가 아닌/);
+});

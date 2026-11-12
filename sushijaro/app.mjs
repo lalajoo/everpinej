@@ -123,6 +123,27 @@ function submitText(form) {
   ].join('\n');
 }
 
+function shareText() {
+  const rows = search(clinics, { ...state, maxAgeDays: config.maxAgeDays }).filter(r => r.clinic.touristOk !== false);
+  const units = rows.map(r => (r.clinic.prices ?? []).filter(p => p.dose === '2.5mg' && p.channel !== 'online' && p.pens <= 4).map(perPen)).flat().filter(Boolean);
+  const min = units.length ? Math.min(...units) : null;
+  const where = state.query ? `${state.query} ` : '일본 ';
+  const price = min ? ` · 2.5mg 1펜 ${yen(min)}(약 ${man(krw(min, config.fx?.jpyKrw))})부터` : '';
+  const url = location.origin + location.pathname + location.search;
+  return { title: '스시자로', text: `${where}마운자로 처방 클리닉 ${rows.length}곳${price}\n11/12부터 일본에서 처방받은 마운자로, 직접 들고 오면 3개월분까지 반입 가능. 공식 가격·출처 확인하고 가세요.`, url };
+}
+
+async function share() {
+  const s = shareText(), status = $('#share-status'), full = `${s.text}\n${s.url}`;
+  window.sushijaroTrack?.('share_click');
+  if (navigator.share) {
+    try { await navigator.share(s); status.textContent = ''; return; } catch (e) { if (e && e.name === 'AbortError') return; }
+  }
+  try { await navigator.clipboard.writeText(full); status.textContent = '공유 문구와 링크를 복사했어요. 단톡방에 붙여 넣으세요.'; return; } catch { /* 아래 수동 복사로 */ }
+  $('#share-text').value = full; $('#share-panel').hidden = false; $('#share-text').focus(); $('#share-text').select();
+  status.textContent = '';
+}
+
 function bind() {
   const doseOptions = DOSES.map(d => `<option value="${d}">${d}</option>`).join('');
   $('#dose').insertAdjacentHTML('beforeend', doseOptions);
@@ -136,6 +157,8 @@ function bind() {
   document.querySelectorAll('[data-verified]').forEach(b => b.addEventListener('click', () => { state.verified = b.dataset.verified; writeUrl(); render(); }));
   document.querySelectorAll('[data-channel]').forEach(b => b.addEventListener('click', () => { state.channel = b.dataset.channel; writeUrl(); render(); if (state.channel === 'online') window.sushijaroTrack?.('filter_online'); }));
   $('#nearby').addEventListener('click', locate);
+  $('#share')?.addEventListener('click', share);
+  $('#share-close')?.addEventListener('click', () => { $('#share-panel').hidden = true; });
 
   $('#open-form')?.addEventListener('click', () => window.sushijaroTrack?.('receipt_form_open'));
   $('#open-submit').addEventListener('click', () => { $('#submit-status').textContent = ''; $('#submit-dialog').showModal(); window.sushijaroTrack?.('receipt_form_open'); });

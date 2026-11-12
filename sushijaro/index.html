@@ -12,11 +12,15 @@
   <meta property="og:title" content="스시자로 - 일본 마운자로, 실결제가로 비교">
   <meta property="og:description" content="영수증으로 인증한 일본 클리닉 마운자로 처방 비용. 지역·역 이름으로 찾고, 한국 반입 규정도 확인하세요.">
   <meta property="og:url" content="https://everpinej.com/sushijaro/">
+  <meta property="og:image" content="https://everpinej.com/sushijaro/assets/og-main.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://everpinej.com/sushijaro/">
   <link rel="icon" href="./favicon.svg?v=2" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css?v=20261112e">
-  <script type="module" src="./app.mjs?v=20261112e"></script>
-  <script type="module" src="./analytics.mjs?v=3"></script>
+  <link rel="stylesheet" href="./styles.css?v=20261112f">
+  <script type="module" src="./app.mjs?v=20261112f"></script>
+  <script type="module" src="./analytics.mjs?v=4"></script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "name": "스시자로", "url": "https://everpinej.com/sushijaro/", "inLanguage": "ko", "description": "일본 마운자로 처방 클리닉의 공식 가격과 영수증 인증 가격을 비교하는 정보 사이트"}, {"@type": "Dataset", "name": "스시자로 일본 마운자로 처방 클리닉 가격 데이터", "url": "https://everpinej.com/sushijaro/clinics/", "description": "일본 클리닉의 마운자로 자유진료 가격을 공식 페이지와 영수증으로 확인한 데이터. 가격마다 출처 URL과 확인일 포함.", "creator": {"@type": "Organization", "name": "everpinej", "url": "https://everpinej.com/"}, "distribution": [{"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://everpinej.com/sushijaro/data/clinics.json"}]}]}</script>
   <link rel="alternate" type="application/json" href="./data/clinics.json">
 </head>
@@ -42,18 +46,9 @@
           <button id="nearby" class="text-button" type="button"><span aria-hidden="true">⌖</span> 내 주변 찾기</button>
           <span id="location-status" role="status"></span>
         </div>
+        <p class="hero-note"><b>11/12부터</b> 일본에서 처방받은 마운자로, 직접 들고 오면 3개월분까지 반입 가능 · 한국 주소 배송은 안 돼요 <a href="#rules">자세히</a></p>
+        <p class="not-official">일라이 릴리·각 클리닉의 공식 서비스가 아닌, 공개 가격을 모은 비교 정보 사이트예요.</p>
       </section>
-
-      <aside class="warning" role="note">
-        <b>한국 주소로 배송받기는 반입이 안 돼요</b>
-        <p>일본 클리닉에서 비대면으로 처방받아도 <b>한국 집으로 우편·택배로 받는 건 직구</b>라 허용되지 않아요. 일본 클리닉 대부분도 해외로 보내지 않아요. 비대면이라면 <b>여행 중 일본 숙소로 받아 직접 들고 오는 방법</b>만 가능해요. <a href="./guide/#online">비대면으로 받는 법</a></p>
-      </aside>
-
-      <aside class="notice" id="rules-teaser">
-        <strong>2026년 11월 12일부터</strong> 해외에서 처방받은 마운자로를 직접 들고 오면 3개월분까지 반입할 수 있어요. 우편·특송 직구는 안 돼요. <a href="#rules">자세히</a>
-      </aside>
-
-      <aside id="compare-banner" class="compare-banner" aria-label="한국 가격과 비교" hidden></aside>
 
       <section class="finder" aria-labelledby="results-heading">
         <h2 id="results-heading" class="sr-only">클리닉 목록</h2>
@@ -76,10 +71,19 @@
           <button type="button" data-verified="receipt" aria-pressed="false">영수증 인증만</button>
           <button type="button" data-verified="tourist" aria-pressed="false">관광객 처방 확인</button>
         </div>
-        <p id="result-count" role="status" aria-live="polite">불러오는 중…</p>
+        <div class="results-toolbar"><p id="result-count" role="status" aria-live="polite">불러오는 중…</p><button type="button" id="share" class="text-button">공유 <span aria-hidden="true">↗</span></button></div>
+        <p id="share-status" class="small" role="status"></p>
+        <div id="share-panel" class="share-panel" hidden><label class="small" for="share-text">아래 내용을 길게 눌러 복사해 주세요</label><textarea id="share-text" readonly rows="5"></textarea><button type="button" id="share-close" class="text-button muted">닫기</button></div>
         <div id="results"><noscript><p>검색에는 JavaScript가 필요해요. <a href="./clinics/">전체 클리닉 가격 목록</a>에서 지역별로 볼 수 있어요.</p></noscript></div>
         <p class="small center"><a href="./clinics/">전체 클리닉 가격 목록(지역별) 보기</a></p>
       </section>
+
+      <aside id="compare-banner" class="compare-banner" aria-label="한국 가격과 비교" hidden></aside>
+
+      <aside class="warning" role="note">
+        <b>한국 주소로 배송받기는 반입이 안 돼요</b>
+        <p>일본 클리닉에서 비대면으로 처방받아도 <b>한국 집으로 우편·택배로 받는 건 직구</b>라 허용되지 않아요. 일본 클리닉 대부분도 해외로 보내지 않아요. 비대면이라면 <b>여행 중 일본 숙소로 받아 직접 들고 오는 방법</b>만 가능해요. <a href="./guide/#online">비대면으로 받는 법</a></p>
+      </aside>
 
       <aside id="penuri-promo" class="penuri-promo" aria-labelledby="penuri-title">
         <div class="promo-heading"><span>자사 서비스</span><span class="promo-category">국내에서 찾기</span></div>

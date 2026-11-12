@@ -138,3 +138,7 @@ details{margin-top:8px;font-size:14px}summary{cursor:pointer;color:var(--accent)
 .compare-banner{margin:14px 0 0;padding:14px 16px;border-radius:14px;background:#fff;border:1px solid var(--line);font-size:14px}
 .compare-banner .rows{display:grid;grid-template-columns:1fr auto;gap:4px 12px;margin:8px 0}
 .compare-banner .rows b{text-align:right}.compare-banner .jp{color:var(--accent)}
+.hero-note{margin:12px 0 0;padding:10px 12px;border-radius:12px;background:#fff3cd;color:#5b4500;font-size:13px;line-height:1.5}.hero-note a{color:inherit;font-weight:700}
+.not-official{margin:6px 0 0;font-size:12px;color:var(--sub)}
+.results-toolbar{display:flex;justify-content:space-between;align-items:center;gap:8px}.results-toolbar #result-count{margin:14px 0 8px}
+.share-panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px;margin:6px 0 10px}.share-panel textarea{margin-top:6px;font-size:14px}

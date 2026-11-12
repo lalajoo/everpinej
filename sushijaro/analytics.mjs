@@ -4,7 +4,7 @@ export const MEASUREMENT_ID = 'G-ZW9WT05S2W';
 export const CONSENT_KEY = 'sushijaro.analytics-consent.v1';
 const ORIGIN = 'https://everpinej.com';
 const PAGES = { '/sushijaro/': '스시자로', '/sushijaro/guide/': '스시자로 처방받는 법', '/sushijaro/notice/': '스시자로 이용 안내' };
-const EVENTS = new Set(['page_view', 'app_promo_view', 'app_promo_apple_click', 'app_promo_google_click', 'filter_online', 'card_created', 'receipt_form_open', 'penuri_promo_pharmacy_click', 'penuri_promo_mounjaro_click']);
+const EVENTS = new Set(['page_view', 'app_promo_view', 'app_promo_apple_click', 'app_promo_google_click', 'filter_online', 'card_created', 'receipt_form_open', 'penuri_promo_pharmacy_click', 'penuri_promo_mounjaro_click', 'share_click']);
 
 export function safeReferrer(value) {
   try { const url = new URL(value); return /^https?:$/.test(url.protocol) ? url.origin + '/' : ''; }
