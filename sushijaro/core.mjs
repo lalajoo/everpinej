@@ -80,7 +80,8 @@ export function expandQuery(query) {
 }
 
 function haystack(clinic) {
-  return normalize([clinic.name, clinic.nameJa, clinic.city, clinic.area, clinic.station, clinic.address].join(' '));
+  // '東京都'에 '京都'가 들어 있어 교토 검색에 도쿄가 섞이지 않게 합니다.
+  return normalize([clinic.name, clinic.nameJa, clinic.city, clinic.area, clinic.station, clinic.address].join(' ')).replaceAll('東京都', '東京');
 }
 
 export function matchesQuery(clinic, query) {
@@ -137,6 +138,8 @@ export function search(clinics, { query = '', dose = '', verified = 'all', chann
     if (dose && !price) continue;
     if (verified === 'receipt' && price?.source !== 'receipt') continue;
     if (verified === 'tourist' && clinic.touristOk !== true) continue;
+    if (verified === 'foreign' && !['ok', 'support'].includes(foreignStatus(clinic))) continue;
+    if (verified === 'walkin' && clinic.booking?.walkIn !== true) continue;
     rows.push({ clinic, price, unit: perPen(price), km: origin ? distanceKm(origin, clinic) : null });
   }
   const byPrice = (a, b) => (a.unit ?? Infinity) - (b.unit ?? Infinity);
@@ -177,4 +180,21 @@ export function promoPositions(count, first = 3, every = 10) {
   const out = [first - 1];
   for (let n = first + every; n < count; n += every) out.push(n - 1);
   return out;
+}
+
+// 외국인 처방 상태: ok 공식 안내로 가능 / no 불가 / support 외국어·통역 대응은 있으나 마운자로 처방 안내는 없음 / unknown
+export function foreignStatus(clinic) {
+  if (clinic.touristOk === true) return 'ok';
+  if (clinic.touristOk === false) return 'no';
+  return clinic.foreign ? 'support' : 'unknown';
+}
+
+export const INTERPRETER = { required: '통역 동반 필요', partner: '통역 서비스 연계', app: '번역 앱으로 소통' };
+
+// 예약 방식 한 줄: 예약 없이 방문 / 예약 필요 / 기존 reservation 문구 / null
+export function walkInLabel(clinic) {
+  const w = clinic.booking?.walkIn;
+  if (w === true) return '예약 없이 방문 가능';
+  if (w === false) return '예약 필요';
+  return clinic.reservation ?? null;
 }

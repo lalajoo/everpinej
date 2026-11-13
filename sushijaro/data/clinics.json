@@ -92,6 +92,21 @@
     "language": "일본어(외국인은 일본어로 소통 가능하거나 통역 동행)",
     "dateSelect": false,
     "docs": "LINE 주문서: 이름·생년월일·배송 주소·전화·키와 몸무게·마운자로 사용 이력"
+   },
+   "booking": {
+    "walkIn": true,
+    "via": null,
+    "url": null,
+    "note": "예약 없이 방문. 예약제를 운영하지 않는다고 안내.",
+    "sourceUrl": "https://www.shinjyuku-ekimae-clinic.info/naika/mounjaro.html",
+    "checkedAt": "2026-11-13"
+   },
+   "foreign": {
+    "langs": [],
+    "interpreter": "required",
+    "note": "일본어로 말하고 쓸 수 없으면 통역과 함께 와야 함.",
+    "sourceUrl": "https://www.shinjyuku-ekimae-clinic.info/naika/mounjaro.html",
+    "checkedAt": "2026-11-13"
    }
   },
   {
@@ -132,6 +147,24 @@
    ],
    "online": {
     "available": null
+   },
+   "booking": {
+    "walkIn": false,
+    "via": "web",
+    "url": "https://reservation.medical-force.com/b/d7bb811e-ebd5-4b93-93f8-588864b24f15",
+    "note": "웹·전화·LINE 예약. 영어 홈페이지 있음.",
+    "sourceUrl": "https://biancaclinic.jp/",
+    "checkedAt": "2026-11-13"
+   },
+   "foreign": {
+    "langs": [
+     "영어",
+     "중국어"
+    ],
+    "interpreter": null,
+    "note": "영어·중국어 직원 대응 안내(영어 홈페이지).",
+    "sourceUrl": "https://biancaclinic.jp/",
+    "checkedAt": "2026-11-13"
    }
   },
   {
@@ -727,6 +760,24 @@
    ],
    "online": {
     "available": null
+   },
+   "booking": {
+    "walkIn": false,
+    "via": "web",
+    "url": "https://aceclinic-umeda.reserve.ne.jp/sp/index.php",
+    "note": "완전 예약제. 웹·LINE 예약.",
+    "sourceUrl": "https://osaka.ace-clinic.com/",
+    "checkedAt": "2026-11-13"
+   },
+   "foreign": {
+    "langs": [
+     "영어",
+     "중국어"
+    ],
+    "interpreter": "partner",
+    "note": "해외에서 오는 환자를 위해 의료 통역·인바운드 지원 서비스와 제휴. 영어는 WhatsApp, 중국어는 WeChat 문의.",
+    "sourceUrl": "https://osaka.ace-clinic.com/",
+    "checkedAt": "2026-11-13"
    }
   },
   {
@@ -826,6 +877,14 @@
     "language": null,
     "dateSelect": null,
     "docs": null
+   },
+   "booking": {
+    "walkIn": null,
+    "via": "line",
+    "url": "https://line.me/R/ti/p/@809gyobs",
+    "note": null,
+    "sourceUrl": "https://clarabeautyclinic.jp/",
+    "checkedAt": "2026-11-13"
    }
   },
   {
@@ -917,6 +976,16 @@
     "language": null,
     "dateSelect": null,
     "docs": null
+   },
+   "foreign": {
+    "langs": [
+     "영어",
+     "중국어"
+    ],
+    "interpreter": null,
+    "note": "영어·중국어가 가능한 의사가 있다고 안내.",
+    "sourceUrl": "https://hinyouki-shokaki.jp/",
+    "checkedAt": "2026-11-13"
    }
   },
   {
@@ -966,6 +1035,14 @@
    ],
    "online": {
     "available": null
+   },
+   "booking": {
+    "walkIn": false,
+    "via": "line",
+    "url": "https://lin.ee/TmxvBT3",
+    "note": "완전 예약제. 전화·인터넷·LINE 예약.",
+    "sourceUrl": "https://shinjuku-biyou-chuoh.com/",
+    "checkedAt": "2026-11-13"
    }
   },
   {
@@ -1034,6 +1111,24 @@
     "language": null,
     "dateSelect": null,
     "docs": null
+   },
+   "booking": {
+    "walkIn": null,
+    "via": "web",
+    "url": "https://izavel.com/english_reservation/",
+    "note": "공식 사이트에 영문 예약 창구가 연결돼 있음. 전화·웹 예약도 가능.",
+    "sourceUrl": "https://e-clinic.gr.jp/",
+    "checkedAt": "2026-11-13"
+   },
+   "foreign": {
+    "langs": [
+     "영어",
+     "중국어"
+    ],
+    "interpreter": null,
+    "note": "영어·중국어 직원 상주. 해외 여행자의 처방도 받는다고 안내(마운자로 한정 안내는 아님).",
+    "sourceUrl": "https://e-clinic.gr.jp/",
+    "checkedAt": "2026-11-13"
    }
   },
   {
@@ -1103,7 +1198,15 @@
      "channel": "visit",
      "includes": "세금·진찰료"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": null,
+    "via": "web",
+    "url": "https://medical.apokul.jp/web/731/reservations/add",
+    "note": "마운자로 페이지에서 웹·LINE 예약.",
+    "sourceUrl": "https://naika.clinic/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "terao-clinica",
@@ -1141,7 +1244,15 @@
      "channel": "visit",
      "includes": "세금·초진료 ¥3,000"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": false,
+    "via": "web",
+    "url": "https://clinic.smiley-reserve.jp/terao-clinica",
+    "note": "예약제(인터넷 예약 포함).",
+    "sourceUrl": "https://www.terao-clinica.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "wakamatsukawada",
@@ -1228,7 +1339,16 @@
      "channel": "visit",
      "includes": "세금"
     }
-   ]
+   ],
+   "foreign": {
+    "langs": [
+     "중국어"
+    ],
+    "interpreter": null,
+    "note": "일본어·중국어 진료 가능.",
+    "sourceUrl": "https://kyo-wa.tokyo.jp/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "minimum-ginza",
@@ -1257,7 +1377,22 @@
      "channel": "visit",
      "includes": "세금"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": null,
+    "via": "line",
+    "url": "https://liff.line.me/2003043788-jDpL94Jd/booking/",
+    "note": "LINE·웹 예약.",
+    "sourceUrl": "https://minimumskin.clinic/",
+    "checkedAt": "2026-11-13"
+   },
+   "foreign": {
+    "langs": [],
+    "interpreter": "required",
+    "note": "외국어 직원이 없어 일본어가 어려우면 직접 통역을 데려와야 함.",
+    "sourceUrl": "https://minimumskin.clinic/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "minimum-ikebukuro",
@@ -1286,7 +1421,22 @@
      "channel": "visit",
      "includes": "세금"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": null,
+    "via": "line",
+    "url": "https://liff.line.me/2003043788-jDpL94Jd/booking/",
+    "note": "LINE·웹 예약.",
+    "sourceUrl": "https://minimumskin.clinic/",
+    "checkedAt": "2026-11-13"
+   },
+   "foreign": {
+    "langs": [],
+    "interpreter": "required",
+    "note": "외국어 직원이 없어 일본어가 어려우면 직접 통역을 데려와야 함.",
+    "sourceUrl": "https://minimumskin.clinic/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "ginza-foryou",
@@ -1325,7 +1475,15 @@
      "channel": "visit",
      "includes": "세금 10% 계산"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": false,
+    "via": "phone",
+    "url": null,
+    "note": "완전 예약제(전화·메일).",
+    "sourceUrl": "https://ginza-foryou.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "luce-ginza",
@@ -1353,7 +1511,15 @@
      "channel": "visit",
      "includes": "세금·진찰료"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": null,
+    "via": "line",
+    "url": "https://lin.ee/6bq6dqQ",
+    "note": "LINE 예약 가능.",
+    "sourceUrl": "https://www.luce-tokyobiyo.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "akihabara-sincere",
@@ -1402,7 +1568,15 @@
      "channel": "visit",
      "includes": "세금"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": null,
+    "via": "line",
+    "url": "https://page.line.me/977xhzje",
+    "note": null,
+    "sourceUrl": "https://akihabara-sincere.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "jimbocho-ekimae",
@@ -1450,7 +1624,15 @@
      "channel": "visit",
      "includes": "세금"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": null,
+    "via": "web",
+    "url": "https://reserve.fanka.jp/y0V4VyL638/JZodGgdlP9/auth/signIn",
+    "note": "원칙적으로 예약제지만 예약이 없어도 상담하라고 안내.",
+    "sourceUrl": "https://wellness.or.jp/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "asakusa-yasashii",
@@ -1488,7 +1670,15 @@
      "channel": "visit",
      "includes": "세금"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": null,
+    "via": "web",
+    "url": "https://ws.formzu.net/dist/S462189584/",
+    "note": "웹 예약 폼·전화.",
+    "sourceUrl": "https://tokyo-asakusa-hifuka.clinic/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "east-shinjuku",
@@ -1527,7 +1717,15 @@
      "includes": "세금·진찰료"
     }
    ],
-   "chain": "イースト駅前クリニック"
+   "chain": "イースト駅前クリニック",
+   "booking": {
+    "walkIn": true,
+    "via": "web",
+    "url": "https://app.eastcl.com/reservation/new",
+    "note": "예약 없이 방문 가능. 초진 웹 예약·당일 예약도 가능.",
+    "sourceUrl": "https://www.eastcl.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "reira",
@@ -1564,7 +1762,15 @@
      "checkedAt": "2026-11-11",
      "channel": "visit"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": false,
+    "via": "web",
+    "url": "https://medical.apokul.jp/web/378/reservations/add",
+    "note": "예약제. 당일이라도 빈자리가 있으면 예약 가능.",
+    "sourceUrl": "https://reira-clinic.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "tokyo-players",
@@ -1622,7 +1828,15 @@
      "channel": "visit",
      "includes": "세금"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": false,
+    "via": "line",
+    "url": "https://line.me/R/ti/p/%40oyb1411k",
+    "note": "진료에는 웹 예약이 필요하다고 안내.",
+    "sourceUrl": "https://www.tokyo-players.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "miyabi-skin",
@@ -1660,7 +1874,15 @@
      "channel": "visit",
      "includes": "세금·초진료 ¥3,300"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": false,
+    "via": "web",
+    "url": "https://miyabiskin.reserve.ne.jp/",
+    "note": "예약제(당일 예약 가능). LINE·웹 예약.",
+    "sourceUrl": "https://miyabiskin.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "omotesando-amc",
@@ -1700,7 +1922,24 @@
      "channel": "visit",
      "includes": "세금·초진료 ¥11,000(외국인 특별 대응비 별도)"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": false,
+    "via": "web",
+    "url": "https://web.booking.clius.jp/reserve/omotesando_amc",
+    "note": "완전 예약제.",
+    "sourceUrl": "https://www.omotesando-amc.jp/",
+    "checkedAt": "2026-11-13"
+   },
+   "foreign": {
+    "langs": [
+     "영어"
+    ],
+    "interpreter": null,
+    "note": "방일·재일 외국인 대상 국제 클리닉.",
+    "sourceUrl": "https://www.omotesando-amc.jp/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "clinique-shinsaibashi",
@@ -1816,7 +2055,15 @@
      "channel": "visit",
      "includes": "세금"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": false,
+    "via": "line",
+    "url": "https://line.me/R/ti/p/@389toqux",
+    "note": "예약제. 전화·LINE·메일로 사전 예약.",
+    "sourceUrl": "https://one-clinic-umeda.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "west-umeda",
@@ -1844,7 +2091,15 @@
      "channel": "visit",
      "includes": "세금"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": false,
+    "via": null,
+    "url": null,
+    "note": "예약제.",
+    "sourceUrl": "https://www.west-umeda-clinic.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "micelle-fukuoka",
@@ -1893,7 +2148,15 @@
      "channel": "visit",
      "includes": "세금·진찰료"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": false,
+    "via": null,
+    "url": null,
+    "note": "완전 예약제.",
+    "sourceUrl": "https://fukuoka-fujino.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "clinique-tenjin",
@@ -1951,7 +2214,15 @@
      "channel": "visit",
      "includes": "세금"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": null,
+    "via": "line",
+    "url": "https://page.line.me/701dbzry",
+    "note": null,
+    "sourceUrl": "https://clinique-fukuoka-tenjin.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "villa-hakata",
@@ -1987,7 +2258,15 @@
      "checkedAt": "2026-11-11",
      "channel": "visit"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": null,
+    "via": "line",
+    "url": "https://liff.line.me/2006912289-qOea8JZ0/landing?follow=%40926glmky&lp=LRdH5K&liff_id=2006912289-qOea8JZ0",
+    "note": "웹 즉시 예약·LINE 예약.",
+    "sourceUrl": "https://villa-clinic.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "arimura-naika",
@@ -1999,7 +2278,7 @@
    "lat": 33.591991,
    "lng": 130.379028,
    "consult": "대면",
-   "touristOk": null,
+   "touristOk": false,
    "note": "1개월(4펜) 가격, 세금 포함.",
    "online": {
     "available": null
@@ -2025,7 +2304,15 @@
      "channel": "visit",
      "includes": "세금"
     }
-   ]
+   ],
+   "foreign": {
+    "langs": [],
+    "interpreter": "required",
+    "note": "일본어를 못하면 의료 통역사를 동반해야 함.",
+    "sourceUrl": "https://www.arimura-clinic.com/service027.html",
+    "checkedAt": "2026-11-13"
+   },
+   "touristNote": "일본 건강보험 자격이 없는 외국인 환자는 자유진료로도 받지 않는다고 공식 안내. 찾아가지 마세요."
   },
   {
    "id": "ohori-park",
@@ -2056,7 +2343,15 @@
      "channel": "visit",
      "includes": "세금·초진료·혈액검사"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": true,
+    "via": null,
+    "url": null,
+    "note": "예약 없이 당일 방문 가능(LINE 순번 예약).",
+    "sourceUrl": "https://www.ohori-pc.jp/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "nanairo",
@@ -2123,7 +2418,15 @@
      "channel": "visit",
      "includes": "세금·초진료 ¥3,000(젭바운드)"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": true,
+    "via": "web",
+    "url": "https://appt.doctorsfile.jp/Patient/?hid=67020",
+    "note": "예약이 차 있어도 진료를 받으며, 진료 시간에 직접 오라고 안내.",
+    "sourceUrl": "https://s-naika-cl.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "east-sapporo",
@@ -2163,7 +2466,15 @@
      "channel": "visit",
      "includes": "세금·진찰료"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": true,
+    "via": "web",
+    "url": "https://app.eastcl.com/reservation/new",
+    "note": "예약 없이 방문 가능. 초진 웹 예약·당일 예약도 가능.",
+    "sourceUrl": "https://www.eastcl.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "east-sendai",
@@ -2203,7 +2514,15 @@
      "channel": "visit",
      "includes": "세금·진찰료"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": true,
+    "via": "web",
+    "url": "https://app.eastcl.com/reservation/new",
+    "note": "예약 없이 방문 가능. 초진 웹 예약·당일 예약도 가능.",
+    "sourceUrl": "https://www.eastcl.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "east-ikebukuro",
@@ -2243,7 +2562,15 @@
      "channel": "visit",
      "includes": "세금·진찰료"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": true,
+    "via": "web",
+    "url": "https://app.eastcl.com/reservation/new",
+    "note": "예약 없이 방문 가능. 초진 웹 예약·당일 예약도 가능.",
+    "sourceUrl": "https://www.eastcl.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "east-shibuya",
@@ -2283,7 +2610,15 @@
      "channel": "visit",
      "includes": "세금·진찰료"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": true,
+    "via": "web",
+    "url": "https://app.eastcl.com/reservation/new",
+    "note": "예약 없이 방문 가능. 초진 웹 예약·당일 예약도 가능.",
+    "sourceUrl": "https://www.eastcl.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "east-ueno",
@@ -2323,7 +2658,15 @@
      "channel": "visit",
      "includes": "세금·진찰료"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": true,
+    "via": "web",
+    "url": "https://app.eastcl.com/reservation/new",
+    "note": "예약 없이 방문 가능. 초진 웹 예약·당일 예약도 가능.",
+    "sourceUrl": "https://www.eastcl.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "east-akihabara",
@@ -2363,7 +2706,15 @@
      "channel": "visit",
      "includes": "세금·진찰료"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": true,
+    "via": "web",
+    "url": "https://app.eastcl.com/reservation/new",
+    "note": "예약 없이 방문 가능. 초진 웹 예약·당일 예약도 가능.",
+    "sourceUrl": "https://www.eastcl.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "east-shinbashi",
@@ -2403,7 +2754,15 @@
      "channel": "visit",
      "includes": "세금·진찰료"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": true,
+    "via": "web",
+    "url": "https://app.eastcl.com/reservation/new",
+    "note": "예약 없이 방문 가능. 초진 웹 예약·당일 예약도 가능.",
+    "sourceUrl": "https://www.eastcl.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "east-yokohama",
@@ -2443,7 +2802,15 @@
      "channel": "visit",
      "includes": "세금·진찰료"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": true,
+    "via": "web",
+    "url": "https://app.eastcl.com/reservation/new",
+    "note": "예약 없이 방문 가능. 초진 웹 예약·당일 예약도 가능.",
+    "sourceUrl": "https://www.eastcl.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "east-nagoya",
@@ -2483,7 +2850,15 @@
      "channel": "visit",
      "includes": "세금·진찰료"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": true,
+    "via": "web",
+    "url": "https://app.eastcl.com/reservation/new",
+    "note": "예약 없이 방문 가능. 초진 웹 예약·당일 예약도 가능.",
+    "sourceUrl": "https://www.eastcl.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "east-sakae",
@@ -2523,7 +2898,15 @@
      "channel": "visit",
      "includes": "세금·진찰료"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": true,
+    "via": "web",
+    "url": "https://app.eastcl.com/reservation/new",
+    "note": "예약 없이 방문 가능. 초진 웹 예약·당일 예약도 가능.",
+    "sourceUrl": "https://www.eastcl.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "east-meieki",
@@ -2563,7 +2946,15 @@
      "channel": "visit",
      "includes": "세금·진찰료"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": true,
+    "via": "web",
+    "url": "https://app.eastcl.com/reservation/new",
+    "note": "예약 없이 방문 가능. 초진 웹 예약·당일 예약도 가능.",
+    "sourceUrl": "https://www.eastcl.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "east-kanazawa",
@@ -2603,7 +2994,15 @@
      "channel": "visit",
      "includes": "세금·진찰료"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": true,
+    "via": "web",
+    "url": "https://app.eastcl.com/reservation/new",
+    "note": "예약 없이 방문 가능. 초진 웹 예약·당일 예약도 가능.",
+    "sourceUrl": "https://www.eastcl.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "east-kyoto",
@@ -2643,7 +3042,15 @@
      "channel": "visit",
      "includes": "세금·진찰료"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": true,
+    "via": "web",
+    "url": "https://app.eastcl.com/reservation/new",
+    "note": "예약 없이 방문 가능. 초진 웹 예약·당일 예약도 가능.",
+    "sourceUrl": "https://www.eastcl.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "east-sannomiya",
@@ -2683,7 +3090,15 @@
      "channel": "visit",
      "includes": "세금·진찰료"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": true,
+    "via": "web",
+    "url": "https://app.eastcl.com/reservation/new",
+    "note": "예약 없이 방문 가능. 초진 웹 예약·당일 예약도 가능.",
+    "sourceUrl": "https://www.eastcl.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "east-okayama",
@@ -2723,7 +3138,15 @@
      "channel": "visit",
      "includes": "세금·진찰료"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": true,
+    "via": "web",
+    "url": "https://app.eastcl.com/reservation/new",
+    "note": "예약 없이 방문 가능. 초진 웹 예약·당일 예약도 가능.",
+    "sourceUrl": "https://www.eastcl.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "east-hiroshima",
@@ -2763,7 +3186,15 @@
      "channel": "visit",
      "includes": "세금·진찰료"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": true,
+    "via": "web",
+    "url": "https://app.eastcl.com/reservation/new",
+    "note": "예약 없이 방문 가능. 초진 웹 예약·당일 예약도 가능.",
+    "sourceUrl": "https://www.eastcl.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "east-takamatsu",
@@ -2803,7 +3234,15 @@
      "channel": "visit",
      "includes": "세금·진찰료"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": true,
+    "via": "web",
+    "url": "https://app.eastcl.com/reservation/new",
+    "note": "예약 없이 방문 가능. 초진 웹 예약·당일 예약도 가능.",
+    "sourceUrl": "https://www.eastcl.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "east-matsuyama",
@@ -2843,7 +3282,15 @@
      "channel": "visit",
      "includes": "세금·진찰료"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": true,
+    "via": "web",
+    "url": "https://app.eastcl.com/reservation/new",
+    "note": "예약 없이 방문 가능. 초진 웹 예약·당일 예약도 가능.",
+    "sourceUrl": "https://www.eastcl.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "east-hakata",
@@ -2883,7 +3330,15 @@
      "channel": "visit",
      "includes": "세금·진찰료"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": true,
+    "via": "web",
+    "url": "https://app.eastcl.com/reservation/new",
+    "note": "예약 없이 방문 가능. 초진 웹 예약·당일 예약도 가능.",
+    "sourceUrl": "https://www.eastcl.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "east-kokura",
@@ -2923,7 +3378,15 @@
      "channel": "visit",
      "includes": "세금·진찰료"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": true,
+    "via": "web",
+    "url": "https://app.eastcl.com/reservation/new",
+    "note": "예약 없이 방문 가능. 초진 웹 예약·당일 예약도 가능.",
+    "sourceUrl": "https://www.eastcl.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "east-kumamoto",
@@ -2963,7 +3426,15 @@
      "channel": "visit",
      "includes": "세금·진찰료"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": true,
+    "via": "web",
+    "url": "https://app.eastcl.com/reservation/new",
+    "note": "예약 없이 방문 가능. 초진 웹 예약·당일 예약도 가능.",
+    "sourceUrl": "https://www.eastcl.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "east-nigata",
@@ -3003,7 +3474,15 @@
      "channel": "visit",
      "includes": "세금·진찰료"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": true,
+    "via": "web",
+    "url": "https://app.eastcl.com/reservation/new",
+    "note": "예약 없이 방문 가능. 초진 웹 예약·당일 예약도 가능.",
+    "sourceUrl": "https://www.eastcl.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "east-shizuoka",
@@ -3043,7 +3522,15 @@
      "channel": "visit",
      "includes": "세금·진찰료"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": true,
+    "via": "web",
+    "url": "https://app.eastcl.com/reservation/new",
+    "note": "예약 없이 방문 가능. 초진 웹 예약·당일 예약도 가능.",
+    "sourceUrl": "https://www.eastcl.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "east-shinjuku-west",
@@ -3083,7 +3570,15 @@
      "channel": "visit",
      "includes": "세금·진찰료"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": true,
+    "via": "web",
+    "url": "https://app.eastcl.com/reservation/new",
+    "note": "예약 없이 방문 가능. 초진 웹 예약·당일 예약도 가능.",
+    "sourceUrl": "https://www.eastcl.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "kirei-kyoto",
@@ -3095,7 +3590,7 @@
    "lat": 35.008144,
    "lng": 135.74379,
    "consult": "대면",
-   "touristOk": null,
+   "touristOk": true,
    "note": "세금 포함. 원하면 채혈 검사 ¥5,500 별도.",
    "online": {
     "available": null
@@ -3131,7 +3626,23 @@
      "channel": "visit",
      "includes": "세금"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": true,
+    "via": null,
+    "url": null,
+    "note": "접수 직원이 영어를 못해 전화 예약은 받지 않음. 관광객은 진료 시간에 직접 방문(번역 앱으로 소통).",
+    "sourceUrl": "https://www.kirei-clinic.com/mounjaro/",
+    "checkedAt": "2026-11-13"
+   },
+   "foreign": {
+    "langs": [],
+    "interpreter": "app",
+    "note": "직원이 영어를 못하며, 번역 앱으로 소통한다고 안내.",
+    "sourceUrl": "https://www.kirei-clinic.com/mounjaro/",
+    "checkedAt": "2026-11-13"
+   },
+   "touristNote": "관광객(해외 여행자)에게 마운자로를 처방한다고 공식 안내. 전화 예약은 받지 않으니 진료 시간에 직접 방문."
   },
   {
    "id": "bao-shinsaibashi",
@@ -3275,7 +3786,15 @@
      "channel": "visit",
      "includes": "세금·진찰료"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": null,
+    "via": "line",
+    "url": "https://liff.line.me/1645278921-kWRPP32q/?accountId=520bizva",
+    "note": "웹 예약 가능.",
+    "sourceUrl": "https://grand-clinic.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "terrasse-nayabashi",
@@ -3313,7 +3832,15 @@
      "channel": "visit",
      "includes": "세금·진찰료"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": null,
+    "via": "web",
+    "url": "https://www.mssyoyaku.com/~tnfcl/rcvIndex.php",
+    "note": "웹 예약 무료.",
+    "sourceUrl": "https://tnf-clinic.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "morokuni-okayama",
@@ -3342,7 +3869,14 @@
      "channel": "visit",
      "includes": "세금·초진료·검사·지도료"
     }
-   ]
+   ],
+   "foreign": {
+    "langs": [],
+    "interpreter": null,
+    "note": "트래블 클리닉으로 방일 중인 외국인 환자도 받는다고 안내(마운자로 한정 안내는 아님).",
+    "sourceUrl": "https://www.varix.jp/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "daibikai-okayama",
@@ -3438,7 +3972,15 @@
      "checkedAt": "2026-11-12",
      "channel": "visit"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": false,
+    "via": null,
+    "url": null,
+    "note": "완전 예약제(전화·메일 상담).",
+    "sourceUrl": "https://natule-beauty.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "eclinic-kanazawa",
@@ -3504,7 +4046,15 @@
      "channel": "visit",
      "includes": "세금"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": false,
+    "via": "web",
+    "url": "https://reservation.medical-force.com/c/baa7738295fd4161b96302bbc22b5ef2",
+    "note": "완전 예약제. LINE·웹 예약 권장.",
+    "sourceUrl": "https://blaze-clinic.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "hiro-naha",
@@ -3592,7 +4142,15 @@
      "channel": "visit",
      "includes": "세금"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": false,
+    "via": "line",
+    "url": "https://page.line.me/138zlhdx",
+    "note": "완전 예약제(LINE).",
+    "sourceUrl": "https://kisui-clinic.co.jp/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "odoripark-sapporo",
@@ -3631,7 +4189,15 @@
      "channel": "visit",
      "includes": "세금"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": true,
+    "via": "web",
+    "url": "https://medical.apokul.jp/web/527/reservations/add",
+    "note": "사전 예약 필수 아님. 예약 없이 방문 가능.",
+    "sourceUrl": "https://www.odoripark-mensclinic.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "okibi-naha",
@@ -3689,7 +4255,15 @@
      "channel": "visit",
      "includes": "세금"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": null,
+    "via": "web",
+    "url": "https://reservation.medical-force.com/c/2ccdc1332f3c4640b1ccd6be97002616",
+    "note": "LINE·웹 예약.",
+    "sourceUrl": "https://okibi-clinic.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "atoll-kagoshima",
@@ -3717,7 +4291,15 @@
      "channel": "visit",
      "includes": "세금"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": null,
+    "via": "web",
+    "url": "https://connect-app.net/r_atoll/reserve/login",
+    "note": "웹 예약.",
+    "sourceUrl": "https://atoll.co.jp/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "mitsui-kagoshima",
@@ -3765,7 +4347,15 @@
      "channel": "visit",
      "includes": "세금"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": false,
+    "via": "web",
+    "url": "https://connect.kireipass.jp/clinics/clinic-kagoshima/reservations/new?menu_id=216029",
+    "note": "완전 예약제. 웹·LINE 24시간 접수.",
+    "sourceUrl": "https://chuoh-clinic-kagoshima.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "lamu-kagoshima",
@@ -3793,7 +4383,15 @@
      "channel": "visit",
      "includes": "세금"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": null,
+    "via": "line",
+    "url": "https://lin.ee/GkGxSn1",
+    "note": "메일·전화·LINE 예약.",
+    "sourceUrl": "https://lamu-kagoshima.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "oishi-shizuoka",
@@ -3838,7 +4436,15 @@
      "checkedAt": "2026-11-12",
      "channel": "visit"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": false,
+    "via": "phone",
+    "url": null,
+    "note": "자비(自費) 진료는 전화 예약으로만 받는다고 안내.",
+    "sourceUrl": "https://oishi-shunkei.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "hashimoto-shizuoka",
@@ -3866,7 +4472,15 @@
      "channel": "visit",
      "includes": "세금"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": false,
+    "via": "line",
+    "url": "https://lin.ee/TvMn4PA",
+    "note": "완전 예약제. 전화·웹·LINE.",
+    "sourceUrl": "https://hashimotoclinic.co.jp/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "nakayama-kumamoto",
@@ -3942,7 +4556,15 @@
      "channel": "visit",
      "includes": "초진료 ¥3,300"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": null,
+    "via": "line",
+    "url": "https://lin.ee/qbhN9W0",
+    "note": null,
+    "sourceUrl": "https://yori-clinic.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "miyahara-kumamoto",
@@ -3970,7 +4592,15 @@
      "channel": "visit",
      "includes": "세금·초진료 ¥3,300"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": null,
+    "via": "web",
+    "url": "https://reservation.medical-force.com/c/b8e0a9d00b184d0bbc7615efc8a5c556",
+    "note": "웹 예약.",
+    "sourceUrl": "https://miyahara-lc.jp/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "lg-shinjuku",
@@ -4082,7 +4712,15 @@
      "channel": "visit",
      "includes": "세금·진찰료"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": null,
+    "via": "web",
+    "url": "https://reservation.medical-force.com/c/0940abc6b57e450596f9f3951a3d2797",
+    "note": "웹 예약·LINE 상담.",
+    "sourceUrl": "https://pertica-c.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "goto-iin-tamade",
@@ -4152,7 +4790,15 @@
      "channel": "visit",
      "includes": "세금"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": null,
+    "via": "web",
+    "url": "https://patient.digikar-smart.jp/institutions/57c00b94-f618-486f-a2ac-e34e98b56b84/reserve",
+    "note": "예약 우선제. 당일 예약 가능.",
+    "sourceUrl": "https://goto-iin.com/",
+    "checkedAt": "2026-11-13"
+   }
   },
   {
    "id": "mil-osaka",
@@ -4236,7 +4882,24 @@
      "checkedAt": "2026-11-13",
      "channel": "online"
     }
-   ]
+   ],
+   "booking": {
+    "walkIn": false,
+    "via": "web",
+    "url": "https://reservation.medical-force.com/c/76c5a6eb1e6148b9b69dd0dbbf0f6a7c",
+    "note": "완전 예약제. 웹·LINE 예약.",
+    "sourceUrl": "https://mil-clinic.com/",
+    "checkedAt": "2026-11-13"
+   },
+   "foreign": {
+    "langs": [
+     "영어"
+    ],
+    "interpreter": null,
+    "note": "세관용 영문 처방 증명서 발급 가능.",
+    "sourceUrl": "https://mil-clinic.com/",
+    "checkedAt": "2026-11-13"
+   }
   }
  ]
 }

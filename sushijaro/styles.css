@@ -166,3 +166,25 @@ details{margin-top:8px;font-size:14px}summary{cursor:pointer;color:var(--accent)
 .pill-button.map{background:var(--ink);border-color:var(--ink);color:#fff}
 .search-extras:empty,.search-extras:has(#nearby[hidden]):not(:has(#location-status:not(:empty))){margin:0}
 .inline-promo{margin:4px 0 12px}.inline-promo .promo-title{margin:0;font-size:16px;color:#49366c;line-height:1.35}
+/* 외국인 처방·예약 상태 줄 */
+.status-row{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0;margin:8px 0 4px;font-size:12.5px}
+.status-row .st{border-radius:999px;padding:3px 9px;background:#eef1ee;color:#3d4a42;line-height:1.4}
+.status-row .st b{font-weight:800}.status-row .st span{font-weight:400;opacity:.85}
+.status-row .st.good{background:#e3f3ea;color:#1d6b45}
+.status-row .st.bad{background:#fde8e8;color:#9a1c1c}
+.status-row .st.mid{background:#fff3dc;color:#8a5300}
+.status-row .st.unk{background:#f1f1ef;color:#5d625e;border:1px dashed #b9bdb8}
+.status-row .st.warn{background:#fff0e6;color:#a1440f}
+.status-row .st.lang{background:#e8f0fd;color:#24508f}
+.book-line{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:6px 0}
+.book-btn{display:inline-block;padding:7px 12px;border-radius:10px;background:var(--ink,#1f2a24);color:#fff;font-weight:700;font-size:13.5px;text-decoration:none}
+.book-btn.line{background:#06c755}.book-btn.phone{background:#eef1ee;color:#3d4a42}
+.book-tip{font-size:13px}
+.booking-note{margin-top:2px}
+.copy-lines{list-style:none;padding:0;margin:8px 0;display:grid;gap:8px}
+.copy-line{display:block;width:100%;text-align:left;background:#fff;border:1px solid #dfe3df;border-radius:12px;padding:10px 12px;font:inherit;cursor:pointer}
+.copy-line span{display:block;font-weight:600}.copy-line small{display:block;color:var(--sub);margin-top:3px}
+.copy-line.inline{display:inline;padding:4px 8px;width:auto}
+.form-tips{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;font-size:14px;margin:10px 0}
+.form-tips dt{font-weight:700}.form-tips dd{margin:0}
+@media (max-width:520px){.form-tips{grid-template-columns:1fr}.form-tips dd{margin-bottom:6px}}

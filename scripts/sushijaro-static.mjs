@@ -1,6 +1,7 @@
 // 스시자로: clinics.json으로 검색엔진·AI가 읽을 수 있는 정적 목록 페이지와 llms.txt를 만든다.
 // 데이터가 바뀌면 `node scripts/sushijaro-static.mjs`를 다시 실행한다(테스트가 동기화 여부를 확인).
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { foreignStatus, walkInLabel, INTERPRETER } from '../sushijaro/core.mjs';
 
 const root = new URL('../sushijaro/', import.meta.url);
 const SITE = 'https://everpinej.com/sushijaro/';
@@ -31,13 +32,17 @@ const staticPromo = prefix => `<aside class="app-promo inline-promo" aria-label=
 const withStaticPromo = (htmls, prefix) => htmls.map((h, i) => (i === Math.min(2, htmls.length - 1) ? h + '\n' + staticPromo(prefix) : h)).join('\n');
 function row(c) {
   const prices = c.prices.map(p => `<li>${p.channel === 'online' ? '비대면' : '내원'} ${esc(p.dose)} ${p.pens}펜 ${yen(p.totalJpy)} (1펜 ${yen(perPen(p))}${rate ? ', ' + won(perPen(p)) : ''})${p.includes ? ' · ' + esc(p.includes) + ' 포함' : ''} · <a href="${esc(p.sourceUrl)}" rel="nofollow noopener" target="_blank">${p.source === 'receipt' ? '영수증 인증' : '공식 출처'}</a> ${esc(p.checkedAt)} 확인</li>`).join('');
-  const tourist = c.touristOk === true ? '외국인 처방 명시' : c.touristOk === false ? '관광객 처방 안 함' : '외국인 처방 여부 미확인';
+  const st = foreignStatus(c);
+  const tourist = { ok: '외국인 처방 가능(공식 안내)', no: '외국인 처방 안 함(공식 안내)', support: '외국어·통역 대응 · 마운자로 처방은 예약 전 문의', unknown: '외국인 처방 미확인 · 예약 전 문의' }[st];
+  const extra = [c.foreign?.langs?.length ? c.foreign.langs.join('·') + ' 가능' : null, c.foreign?.interpreter ? INTERPRETER[c.foreign.interpreter] : null, walkInLabel(c)].filter(Boolean).map(esc).join(' · ');
+  const book = st !== 'no' && c.booking?.url ? ` · <a href="${esc(c.booking.url)}" rel="nofollow noopener" target="_blank">${c.booking.via === 'line' ? 'LINE 예약' : '웹 예약'}</a>` : '';
   return `<article class="clinic" id="${esc(c.id)}">
   <h3>${esc(c.name)} <span lang="ja">${esc(c.nameJa)}</span></h3>
   <p class="where">${esc(c.city)} · ${esc(c.area)}${c.station ? ' · ' + esc(c.station) : ''}</p>
   <p class="small" lang="ja">${esc(c.address)}</p>
   <ul class="others">${prices}</ul>
-  <p class="small">${tourist}${c.chain ? ' · ' + esc(c.chain) + ' 체인 공통 가격' : ''}${c.touristNote ? ' · ' + esc(c.touristNote) : ''}</p>
+  <p class="small"><b>${tourist}</b>${extra ? ' · ' + extra : ''}${book}</p>
+  <p class="small">${c.chain ? esc(c.chain) + ' 체인 공통 가격 · ' : ''}${esc(c.touristNote ?? '')}</p>
   ${c.note ? `<p class="small">${esc(c.note)}</p>` : ''}
 </article>`;
 }
@@ -94,7 +99,7 @@ const html = `<!doctype html>
   <meta name="description" content="일본 ${cities.length}개 지역 마운자로 처방 클리닉 ${clinics.length}곳의 공식 가격(엔·원화), 주소, 외국인 처방 조건. 가격마다 공식 출처와 확인일 표시. 마지막 확인 ${lastChecked}.">
   <link rel="canonical" href="${SITE}clinics/">
   <link rel="icon" href="../favicon.svg?v=2" type="image/svg+xml">
-  <link rel="stylesheet" href="../styles.css?v=20261113c">
+  <link rel="stylesheet" href="../styles.css?v=20261113d">
   <link rel="alternate" type="application/json" href="../data/clinics.json">
   <meta property="og:type" content="website"><meta property="og:locale" content="ko_KR"><meta property="og:title" content="일본 마운자로 처방 클리닉 ${clinics.length}곳 가격 목록"><meta property="og:url" content="${SITE}clinics/"><meta property="og:image" content="${SITE}assets/og-main.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">
   <script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>
@@ -172,7 +177,7 @@ for (const city of cities) {
   <meta property="og:url" content="${SITE}clinics/${slug}/"><meta property="og:image" content="${SITE}assets/og-${slug}.png">
   <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="../../favicon.svg?v=2" type="image/svg+xml">
-  <link rel="stylesheet" href="../../styles.css?v=20261113c">
+  <link rel="stylesheet" href="../../styles.css?v=20261113d">
 </head>
 <body>
   <div class="shell">
@@ -233,7 +238,7 @@ console.log(`지역 페이지 ${cityPages.length}개`);
   <link rel="canonical" href="${SITE}notes/">
   <meta property="og:type" content="website"><meta property="og:locale" content="ko_KR"><meta property="og:title" content="일본 마운자로 처방, 다녀온 사람 메모"><meta property="og:url" content="${SITE}notes/"><meta property="og:image" content="${SITE}assets/og-main.png"><meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="../favicon.svg?v=2" type="image/svg+xml">
-  <link rel="stylesheet" href="../styles.css?v=20261113c">
+  <link rel="stylesheet" href="../styles.css?v=20261113d">
 </head>
 <body>
   <div class="shell">

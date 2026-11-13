@@ -18,9 +18,9 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://everpinej.com/sushijaro/">
   <link rel="icon" href="./favicon.svg?v=2" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css?v=20261113c">
-  <script type="module" src="./app.mjs?v=20261113c"></script>
-  <script type="module" src="./analytics.mjs?v=7"></script>
+  <link rel="stylesheet" href="./styles.css?v=20261113d">
+  <script type="module" src="./app.mjs?v=20261113d"></script>
+  <script type="module" src="./analytics.mjs?v=8"></script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "name": "스시자로", "url": "https://everpinej.com/sushijaro/", "inLanguage": "ko", "description": "일본 마운자로 처방 클리닉의 공식 가격과 영수증 인증 가격을 비교하는 정보 사이트"}, {"@type": "Dataset", "name": "스시자로 일본 마운자로 처방 클리닉 가격 데이터", "url": "https://everpinej.com/sushijaro/clinics/", "description": "일본 클리닉의 마운자로 자유진료 가격을 공식 페이지와 영수증으로 확인한 데이터. 가격마다 출처 URL과 확인일 포함.", "creator": {"@type": "Organization", "name": "everpinej", "url": "https://everpinej.com/"}, "distribution": [{"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://everpinej.com/sushijaro/data/clinics.json"}]}]}</script>
   <link rel="alternate" type="application/json" href="./data/clinics.json">
 </head>
@@ -85,7 +85,9 @@
         <div class="filter-chips" role="group" aria-label="인증 조건">
           <button type="button" data-verified="all" aria-pressed="true">전체</button>
           <button type="button" data-verified="receipt" aria-pressed="false">영수증 인증만</button>
-          <button type="button" data-verified="tourist" aria-pressed="false">관광객 처방 확인</button>
+          <button type="button" data-verified="tourist" aria-pressed="false">외국인 처방 가능만</button>
+          <button type="button" data-verified="foreign" aria-pressed="false">외국어·통역 대응 포함</button>
+          <button type="button" data-verified="walkin" aria-pressed="false">예약 없이 방문</button>
         </div>
         <div class="results-toolbar"><p id="result-count" role="status" aria-live="polite">불러오는 중…</p><div class="toolbar-actions"><div class="view-toggle" role="group" aria-label="보기 방식"><button type="button" data-view="list" aria-pressed="true">목록</button><button type="button" data-view="map" aria-pressed="false">지도</button></div><button type="button" id="share" class="text-button">공유 <span aria-hidden="true">↗</span></button></div></div>
         <p id="share-status" class="small" role="status"></p>
@@ -131,6 +133,24 @@
           <li><b>결제·수령</b> <b>영수증(領収書)과 명세서(明細書)</b>를 꼭 받으세요. 한국에 들어올 때 본인 치료용이라는 증빙이 되고, 스시자로 인증에도 쓰여요. 주사 놓는 법도 이때 배우세요.</li>
           <li><b>귀국</b> 직접 들고 오세요. 3개월분 이내, 냉장 보관 설명을 따르세요.</li>
         </ol>
+
+        <h3 id="booking-tips">예약 전 · 예약 폼 일본어 팁</h3>
+        <p class="small">외국인 처방이 <b>미확인</b>인 곳은 비행기 타기 전에 LINE·메일로 먼저 물어보세요. 아래 문장을 눌러 복사해 붙여 넣으면 돼요.</p>
+        <ul class="copy-lines">
+          <li><button type="button" class="copy-line" data-copy="韓国から旅行で来ている者です（日本に住所はありません）。マンジャロの自由診療での処方は可能でしょうか？パスポートで受診できますか？"><span lang="ja">韓国から旅行で来ている者です（日本に住所はありません）。マンジャロの自由診療での処方は可能でしょうか？パスポートで受診できますか？</span><small>한국에서 여행 온 사람이에요(일본 주소 없음). 마운자로 자유진료 처방이 가능한가요? 여권으로 진료받을 수 있나요?</small></button></li>
+          <li><button type="button" class="copy-line" data-copy="〇月〇日に伺いたいのですが、予約は必要ですか？当日、2.5mgの在庫はありますか？"><span lang="ja">〇月〇日に伺いたいのですが、予約は必要ですか？当日、2.5mgの在庫はありますか？</span><small>○월 ○일에 가고 싶은데 예약이 필요한가요? 그날 2.5mg 재고가 있나요?</small></button></li>
+          <li><button type="button" class="copy-line" data-copy="日本語はあまり話せません。翻訳アプリを使って受診してもよろしいでしょうか？"><span lang="ja">日本語はあまり話せません。翻訳アプリを使って受診してもよろしいでしょうか？</span><small>일본어를 잘 못해요. 번역 앱을 써서 진료받아도 될까요?</small></button></li>
+        </ul>
+        <p id="copy-status" class="small" role="status"></p>
+        <dl class="form-tips">
+          <dt lang="ja">氏名・フリガナ</dt><dd>이름은 여권과 같은 영문(ローマ字), フリガナ 칸은 이름을 가타카나로. 예: KIM MINJI / キム ミンジ</dd>
+          <dt lang="ja">住所</dt><dd>일본 주소가 없으면 <b>묵는 호텔 주소와 호텔 이름</b>을 적고, 메모란에 「旅行中（ホテル滞在）」.</dd>
+          <dt lang="ja">電話番号</dt><dd>한국 번호는 국가번호를 붙여 +82-10-…, 받기 어렵다면 메모란에 「LINEで連絡希望」(LINE으로 연락 희망).</dd>
+          <dt lang="ja">生年月日</dt><dd>서기(西暦)로 적어요. 연호(令和·平成) 칸만 있으면 메모란에 서기로 적어 두세요.</dd>
+          <dt lang="ja">保険証・初診／再診</dt><dd>일본 건강보험이 없으니 「なし（自費）」, 처음이면 「初診」.</dd>
+          <dt lang="ja">備考・ご要望</dt><dd>복사해서 붙이기: <button type="button" class="copy-line inline" data-copy="韓国からの旅行者です。日本の住所はなく、ホテルに滞在しています。マンジャロの処方を希望します。パスポートを持参します。"><span lang="ja">韓国からの旅行者です。日本の住所はなく、ホテルに滞在しています。マンジャロの処方を希望します。パスポートを持参します。</span></button></dd>
+        </dl>
+        <p class="small">답장은 일본어로 와요. 번역 앱으로 확인하고, "처방 가능"이라는 답을 캡처해 두면 현장에서 보여 주기 좋아요.</p>
 
         <h3>일본어 진료 카드 만들기</h3>
         <p class="small">답을 고르면 접수처·의사에게 보여 줄 일본어 카드가 만들어져요. 입력한 내용은 이 기기 밖으로 보내지 않아요.</p>

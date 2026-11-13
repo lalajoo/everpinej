@@ -1,4 +1,4 @@
-import { DOSES, search, yen, daysSince, perPen, krw, man, koreaGap, expandQuery, normalize, promoPositions } from './core.mjs';
+import { DOSES, search, yen, daysSince, perPen, krw, man, koreaGap, expandQuery, normalize, promoPositions, foreignStatus, walkInLabel, INTERPRETER } from './core.mjs';
 import { setupCard } from './card.mjs';
 import { showMap } from './map.mjs';
 
@@ -17,7 +17,7 @@ function readUrl() {
   const p = new URLSearchParams(location.search);
   state.query = p.get('q') ?? '';
   state.dose = DOSES.includes(p.get('dose')) ? p.get('dose') : '';
-  state.verified = ['receipt', 'tourist'].includes(p.get('v')) ? p.get('v') : 'all';
+  state.verified = ['receipt', 'tourist', 'foreign', 'walkin'].includes(p.get('v')) ? p.get('v') : 'all';
   state.channel = ['visit', 'online'].includes(p.get('ch')) ? p.get('ch') : 'all';
   state.tab = p.get('tab') === 'notes' ? 'notes' : 'clinics';
   state.view = p.get('view') === 'map' ? 'map' : 'list';
@@ -99,9 +99,35 @@ function renderNotes() {
   $('#notes').hidden = false;
 }
 
+const FOREIGN = {
+  ok: ['good', '외국인 처방 가능', '공식 안내'],
+  no: ['bad', '외국인 처방 안 함', '공식 안내'],
+  support: ['mid', '외국어·통역 대응', '마운자로 처방은 예약 전에 문의'],
+  unknown: ['unk', '외국인 처방 미확인', '예약 전에 꼭 문의'],
+};
+const VIA = { web: '웹 예약', line: 'LINE 예약' };
+
+// 카드 맨 위 상태 줄: 외국인 처방 · 통역/언어 · 예약 방식 · 예약 버튼
+function statusRow(clinic) {
+  const st = foreignStatus(clinic), [tone, label, sub] = FOREIGN[st], f = clinic.foreign, b = clinic.booking;
+  const chips = [`<li class="st ${tone}"><b>${label}</b> <span>${sub}</span></li>`];
+  if (f?.langs?.length) chips.push(`<li class="st lang">${esc(f.langs.join('·'))} 가능</li>`);
+  if (f?.interpreter) chips.push(`<li class="st ${f.interpreter === 'required' ? 'warn' : 'lang'}">${INTERPRETER[f.interpreter]}</li>`);
+  const walk = walkInLabel(clinic);
+  if (walk) chips.push(`<li class="st ${b?.walkIn === true ? 'good' : 'plain'}">${esc(walk)}</li>`);
+  if (clinic.consult) chips.push(`<li class="st plain">${esc(clinic.consult)}</li>`);
+  const btn = st === 'no' ? '' : b?.url
+    ? `<a class="book-btn${b.via === 'line' ? ' line' : ''}" href="${esc(b.url)}" target="_blank" rel="noopener noreferrer nofollow" data-book="${esc(b.via)}">${VIA[b.via] ?? '예약'} 바로가기 ↗</a>`
+    : b?.via === 'phone' ? '<span class="book-btn phone">전화 예약만 받음</span>' : '';
+  const tips = st === 'no' ? '' : `<a class="book-tip" href="#booking-tips">${st === 'ok' ? '예약 폼 일본어 팁' : '처방 가능한지 묻는 일본어 문장'}</a>`;
+  const notes = [f?.note && st !== 'ok' ? f.note : null, b?.note].filter(Boolean).map(esc).join(' · ');
+  return `<ul class="status-row">${chips.join('')}</ul>
+    ${btn || tips ? `<p class="book-line">${btn}${tips}</p>` : ''}
+    ${notes ? `<p class="small booking-note">${notes}${b?.sourceUrl ? ` · <a href="${esc(b.sourceUrl)}" target="_blank" rel="noopener noreferrer nofollow">예약 안내 출처</a>` : ''}</p>` : ''}`;
+}
+
 function card({ clinic, price, unit, km }) {
-  const tourist = clinic.touristOk === true ? '<li class="good">외국인 처방 명시</li>' : clinic.touristOk === false ? '<li class="bad">관광객 처방 안 함</li>' : '<li>외국인 처방 여부 미확인</li>';
-  const langs = clinic.languages?.length ? `<li>${esc(clinic.languages.join('·'))} 상담</li>` : '';
+  const status = statusRow(clinic);
   const src = price?.sourceUrl ? ` · <a href="${esc(price.sourceUrl)}" target="_blank" rel="noopener noreferrer nofollow">출처</a>` : '';
   const map = clinic.address ? `<a class="map" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(clinic.address)}" target="_blank" rel="noopener noreferrer">지도</a>` : '';
   const others = (clinic.prices ?? []).filter(p => p !== price && (!state.dose || p.dose === state.dose))
@@ -110,11 +136,11 @@ function card({ clinic, price, unit, km }) {
     <header><h3>${esc(clinic.name)}</h3>${km != null ? `<span class="km">${km < 1 ? Math.round(km * 1000) + 'm' : km.toFixed(1) + 'km'}</span>` : ''}</header>
     <p class="ja" lang="ja">${esc(clinic.nameJa ?? '')}</p>
     <p class="where">${esc([clinic.city, clinic.area].filter(Boolean).join(' · '))}${clinic.station ? ' · ' + esc(clinic.station) : ''}</p>
+    ${status}
     ${price ? `<p class="price"><b>${yen(unit)}</b> / 1펜 <em class="krw">약 ${man(krw(unit, config.fx?.jpyKrw))}</em> <span>${price.channel === 'online' ? '비대면 · ' : '내원 · '}${esc(price.dose)} · ${price.pens}펜 총 ${yen(price.totalJpy)}${price.includes ? ' (' + esc(price.includes) + ' 포함)' : ''}</span></p>` : ''}
     ${compareLine(price, unit)}
     <p>${badge(price)}${src}</p>
     ${clinic.chain ? `<p class="chain-note">${esc(clinic.chain)} 체인 공통 가격 · 지점별 재고·처방 조건은 다를 수 있어요</p>` : ''}
-    <ul class="meta">${tourist}${langs}${clinic.consult ? `<li>${esc(clinic.consult)}</li>` : ''}${clinic.reservation ? `<li>${esc(clinic.reservation)}</li>` : ''}</ul>
     ${onlineBox(clinic.online)}
     ${clinic.touristNote ? `<p class="tourist-note${clinic.touristOk === false ? ' refused' : ''}">${esc(clinic.touristNote)}</p>` : ''}
     ${clinic.note ? `<p class="small">${esc(clinic.note)}</p>` : ''}
@@ -259,6 +285,13 @@ function bind() {
   $('#nearby-top')?.addEventListener('click', () => { locate(); $('#results-heading').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
   $('#nearby').addEventListener('click', locate);
   $('#share')?.addEventListener('click', share);
+  document.addEventListener('click', async e => {
+    const b = e.target.closest?.('[data-copy]'); if (!b) return;
+    const out = $('#copy-status');
+    try { await navigator.clipboard.writeText(b.dataset.copy); out.textContent = '복사했어요. LINE·메일·예약 폼에 붙여 넣으세요.'; window.sushijaroTrack?.('booking_tip_copy'); }
+    catch { out.textContent = '복사가 안 되면 문장을 길게 눌러 복사해 주세요.'; }
+  });
+  document.addEventListener('click', e => { if (e.target.closest?.('[data-book]')) window.sushijaroTrack?.('booking_click'); });
   document.addEventListener('click', e => { const l = e.target.closest?.('.inline-promo [data-app-store]'); if (l) window.sushijaroTrack?.(`app_promo_${l.dataset.appStore}_click`); });
   document.querySelectorAll('[data-view]').forEach(b => b.addEventListener('click', () => { state.view = b.dataset.view; writeUrl(); render(); if (state.view === 'map') window.sushijaroTrack?.('map_view'); }));
   $('#share-close')?.addEventListener('click', () => { $('#share-panel').hidden = true; });

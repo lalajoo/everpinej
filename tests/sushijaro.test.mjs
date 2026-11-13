@@ -208,3 +208,37 @@ test('맞은자로 광고 위치: 3번째 뒤, 이후 10개마다, 짧은 목록
   assert.deepEqual(promoPositions(13), [2]);
   assert.deepEqual(promoPositions(5, 2, 6), [1]);
 });
+
+test('외국인 처방 상태·예약 방식 필터', async () => {
+  const { foreignStatus, walkInLabel, search } = await import('../sushijaro/core.mjs');
+  const base = { prices: [], city: '도쿄', name: 'a' };
+  const ok = { ...base, id: 'ok', touristOk: true, booking: { walkIn: true } };
+  const no = { ...base, id: 'no', touristOk: false };
+  const sup = { ...base, id: 'sup', touristOk: null, foreign: { langs: ['영어'] }, booking: { walkIn: false } };
+  const unk = { ...base, id: 'unk', touristOk: null, reservation: '웹 예약' };
+  assert.deepEqual([ok, no, sup, unk].map(foreignStatus), ['ok', 'no', 'support', 'unknown']);
+  assert.deepEqual([ok, sup, unk, no].map(walkInLabel), ['예약 없이 방문 가능', '예약 필요', '웹 예약', null]);
+  const ids = v => search([ok, no, sup, unk], { verified: v }).map(r => r.clinic.id);
+  assert.deepEqual(ids('foreign'), ['ok', 'sup']);
+  assert.deepEqual(ids('walkin'), ['ok']);
+});
+
+test('예약·외국어 정보는 공식 https 출처와 확인일이 있다', async () => {
+  const { clinics } = JSON.parse(await readFile(new URL('../sushijaro/data/clinics.json', import.meta.url), 'utf8'));
+  for (const c of clinics) {
+    for (const k of ['booking', 'foreign']) {
+      if (!c[k]) continue;
+      assert.match(c[k].sourceUrl, /^https:\/\//, `${c.id}.${k}`);
+      assert.match(c[k].checkedAt, /^\d{4}-\d{2}-\d{2}$/);
+    }
+    if (c.booking?.url) assert.match(c.booking.url, /^https:\/\//, c.id);
+    if (c.booking?.via) assert.ok(['web', 'line', 'phone'].includes(c.booking.via), c.id);
+  }
+});
+
+test('교토 검색에 東京都 주소가 섞이지 않는다', () => {
+  const tokyo = { name: 'a', city: '도쿄', address: '東京都新宿区' }, kyoto = { name: 'b', city: '교토', address: '京都府京都市' };
+  assert.equal(matchesQuery(tokyo, '교토'), false);
+  assert.equal(matchesQuery(kyoto, '교토'), true);
+  assert.equal(matchesQuery(tokyo, '도쿄'), true);
+});
