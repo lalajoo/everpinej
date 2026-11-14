@@ -13,3 +13,5 @@
 .toolbar-actions{display:flex;gap:16px;align-items:center}
 
 .inline-promo{margin:4px 0 16px}.inline-promo .promo-title{margin:0;font-size:18px;color:#49366c;line-height:1.35}
+
+.visitor-stats{margin:12px 0 16px;color:var(--muted,#68756e);font-size:12px}.visitor-counts{display:flex;gap:22px;flex-wrap:wrap;align-items:center}.visitor-counts>span{display:flex;gap:8px;align-items:baseline}.visitor-counts strong{font-size:18px;color:var(--ink,#243d31);font-variant-numeric:tabular-nums;white-space:nowrap}.visitor-details{margin-top:5px;font-size:11px}.visitor-details summary{cursor:pointer;width:fit-content}.visitor-details p{margin:6px 0 0;line-height:1.7;max-width:580px}@media(max-width:599px){.visitor-stats{margin:8px 0 12px}.visitor-counts{gap:18px}.visitor-counts strong{font-size:17px}}

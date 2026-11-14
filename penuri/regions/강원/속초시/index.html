@@ -20,9 +20,10 @@
   <meta property="og:image:alt" content="강원 속초시 약국 찾기">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css?v=20261114-inline-ad">
+  <link rel="stylesheet" href="./styles.css?v=20261114-visitors1">
   <script type="module" src="./app.mjs?v=20261114-inline-ad"></script>
   <script type="module" src="./analytics.mjs?v=20261114-inline-ad"></script>
+  <script type="module" src="./visitors.mjs?v=20261114-visitors1"></script>
 </head>
 <body data-region="강원" data-query="속초시">
   <a class="skip-link" href="#search">약국 검색으로 바로가기</a>
@@ -36,6 +37,10 @@
         <p class="eyebrow"><span class="tiny-dot"></span> 온누리상품권 + 네이버페이 페이스사인</p>
         <h1 id="headline">강원 속초시<br><span>혜택 약국 찾기</span></h1>
         <p class="hero-copy">등록 약국 6곳 · 페이스사인 확인 2곳<br>온누리 2026-07-31 · 페이스사인 2026-11-09 자료</p>
+        <aside id="visitor-stats" class="visitor-stats" aria-label="페누리 방문 통계">
+          <div class="visitor-counts"><span>누적 방문자 <strong data-visitors="total">—</strong></span><span>오늘 방문자 <strong data-visitors="today">—</strong></span></div>
+          <details class="visitor-details"><summary>집계 기준 <span aria-hidden="true">ⓘ</span></summary><p><span data-visitors="updated">방문 통계를 불러오는 중이에요</span><br>2026.11.04부터 통계 수집에 동의한 브라우저·기기 기준입니다. 새로고침 횟수가 아닌 GA4 방문자 수이며, 누적은 전체 기간의 중복을 제외합니다. 매시간 갱신하고 Google 집계 지연이 있을 수 있어요.</p></details>
+        </aside>
         <form id="search-form" role="search" class="search-form">
           <label class="sr-only" for="search">지역 또는 약국명 검색</label>
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>

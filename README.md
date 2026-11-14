@@ -133,3 +133,9 @@ CSV는 UTF-8(BOM 포함)·CP949를 지원하며 심평원 ZIP에서는 `2.약국
 - `scripts/region-pages.mjs`는 자료에서 231개 지역 HTML, 정적 약국 목록, 고유 canonical과 사이트맵을 만듭니다. 검색 노출은 검색엔진 수집 이후 가능하며 즉시 노출이나 순위를 보장하지 않습니다.
 - 기본/지역 PNG 미리보기 232개는 `scripts/og-images.swift`로 만듭니다. Mac에서 `npm run build` 시 Swift/AppKit으로 재생성합니다. 다른 운영체제는 저장된 PNG를 사용하므로 자료 변경 시 Mac에서 재생성한 자산도 함께 반영해야 합니다. 미리보기 이미지는 페이지 초기 로드에서 내려받지 않습니다.
 - 공유 API 오류·복사 차단·위치 거부는 로컬 브라우저에서 모의 검증합니다. 실제 휴대폰 인앱 브라우저 전수 검증은 아닙니다.
+
+## 공개 방문자 표시
+
+첫 화면의 누적·오늘 방문자는 GA4 `totalUsers`입니다. 2026-11-04부터 전체 기간의 중복을 제거하며 일별 방문자를 합산하지 않습니다. 페누리 URL만 필터링해 같은 속성의 다른 사이트 방문을 제외합니다. 통계 동의·차단 여부에 따라 실제 방문보다 적을 수 있고 처리 지연이 있습니다.
+
+`.github/workflows/penuri-visitors.yml`이 한국시간 매시 27분에 `scripts/refresh-visitors.mjs`로 `penuri/data/visitors.json`의 합계 두 개만 갱신합니다. GitHub 일정은 지연될 수 있습니다. GA4 읽기 전용 서비스 계정과 저장소·소유자 ID, main 브랜치, 지정 workflow에 한정한 Workload Identity Federation을 사용합니다. 비밀키를 저장하지 않습니다. GA4 속성 562159481에 `penuri-visitors@penuri-everpinej.iam.gserviceaccount.com` 뷰어 권한이 필요합니다. API 실패/데이터 품질 문제는 이전 JSON을 유지하며 실패로 표시합니다. 자정 이후 이전 날짜의 오늘 수치는 '집계 중'으로 바뀌고 최종 갱신 시각을 안내합니다. 웹페이지는 GA4 자격 증명에 접근하지 않습니다.
