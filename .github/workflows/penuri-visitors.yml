@@ -1,0 +1,49 @@
+name: Refresh Penuri visitors
+on:
+  schedule:
+    - cron: '27 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+  id-token: write
+  pages: write
+concurrency:
+  group: penuri-visitors
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: google-github-actions/auth@v3
+        id: auth
+        with:
+          workload_identity_provider: projects/1039186996474/locations/global/workloadIdentityPools/penuri-visitors/providers/github
+          service_account: penuri-visitors@penuri-everpinej.iam.gserviceaccount.com
+          token_format: access_token
+          access_token_scopes: https://www.googleapis.com/auth/analytics.readonly
+          create_credentials_file: false
+      - run: node --test tests/visitors.test.mjs
+      - name: Read GA4 aggregate counts
+        run: node scripts/refresh-visitors.mjs
+        env:
+          GA_ACCESS_TOKEN: ${{ steps.auth.outputs.access_token }}
+      - name: Commit aggregate snapshot and request Pages build
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git diff --check
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add penuri/data/visitors.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Refresh Penuri visitor totals'
+          git pull --rebase origin main
+          git push origin HEAD:main
+          gh api --method POST repos/lalajoo/everpinej/pages/builds --silent
