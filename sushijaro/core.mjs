@@ -62,6 +62,9 @@ export const PLACE_ALIASES = {
   '오호리': ['大濠', 'ohori'],
   '요요기': ['代々木', 'yoyogi'],
   '도톤보리': ['道頓堀', 'dotonbori'],
+  '간다': ['神田', 'kanda'],
+  '가스가': ['春日', 'kasuga', '가스가시'],
+  '신주쿠교엔': ['新宿御苑', 'shinjukugyoen'],
 };
 
 export function normalize(text) {

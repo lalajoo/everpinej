@@ -99,7 +99,7 @@ const html = `<!doctype html>
   <meta name="description" content="일본 ${cities.length}개 지역 마운자로 처방 클리닉 ${clinics.length}곳의 공식 가격(엔·원화), 주소, 외국인 처방 조건. 가격마다 공식 출처와 확인일 표시. 마지막 확인 ${lastChecked}.">
   <link rel="canonical" href="${SITE}clinics/">
   <link rel="icon" href="../favicon.svg?v=2" type="image/svg+xml">
-  <link rel="stylesheet" href="../styles.css?v=20261113d">
+  <link rel="stylesheet" href="../styles.css?v=20261114a">
   <link rel="alternate" type="application/json" href="../data/clinics.json">
   <meta property="og:type" content="website"><meta property="og:locale" content="ko_KR"><meta property="og:title" content="일본 마운자로 처방 클리닉 ${clinics.length}곳 가격 목록"><meta property="og:url" content="${SITE}clinics/"><meta property="og:image" content="${SITE}assets/og-main.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">
   <script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>
@@ -177,7 +177,7 @@ for (const city of cities) {
   <meta property="og:url" content="${SITE}clinics/${slug}/"><meta property="og:image" content="${SITE}assets/og-${slug}.png">
   <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="../../favicon.svg?v=2" type="image/svg+xml">
-  <link rel="stylesheet" href="../../styles.css?v=20261113d">
+  <link rel="stylesheet" href="../../styles.css?v=20261114a">
 </head>
 <body>
   <div class="shell">
@@ -238,7 +238,7 @@ console.log(`지역 페이지 ${cityPages.length}개`);
   <link rel="canonical" href="${SITE}notes/">
   <meta property="og:type" content="website"><meta property="og:locale" content="ko_KR"><meta property="og:title" content="일본 마운자로 처방, 다녀온 사람 메모"><meta property="og:url" content="${SITE}notes/"><meta property="og:image" content="${SITE}assets/og-main.png"><meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="../favicon.svg?v=2" type="image/svg+xml">
-  <link rel="stylesheet" href="../styles.css?v=20261113d">
+  <link rel="stylesheet" href="../styles.css?v=20261114a">
 </head>
 <body>
   <div class="shell">

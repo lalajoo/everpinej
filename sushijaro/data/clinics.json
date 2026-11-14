@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-11",
+ "updatedAt": "2026-11-14",
  "note": "실제 확인된 정보만 넣습니다. source: receipt(영수증 인증) | official(공식 홈페이지 게시가, sourceUrl 필수). 테스트용 데이터는 tests/에만 둡니다.",
  "clinics": [
   {
@@ -4899,6 +4899,669 @@
     "note": "세관용 영문 처방 증명서 발급 가능.",
     "sourceUrl": "https://mil-clinic.com/",
     "checkedAt": "2026-11-13"
+   }
+  },
+  {
+   "id": "silk-shinjuku",
+   "name": "도쿄 실크 클리닉 신주쿠원",
+   "nameJa": "東京シルククリニック 新宿院",
+   "area": "신주쿠",
+   "station": "新宿御苑前駅 도보 1분",
+   "address": "東京都新宿区新宿1丁目16-16 テェアカテリーナ202",
+   "lat": 35.689465,
+   "lng": 139.711029,
+   "city": "도쿄",
+   "reservation": "웹·LINE 예약",
+   "consult": "대면·온라인",
+   "touristOk": null,
+   "touristNote": null,
+   "chain": "도쿄 실크 클리닉",
+   "note": "공식 표기 가격(1개월분 4펜). 2~5개월분은 4펜당 할인가라 12펜은 3개월분 기준으로 계산. 내원 가격에 진찰료 포함 여부는 적혀 있지 않음. 용량 조합 자유.",
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 8000,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": null,
+     "channel": "visit"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 12,
+     "totalJpy": 22500,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": null,
+     "channel": "visit"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 9980,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": "진찰료·배송비",
+     "channel": "online"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 12,
+     "totalJpy": 26940,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": "진찰료·배송비",
+     "channel": "online"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 14000,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": null,
+     "channel": "visit"
+    },
+    {
+     "dose": "5mg",
+     "pens": 12,
+     "totalJpy": 40500,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": null,
+     "channel": "visit"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 15980,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": "진찰료·배송비",
+     "channel": "online"
+    },
+    {
+     "dose": "5mg",
+     "pens": 12,
+     "totalJpy": 44940,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": "진찰료·배송비",
+     "channel": "online"
+    },
+    {
+     "dose": "7.5mg",
+     "pens": 4,
+     "totalJpy": 22000,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": null,
+     "channel": "visit"
+    },
+    {
+     "dose": "7.5mg",
+     "pens": 12,
+     "totalJpy": 64500,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": null,
+     "channel": "visit"
+    },
+    {
+     "dose": "7.5mg",
+     "pens": 4,
+     "totalJpy": 23980,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": "진찰료·배송비",
+     "channel": "online"
+    },
+    {
+     "dose": "7.5mg",
+     "pens": 12,
+     "totalJpy": 68940,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": "진찰료·배송비",
+     "channel": "online"
+    },
+    {
+     "dose": "10mg",
+     "pens": 4,
+     "totalJpy": 28000,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": null,
+     "channel": "visit"
+    },
+    {
+     "dose": "10mg",
+     "pens": 12,
+     "totalJpy": 81000,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": null,
+     "channel": "visit"
+    },
+    {
+     "dose": "10mg",
+     "pens": 4,
+     "totalJpy": 29500,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": "진찰료·배송비",
+     "channel": "online"
+    },
+    {
+     "dose": "10mg",
+     "pens": 12,
+     "totalJpy": 85500,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": "진찰료·배송비",
+     "channel": "online"
+    },
+    {
+     "dose": "12.5mg",
+     "pens": 4,
+     "totalJpy": 34000,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": null,
+     "channel": "visit"
+    },
+    {
+     "dose": "12.5mg",
+     "pens": 12,
+     "totalJpy": 99000,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": null,
+     "channel": "visit"
+    },
+    {
+     "dose": "12.5mg",
+     "pens": 4,
+     "totalJpy": 35000,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": "진찰료·배송비",
+     "channel": "online"
+    },
+    {
+     "dose": "12.5mg",
+     "pens": 12,
+     "totalJpy": 102000,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": "진찰료·배송비",
+     "channel": "online"
+    },
+    {
+     "dose": "15mg",
+     "pens": 4,
+     "totalJpy": 42000,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": null,
+     "channel": "visit"
+    },
+    {
+     "dose": "15mg",
+     "pens": 12,
+     "totalJpy": 123000,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": null,
+     "channel": "visit"
+    },
+    {
+     "dose": "15mg",
+     "pens": 4,
+     "totalJpy": 44000,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": "진찰료·배송비",
+     "channel": "online"
+    },
+    {
+     "dose": "15mg",
+     "pens": 12,
+     "totalJpy": 129000,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": "진찰료·배송비",
+     "channel": "online"
+    }
+   ],
+   "online": {
+    "available": true,
+    "firstTime": null,
+    "minPens": 4,
+    "shipping": "일본 국내 배송(공식 표기: 진찰료·배송비 포함 가격)",
+    "payment": null,
+    "how": "온라인 진료(웹 예약)",
+    "hotel": null,
+    "sourceUrl": "https://tokyosilkclinic.com/menu/1123/",
+    "note": "비대면 가격은 진찰료·배송비 포함. 첫 처방 가능 여부·결제 방법은 공식 페이지에 적혀 있지 않음.",
+    "language": null,
+    "dateSelect": null,
+    "docs": null
+   },
+   "booking": {
+    "walkIn": null,
+    "via": "web",
+    "url": "https://connect.kireipass.jp/clinics/tokyosilkclinic/menus",
+    "note": "웹·LINE·전화 예약. 진료 11:00~20:00(14~15시 휴진), 부정기 휴무.",
+    "sourceUrl": "https://tokyosilkclinic.com/access/",
+    "checkedAt": "2026-11-14"
+   }
+  },
+  {
+   "id": "silk-kanda",
+   "name": "도쿄 실크 클리닉 간다원",
+   "nameJa": "東京シルククリニック 神田院",
+   "area": "간다",
+   "station": "神田駅 동쪽 출구 도보 1분",
+   "address": "東京都千代田区鍛冶町2-2-9 第二登栄ビル5A",
+   "lat": 35.691643,
+   "lng": 139.771591,
+   "city": "도쿄",
+   "reservation": "웹·LINE 예약",
+   "consult": "대면·온라인",
+   "touristOk": null,
+   "touristNote": null,
+   "chain": "도쿄 실크 클리닉",
+   "note": "공식 표기 가격(1개월분 4펜). 2~5개월분은 4펜당 할인가라 12펜은 3개월분 기준으로 계산. 내원 가격에 진찰료 포함 여부는 적혀 있지 않음. 용량 조합 자유.",
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 8000,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": null,
+     "channel": "visit"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 12,
+     "totalJpy": 22500,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": null,
+     "channel": "visit"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 4,
+     "totalJpy": 9980,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": "진찰료·배송비",
+     "channel": "online"
+    },
+    {
+     "dose": "2.5mg",
+     "pens": 12,
+     "totalJpy": 26940,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": "진찰료·배송비",
+     "channel": "online"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 14000,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": null,
+     "channel": "visit"
+    },
+    {
+     "dose": "5mg",
+     "pens": 12,
+     "totalJpy": 40500,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": null,
+     "channel": "visit"
+    },
+    {
+     "dose": "5mg",
+     "pens": 4,
+     "totalJpy": 15980,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": "진찰료·배송비",
+     "channel": "online"
+    },
+    {
+     "dose": "5mg",
+     "pens": 12,
+     "totalJpy": 44940,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": "진찰료·배송비",
+     "channel": "online"
+    },
+    {
+     "dose": "7.5mg",
+     "pens": 4,
+     "totalJpy": 22000,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": null,
+     "channel": "visit"
+    },
+    {
+     "dose": "7.5mg",
+     "pens": 12,
+     "totalJpy": 64500,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": null,
+     "channel": "visit"
+    },
+    {
+     "dose": "7.5mg",
+     "pens": 4,
+     "totalJpy": 23980,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": "진찰료·배송비",
+     "channel": "online"
+    },
+    {
+     "dose": "7.5mg",
+     "pens": 12,
+     "totalJpy": 68940,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": "진찰료·배송비",
+     "channel": "online"
+    },
+    {
+     "dose": "10mg",
+     "pens": 4,
+     "totalJpy": 28000,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": null,
+     "channel": "visit"
+    },
+    {
+     "dose": "10mg",
+     "pens": 12,
+     "totalJpy": 81000,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": null,
+     "channel": "visit"
+    },
+    {
+     "dose": "10mg",
+     "pens": 4,
+     "totalJpy": 29500,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": "진찰료·배송비",
+     "channel": "online"
+    },
+    {
+     "dose": "10mg",
+     "pens": 12,
+     "totalJpy": 85500,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": "진찰료·배송비",
+     "channel": "online"
+    },
+    {
+     "dose": "12.5mg",
+     "pens": 4,
+     "totalJpy": 34000,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": null,
+     "channel": "visit"
+    },
+    {
+     "dose": "12.5mg",
+     "pens": 12,
+     "totalJpy": 99000,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": null,
+     "channel": "visit"
+    },
+    {
+     "dose": "12.5mg",
+     "pens": 4,
+     "totalJpy": 35000,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": "진찰료·배송비",
+     "channel": "online"
+    },
+    {
+     "dose": "12.5mg",
+     "pens": 12,
+     "totalJpy": 102000,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": "진찰료·배송비",
+     "channel": "online"
+    },
+    {
+     "dose": "15mg",
+     "pens": 4,
+     "totalJpy": 42000,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": null,
+     "channel": "visit"
+    },
+    {
+     "dose": "15mg",
+     "pens": 12,
+     "totalJpy": 123000,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": null,
+     "channel": "visit"
+    },
+    {
+     "dose": "15mg",
+     "pens": 4,
+     "totalJpy": 44000,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": "진찰료·배송비",
+     "channel": "online"
+    },
+    {
+     "dose": "15mg",
+     "pens": 12,
+     "totalJpy": 129000,
+     "source": "official",
+     "sourceUrl": "https://tokyosilkclinic.com/menu/909/",
+     "checkedAt": "2026-11-14",
+     "includes": "진찰료·배송비",
+     "channel": "online"
+    }
+   ],
+   "online": {
+    "available": true,
+    "firstTime": null,
+    "minPens": 4,
+    "shipping": "일본 국내 배송(공식 표기: 진찰료·배송비 포함 가격)",
+    "payment": null,
+    "how": "온라인 진료(웹 예약)",
+    "hotel": null,
+    "sourceUrl": "https://tokyosilkclinic.com/menu/1123/",
+    "note": "비대면 가격은 진찰료·배송비 포함. 첫 처방 가능 여부·결제 방법은 공식 페이지에 적혀 있지 않음.",
+    "language": null,
+    "dateSelect": null,
+    "docs": null
+   },
+   "booking": {
+    "walkIn": null,
+    "via": "web",
+    "url": "https://connect.kireipass.jp/clinics/tokyosilkclinic_kanda/menus",
+    "note": "웹·LINE·전화 예약. 진료 11:00~20:00(14~15시 휴진), 부정기 휴무.",
+    "sourceUrl": "https://tokyosilkclinic.com/access/",
+    "checkedAt": "2026-11-14"
+   }
+  },
+  {
+   "id": "baba-kasuga",
+   "name": "바바 토털케어 클리닉",
+   "nameJa": "ばばトータルケアクリニック",
+   "city": "후쿠오카",
+   "area": "가스가시",
+   "station": "福岡市 남쪽 春日市(하카타역에서 전철·택시 이동 필요)",
+   "address": "福岡県春日市星見ヶ丘2丁目27",
+   "lat": 33.504925,
+   "lng": 130.460571,
+   "reservation": "해외 거주자 전용 웹 예약",
+   "consult": "대면만",
+   "touristOk": true,
+   "touristNote": "공식 홈페이지에 한국어로 외국인 환자 안내를 올리고 해외 거주자 전용 예약 창구를 운영. 하루 최대 16명, 1인 최대 3개월분까지. 재고가 없으면 예고 없이 품절.",
+   "note": "2펜(1박스) 단위, 세금 포함. 마운자로 진찰료는 공식 페이지에 적혀 있지 않음. 7.5mg까지는 당일 수령, 10mg 이상은 인스타그램 DM으로 사전 상담. 대면 진료만(온라인·전화 진료 안 함). 환불 불가.",
+   "prices": [
+    {
+     "dose": "2.5mg",
+     "pens": 2,
+     "totalJpy": 6400,
+     "source": "official",
+     "sourceUrl": "https://baba-totalcareclinic.com/private-practice/",
+     "checkedAt": "2026-11-14",
+     "includes": "세금",
+     "channel": "visit"
+    },
+    {
+     "dose": "5mg",
+     "pens": 2,
+     "totalJpy": 9000,
+     "source": "official",
+     "sourceUrl": "https://baba-totalcareclinic.com/private-practice/",
+     "checkedAt": "2026-11-14",
+     "includes": "세금",
+     "channel": "visit"
+    },
+    {
+     "dose": "7.5mg",
+     "pens": 2,
+     "totalJpy": 12000,
+     "source": "official",
+     "sourceUrl": "https://baba-totalcareclinic.com/private-practice/",
+     "checkedAt": "2026-11-14",
+     "includes": "세금",
+     "channel": "visit"
+    },
+    {
+     "dose": "10mg",
+     "pens": 2,
+     "totalJpy": 15000,
+     "source": "official",
+     "sourceUrl": "https://baba-totalcareclinic.com/private-practice/",
+     "checkedAt": "2026-11-14",
+     "includes": "세금",
+     "channel": "visit"
+    },
+    {
+     "dose": "12.5mg",
+     "pens": 2,
+     "totalJpy": 18000,
+     "source": "official",
+     "sourceUrl": "https://baba-totalcareclinic.com/private-practice/",
+     "checkedAt": "2026-11-14",
+     "includes": "세금",
+     "channel": "visit"
+    },
+    {
+     "dose": "15mg",
+     "pens": 2,
+     "totalJpy": 21000,
+     "source": "official",
+     "sourceUrl": "https://baba-totalcareclinic.com/private-practice/",
+     "checkedAt": "2026-11-14",
+     "includes": "세금",
+     "channel": "visit"
+    }
+   ],
+   "online": {
+    "available": false,
+    "sourceUrl": "https://baba-totalcareclinic.com/private-practice/",
+    "note": "온라인·전화 진료는 하지 않는다고 안내."
+   },
+   "booking": {
+    "walkIn": false,
+    "via": "web",
+    "url": "https://select-type.com/rsv/?id=kMqp7M4u8eM",
+    "note": "해외 거주자 전용 예약 페이지(한국어·영어 안내). 진료 월~토 9:00~13:00, 월·화·목·금 14:30~18:00.",
+    "sourceUrl": "https://baba-totalcareclinic.com/2410/",
+    "checkedAt": "2026-11-14"
+   },
+   "foreign": {
+    "langs": [
+     "한국어 안내",
+     "영어 안내"
+    ],
+    "interpreter": null,
+    "note": "홈페이지에 한국어·영어 공지와 해외 거주자 전용 예약 창구가 있음.",
+    "sourceUrl": "https://baba-totalcareclinic.com/2410/",
+    "checkedAt": "2026-11-14"
    }
   }
  ]

@@ -188,3 +188,9 @@ details{margin-top:8px;font-size:14px}summary{cursor:pointer;color:var(--accent)
 .form-tips{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;font-size:14px;margin:10px 0}
 .form-tips dt{font-weight:700}.form-tips dd{margin:0}
 @media (max-width:520px){.form-tips{grid-template-columns:1fr}.form-tips dd{margin-bottom:6px}}
+/* 첫 화면 방문자 수 */
+.visits{display:inline-flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin:2px 0 10px;padding:8px 14px;border-radius:14px;background:#fff;border:1px solid var(--line);box-shadow:0 2px 8px rgba(31,42,36,.05)}
+.visits .v-item{display:inline-flex;align-items:baseline;gap:6px}
+.visits .v-label{font-size:13px;color:var(--sub)}
+.visits b{font-size:20px;font-weight:800;color:var(--accent);font-variant-numeric:tabular-nums}
+.visits small{flex-basis:100%;font-size:11px;color:var(--sub)}

@@ -242,3 +242,11 @@ test('교토 검색에 東京都 주소가 섞이지 않는다', () => {
   assert.equal(matchesQuery(kyoto, '교토'), true);
   assert.equal(matchesQuery(tokyo, '도쿄'), true);
 });
+
+test('방문자 카운터: 배지 제목에서 오늘/누적만 읽는다', async () => {
+  const { parseHits } = await import('../sushijaro/visits.mjs');
+  assert.deepEqual(parseHits('<svg><title>12 / 3,456</title></svg>'), { today: 12, total: 3456 });
+  assert.equal(parseHits('<svg><title>oops</title></svg>'), null);
+  assert.equal(parseHits('<title>9 / 3</title>'), null);
+  assert.equal(parseHits(undefined), null);
+});
