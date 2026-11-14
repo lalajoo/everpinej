@@ -19,9 +19,9 @@
   <link rel="canonical" href="https://everpinej.com/sushijaro/">
   <link rel="icon" href="./favicon.svg?v=2" type="image/svg+xml">
   <link rel="stylesheet" href="./styles.css?v=20261114a">
-  <script type="module" src="./visits.mjs?v=2"></script>
+  <script type="module" src="./visits.mjs?v=3"></script>
   <script type="module" src="./app.mjs?v=20261114a"></script>
-  <script type="module" src="./analytics.mjs?v=8"></script>
+  <script type="module" src="./analytics.mjs?v=9"></script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "name": "스시자로", "url": "https://everpinej.com/sushijaro/", "inLanguage": "ko", "description": "일본 마운자로 처방 클리닉의 공식 가격과 영수증 인증 가격을 비교하는 정보 사이트"}, {"@type": "Dataset", "name": "스시자로 일본 마운자로 처방 클리닉 가격 데이터", "url": "https://everpinej.com/sushijaro/clinics/", "description": "일본 클리닉의 마운자로 자유진료 가격을 공식 페이지와 영수증으로 확인한 데이터. 가격마다 출처 URL과 확인일 포함.", "creator": {"@type": "Organization", "name": "everpinej", "url": "https://everpinej.com/"}, "distribution": [{"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://everpinej.com/sushijaro/data/clinics.json"}]}]}</script>
   <link rel="alternate" type="application/json" href="./data/clinics.json">
 </head>
@@ -277,9 +277,9 @@
     </form>
   </dialog>
   <section id="analytics-consent" class="consent-panel" aria-labelledby="consent-title" hidden>
-    <strong id="consent-title">방문 통계 쿠키를 허용할까요?</strong>
-    <p>방문 수와 앱 배너 이용을 Google Analytics로 세어요. 검색어, 위치, 진료 카드·인증 양식 내용은 보내지 않아요. <a href="./notice/#privacy">자세히</a></p>
-    <div class="consent-actions"><button type="button" data-consent="denied">거절</button><button type="button" data-consent="granted">허용</button></div>
+    <strong id="consent-title">방문 수를 세고 있어요</strong>
+    <p>방문 수와 앱 배너 이용을 Google Analytics로 세요. 검색어, 위치, 진료 카드·인증 양식 내용은 보내지 않아요. 원하지 않으면 거절을 눌러 주세요. <a href="./notice/#privacy">자세히</a></p>
+    <div class="consent-actions"><button type="button" data-consent="denied">거절</button><button type="button" data-consent="granted">확인</button></div>
   </section>
 </body>
 </html>

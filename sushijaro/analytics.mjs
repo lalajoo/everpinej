@@ -1,4 +1,4 @@
-// 스시자로 전용 GA4. 동의한 사람만, 정해 둔 이벤트 이름만 보냅니다.
+// 스시자로 전용 GA4. 기본으로 방문을 세고(거절하면 끔), 정해 둔 이벤트 이름만 보냅니다.
 // 검색어·위치·진료 카드 내용·인증 양식 내용은 이 모듈로 들어오지 않습니다.
 export const MEASUREMENT_ID = 'G-ZW9WT05S2W';
 export const CONSENT_KEY = 'sushijaro.analytics-consent.v1';
@@ -77,6 +77,12 @@ export function createAnalytics(win, doc, id = MEASUREMENT_ID) {
   return { consent, track, enabled };
 }
 
+// 저장된 선택이 없으면 센다. '거절'을 눌렀거나 브라우저의 추적 거부 신호(GPC)가 켜져 있으면 세지 않는다.
+export function effectiveChoice(stored, gpc = false) {
+  if (stored === 'denied' || stored === 'granted') return stored;
+  return gpc ? 'denied' : 'granted';
+}
+
 export function mountAnalytics(win, doc) {
   const analytics = createAnalytics(win, doc);
   win.sushijaroTrack = name => analytics.track(name);
@@ -88,7 +94,7 @@ export function mountAnalytics(win, doc) {
   function impression() { if (promoVisible && !promoViewed && analytics.track('app_promo_view')) promoViewed = true; }
   function apply(value) {
     choice = value;
-    analytics.consent(value === 'granted');
+    analytics.consent(effectiveChoice(value, win.navigator?.globalPrivacyControl === true) === 'granted');
     panel.hidden = value === 'granted' || value === 'denied';
     impression();
   }

@@ -8,7 +8,7 @@ export function visitorDisplay(data, now = new Date()) {
   if (!Number.isFinite(updated.getTime()) || updated > new Date(now.getTime() + 300000) || koreaDate(updated) !== data.date) throw new Error('방문 통계 날짜 오류');
   const fmt = n => n.toLocaleString('ko-KR');
   const time = new Intl.DateTimeFormat('ko-KR', { timeZone: 'Asia/Seoul', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false }).format(updated);
-  return { total: fmt(data.totalUsers), today: data.date === koreaDate(now) ? fmt(data.todayUsers) : '집계 중', note: `${time} 기준 · GA4 방문자(통계 동의 기기)` };
+  return { total: fmt(data.totalUsers), today: data.date === koreaDate(now) ? fmt(data.todayUsers) : '집계 중', note: `${time} 기준 · 매시간 갱신` };
 }
 
 export async function showVisits(doc = document, fetcher = fetch) {

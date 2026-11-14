@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { createAnalytics, eventPayload, pagePath } from '../sushijaro/analytics.mjs';
+import { createAnalytics, eventPayload, pagePath, effectiveChoice } from '../sushijaro/analytics.mjs';
 
 const ID = 'G-TEST123456';
 function env(hostname = 'everpinej.com', pathname = '/sushijaro/') {
@@ -48,4 +48,11 @@ test('페이지 주소는 정해 둔 세 곳으로만 정리된다', () => {
   assert.equal(pagePath('/sushijaro/notice/index.html'), '/sushijaro/notice/');
   assert.equal(pagePath('/sushijaro/data/clinics.json'), '/sushijaro/');
   assert.equal(eventPayload('nope', '/sushijaro/'), null);
+});
+
+test('기본으로 세고, 거절이나 GPC 신호가 있으면 세지 않는다', () => {
+  assert.equal(effectiveChoice(null), 'granted');
+  assert.equal(effectiveChoice(null, true), 'denied');
+  assert.equal(effectiveChoice('denied'), 'denied');
+  assert.equal(effectiveChoice('granted', true), 'granted');
 });
