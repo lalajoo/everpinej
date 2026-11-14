@@ -40,5 +40,26 @@
     "faceSignSource": "https://campaign2.naver.com/npay/facesignmap/",
     "faceSignAddress": "서울 종로구 종로 223-1 부광약국",
     "naverPlaceId": "19531113"
+  },
+  {
+    "id": "c0bd1bc3fb770139",
+    "name": "나눔약국",
+    "region": "서울",
+    "market": "신길성애 골목형상점가",
+    "address": "서울특별시 영등포구 여의대방로53길 23, (신길동)",
+    "hiraDate": "2026-09-30",
+    "checkedAt": "2026-11-14",
+    "reviewedByAdmin": true,
+    "onnuriSource": "https://www.onnuri.gift/place",
+    "onnuriPlaceId": "01755200002",
+    "onnuriAddress": "서울특별시 영등포구 여의대방로53길 23 (신길동)",
+    "onnuriPaymentTypes": [
+      "지류상품권",
+      "QR결제",
+      "카드결제"
+    ],
+    "faceSignSource": "https://campaign2.naver.com/npay/facesignmap/",
+    "faceSignAddress": "서울특별시 영등포구 여의대방로53길 23",
+    "naverPlaceId": "19513260"
   }
 ]

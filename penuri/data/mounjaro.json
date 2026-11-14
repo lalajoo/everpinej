@@ -6,7 +6,7 @@
       "pharmacyId": "3862b2e65a8080b9",
       "name": "종로중앙약국",
       "address": "서울특별시 종로구 대학로 1, 101호 (종로5가)",
-      "checkedAt": "2026-11-07",
+      "checkedAt": "2026-11-14",
       "summary": "마운자로 성지 문의 글에 약국 실명을 밝힌 방문 경험 답글을 확인했어요.",
       "sources": [
         {
@@ -44,7 +44,7 @@
       },
       "name": "365언제나약국",
       "address": "경기도 성남시 분당구 불정로 266, 유신제일조합 101-1호 (수내동)",
-      "checkedAt": "2026-11-07",
+      "checkedAt": "2026-11-14",
       "summary": "분당에서 K튼튼 정형외과와 365언제나약국을 방문했다는 마운자로 성지 후기를 확인했어요.",
       "sources": [
         {
@@ -58,7 +58,7 @@
       "pharmacyId": "8014b8e4da410fdc",
       "name": "사랑약국",
       "address": "경기도 수원시 팔달구 갓매산로 51, 105호 (매산로2가, 에스알프라자23차)",
-      "checkedAt": "2026-11-07",
+      "checkedAt": "2026-11-14",
       "summary": "수원 마운자로 약국 문의에 수원역 로데오거리 사랑약국을 추천하고 직접 방문·결제했다고 밝힌 공개 답글을 확인했어요.",
       "sources": [
         {
@@ -241,6 +241,25 @@
           "url": "https://www.threads.com/@pharm_juchaking/post/DfEOOmvGHDK",
           "publishedAt": "2026-10-29",
           "label": "군포 산본 약국 실명이 명시된 부모 글"
+        }
+      ]
+    },
+    {
+      "pharmacyId": "c0bd1bc3fb770139",
+      "name": "나눔약국",
+      "address": "서울특별시 영등포구 여의대방로53길 23, (신길동)",
+      "checkedAt": "2026-11-14",
+      "summary": "영등포에서 마운자로 관련 결제를 했다는 공개 후기와 같은 작성자가 나눔약국의 실명·주소를 밝힌 답글을 확인했어요.",
+      "sources": [
+        {
+          "url": "https://www.threads.com/@pudadak77/post/DfrMdZGmKiY",
+          "publishedAt": "2026-11-13",
+          "label": "영등포 약국 이용 후기 원문"
+        },
+        {
+          "url": "https://www.threads.com/@pudadak77/post/DfrMo-oGL2V",
+          "publishedAt": "2026-11-13",
+          "label": "나눔약국 실명·주소가 명시된 작성자 답글"
         }
       ]
     }

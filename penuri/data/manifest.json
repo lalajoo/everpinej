@@ -14,10 +14,10 @@
   "onnuriRecordCount": 3541,
   "faceSignRefreshedCount": 2823,
   "count": 6046,
-  "faceSignVerifiedCount": 2842,
-  "addressCount": 4596,
-  "coordinateCount": 4596,
-  "index": "index-63e4fce72367.json",
+  "faceSignVerifiedCount": 2843,
+  "addressCount": 4597,
+  "coordinateCount": 4597,
+  "index": "index-f77acd4109b2.json",
   "regions": {
     "강원": {
       "file": "region-강원-b091b151444b.json",
@@ -48,7 +48,7 @@
       "count": 310
     },
     "서울": {
-      "file": "region-서울-878dc90b6a69.json",
+      "file": "region-서울-52873a7ea109.json",
       "count": 1208
     },
     "세종": {
