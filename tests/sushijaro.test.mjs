@@ -243,10 +243,19 @@ test('교토 검색에 東京都 주소가 섞이지 않는다', () => {
   assert.equal(matchesQuery(tokyo, '도쿄'), true);
 });
 
-test('방문자 카운터: 배지 제목에서 오늘/누적만 읽는다', async () => {
-  const { parseHits } = await import('../sushijaro/visits.mjs');
-  assert.deepEqual(parseHits('<svg><title>12 / 3,456</title></svg>'), { today: 12, total: 3456 });
-  assert.equal(parseHits('<svg><title>oops</title></svg>'), null);
-  assert.equal(parseHits('<title>9 / 3</title>'), null);
-  assert.equal(parseHits(undefined), null);
+test('방문자 수: GA4 합계만 읽고 자정이 지나면 오늘은 집계 중', async () => {
+  const { visitorDisplay } = await import('../sushijaro/visits.mjs');
+  const { reportRequest, snapshot } = await import('../scripts/refresh-sushijaro-visitors.mjs');
+  const now = new Date('2026-11-14T14:59:00Z');
+  const req = reportRequest('2026-11-14');
+  assert.equal(req.dimensionFilter.filter.stringFilter.value, 'https://everpinej.com/sushijaro/');
+  assert.equal(req.dateRanges[0].startDate, '2026-11-12');
+  const report = { metadata: { timeZone: 'Asia/Seoul' }, metricHeaders: [{ name: 'totalUsers' }], dimensionHeaders: [{ name: 'dateRange' }], rows: [{ dimensionValues: [{ value: 'today' }], metricValues: [{ value: '12' }] }, { dimensionValues: [{ value: 'cumulative' }], metricValues: [{ value: '3456' }] }] };
+  const data = snapshot(report, now);
+  assert.deepEqual([data.totalUsers, data.todayUsers], [3456, 12]);
+  assert.equal(visitorDisplay(data, now).total, '3,456');
+  assert.equal(visitorDisplay(data, now).today, '12');
+  assert.equal(visitorDisplay(data, new Date('2026-11-14T15:00:00Z')).today, '집계 중');
+  assert.throws(() => snapshot({ ...report, metadata: { timeZone: 'Asia/Seoul', subjectToThresholding: true } }, now));
+  assert.throws(() => visitorDisplay({ ...data, todayUsers: 9999 }, now));
 });

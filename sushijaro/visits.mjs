@@ -1,35 +1,31 @@
-// 첫 화면 방문자 수(오늘·누적). hitscounter.dev 배지 SVG의 <title>"오늘 / 누적"</title>을 읽어 숫자만 보여 줍니다.
-// 같은 탭에서 새로고침할 때마다 늘지 않게, 한 세션에 한 번만 세고 그 값을 다시 씁니다. 실패하면 조용히 숨깁니다.
-const COUNTER = 'https://hitscounter.dev/api/hit?url=' + encodeURIComponent('https://everpinej.com/sushijaro/');
-const KEY = 'sushijaro_visits_v1';
+// 첫 화면 방문자 수: GitHub Actions가 매시간 GA4에서 받아 둔 합계(data/visitors.json)만 읽습니다. 브라우저는 GA 자격 증명에 접근하지 않아요.
+export const koreaDate = d => new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit' }).format(d);
 
-export function parseHits(svg) {
-  const m = /<title>\s*([\d,]+)\s*\/\s*([\d,]+)\s*<\/title>/.exec(String(svg ?? ''));
-  if (!m) return null;
-  const today = Number(m[1].replace(/,/g, '')), total = Number(m[2].replace(/,/g, ''));
-  return Number.isFinite(today) && Number.isFinite(total) && total >= today ? { today, total } : null;
+export function visitorDisplay(data, now = new Date()) {
+  const ok = n => Number.isSafeInteger(n) && n >= 0;
+  if (data?.schemaVersion !== 1 || data.timeZone !== 'Asia/Seoul' || !ok(data.totalUsers) || !ok(data.todayUsers) || data.todayUsers > data.totalUsers || !/^\d{4}-\d{2}-\d{2}$/.test(data.date ?? '')) throw new Error('방문 통계 형식 오류');
+  const updated = new Date(data.updatedAt);
+  if (!Number.isFinite(updated.getTime()) || updated > new Date(now.getTime() + 300000) || koreaDate(updated) !== data.date) throw new Error('방문 통계 날짜 오류');
+  const fmt = n => n.toLocaleString('ko-KR');
+  const time = new Intl.DateTimeFormat('ko-KR', { timeZone: 'Asia/Seoul', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false }).format(updated);
+  return { total: fmt(data.totalUsers), today: data.date === koreaDate(now) ? fmt(data.todayUsers) : '집계 중', note: `${time} 기준 · GA4 방문자(통계 동의 기기)` };
 }
 
-const fmt = n => new Intl.NumberFormat('ko-KR').format(n);
-
-async function load() {
-  try { const c = JSON.parse(sessionStorage.getItem(KEY) || 'null'); if (c?.total) return c; } catch { /* 저장소 차단 */ }
-  const ctrl = new AbortController(); const t = setTimeout(() => ctrl.abort(), 6000);
+export async function showVisits(doc = document, fetcher = fetch) {
+  const el = doc.getElementById('visits');
+  if (!el) return;
   try {
-    const res = await fetch(COUNTER, { signal: ctrl.signal, cache: 'no-store', credentials: 'omit', referrerPolicy: 'no-referrer' });
-    const v = res.ok ? parseHits(await res.text()) : null;
-    if (v) try { sessionStorage.setItem(KEY, JSON.stringify(v)); } catch { /* 무시 */ }
-    return v;
-  } catch { return null; } finally { clearTimeout(t); }
+    const res = await fetcher(new URL('./data/visitors.json', import.meta.url), { cache: 'no-cache', signal: AbortSignal.timeout(10000) });
+    if (!res.ok) throw new Error('통계 없음');
+    const v = visitorDisplay(await res.json());
+    el.querySelector('[data-today]').textContent = v.today;
+    el.querySelector('[data-total]').textContent = v.total;
+    el.querySelector('[data-note]').textContent = v.note;
+    el.hidden = false;
+  } catch { el.hidden = true; }
 }
 
-export async function showVisits(el = document.getElementById('visits')) {
-  if (!el || typeof fetch !== 'function') return;
-  const v = await load();
-  if (!v) return;
-  el.querySelector('[data-today]').textContent = fmt(v.today);
-  el.querySelector('[data-total]').textContent = fmt(v.total);
-  el.hidden = false;
+if (typeof document !== 'undefined') {
+  showVisits();
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) showVisits(); });
 }
-
-if (typeof document !== 'undefined') showVisits();
