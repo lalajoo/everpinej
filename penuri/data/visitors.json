@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "source": "GA4",
+  "metric": "totalUsers",
+  "timeZone": "Asia/Seoul",
+  "startDate": "2026-11-04",
+  "date": "2026-11-14",
+  "updatedAt": "2026-11-14T14:48:11.688Z",
+  "totalUsers": 242,
+  "todayUsers": 11
+}
