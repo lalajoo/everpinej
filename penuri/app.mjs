@@ -96,6 +96,18 @@ function card(p, distance) {
   // A map search works without coordinates or the Naver app. Never invent a route destination.
   article.append(actions); return article;
 }
+function inlinePromo(slot) {
+  const promo = $('#majeunjaro-promo').cloneNode(true);
+  promo.removeAttribute('id');
+  promo.removeAttribute('aria-labelledby');
+  promo.setAttribute('aria-label', '맞은자로 앱 광고');
+  promo.classList.add('inline-promo');
+  promo.dataset.promoSlot = String(slot);
+  const title = promo.querySelector('#promo-title');
+  title.replaceWith(element('h3', 'promo-title', '맞은자로'));
+  promo.querySelector('img').loading = 'lazy';
+  return promo;
+}
 async function getShard(region) {
   if (!cache.has(region)) cache.set(region, json('./data/' + manifest.regions[region].file).catch(error => { cache.delete(region); throw error; }));
   return cache.get(region);
@@ -130,8 +142,18 @@ async function render() {
     if (id !== requestId) return;
     const lookup = Object.fromEntries(shards);
     const fragment = document.createDocumentFragment();
-    visible.forEach(match => { const pharmacy = supplemental.get(match.id) || lookup[match.region]?.[match.id]; if (!pharmacy) throw new Error('데이터 버전 불일치'); fragment.append(card(pharmacy, match.distance)); });
+    let promoSlot = 0;
+    visible.forEach((match, i) => {
+      const pharmacy = supplemental.get(match.id) || lookup[match.region]?.[match.id];
+      if (!pharmacy) throw new Error('데이터 버전 불일치');
+      fragment.append(card(pharmacy, match.distance));
+      const position = i + 1;
+      if (position === Math.min(3, visible.length) || (position > 3 && (position - 3) % 10 === 0 && position < visible.length)) {
+        fragment.append(inlinePromo(promoSlot++));
+      }
+    });
     results.replaceChildren(matches.length ? fragment : emptyState());
+    document.dispatchEvent(new Event('penuri:results-rendered'));
     $('#result-count').replaceChildren(document.createTextNode('검색 결과 '), element('strong', '', matches.length.toLocaleString('ko-KR')), document.createTextNode('곳' + (state.position ? ' · 거리순' : '')));
     $('#more').hidden = state.limit >= matches.length;
     $('#more').textContent = `약국 더 보기 (${Math.min(state.limit, matches.length)} / ${matches.length}) ↓`;

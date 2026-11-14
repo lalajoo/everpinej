@@ -11,3 +11,5 @@
 @media(max-width:599px){.hero .eyebrow{display:none}.header{height:56px}.hero{padding-top:18px}.hero-copy{margin:8px 0 12px}.finder-tabs{margin:4px 0 8px}}
 
 .toolbar-actions{display:flex;gap:16px;align-items:center}
+
+.inline-promo{margin:4px 0 16px}.inline-promo .promo-title{margin:0;font-size:18px;color:#49366c;line-height:1.35}

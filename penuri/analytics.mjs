@@ -97,14 +97,28 @@ export function mountAnalytics(win, doc) {
     panel.hidden = true;
   });
   win.addEventListener('storage', event => { if (event.key === CONSENT_KEY) apply(event.newValue); });
-  doc.querySelectorAll('[data-app-store]').forEach(link => link.addEventListener('click', () => analytics.track(`app_promo_${link.dataset.appStore}_click`)));
-  const promo = doc.querySelector('#majeunjaro-promo');
+  doc.addEventListener('click', event => {
+    const link = event.target.closest?.('.app-promo [data-app-store]');
+    if (link) analytics.track(`app_promo_${link.dataset.appStore}_click`);
+  });
   if ('IntersectionObserver' in win) {
+    const visiblePromos = new Set();
     const observer = new win.IntersectionObserver(entries => {
-      promoVisible = entries[0].isIntersecting && entries[0].intersectionRatio >= .5;
+      for (const entry of entries) {
+        if (entry.isIntersecting && entry.intersectionRatio >= .5) visiblePromos.add(entry.target);
+        else visiblePromos.delete(entry.target);
+      }
+      promoVisible = visiblePromos.size > 0;
       impression();
     }, { threshold: .5 });
-    observer.observe(promo);
+    const watchPromos = () => {
+      observer.disconnect();
+      visiblePromos.clear();
+      promoVisible = false;
+      doc.querySelectorAll('.app-promo').forEach(promo => observer.observe(promo));
+    };
+    doc.addEventListener('penuri:results-rendered', watchPromos);
+    watchPromos();
   }
   return analytics;
 }
