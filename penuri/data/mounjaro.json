@@ -210,7 +210,7 @@
       "pharmacyId": "0f7d8f11505eb39c",
       "name": "꿈꾸는약국",
       "address": "전남광주통합특별시 북구 하서로 421, (용두동)",
-      "checkedAt": "2026-11-10",
+      "checkedAt": "2026-11-18",
       "summary": "광주 마운자로 관련 공개 후기에서 작성자가 북구 꿈꾸는약국을 직접 이용했다고 밝힌 답글을 확인했어요.",
       "sources": [
         {
@@ -229,7 +229,7 @@
       "pharmacyId": "18c04e29aba3d3e6",
       "name": "주차편한365약국",
       "address": "경기도 군포시 번영로 505, 대우디오플러스 303-1,303-2호 (산본동)",
-      "checkedAt": "2026-11-11",
+      "checkedAt": "2026-11-18",
       "summary": "군포 산본 주차편한365약국 소개 글에 이용자가 마운자로 성지라고 언급하며 자주 이용한다고 밝힌 공개 답글을 확인했어요.",
       "sources": [
         {
@@ -260,6 +260,44 @@
           "url": "https://www.threads.com/@pudadak77/post/DfrMo-oGL2V",
           "publishedAt": "2026-11-13",
           "label": "나눔약국 실명·주소가 명시된 작성자 답글"
+        }
+      ]
+    },
+    {
+      "pharmacyId": "threads-kmega-asan",
+      "pharmacy": {
+        "id": "threads-kmega-asan",
+        "name": "케이메가약국",
+        "region": "충남",
+        "district": "아산시",
+        "address": "충청남도 아산시 배방읍 동방1로 11, 101~102호",
+        "market": "",
+        "latitude": 36.7836129,
+        "longitude": 127.1089883,
+        "phone": "070-7757-5500",
+        "phoneSource": "https://www.data.go.kr/data/15051059/fileData.do",
+        "addressSource": "https://www.data.go.kr/data/15051059/fileData.do",
+        "addressSourceDate": "2026-09-30",
+        "coordinateSource": "https://www.data.go.kr/data/15051059/fileData.do",
+        "onnuriSupported": null,
+        "onnuriSourceDate": null,
+        "faceSignStatus": "unknown",
+        "faceSignVerifiedAt": null
+      },
+      "name": "케이메가약국",
+      "address": "충청남도 아산시 배방읍 동방1로 11, 101~102호",
+      "checkedAt": "2026-11-18",
+      "summary": "마운자로·위고비 약국 문의에 아산 K메가약국을 직접 이용했다고 밝힌 공개 답글을 확인했어요. 공식 등록명은 케이메가약국이에요.",
+      "sources": [
+        {
+          "url": "https://www.threads.com/@nala860219/post/Dfys51fIL0N",
+          "publishedAt": "2026-11-16",
+          "label": "아산 K메가약국 이용 경험 답글"
+        },
+        {
+          "url": "https://www.threads.com/@bu1up_/post/DfyhcHCkmlG",
+          "publishedAt": "2026-11-16",
+          "label": "답글이 달린 마운자로·위고비 약국 문의 원문"
         }
       ]
     }
