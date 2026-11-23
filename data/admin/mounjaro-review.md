@@ -133,3 +133,24 @@
 보류: 종로 가격 비교 DfzB3RNGu7s는 실명 없이 외부 글 안내. 부천 문의 DfjTXwsE85B의 관찰한 답글에 약국 실명 없음. 망포 기존 DfNC_lQkhmP의 태평약/태평양 표기 및 지점 질문은 정확한 주소 연결 미해결. https://www.threads.com/@hsjduuu/post/DfylXNYj1Lh 의 불당하나로약국은 심평원 신불당하나로약국과 명칭이 달라 추가 근거 전 보류. 아산 이화약국 답글은 위고비만 언급해 제외. 서울 결과 약국 자체 홍보만으로 등록하지 않음.
 
 맞은자로 광고, 방문 통계, 11월 16일 공식 페이스사인 자료와 다른 페이지 보존.
+
+## 정기 실행 — 2026-11-23
+
+기본 세 검색어 최근·인기 결과와 부산·대구 지역 검색을 지원 브라우저의 공개 UI로 확인했다. 약국·성지 검색은 정확한 일치 옵션도 확인했고, 성지 최근 결과는 11월 12일 게시물이 보이는 추가 범위까지 읽었다. 무관 결과 및 중간 미관찰 구간이 있어 7일 전수 검색 완료로 간주하지 않는다. 신규 등록 0곳, 기존 목록 13곳 유지. 다음 지역 대전·광주.
+
+주간 재확인 9곳의 기존 실명·지역·방문/추천 맥락과 렌더링된 time의 한국시간 게시일이 유지되어 checkedAt만 2026-11-23으로 갱신했다. 직접 연 개별 페이지 10개 및 함께 렌더링된 부모를 합친 기존 근거 고유 URL 14개를 확인했다.
+- 종로중앙약국: https://www.threads.com/@run_hanssol/post/DfRjyP7iQei (2026-11-03), https://www.threads.com/@zzzzz0089/post/DfPAin0AaxT (2026-11-02)
+- 365언제나약국: https://www.threads.com/@suju_0203/post/DZZMUYOCV-Y (2026-06-10)
+- 사랑약국: https://www.threads.com/@bangeungyeong318/post/DfMldx1lJJy (2026-11-01), https://www.threads.com/@bangeungyeong318/post/DfRSEeXlMnS (2026-11-03), https://www.threads.com/@sss222yyyy/post/DfMS0i6FKUn (2026-11-01)
+- 부광약국: https://www.threads.com/@ro.jaeeun/post/DfUgCRoFBHW (2026-11-04), https://www.threads.com/@ppark8888/post/DfUKs8MEsrz (2026-11-04)
+- 구포큰약국: https://www.threads.com/@error_code_051/post/DfTmVPRn_vR (2026-11-04)
+- 동탄메가온누리약국: https://www.threads.com/@chestnut82824/post/DfWTqyuiQ4f (2026-11-05), https://www.threads.com/@ppark8888/post/DfUKs8MEsrz (2026-11-04)
+- 한라약국: https://www.threads.com/@harusari_story/post/DfY_MVvGTpc (2026-11-06)
+- 다나약국: https://www.threads.com/@uzzzzzzzo_o/post/DfOjxwnk1M7 (2026-11-02), https://www.threads.com/@kawaerio/post/DfOZK9OAf4j (2026-11-02)
+- 만촌대형약국: https://www.threads.com/@puppy.q11/post/DfOuQ_bHZgJ (2026-11-02), https://www.threads.com/@kawaerio/post/DfOZK9OAf4j (2026-11-02)
+
+나눔약국의 부모 DfrMdZGmKiY와 답글 DfrMo-oGL2V는 모두 공개 화면에서 링크가 작동하지 않거나 페이지가 존재하지 않는다는 안내만 나타났다. 원문 재확인 실패로 처리하며 2026-11-14 확인일과 기존 근거를 보존했다. 삭제·비공개 원인은 확정할 수 없어 자동 삭제하지 않고 다음 실행에 재확인한다.
+
+추가 후보 원문 3개 검토: https://www.threads.com/@lokooyu/post/DgCViSIkz3_ (한국시간 2026-11-22) 부산 문의는 공개 답글에 약국 실명 없음. https://www.threads.com/@ka_wooa/post/DfMd-9KEofx (2026-11-01) 및 후속 공개 답글은 영등포 위치 설명만 확인되어 실명 보강 전 보류. https://www.threads.com/@doranniii/post/DfT2ERTIRUT (2026-11-04)는 작성자가 약국이 아닌 병원이라고 명시하여 약국 후보에서 제외했다.
+
+11월 23일 공식 페이스사인 자료, 모든 결제 상태·결제 확인일, 후기 게시일·요약·링크, 맞은자로 광고와 방문 통계를 보존했다. 원문 전문·건강 이력·프로필 저장 없음. 이번 날짜는 현장 확인일이 아닌 공개 원문 확인일이다.
