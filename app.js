@@ -1,8 +1,8 @@
 const apps=[
 {id:'6794129450',name:'맞은자로',desc:'주사 기록부터 체중 변화까지, 나를 돌보는 기록.',category:'HEALTH & ROUTINE',color:'#9180db',tint:'#f3effc',play:'com.songminsuk.majeunjaro',crop:[34,107,153,333]},
 {id:'6809697035',name:'책있나',desc:'읽고 싶은 책, 빌릴 수 있는 도서관부터.',category:'BOOKS & DISCOVERY',color:'#2450f5',tint:'#eef2ff',play:'kr.chaekitna.app',crop:[38,136,145,316]},
-{id:'6823535266',name:'하루돌봄',desc:'아이의 작은 변화를, 함께 기록해요.',category:'FAMILY & CARE',color:'#648457',tint:'#f6f7e8',play:'com.csjlabs.harucare',crop:[32,104,157,346]},
-{id:'6822413349',name:'수당노트',desc:'활동은 끝났으니까, 정산은 간편하게.',category:'WORK & ORGANIZE',color:'#3f7bdc',tint:'#edf3ff',play:'com.sudangnote.sudang_note',crop:[27,105,167,351]},
+{id:'6832271245',name:'착한 한글뷰어',desc:'HWP·HWPX 문서, 어디서든 가볍게 열어요.',category:'DOCUMENTS & READING',color:'#292a29',tint:'#f2f2ef',play:'app.kindreader.kind_hangul'},
+{id:'6829487679',name:'착한 타이머',desc:'운동과 휴식, 나만의 리듬으로 반복해요.',category:'TIME & ROUTINE',color:'#292a29',tint:'#f2f2ef',play:'app.chakhan.chakhan_timer'},
 {id:'6811624891',name:'끝말잇기의 왕',desc:'다음 단어까지 20초. 당신의 한 수는?',category:'WORDS & PLAY',color:'#292a29',tint:'#f0f0ec',play:'com.csjlabs.kkeutmal_king',crop:[33,115,155,344]},
 {id:'6817563339',name:'착한 스캐너',desc:'종이는 가볍게. 문서는 또렷하게.',category:'SCAN & SIMPLIFY',color:'#292a29',tint:'#f2f2ef',play:'app.chakhan.chakhan_scan',crop:[31,115,159,354]}
 ];
@@ -10,14 +10,14 @@ const english = document.documentElement.lang === 'en';
 const translations = [
 ['Majeunjaro', 'Injection logs and weight trends. A little care for yourself.'],
 ['Chaekitna', 'Find your next read. And a library to borrow it from.'],
-['Haru Care', 'Little changes, lovingly recorded together.'],
-['Sudang Note', 'Work done. Keep your fees and payments in order.'],
+['Kind HWP Viewer', 'Open HWP and HWPX documents with ease, anywhere.'],
+['Kind Timer', 'Work out, rest, repeat. At your own pace.'],
 ['Word Chain King', '20 seconds. One word. Your next move?'],
 ['Kind Scanner', 'Less paper. Clearer documents.']
 ];
 const labels=english?{prev:'Previous app',next:'Next app',phone:'App preview. Drag to rotate. Use arrow keys to switch apps.',collection:'App collection',apps:'Six apps',choose:'Choose an app',hint:'Drag to rotate 360° · Use arrows to switch apps',tagline:'Small things. Everyday usefulness.',hello:'Say hello',home:'everpinej home',screen:' app screenshot',store:'View on ',legal:'Cheongsol J · Business no. 263-21-02579 · Mail-order no. 2026-Jeju Nohyeong-0096'}:{prev:'이전 앱',next:'다음 앱',phone:'앱 화면. 드래그로 회전하고 화살표 키로 앱을 바꾸세요',collection:'앱 컬렉션',apps:'여섯 가지 앱',choose:'앱 선택',hint:'드래그로 360° 회전 · 화살표로 앱 전환',tagline:'일상에, 작은 쓸모.',hello:'문의하기',home:'everpinej 홈',screen:' 실제 앱 화면',store:'에서 보기',legal:'상호 청솔제이 · 사업자등록번호 263-21-02579 · 통신판매업신고 제2026-제주노형-0096호'};
 if(english)apps.forEach((a,i)=>{a.name=translations[i][0];a.desc=translations[i][1]});
-const screenSource=a=>a.id==='6794129450'&&english?'/assets/6794129450-screen-en-20261026.png':a.id==='6809697035'?'/assets/6809697035-screen-20261025.png':a.id==='6817563339'?`/assets/6817563339-screen-20261026-${english?'en':'ko'}.png`:`/assets/${a.id}-screen.png`;
+const screenSource=a=>['6832271245','6829487679'].includes(a.id)?`/assets/${a.id}-screen-${english?'en':'ko'}.png`:a.id==='6794129450'&&english?'/assets/6794129450-screen-en-20261026.png':a.id==='6809697035'?'/assets/6809697035-screen-20261025.png':a.id==='6817563339'?`/assets/6817563339-screen-20261026-${english?'en':'ko'}.png`:`/assets/${a.id}-screen.png`;
 const $=s=>document.querySelector(s);let current=0,busy=false,requested=0,selectionToken=0;const dock=$('.dock');
 $('.prev').setAttribute('aria-label',labels.prev);$('.next').setAttribute('aria-label',labels.next);$('.phone').setAttribute('aria-label',labels.phone);$('main').setAttribute('aria-label',labels.collection);$('.showcase').setAttribute('aria-label',labels.apps);dock.setAttribute('aria-label',labels.choose);$('.brand').setAttribute('aria-label',labels.home);$('.hint').textContent='↔  '+labels.hint;$('#tagline').textContent=labels.tagline;$('#contact-label').textContent=labels.hello;$('#legal').textContent=labels.legal;
 
